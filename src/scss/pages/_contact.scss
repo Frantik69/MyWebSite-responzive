@@ -1,0 +1,92 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
+// ===============================================
+
+/* HLAVNÝ WRAPPER KONTAKTNEJ SEKCIÍ */
+#contact {
+  min-height: calc(100vh - 4rem);
+  border: 1px solid #000000;
+  color: #000;
+  background-color: #f9f9f9;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem;
+
+  /* NADPIS */
+  h2 {
+    text-shadow:
+      0.125rem 0.125rem 0 #6e97c3,
+      0.1875rem 0.1875rem 0.4375rem #666;
+  }
+
+  /* VNÚTORNÝ CONTAINER */
+  .contact-container {
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  /* DIVIDER – ČIARA */
+  .divider-custom-line {
+    background-color: #000;
+    filter:
+      drop-shadow(0.125rem 0.125rem 0 #a4a4a4)
+      drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+  }
+
+  /* DIVIDER – IKONA */
+  .divider-custom-icon {
+    margin: 0 0.5rem;
+    color: #000000;
+    filter:
+      drop-shadow(0.125rem 0.125rem 0 #a4a4a4)
+      drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+  }
+}
+
+
+// ===============================================
+// RESPONSIVE CONTACT UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+@include tablet-landscape {
+  #contact .contact-container {
+    width: 80vw; /* jemné rozšírenie pre menšie displeje */
+  }
+}
+
+$navbar-height:4rem;
+$copyright-height:1.75rem;
+
+@include mobile {
+  #contact {
+    border: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    /* 1) min-height = výška displeja mínus navbar */
+    min-height: calc(100vh - #{$navbar-height+$copyright-height});
+
+    /* 2) max-height = výška obsahu */
+    max-height: fit-content;
+
+    /* 3) ak je #contact vyšší než obsah → centrovanie */
+    justify-content: center;
+    align-items: center;
+  }
+
+  #contact .contact-container {
+    display:inline-flexbox;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 1) výška podľa obsahu */
+    height: auto;
+
+    width: 90vw;
+    max-width: 90%;
+    position: relative;
+  }
+}

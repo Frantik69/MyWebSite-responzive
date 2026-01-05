@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Contact Frantik's programmer, custom programming.">
+    <meta name="author" content="Frantik69">
+    <!-- 
+    /////////////////////////////////////////////////////////////////////////
+      Indexovať a sledovať odkazy (default) 
+    <meta name="robots" content="index, follow">
+          Príklad pre stránky, ktoré nechcete indexovať 
+    <meta name="robots" content="noindex, follow">
+    Prečo: Umožňuje presne riadiť, čo má byť viditeľné vo vyhľadávaní
+    ////////////////////////////////////////////////////////////////////////
+    <meta property="og:title" content="Kaviareň Staré Mesto – výberová káva">
+    <meta property="og:description" content="Výberová káva a remeselné dezerty v centre Košíc.">
+    <meta property="og:image" content="https://priklad.sk/og-image.jpg">
+    <meta property="og:url" content="https://priklad.sk">
+    <meta name="twitter:card" content="summary_large_image">
+    Prečo: Lepšia prezentácia zvyšuje pravdepodobnosť preklikov a návštevnosti
+    -->
+
+
+    <title>František Dupaľ - webdeveloper | Košice - SK</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="src/assets/favicon.png" sizes="64x64">
+    <!-- BOOTSTRAP + CUSTOM CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="canonical" href="https://frantisek.dupal.sk/menu"> <!--TODO - dopisat adresu podla skutocnosti -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
+  <script>
+      window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container-fluid">
+
+    <!-- TOGGLER + LOGO WRAPPER -->
+    <div id="mobileLeft">
+
+      <!-- TOGGLER -->
+      <button class="navbar-toggler" 
+              type="button" 
+              data-bs-toggle="collapse" 
+              data-bs-target="#navbarResponsive" 
+              aria-controls="navbarResponsive" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- LOGO -->
+      <div id="logoWrapper">
+        <div id="logo" class="navbar-brand align-items-center text-decoration-none">
+
+          <img src="src/assets/img/logo.png" alt="Logo" class="logo me-2">
+
+          <div class="logo-text flex-column">
+            <h1 class="h6 mb-0">
+              František<span class="fw-bold text-uppercase">Dupaľ</span>
+            </h1>
+            <small class="text-uppercase">webdeveloper</small>
+          </div>
+
+        </div>
+      </div>
+
+    </div> <!-- /#mobileLeft -->
+
+    <!-- POČASIE -->
+    <a id="weatherNav" class="menu-item align-items-center ms-4 text-decoration-none"
+    data-translate-info="weatherInfo"
+      href="https://openweathermap.org/" 
+      target="_blank" rel="noopener noreferrer">
+      <img id="icon" alt="weather icon" class="icon-24 me-2">
+      <span id="city" class="me-2"></span>
+      <span id="temp"></span>
+    </a>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mx-auto">
+        <li id="homeNav" class="nav-item menu-item" data-translate-info="homeInfo">
+          <a class="nav-link" href="#home">
+            <i class="fas fa-home menu-icon"></i>
+            <span data-translate="home"></span>
+          </a>
+        </li>
+
+        <li id="portfolioNav" class="nav-item menu-item" data-translate-info="portfolioInfo">
+          <a class="nav-link" href="#portfolio">
+            <i class="fas fa-briefcase menu-icon"></i>
+            <span data-translate="portfolio"></span>
+          </a>
+        </li>
+
+        <li id="skillsNav" class="nav-item menu-item" data-translate-info="skillsInfo">
+          <a class="nav-link" href="#skills">
+            <i class="fas fa-code menu-icon"></i>
+            <span data-translate="subtitleSkills"></span>
+          </a>
+        </li>
+
+        <li id="aboutNav" class="nav-item menu-item" data-translate-info="aboutInfo">
+          <a class="nav-link" href="#about">
+            <i class="fas fa-user menu-icon"></i>
+            <span data-translate="aboutMe"></span>
+          </a>
+        </li>
+
+        <li id="contactNav" class="nav-item menu-item" data-translate-info="contactInfoInfo" >
+          <a class="nav-link" href="#contact">
+            <i class="fas fa-envelope menu-icon"></i>
+            <span data-translate="contact"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PRAVÝ BLOK - JAZYKOVÝ PREPÍNAČ -->
+    <ul class="navbar-nav ms-auto" id="rightNav">
+      <li class="nav-item dropdown menu-item">
+        <a class="nav-link dropdown-toggle d-flex align-items-center"
+           href="#" id="languageDropdown" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+          <img id="selected-flag" src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-1">
+          <span id="selected-lang">SK</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" id="languageMenu">
+          <li>
+            <a class="dropdown-item" href="#" data-lang="sk" data-translate-info="langSkInfo">
+              <img src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-2">
+              <span class="lang-text" data-translate="btnSk"></span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" data-lang="en" data-translate-info="langEnInfo">
+              <img src="src/assets/img/flags/uk.png" alt="English" class="flag-24x16 me-2">
+              <span class="lang-text" data-translate="btnEn"></span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" data-lang="de" data-translate-info="langDeInfo">
+              <img src="src/assets/img/flags/de.png" alt="Deutsch" class="flag-24x16 me-2">
+              <span class="lang-text" data-translate="btnDe"></span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+    
+    <!-- MODAL PRE POČASIE -->
+    <div id="weatherModal" class="modal-overlay">
+      <div class="modal-bubble">
+        <p data-translate="changePage"></p>
+        <div class="d-flex justify-content-between mt-2">
+          <button id="confirmWeather" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfo">Kliknutim sa otvori nove okno s pocasim</button>
+          <button id="cancelWeather" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <header id="home">
+      <div class="home-container">
+        <div class="row">
+          <!-- ĽAVÁ STRANA: VYCENTROVANÝ TEXT -->
+          <div class="col-lg-6 left-text">
+            <!-- NADPIS -->
+            <h1 data-translate="motto" class="fade-in-title page-section-heading mb-1">František Dupaľ</h1>
+            <!-- DIVIDER -->
+            <div class="divider-custom my-1">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+            </div>
+            <!-- MOTTO -->
+            <p data-translate="mottoText" class="font-weight-light mb-0 slide-in-right">My motto</p>
+          </div>
+          <!-- PRAVÁ STRANA: VYCENTROVANÝ OBRÁZOK -->
+          <div class="col-lg-6 d-flex justify-content-center">
+            <img src="src/assets/img/my-photo.png" alt="my-photo" class="img-fluid zoom-img">
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="page-section bg-primary text-white mb-0">
+      <div class="portfolio-container">
+        <!-- NADPIS -->
+        <h2 class="page-section-heading text-center text-uppercase" data-translate="portfolio"></h2>
+        <!-- DIVIDER -->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- OBSAH -->
+        <div class="portfolio-content">
+          <!-- ĽAVÝ STĹPEC -->
+          <div class="portfolio-left">
+            <div class="left-top">
+              <img src="src/assets/img/my-photo-reverse.png" alt="František Dupaľ" class="profile-photo">
+              <h2 class="profile-name">František Dupaľ</h2>
+              <p class="profile-position" data-translate="title">Java programátor</p>
+              <hr class="profile-divider">
+              <h3 data-translate="aboutMe"></h3>
+              <a id="aboutPreview" data-translate-info="portfolioAboutMeInfo" class="aboutPreview" href="#about"></a>
+            </div>
+            <div class="left-bottom">
+              <!-- Desktop verzia (neklikateľná) -->
+              <p class="contact-phone desktop-phone">📞 +421 905 259 485</p>
+              <!-- Mobilná verzia (klikateľná) -->
+              <a class="contact-phone mobile-phone" href="tel:+421905259485">📞 +421 905 259 485</a>
+              <a class="contact-email" data-translate-info="portfolioContactInfo" href="#contact">📧 frantisek.dupal.webdeveloper@gmail.com</a>
+            </div>
+          </div>
+          <!-- PRAVÝ STĹPEC -->
+          <div class="portfolio-right">
+            <!-- ZNALOSTI -->
+            <h3 class="section-title" data-translate="knowledge">ZNALOSTI</h3>
+            <div class="skills-columns">
+              <div class="skills-col">
+                <h4 data-translate="working">Denne pracujem:</h4>
+                <ul class="skills">
+                  <li data-rating="4">IntelliJ IDEA</li>
+                  <li data-rating="4">Git</li>
+                  <li data-rating="3">DevTools</li>
+                  <li data-rating="3">SQL</li>
+                </ul>
+              </div>
+              <div class="skills-col">
+                <h4 data-translate="using">Pravidelne používam:</h4>
+                <ul class="skills">
+                  <li data-rating="4">Java, Spring</li>
+                  <li data-rating="4">HTML, CSS5, Bootstrap</li>
+                  <li data-rating="3">JavaScript, React</li>
+                </ul>
+              </div>
+            </div>
+            <div class="skills-columns">
+              <div class="skills-col">
+                <h4 data-translate="know">Poznám tiež:</h4>
+                <ul class="skills">
+                  <li data-rating="4">Visual Studio Code</li>
+                  <li data-rating="2"><span data-translate-sublist="testingalso">Testovanie</span></li>
+                  <li data-rating="4">Best practices</li>
+                  <li data-rating="3"><span data-translate-sublist="response">Responzívny webdesign</span></li>
+                </ul>
+              </div>
+              <div class="skills-col">
+              <h4 data-translate="tools">Ďalšie nástroje:</h4>
+                <ul class="skills">
+                  <li data-rating="2"><span data-translate-sublist="zakladadobe">Základy Adobe Photoshop</span></li>
+                  <li data-rating="4">MS Office</li>
+                </ul>
+              </div>
+            </div>
+            <hr class="section-divider">
+            <!-- SKÚSENOSTI -->
+            <h3 class="section-title" data-translate="experiences">SKÚSENOSTI A PRAX</h3>
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-date">12/2025</div>
+                <div class="timeline-content">
+                  <span data-translate="osobneportfolio">Osobné webové portfólio</span>
+                  <ul class="sublist">
+                    <li>HTML, CSS5, JavaScript</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">11/2025</div>
+                <div class="timeline-content">
+                  <span data-translate="portfolioProjekt">Projekt Evidencia poistných udalostí</span>
+                  <ul class="sublist">
+                    <li>Java, OOP</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">7–11/2025</div>
+                <div class="timeline-content">
+                  <span data-translate="portfolioITnetwork">Rekvalifikačný kurz Programátor www aplikácií Java - ITnetwork Academy</span>
+                  <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/Certificate_Java_Basic.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a>
+                  <ul class="sublist">
+                    <li>
+                      <span data-translate-sublist="zakladjava"></span>
+                      <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/Certifikat_Webove_stranky_krok_za_krokom.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a>
+                    </li>
+                    <li data-translate-sublist="OOP">Objektovo-orientované programovanie v Jave (certifikát)</li>
+                    <li data-translate-sublist="kolekcie">Kolekcie, prúdy, súbory (certifikát)</li>
+                    <li data-translate-sublist="webdesign">Moderný webdesign (certifikát)</li>
+                    <li data-translate-sublist="MysQL">MySQL (certifikát)</li>
+                    <li data-translate-sublist="JSzaklady">JavaScript základy (certifikát)</li>
+                    <li>Spring Boot</li>
+                    <li data-translate-sublist="React">React základy</li>
+                    <li>Bootstrap</li>
+                    <li data-translate-sublist="testing">Testovanie a verzovanie</li>
+                    <li data-translate-sublist="bestpractices">Best practices a UML</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2023–2024</div>
+                <div class="timeline-content">
+                  <span data-translate="portfolioSkillmea2">Rekvalifikačný kurz Java pre junior programátorv - SKILLMEA s.r.o.</span>
+                  <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/skillmea-certifikat-java-pre-junior-programatorov.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a><br>
+                  <ul class="sublist">
+                    <li>Maven</li>
+                    <li data-translate-sublist="servlety">Servlety (MVC, JSP, JSTL, EL)</li>
+                    <li>ORM - JPA (Hibernate)</li>
+                    <li>Patterns</li>
+                    <li data-translate-sublist="logovanie">Logovanie java aplikácií</li>
+                    <li>RESTful web services</li>
+                  </ul>
+                  <span data-translate="portfolioSkillmea1">Rekvalifikačný kurz Java pre pokročilých - SKILLMEA s.r.o.</span>
+                  <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/skillmea-certifikat-java-pre-pokrocilych.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a><br>
+                  <ul class="sublist">
+                    <li data-translate-sublist="boxing">BoxingUnboxing, Vlastné výnimky, balíky</li>
+                    <li data-translate-sublist="cisla">Čísla, znaky, reťazce, regulárne výrazy, I/O input/output, kolekcie, generické programovanie</li>
+                    <li data-translate-sublist="metody">Default metódy v rozhraniach, konflikty pri rozhraniach s default metódami</li>
+                    <li data-translate-sublist="vnoreneTriedy">Vnorené a vnútorné triedy, Lambda výrazy, Stream API, Anotácie, Reflexia</li>
+                    <li data-translate-sublist="ORM">Databázy, Mini ORM framework, Zdrojové súbory</li>
+                  </ul>
+                  <span data-translate="portfolioSkillmea">Rekvalifikačný kurz Java pre začiatočníkov - SKILLMEA s.r.o.</span>
+                  <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a>
+                  <ul class="sublist">
+                    <li data-translate-sublist="premenne">Premenné, dátové typy, komentáre, balíky, pretypovanie, deklarácie, podmienky, boolenovské výrazy</li>
+                    <li data-translate-sublist="cykly">Ternárny operátor, cykly, switch, break, continue, návestia</li>
+                    <li data-translate-sublist="triedy">Triedy, objekty, metódy a premenné z hľadiska deklarácie</li>
+                    <li data-translate-sublist="garbageCollector">Garbage collector, OOP a zapúzdrenie dát, prístupové práva, abstraktné metódy a triedy</li>
+                    <li data-translate-sublist="interface">Interface, Implementácia viacerých rozhraní, dedenie pri rozhraniach, instanceof, Enum, výnimky, polymorfizmus</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2009–2022</div>
+                <div class="timeline-content">Chemko, a.s. Slovakia, Mlinské nivy 10, Bratislava 811 09
+                  <ul class="sublist">
+                    <li data-translate-sublist="chemko">Obsluha technických zariadení, operátor výroby, predák, administrátor AMS</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2008</div>
+                <div class="timeline-content">K+K a.s., Jána Holého 42, 071 01 Michalovce
+                  <ul class="sublist">
+                    <li data-translate-sublist="KK">Predaj, servis a poradenstvo IT</li>
+                  </ul>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2007–2008</div>
+                <div class="timeline-content">EUROLUX s.r.o., Floriánska 30, 040 01 Košice
+                  <ul class="sublist">
+                    <li data-translate-sublist="eurolux">Technicko-obchodný pracovník (zhotovovanie výrobnej dokumentácie, predaj produktov)</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <!-- VZDELANIE -->
+            <h3 class="section-title" data-translate="education">VZDELANIE</h3>
+            <ul class="timeline">
+              <li class="timeline-item">
+                <div class="timeline-date">2005–2007</div>
+                <div class="timeline-content" data-translate="fei">FEI, STU Bratislava</div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2004–2005</div>
+                <div class="timeline-content" data-translate="fiit">FIIT, STU Bratislava</div>
+              </li>
+              <li class="timeline-item">
+                <div class="timeline-date">2000–2004</div>
+                <div class="timeline-content" data-translate="gymnazium">Gymnázium, ul. Ľ. Štúra 26, Michalovce</div>
+              </li>
+            </ul>
+            <!-- ODKAZY -->
+            <div class="portfolio-links">
+              <a href="https://github.com/Frantik69" class="btn btn-outline-dark me-2" data-translate-info="portfolioLinkInfo" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i> GitHub</a>
+            </div>
+
+            <!-- MODAL PRE GITHUB -->
+            <div id="GitHubModal" class="modal-overlay">
+              <div class="modal-bubble">
+                <p data-translate="changePage"></p>
+                <div class="d-flex justify-content-between mt-2">
+                  <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub">Kliknutim sa otvori nova karta s GitHubom</button>
+                  <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="page-section bg-primary text-white mb-0" id="skills">
+      <div class="skills-container">
+        <h2 data-translate="subtitleSkills" class="page-section-heading text-center text-uppercase">Skills</h2>
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <div class="row">
+          <!-- ĽAVÝ STĹPEC -->
+          <div class="col-lg-6 skills-info">
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/intellij-idea-logo-black-and-white.png" alt="InteliJIDEA icon" class="skill-icon">
+              <h3 class="skill-title">InteliJ IDEA</h3>
+              </div>
+              <p class="skill-desc" data-translate="inteliJIDEAskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/devtools-icon.png" alt="DevTools icon" class="skill-icon">
+              <h3 class="skill-title">DevTools</h3>
+              </div>
+              <p class="skill-desc" data-translate="devtoolsskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/HTML5.png" alt="HTML5 icon" class="skill-icon">
+              <h3 class="skill-title">HTML5</h3>
+              </div>
+              <p class="skill-desc" data-translate="html5skills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/scss-icon.png" alt="SCSS icon" class="skill-icon">
+              <h3 class="skill-title">SCSS</h3>
+              </div>
+              <p class="skill-desc" data-translate="scssskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/javascript-icon.png" alt="JavaScript icon" class="skill-icon">
+              <h3 class="skill-title">JavaScript</h3>
+              </div>
+              <p class="skill-desc" data-translate="JavaScriptskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/bootstrap-logo.png" alt="Bootstrap icon" class="skill-icon">
+              <h3 class="skill-title">Bootstrap</h3>
+              </div>
+              <p class="skill-desc" data-translate="bootstrapskills"></p>
+            </div>
+          </div>
+          <!-- PRAVÝ STĹPEC -->
+          <div class="col-lg-6 skills-info">
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/sql-icon.png" alt="SQL icon" class="skill-icon">
+              <h3 class="skill-title">SQL</h3>
+              </div>
+              <p class="skill-desc" data-translate="SQLskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/git.png" alt="GIT icon" class="skill-icon">
+              <h3 class="skill-title">Git</h3>
+              </div>
+              <p class="skill-desc" data-translate="gitskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/Github-Logo.png" alt="GitHUB icon" class="skill-icon">
+              <h3 class="skill-title">GitHUB</h3>
+              </div>
+              <p class="skill-desc" data-translate="githubskills"></p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/java.white.png" alt="Java icon" class="skill-icon">
+              <h3 class="skill-title">Java</h3>
+              </div>
+              <p class="skill-desc" data-translate="javaskills">Používam na backend logiku...</p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/Spring_Boot.png" alt="SpringBoot icon" class="skill-icon">
+              <h3 class="skill-title">SpringBoot</h3>
+              </div>
+              <p class="skill-desc" data-translate="springbootskills">Používam na tvorbu REST API...</p>
+            </div>
+            <div class="skill-card">
+              <div class="skill-left">
+              <img src="src/icons/RestAPI-icon.png" alt="REST API icon" class="skill-icon">
+              <h3 class="skill-title">REST-API</h3>
+              </div>
+              <p class="skill-desc" data-translate="restAPIskills">Používam na tvorbu REST API...</p>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUTME SECTION -->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+      <div class="about-container">
+        <h2 data-translate="aboutMe" class="page-section-heading text-center text-uppercase">AboutMe</h2>
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <div class="row">
+          <!-- ĽAVÝ STĹPEC -->
+          <div data-translate="aboutInfo1" data-translate-html class="col-lg-6 about-info "></div>
+          <!-- PRAVÝ STĹPEC -->
+          <div data-translate="aboutInfo2" data-translate-html class="col-lg-6 about-info"></div>
+        </div>
+      </div>
+    </section>
+    
+<!-- CONTACT SECTION -->
+<section class="page-section" id="contact">
+  <div class="contact-container">
+    <h2 data-translate="formTitle" class="page-section-heading text-center text-uppercase text-secondary mb-0">
+      Kontaktuj ma
+    </h2>
+
+    <!-- DIVIDER -->
+    <div class="divider-custom">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <p class="contact-info">
+      <img src="src/assets/img/email.png" alt="email" class="email-icon">
+      <span data-translate="contactInfo" data-translate-html>
+        If you want to tell me something, send me an email at 
+        <strong>frantisek.dupal.webdeveloper@gmail.com</strong>
+      </span>
+    </p>
+
+    <!-- CONTACT FORM -->
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <form action="https://formspree.io/f/xwvepdrk" method="POST" id="contactForm" autocomplete="on">
+          <input type="hidden" name="_subject" value="📩 Nová správa z portfólia – František Dupal">
+
+          <!-- ROW 1 -->
+          <div class="row g-0 mb-3 align-items-center">
+            <div class="col-auto">
+              <label for="name" data-translate="formNameLabel">Meno</label>
+            </div>
+            <div class="col-auto ms-1">
+              <input type="text" id="name" name="Meno"
+                placeholder="Vaše meno / Your name"
+                data-translate-placeholder="placeholderName"
+                required class="form-control"
+                autocomplete="name">
+            </div>
+
+            <div class="col-auto ms-3">
+              <label for="email" data-translate="formEmailLabel">Email</label>
+            </div>
+            <div class="col-auto ms-1">
+              <input type="email" id="email" name="Email"
+                placeholder="Váš email / Your email"
+                data-translate-placeholder="placeholderEmail"
+                required class="form-control"
+                autocomplete="email">
+            </div>
+          </div>
+
+          <!-- ROW 2 -->
+          <div class="row g-0 mb-3">
+            <div class="col-auto">
+              <label for="message" data-translate="formMessageLabel">Správa</label>
+            </div>
+          </div>
+
+          <!-- ROW 3 -->
+          <div class="row g-0 mb-3">
+            <div class="col-12">
+              <textarea id="message" name="Správa" rows="5"
+                placeholder="Vaša správa... / Your message..."
+                data-translate-placeholder="placeholderMessage"
+                required class="form-control"
+                autocomplete="off"></textarea>
+            </div>
+          </div>
+
+          <!-- TURNSTILE reCAPTCHA -->
+          <div class="row g-0 mb-3">
+            <div class="col text-center">
+              <div id="turnstile-container" class="cf-turnstile" autocomplete="off"></div>
+            </div>
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <div class="row g-0">
+            <div class="col text-center">
+              <button id="submitBtn" type="submit" data-translate="formSubmit"
+                class="btn btn-primary menu-item" data-translate-info="sendInfo">
+                Odoslať
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer text-center custom-footer">
+      <div class="container">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 data-translate="location" data-translate-html class="text-uppercase mb-2">Lokalita</h4>
+          <p data-translate="locationInfo" data-translate-html class="lead mb-0"></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- COPYRIGHT -->
+    <div data-translate="copyright" data-translate-html id="copyright" class="fixed-bottom py-1 text-center custom-copyright">
+      <div class="container">Vytvorené © František Dupaľ</div>
+    </div>
+
+    <!-- CONFIRMATION OVERLAY -->
+    <div id="overlay" class="formMessage">
+      <div id="overlayMessage"></div>
+    </div>
+
+    <!-- MODAL PRE PDF -->
+    <div id="pdfModal" class="modal-overlay">
+      <div class="pdf-wrapper">
+        <button class="pdf-close">✕</button>
+        <img id="pdfImage" src="" alt="Certifikát">
+      </div>
+    </div>
+
+    <!-- BOOTSTRAP BUNDLE JS + VLASTNY JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/translations.js"></script>
+    <script type="module" src="src/js/main.js"></script>
+  </body>
+</html>

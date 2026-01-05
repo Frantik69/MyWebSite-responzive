@@ -1,0 +1,29 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// GRID – JEDNODUCHÉ RESPONSÍVNE STĹPCE
+// ===============================================
+
+/* LARGE (≥ 992px) – POLOVIČNÝ STĹPEC */
+@include lg {
+  .col-lg-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+/* SMALL (≥ 576px) – POLOVIČNÝ STĹPEC */
+@include sm {
+  .col-sm-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+/* LARGE (≥ 992px) – PLNÁ ŠÍRKA */
+@include lg {
+  .col-lg-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}

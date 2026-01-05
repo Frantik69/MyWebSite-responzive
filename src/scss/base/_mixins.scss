@@ -1,0 +1,133 @@
+// ===============================================
+// GLOBAL MIXINS – PRE CELÝ PROJEKT
+// ===============================================
+
+/* FLEX CENTER – horizontálne aj vertikálne centrovanie */
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FLEX COLUMN – stĺpcové rozloženie */
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* RESPONSIVE FONT – plynulé škálovanie textu */
+@mixin fluid-font($min, $max) {
+  font-size: clamp($min, 2vw, $max);
+}
+
+/* CUSTOM SCROLLBAR (voliteľné) */
+@mixin custom-scrollbar($size: 0.5rem, $thumb: #888, $track: #f1f1f1) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track;
+  }
+}
+
+/* TEXT SHADOW PRE SVETLÉ NADPISY */
+@mixin soft-text-shadow($color1: #070707, $color2: #464646) {
+  text-shadow:
+    0.125rem 0.125rem 0 $color1,
+    0.1875rem 0.1875rem 0.4375rem $color2;
+}
+
+/* BOX SHADOW PRE KARTY A BUBLINY */
+@mixin soft-shadow {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ROUNDED BLOCK – univerzálne zaoblenie */
+@mixin rounded($radius: 0.5rem) {
+  border-radius: $radius;
+}
+
+/* GRADIENT BACKGROUND – pre tvoje sekcie */
+@mixin gradient-bg($from, $to) {
+  background: linear-gradient(to bottom, $from, $to);
+}
+
+
+// ===============================================
+// RESPONSIVE MIXINS – PRIDANÉ PRE CELÝ PROJEKT
+// ===============================================
+
+/* BREAKPOINTY – univerzálne použiteľné */
+@mixin desktop-down {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin tablet-landscape {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
+
+/* SMALL (≥ 576px) – pre grid a menšie layouty */
+@mixin sm {
+  @media (min-width: 576px) {
+    @content;
+  }
+}
+
+/* LARGE (≥ 992px) – pre grid a väčšie layouty */
+@mixin lg {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD MOBILE */
+@mixin hide-above-mobile {
+  @media (min-width: 577px) {
+    display: none !important;
+  }
+}
+
+/* FLUID SPACING – plynulé odsadenia bez zmeny dizajnu */
+@mixin fluid-space($min, $max) {
+  margin: clamp($min, 2vw, $max);
+}
+
+/* FLUID PADDING – pre sekcie, ktoré sa majú jemne prispôsobovať */
+@mixin fluid-padding($min, $max) {
+  padding: clamp($min, 2vw, $max);
+}
+
+/* HIDE ON MOBILE / SHOW ON MOBILE */
+@mixin hide-mobile {
+  @media (max-width: 576px) {
+    display: none !important;
+  }
+}
+
+@mixin show-mobile {
+  display: none;
+  @media (max-width: 576px) {
+    display: block !important;
+  }
+}

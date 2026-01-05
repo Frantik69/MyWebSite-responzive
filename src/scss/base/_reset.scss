@@ -1,0 +1,19 @@
+// ===============================================
+// RESET – ZÁKLADNÉ NULOVANIE ŠTÝLOV
+// ===============================================
+
+/* RESET BOX-MODELU PRE CELÝ DOKUMENT */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* RESET AUTOMATICKEJ ZMENY VEĽKOSTI TEXTU NA MOBILOCH */
+html,
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+}

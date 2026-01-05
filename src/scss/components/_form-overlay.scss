@@ -1,0 +1,95 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// FORM OVERLAY – SPRÁVY O ÚSPECHU / CHYBE
+// ===============================================
+
+/* HLAVNÉ OVERLAY POZADIE PRE FORM MESSAGE */
+.formMessage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(8px); /* Safari */
+  backdrop-filter: blur(8px);         /* ostatné prehliadače */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 9999;
+}
+
+/* ZOBRAZENIE OVERLAYA */
+.formMessage.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* VNÚTORNÁ BUBBLINA S TEXTOM */
+#overlayMessage {
+  background: #fff;
+  color: #222;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition:
+    opacity 0.4s ease 0.1s,
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+
+/* ZOBRAZENIE VNÚTORNEJ BUBLINY */
+.formMessage.show #overlayMessage {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* STAV ÚSPECHU */
+#overlayMessage.success {
+  color: green;
+  font-weight: bold;
+}
+
+/* STAV CHYBY */
+#overlayMessage.error {
+  color: red;
+  font-weight: bold;
+}
+
+
+// ===============================================
+// RESPONSIVE FORM OVERLAY UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIA BUBBLINA NA MOBILOCH */
+@include mobile {
+  #overlayMessage {
+    padding: 15px 20px;
+    font-size: 1rem;
+    max-width: 320px;
+  }
+}
+
+/* REDUCED MOTION – IBA NA MOBILOCH (aby overlay nezmizol) */
+@media (max-width: 576px) and (prefers-reduced-motion: reduce) {
+  .formMessage {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  #overlayMessage {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

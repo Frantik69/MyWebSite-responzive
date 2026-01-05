@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@use "variables" as *;
+
+/* DEFINÍCIA KÓDOVANIA – musí byť na začiatku hlavného SCSS súboru */
+
+// ===============================================
+// GLOBAL BASE SETTINGS
+// ===============================================
+
+/* ZÁKLADNÉ NASTAVENIA HTML A BODY */
+html,
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-anchor: none;
+}
+
+/* POSUN PRI SCROLLOVANÍ – REZERVA PRE FIXNÝ NAVBAR */
+html {
+  scroll-padding-top: 4rem;
+}
+
+/* HLAVNÉ NASTAVENIA TELA STRÁNKY */
+body {
+    margin: 0 auto;
+    font-family: $body-font-family;
+    font-size: $body-font-size;
+    font-weight: $body-font-weight;
+    line-height: $body-line-height;
+    color: $body-color;
+    background-color: $body-bg;
+    position: relative;
+    padding-top: 4rem; /* miesto pre navbar */
+    padding-bottom: 2rem;
+}
+
+// ===============================================
+// RESPONSIVE HOOKS – OPTIONAL
+// ===============================================
+
+html {
+  font-size: 100%; // pripravené pre fluidné rem, nemení dizajn
+}
+
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 4rem; // mobilný navbar býva menší
+  }
+}
+@media (max-width: 576px) {
+  body{
+    padding-top: 4rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .formMessage {
+    display: none !important;
+  }
+}
+
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+// Breakpoint hooky – zatiaľ prázdne
+@media (max-width: 1200px) { /* desktop down */ }
+@media (max-width: 992px)  { /* tablet landscape */ }
+@media (max-width: 768px)  { /* tablet portrait */ }
+@media (max-width: 576px)  { /* mobile */ }

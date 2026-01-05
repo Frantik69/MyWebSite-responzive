@@ -1,0 +1,48 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// TABLES – ZÁKLADNÉ TABUĽKY + BOOTSTRAP FARBY
+// ===============================================
+
+/* ZÁKLADNÁ TABUĽKA */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* POPIS TABUĽKY (CAPTION) */
+caption {
+  padding: 0.5rem 0;
+  color: #6c757d;
+  text-align: left;
+}
+
+/* BOOTSTRAP ŠTÝLY PRE FAREBNÉ TABUĽKY */
+.table-primary   { --bs-table-bg: #3a5a7b; }
+.table-secondary { --bs-table-bg: #3a8a8b; }
+.table-success   { --bs-table-bg: #d1e7dd; }
+.table-info      { --bs-table-bg: #cff4fc; }
+.table-warning   { --bs-table-bg: #fff3cd; }
+.table-danger    { --bs-table-bg: #f8d7da; }
+.table-light     { --bs-table-bg: #f8f9fa; }
+.table-dark      { --bs-table-bg: #212529; color: #fff; }
+
+
+// ===============================================
+// RESPONSIVE TABLE UTILITIES
+// ===============================================
+
+/* MENŠÍ CAPTION NA MOBILOCH */
+@include mobile {
+  caption {
+    font-size: 0.9rem;
+  }
+}
+
+/* HORIZONTÁLNY SCROLL PRI ÚZKYCH TABUĽKACH */
+@include mobile {
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

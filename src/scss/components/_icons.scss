@@ -1,0 +1,72 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// ICONS – VEĽKOSTI, MASKY, MENU IKONY
+// ===============================================
+
+/* ZÁKLADNÁ IKONA 24×24 */
+.icon-24,
+#icon {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(10px 1px 2px rgba(23, 23, 23, 0.5));
+  overflow: hidden;
+}
+
+/* IKONA VLAJKY 24×16 */
+.flag-24x16 {
+  width: 24px;
+  height: 16px;
+}
+
+/* IKONA V MENU (FONT-BASED ICON) */
+.menu-icon {
+  color: #ffffff;        /* biela farba */
+  font-size: inherit;    /* rovnaká veľkosť ako text */
+  line-height: inherit;  /* rovnaká výška riadku */
+  vertical-align: middle;
+  margin-right: 0.3rem;  /* medzera medzi ikonou a textom */
+}
+
+
+// ===============================================
+// RESPONSIVE ICON UTILITIES
+// ===============================================
+
+@include tablet-landscape {
+ 
+  .flag-24x16 {
+    width: 20px;
+    height: 12px;
+  }
+
+  .menu-icon {
+  font-size: 1.3rem;    /* rovnaká veľkosť ako text */
+  line-height: inherit;  /* rovnaká výška riadku */
+  vertical-align: middle;
+  margin-right: 0.2rem;  /* medzera medzi ikonou a textom */
+}
+
+
+}
+
+/* MENŠIE IKONY NA MOBILOCH */
+@include mobile {
+  .icon-24,
+  #icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .flag-24x16 {
+    width: 20px;
+    height: 14px;
+  }
+}
+
+/* VÄČŠÍ TAP TARGET PRE IKONY V MENU NA MOBILOCH */
+@include mobile {
+  .menu-icon {
+    margin-right: 0.4rem;
+  }
+}

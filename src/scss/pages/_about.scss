@@ -1,0 +1,117 @@
+@use "../base/index" as base;
+@use "../base/mixins" as *;
+
+// ===============================================
+// ABOUT – INFORMÁCIE O MNE (SEKCIA PROFILU)
+// ===============================================
+
+#about {
+  min-height: calc(100vh - 6rem);
+  border: 1px solid #000000;
+  background-color: base.$first-middle;
+  padding: 2rem 1rem;
+  border-radius: 0.5rem;
+
+  /* FLEX LAYOUT PRE DVA STĹPCE */
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    margin: 0;
+  }
+
+  /* VNÚTORNÝ CONTAINER */
+  .about-container {
+    width: 65vw;
+    margin: 0 auto;
+  }
+
+  /* NADPIS */
+  h2 {
+    text-shadow:
+      0.125rem 0.125rem 0 #070707,
+      0.1875rem 0.1875rem 0.4375rem #464646;
+  }
+
+  /* TEXTOVÁ ČASŤ (ĽAVÝ + PRAVÝ STĹPEC) */
+  .about-info {
+    text-shadow:
+      -1px -1px 0 black,
+       1px -1px 0 black,
+      -1px  1px 0 black,
+       1px  1px 0 black;
+  }
+
+  /* IKONA V DIVIDERI */
+  .divider-custom-icon {
+    margin: 0 0.5rem;
+    color: #ffffff;
+    text-shadow:
+      0.125rem 0.125rem 0 #070707,
+      0.1875rem 0.1875rem 0.4375rem #464646;
+  }
+}
+
+// ===============================================
+// RESPONSIVE – ZALOMENIE STĹPCOV
+// ===============================================
+
+@include tablet-landscape {
+  #about .row {
+    flex-wrap: wrap;
+  }
+}
+
+@include mobile {
+
+  $navbar-height: 4rem;
+  $copyright-height: 1.75rem;
+
+
+  #about {
+    border: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    /* 1) min-height = výška displeja mínus navbar */
+    min-height: calc(100vh - #{$navbar-height+$copyright-height});
+
+    /* 2) max-height = výška obsahu */
+    max-height: fit-content;
+
+    /* 3) ak je #home vyšší než obsah → centrovanie */
+    justify-content: center;
+    align-items: center;
+  }
+
+  #about .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 1) výška podľa obsahu */
+    height: auto;
+
+    width: 90vw;
+    max-width: 90%;
+    position: relative;
+  }
+
+  /* ROW musí byť 100 % šírky */
+  #about .row {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    gap:0rem;
+  }
+
+  /* Každý stĺpec musí byť rovnako široký */
+  #about .about-info {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 0 0 100%;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,316 @@
+@use "../base/index" as base;
+@use "../base/mixins" as *;
+
+// ===============================================
+// PORTFOLIO – HLAVNÁ SEKCIA PROFILU
+// ===============================================
+
+/* HLAVNÝ WRAPPER PORTFÓLIA */
+#portfolio {
+  min-height: calc(120vh - 4rem);
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: base.$secondary;
+  border: 0.0625rem solid #000000;
+  border-radius: 0.5rem;
+
+  /* VNÚTORNÝ CONTAINER */
+  .portfolio-container {
+    width: 65vw;
+    margin: 0 auto;
+  }
+
+  /* NADPIS */
+  h2 {
+    text-shadow:
+      0.125rem 0.125rem 0 #070707,
+      0.1875rem 0.1875rem 0.4375rem #464646;
+  }
+
+  /* IKONA V DIVIDERI */
+  .divider-custom-icon {
+    margin: 0 0.5rem;
+    color: #ffffff;
+    text-shadow:
+      0.125rem 0.125rem 0 #070707,
+      0.1875rem 0.1875rem 0.4375rem #464646;
+  }
+}
+
+
+// ===============================================
+// PORTFOLIO – HLAVNÝ LAYOUT (ĽAVÝ + PRAVÝ STĹPEC)
+// ===============================================
+
+.portfolio-content {
+  width: 65vw;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+// ===============================================
+// ĽAVÝ STĹPEC – FOTO + KONTAKT + ABOUT PREVIEW
+// ===============================================
+
+.portfolio-left {
+  flex: 1;
+  min-width: 300px;
+  background: linear-gradient(to bottom, #3a5a7b, #3a8a8b);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  /* PROFILOVÁ FOTKA */
+  .profile-photo {
+    width: 300px;
+    margin-bottom: 1rem;
+  }
+
+  /* MENO */
+  .profile-name {
+    margin: 0;
+    text-align: center;
+  }
+
+  /* POZÍCIA */
+  .profile-position {
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* ODDEĽOVACIA ČIARA */
+  .profile-divider {
+    width: 80%;
+    border-color: white;
+    margin: 1rem auto;
+  }
+
+  /* PREVIEW ODKAZ NA ABOUT SEKCIA */
+  .aboutPreview {
+    display: block;
+    width: 95%;
+    background: rgba(58, 90, 123, 0.4);
+    border-radius: 10px;
+    text-align: left;
+    padding: 0.5rem;
+    line-height: 1.3;
+    margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    font-size: x-small;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.05);
+    }
+  }
+
+  /* KONTAKTNÁ ČASŤ */
+  .left-bottom {
+    margin-top: 2rem;
+    text-align: center;
+
+    .contact-email {
+      font-size: clamp(0.8rem, 0.9vw, 1rem);
+      text-decoration: none;
+      color: white;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .contact-phone {
+      font-size: clamp(0.8rem, 1.5rem, 1rem);
+      text-decoration: none;
+    }
+    
+    .mobile-phone {
+      display: none;
+    }
+  }
+}
+// ===============================================
+// PRAVÝ STĹPEC – SKILLS + TIMELINE + LINKS
+// ===============================================
+
+.portfolio-right {
+  flex: 2.5;
+  min-width: 300px;
+  background: linear-gradient(to bottom, #fff, #3a8a8b);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+  color: black;
+
+  /* NADPISY SEKCIÍ */
+  .section-title {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  /* SKILLS – DVOJSTĹPCOVÝ LAYOUT */
+  .skills-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+    .skills-col {
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  /* SKILLS LIST */
+  .skills {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 0.3rem;
+      position: relative;
+    }
+  }
+
+  /* ODDEĽOVACIA ČIARA */
+  .section-divider {
+    margin: 1rem 0;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    list-style: none;
+    padding-left: 0;
+
+    .timeline-item {
+      margin-bottom: 1.5rem;
+
+      .timeline-date {
+        font-weight: bold;
+        margin-bottom: 0.3rem;
+      }
+
+      .timeline-content {
+        background: rgba(255, 255, 255, 0.6);
+        padding: 1rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+
+  /* ODKAZY */
+  .portfolio-links {
+    margin-top: 2rem;
+  }
+}
+
+
+// ===============================================
+// RESPONSIVE
+// ===============================================
+
+@media (max-width: 320px) {
+  
+  .portfolio-content {
+  width: 90vw;
+  }
+
+  .portfolio-container {
+    width: 90vw;
+  }
+
+}
+
+
+/* (max-width: 576px) → mobile */
+@include mobile {
+
+  #portfolio .portfolio-container,
+  #portfolio .portfolio-content,
+  #portfolio .portfolio-left,
+  #portfolio .portfolio-right {
+    width: 90vw;     // rovnaká šírka pre všetky
+    max-width: none; // odstráni obmedzenie 500px
+    margin: 0 auto;  // centrovanie
+
+    li {
+      font-size: 0.8rem;
+    }
+
+  }
+
+  /* FOTO */
+  .portfolio-left .profile-photo {
+    width: 220px;
+  }
+
+  #portfolio .portfolio-left .left-bottom .desktop-phone {
+    display: none;
+  }
+  
+  #portfolio .portfolio-left .left-bottom .mobile-phone {
+    display: block;
+  }
+  
+
+  /* HLAVNÝ LAYOUT – stacked + centrovaný */
+  .portfolio-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    #aboutPreview {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* TIMELINE – zarovnanie date + content pod seba */
+  .timeline {
+    .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 1rem;
+
+      .timeline-date {
+        width: 100%;
+        margin-bottom: 0.3rem;
+        text-align: left;
+        font-size: 1rem;
+      }
+
+      .timeline-content {
+        width: 100%;
+        margin-left: 0;
+        text-align: left;
+
+        .show {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+/* (max-width: 768px) → tablet */
+@include tablet {
+  .skills-columns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* (max-width: 992px) → tablet-landscape */
+@include tablet-landscape {
+  .portfolio-content {
+    width: 90vw;
+  }
+}

@@ -1,0 +1,46 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// PORTFOLIO – SKILLS LIST (ZAROVNANIE + RATING)
+// ===============================================
+
+/* ZÁKLADNÝ ŠTÝL PRE POLOŽKY SKILLS */
+.skills li {
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+/* SKILLS S RATINGOM – HVIEZDY + TEXT V JEDNOM RIADKU */
+.skills li[data-rating] {
+  list-style: none;        /* odstráni guličky */
+  padding-left: 0;         /* zarovnanie k ľavému okraju */
+  margin-left: 0;          /* istota, že nič netrčí */
+  display: flex;           /* hviezdy + text vedľa seba */
+  align-items: center;     /* vertikálne zarovnanie */
+  gap: 0.3rem;             /* medzera medzi hviezdami a textom */
+  white-space: nowrap;     /* nezalamovať text */
+}
+
+
+// ===============================================
+// RESPONSIVE SKILLS UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIE SKILLS NA MOBILOCH */
+@include mobile {
+  .skills li {
+    font-size: 0.75rem;
+  }
+
+  .skills li[data-rating] {
+    gap: 0.25rem;
+  }
+}
+
+/* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
+@include mobile {
+  .skills li[data-rating] {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+}

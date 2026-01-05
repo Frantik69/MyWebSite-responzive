@@ -1,0 +1,75 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// SKILLS – SKILL CARD (IKONA + TEXT)
+// ===============================================
+
+/* HLAVNÝ WRAPPER PRE SKILL KARTU */
+.skill-card {
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* ĽAVÁ ČASŤ – IKONA + NÁZOV */
+.skill-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+}
+
+/* IKONA SKILLU */
+.skill-icon {
+  width: 64px;
+  height: auto;
+}
+
+/* NÁZOV SKILLU POD IKONOU */
+.skill-title {
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+/* POPIS SKILLU (PRAVÁ ČASŤ) */
+.skill-desc {
+  margin: 0;
+  line-height: 1.2;
+  font-size: 0.8rem;
+  align-self: center;
+}
+
+
+// ===============================================
+// RESPONSIVE SKILL CARD UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIE IKONY NA MOBILOCH */
+@include mobile {
+  .skill-icon {
+    width: 48px;
+  }
+
+  .skill-left {
+    width: 60px;
+  }
+}
+
+/* MENŠÍ TEXT NA MOBILOCH */
+@include mobile {
+  .skill-title {
+    font-size: 0.55rem;
+  }
+
+  .skill-desc {
+    font-size: 0.75rem;
+  }
+}
+
+/* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
+@include mobile {
+  .skill-card {
+    gap: 0.75rem;
+  }
+}

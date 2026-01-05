@@ -1,0 +1,114 @@
+// ===============================================
+// UTILITIES – TEXT, FLEX, GRID, ROUNDED
+// ===============================================
+
+/* TEXTOVÉ TRANSFORMÁCIE */
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+/* ZAROVNANIE TEXTU */
+.text-start  { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-end    { text-align: right !important; }
+
+/* HRÚBKA PÍSMA */
+.fw-light    { font-weight: 300 !important; }
+.fw-normal   { font-weight: 400 !important; }
+.fw-semibold { font-weight: 600 !important; }
+.fw-bold     { font-weight: 700 !important; }
+
+/* VÝŠKA RIADKU */
+.lh-1    { line-height: 1 !important; }
+.lh-sm   { line-height: 1.25 !important; }
+.lh-base { line-height: 1.5 !important; }
+.lh-lg   { line-height: 2 !important; }
+
+/* ZAOBLENÉ ROHY */
+.rounded {
+  border-radius: 0.25rem !important;
+}
+.rounded-pill {
+  border-radius: 50rem !important;
+}
+
+/* FLEX UTILITIES */
+.flex-row {
+  flex-direction: row !important;
+}
+.flex-column {
+  flex-direction: column !important;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.align-items-center {
+  align-items: center !important;
+}
+
+/* RESPONSIVE GRID UTILITIES – LARGE (≥992px) */
+@media (min-width: 992px) {
+  .col-lg-6 {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+  .col-lg-12 {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+}
+
+/* RESPONSIVE GRID UTILITIES – SMALL (≥576px) */
+@media (min-width: 576px) {
+  .col-sm-6 {
+    width: 50%;
+    flex: 0 0 auto;
+  }
+}
+
+
+// ===============================================
+// RESPONSIVE UTILITIES – PRIDANÉ
+// ===============================================
+
+/* SKRYŤ NA MOBILOCH */
+.d-none-mobile {
+  @media (max-width: 576px) {
+    display: none !important;
+  }
+}
+
+/* ZOBRAZIŤ LEN NA MOBILOCH */
+.d-mobile {
+  display: none !important;
+  @media (max-width: 576px) {
+    display: block !important;
+  }
+}
+
+/* FLEX SMER PODĽA BREAKPOINTU */
+.flex-row-mobile {
+  @media (max-width: 576px) {
+    flex-direction: row !important;
+  }
+}
+
+.flex-column-mobile {
+  @media (max-width: 576px) {
+    flex-direction: column !important;
+  }
+}
+
+/* TEXT ALIGN PRE MOBILY */
+.text-center-mobile {
+  @media (max-width: 576px) {
+    text-align: center !important;
+  }
+}
+
+/* FULL WIDTH NA MOBILOCH */
+.w-100-mobile {
+  @media (max-width: 576px) {
+    width: 100% !important;
+  }
+}

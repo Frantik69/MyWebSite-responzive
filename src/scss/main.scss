@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@use "base/index" as base;
+@use "components/index" as components;
+@use "layout/index" as layout;
+@use "pages/index" as pages;
+
+#turnstile-container.dev-placeholder {
+  background: #28a745;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.9rem;
+}
+

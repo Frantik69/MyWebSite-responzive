@@ -1,0 +1,86 @@
+// ===============================================
+// VARIABLES – TYPOGRAFIA, FARBY, LAYOUT
+// ===============================================
+
+/* ===============================================
+   TYPOGRAFIA – FONT FAMILY & TEXT BASE
+=============================================== */
+
+/* ZÁKLADNÝ SANS-SERIF FONT STACK */
+$font-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                  Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+/* MONOSPACE FONT STACK */
+$font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+                 "Liberation Mono", "Courier New", monospace;
+
+/* ZÁKLADNÉ NASTAVENIA TELA STRÁNKY */
+$body-font-family: $font-sans-serif;
+$body-font-size: 1rem;
+$body-font-weight: 400;
+$body-line-height: 1.5;
+$body-color: #ffffff;
+$body-bg: #fff;
+
+
+/* ===============================================
+   FARBY – PALETA PROJEKTU
+=============================================== */
+
+/* HLAVNÉ FARBY */
+$primary: #3a5a7b;
+$secondary: #3a8a8b;
+
+/* DOPLNKOVÉ ODTIENE */
+$middle: #3a7283;
+$first-middle: #3a667f;
+$second-middle: #3a7e87;
+
+/* STATUS FARBY */
+$success: #3a5a7b;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+
+/* SVETLÉ A TMAVÉ ODTIENE */
+$light: #f8f9fa;
+$dark: #212529;
+
+/* FARBY PRE RATING */
+$rating-color: #f1c40f;
+$rating-empty: #ccc;
+$rating-size: 1.2rem;
+
+
+/* ===============================================
+   LAYOUT – ROZMERY A KONŠTANTY
+=============================================== */
+
+/* VÝŠKA NAVBARU */
+$navbar-height: 4rem; // funguje aj po prechode na @use
+
+
+// ===============================================
+// RESPONSIVE VARIABLES – BEZ ZMENY DIZAJNU
+// ===============================================
+
+/* BREAKPOINTY – používané v mixinoch aj partialoch */
+$breakpoint-lg: 1200px;
+$breakpoint-md: 992px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 576px;
+
+/* FLUID SPACING – voliteľné, nič nemení, len pripravené */
+$space-fluid-min: 1rem;
+$space-fluid-max: 2rem;
+
+/* FLUID TYPOGRAPHY – voliteľné hodnoty pre mixiny */
+$font-fluid-min: 1rem;
+$font-fluid-max: 2.5rem;
+
+/* MAX ŠÍRKA OBSAHU – pre layouty */
+$container-max-width: 1200px;
+
+/* DEFAULT BORDER RADIUS – pre konzistentné zaoblenie */
+$radius-base: 0.5rem;
+$radius-large: 1rem;

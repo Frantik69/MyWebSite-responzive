@@ -1,0 +1,113 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// BUTTONS – EFEKTY, BUBBLES, SPINNER
+// ===============================================
+
+/* FARBA TEXTU PRE TLAČIDLO V KONTAKT SEKCII */
+#contact .btn.menu-item::after {
+  color: #000; /* čierny text */
+}
+
+/* ZÁKLAD TLAČIDLA – MUSÍ MAŤ RELATÍVNU POZÍCIU */
+.btn.menu-item {
+  position: relative;
+  overflow: hidden; /* pekné zaoblenie bez presahov */
+}
+
+/* VNÚTORNÁ BUBBLINA PRE HOVER EFEKT */
+.btn.menu-item .hover-bubble {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(58, 90, 123, 0.9); /* #3a8a8b s alpha */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  border-radius: 30px; /* kopíruje zaoblenie tlačidla */
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* ZOBRAZENIE BUBLINY PRI .show-bubble */
+.btn.menu-item.show-bubble .hover-bubble {
+  animation: bubblePop 0.4s ease forwards;
+  opacity: 1;
+}
+
+/* SKRYTIE PÔVODNÉHO OBSAHU TLAČIDLA */
+.btn.menu-item.show-bubble > *:not(.hover-bubble) {
+  visibility: hidden;
+}
+
+
+/* ===============================================
+   SPINNER – LOADING STAV TLAČIDLA
+=============================================== */
+
+/* ZÁKLADNÝ STAV LOADING TLAČIDLA */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* SPINNER ANIMÁCIA */
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.125rem;   /* 18px */
+  height: 1.125rem;  /* 18px */
+  margin-top: -0.5625rem; /* -9px */
+  margin-left: -0.5625rem; /* -9px */
+  border: 2px solid transparent;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+
+
+// ===============================================
+// RESPONSIVE BUTTON UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIE BUBBLES NA MOBILOCH */
+@include mobile {
+  .btn.menu-item .hover-bubble {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+}
+
+/* MENŠÍ SPINNER NA MOBILOCH */
+@include mobile {
+  .btn-loading::after {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-top: -0.4375rem;
+    margin-left: -0.4375rem;
+  }
+}
+
+/* REDUCED MOTION – IBA NA MOBILOCH (aby nič nezmizlo) */
+@media (max-width: 576px) and (prefers-reduced-motion: reduce) {
+  .btn.menu-item .hover-bubble,
+  .btn.menu-item.show-bubble .hover-bubble {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .btn-loading::after {
+    animation: none !important;
+  }
+}

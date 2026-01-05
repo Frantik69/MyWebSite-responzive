@@ -1,0 +1,57 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// FOOTER – HLAVNÝ FOOTER + FIXNÝ COPYRIGHT BAR
+// ===============================================
+
+/* HLAVNÝ FOOTER POD STRÁNKOU */
+.custom-footer {
+  background-color: #26282a;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: static;
+  width: 100%;
+}
+
+/* FIXNÝ COPYRIGHT BAR PRI SPODKU VIEWPORTU */
+.custom-copyright {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(22, 24, 26, 0.7);
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  z-index: 1030;
+  height: 2rem;
+}
+
+
+// ===============================================
+// RESPONSIVE FOOTER UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠÍ COPYRIGHT BAR NA MOBILOCH */
+@include mobile {
+  .custom-footer {
+    padding: 0.75rem;
+  }
+
+  .custom-copyright {
+    height: 1.75rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* VÄČŠÍ TAP TARGET NA MOBILOCH */
+@include mobile {
+  .custom-footer {
+    border-radius: 0.4rem;
+  }
+}

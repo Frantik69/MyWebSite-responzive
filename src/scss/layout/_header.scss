@@ -1,0 +1,20 @@
+// ===============================================
+// HEADER – ÚVODNÁ SEKCIA STRÁNKY
+// ===============================================
+
+/* HLAVNÝ HEADER BLOK */
+header {
+  min-height: calc(100vh - 4rem); /* výška okna mínus navbar */
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* ODSTRÁNENIE MARGINU NA PRVOM ELEMENTE V HEADERI */
+header > *:first-child {
+  margin-top: 0;
+}
+
+
+// ===============================================
+// RESPONSIVE HEADER UTILITIES – VOLITEĽNÉ 
+// ===============================================

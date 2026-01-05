@@ -1,0 +1,65 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// IMAGES – OBRÁZKY, FIGURE, THUMBNAILS
+// ===============================================
+
+/* ZÁKLADNÉ ŠTÝLY PRE IMG A SVG */
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* RESPONSÍVNY OBRÁZOK (BOOTSTRAP ŠTÝL) */
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 8rem;
+}
+
+/* MINIATÚRA OBRÁZKU */
+.img-thumbnail {
+  padding: 0.25rem;
+  border: 0.125rem solid var(--bs-border-color);
+  border-radius: 0.5rem;
+}
+
+/* WRAPPER PRE OBRÁZKY S POPISOM */
+figure {
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+/* POPIS OBRÁZKU POD FIGURE */
+.figure-caption {
+  font-size: 0.875em;
+  color: #6c757d;
+}
+
+
+// ===============================================
+// RESPONSIVE IMAGE UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIE SPODNÉ ODSTUPY NA MOBILOCH */
+@include mobile {
+  .img-fluid {
+    margin-bottom: 4rem;
+  }
+}
+
+/* MENŠIA MINIATÚRA NA MOBILOCH */
+@include mobile {
+  .img-thumbnail {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+  }
+}
+
+/* MENŠÍ TEXT POPISU NA MOBILOCH */
+@include mobile {
+  .figure-caption {
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,35 @@
+@use "../base/index" as base;
+@use "../base/mixins" as *;
+
+// ===============================================
+// RATING – HVIEZDIČKOVÉ HODNOTENIE (UNICODE ★)
+// ===============================================
+
+.rating {
+  font-size: base.$rating-size !important;
+  display: inline-block;
+  margin-right: 0.2rem;
+  line-height: 0.5;
+}
+
+.star {
+  line-height: 0.5;
+  display: inline-block;
+  transform: translateY(-1px); // optické vyrovnanie
+  color: base.$rating-empty;   // fallback
+}
+
+
+// ===============================================
+// RESPONSIVE RATING UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+@include mobile {
+  .rating {
+    font-size: calc(base.$rating-size * 0.9) !important;
+  }
+
+  .star {
+    transform: translateY(-0.5px);
+  }
+}

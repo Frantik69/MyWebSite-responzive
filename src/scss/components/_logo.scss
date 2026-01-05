@@ -1,0 +1,76 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// LOGO – IKONA + TEXTOVÁ ČASŤ
+// ===============================================
+
+/* HLAVNÝ WRAPPER LOGA */
+#logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  filter: drop-shadow(5px 1px 2px rgba(1, 7, 83, 0.69));
+
+  /* TEXTOVÁ ČASŤ LOGA */
+  .logo-text {
+    margin-left: 0.1rem;
+    line-height: 1.2;
+    color: #194484;
+    text-align: left;
+
+    h1 {
+      font-size: 1.2rem;
+    }
+    small {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* RESET MARGINOV PRE NADPIS A PODTITUL */
+    h1,
+    small {
+      margin: 0;
+      line-height: 1.2;
+    }
+  }
+
+  /* SVG / IMG LOGO */
+  .logo {
+    width: 4rem;
+    height: 4rem;
+  }
+  img.logo {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+  }
+}
+
+
+// ===============================================
+// RESPONSIVE LOGO UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIE LOGO NA MOBILOCH */
+@include mobile {
+  #logo .logo,
+  #logo img.logo {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  #logo .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  #logo .logo-text small {
+    font-size: 0.75rem;
+  }
+}
+
+/* VÄČŠÍ TAP TARGET NA MOBILOCH */
+@include mobile {
+  #logo {
+    gap: 0.25rem;
+  }
+}

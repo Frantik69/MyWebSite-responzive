@@ -1,0 +1,140 @@
+@use "../base/mixins" as *;
+
+// ===============================================
+// MODAL – OVERLAY + BUBBLINA + PDF PREVIEW
+// ===============================================
+
+/* HLAVNÝ OVERLAY PRE MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;               /* defaultne skryté */
+  align-items: center;         /* vertikálne centrovanie */
+  justify-content: center;     /* horizontálne centrovanie */
+  background: rgba(0,0,0,0.4); /* polopriehľadné pozadie */
+  color: #ffffff;
+  z-index: 2000;
+}
+
+/* VNÚTORNÁ BUBBLINA MODALU */
+.modal-bubble {
+  background-color: rgba(58, 90, 123, 0.5);
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 1rem;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+  padding: 1rem;
+  min-width: 250px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 2001;
+  animation: bubblePop 0.4s ease forwards;
+  text-shadow:
+    3px 2px 2px rgba(23, 23, 23, 0.7),
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+/* ODKAZ NA ZOBRAZENIE PDF */
+.show-pdf {
+  text-decoration: none;
+}
+
+/* WRAPPER PRE PDF OBRÁZOK (DYNAMICKÁ VÝŠKA CEZ JS) */
+.pdf-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80vw;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* PDF OBRÁZOK */
+.pdf-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 0.5rem;
+}
+
+/* TLAČIDLO ZATVORENIA (X) */
+.pdf-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.2s;
+}
+
+.pdf-close:hover {
+  background: rgba(0,0,0,0.9);
+}
+
+/* TEXTOVÉ TIEŇOVANIE PRE POTVRDZOVACIE TLAČIDLÁ */
+#confirmWeather,
+#cancelWeather,
+#confirmGitHub,
+#cancelGitHub {
+  text-shadow:
+    3px 2px 2px rgba(23, 23, 23, 0.7),
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+
+// ===============================================
+// RESPONSIVE MODAL UTILITIES – VOLITEĽNÉ
+// ===============================================
+
+/* MENŠIA BUBBLINA NA MOBILOCH */
+@include mobile {
+  .modal-bubble {
+    padding: 0.75rem;
+    min-width: 220px;
+    max-width: 260px;
+  }
+}
+
+/* MENŠIE PDF PREVIEW NA MOBILOCH */
+@include mobile {
+  .pdf-wrapper {
+    max-width: 90vw;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* MENŠIE CLOSE TLAČIDLO NA MOBILOCH */
+@include mobile {
+  .pdf-close {
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+/* REDUCED MOTION – IBA NA MOBILOCH (aby modal nezmizol) */
+@media (max-width: 576px) and (prefers-reduced-motion: reduce) {
+  .modal-bubble {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
