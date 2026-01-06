@@ -9,7 +9,8 @@
 #mainNav {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
+  max-width: 100%;
   z-index: 1030;
   height: 4rem;
   min-height: 4rem;
@@ -18,6 +19,7 @@
   background: linear-gradient(90deg, base.$primary, base.$secondary);
   display: flex;
   align-items: center;
+  overflow-x: clip;
 }
 /* ===== VNÚTORNÝ CONTAINER ===== */
 #mainNav .container-fluid {
@@ -25,6 +27,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  min-width: 100%;
   padding: 0;
   text-shadow:
     -1px -1px 0 black,
@@ -317,16 +320,6 @@
 // RESPONSIVE NAVBAR – TABLET
 // ===============================================
 @include tablet {
-  #mainNav {
-    height: 4rem;
-    min-height: 4rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    overflow-x: hidden;
-  }
 
   /* ešte jemnejšie zmenšenie loga */
   #logo img.logo {
@@ -363,6 +356,7 @@
 // RESPONSIVE NAVBAR UTILITIES – MOBILE
 // ===============================================
 @include mobile {
+
   /* NAVBAR FIXNÝ */
   #mainNav {
     height: 4rem;
@@ -370,29 +364,39 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vh;
+    max-width: 100vh;
     z-index: 1000;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
-  /* HLAVNÝ RIADOK – 4 ČASTI VEDĽA SEBA */
+
+  /* HLAVNÝ FLEX RIADOK */
   #mainNav .container-fluid {
+    min-width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 0.5rem;
+    justify-content: flex-start;   /* dôležité */
+    padding: 0;
     gap: 0.4rem;
     flex-wrap: nowrap;
     min-width: 0;
     overflow: hidden;
   }
-  /* 1) TOGGLER */
+
+  #mainNav,
+  #mainNav * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 1) TOGGLER + LOGO */
   #mobileLeft {
     order: 1;
-    flex-shrink: 0;
     display: flex;
     align-items: center;
     position: relative;
+    flex-shrink: 0;
     z-index: 10;
   }
 
@@ -400,124 +404,85 @@
     background: none !important;
     border: none !important;
     padding: 0.2rem;
-    position: relative;
+    position: relative;   /* umožní centrovať logo */
+    width: 3.5rem;
+    height: 3.5rem;
     z-index: 20;
 
     i {
       font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgba(255, 255, 255, 0.6);
     }
   }
-  /* RESET DESKTOPOVÝCH PRAVIDIEL PRE LOGO NA MOBILE */
+
+  /* LOGO – centrované v toggleri */
+  #logoWrapper {
+    position: absolute !important;
+    inset: 0;
+    margin: auto;
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: none; /* toggler ostáva klikateľný */
+    z-index: 1;
+  }
+
   #logo {
     all: unset;
-    display: block;
-    position: relative;
-    width: 4rem;
-    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
   }
 
   #logo img.logo {
-    all: unset;
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    height: 3.5rem;
+    height: 3rem;
     width: auto;
+    display: block;
   }
-  /* LOGO WRAPPER – stred = stred obrázka */
-  #logoWrapper {
-    position: absolute !important;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 4rem;          /* šírka = šírka obrázka */
-    height: 4rem;
-    pointer-events: none;
-    z-index: 1;
-  }
-  /* Text loga vpravo od obrázka, ale stále súčasť jedného prvku */
+
+  /* TEXT LOGA – posunutý doprava od obrázka */
   #logoWrapper .logo-text {
-    position: absolute;
-    left: 100%;
+    position: absolute !important;
+    left: 85%;
     top: 50%;
     transform: translateY(-50%);
-    margin-left: 0rem;
+    margin-left: 0.2rem;
+
     display: flex;
     flex-direction: column;
     line-height: 1;
-    font-size: 0.7rem;
     white-space: nowrap;
   }
 
-  #logoWrapper .logo-text h1 {
+  #logoWrapper .logo-text h1,
+  #logoWrapper .logo-text small {
+    font-size: 0.7rem;
     margin: 0;
     line-height: 1;
   }
 
-  #logoWrapper .logo-text small {
-    line-height: 1;
-  }
-  /* Pôvodné logo v #leftNav vypneme na mobile */
+  /* Pôvodné logo v #leftNav vypneme */
   #leftNav {
     display: none !important;
   }
-  /* 3) POČASIE */
-  #weatherNav {
-    flex: 0 1 auto;
-    min-width: 0;
-    margin-left: 8rem;
-    order: 3;
-    flex-shrink: 1;
-    display: flex;
-    align-items: center;
-    padding-right: 0.5rem;
 
-    img.icon-24 {
-      width: 2rem;
-    }
-    #city {
-      display: flex;              /* umožní centrovanie */
-      max-width: 5rem;
-      justify-content: center;    /* horizontálne centrovanie */
-      align-items: center;        /* vertikálne centrovanie */
-      text-align: center;         /* text centrovaný */
-      white-space: normal;        /* povolí zalomenie */
-      line-height: 1.1;
-      font-size: 0.8rem;
-      padding: 0;
-    }
-
-    #temp {
-      font-size: 0.8rem;
-    }
-  }
-  /* 4) DROPDOWN */
-  #rightNav {
-    order: 4;
-    flex-shrink: 0;
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    padding-left: 0px;
-  }
-
-  #rightNav .dropdown-menu {
-    position: fixed;
-    top: 4rem;
-    right: 0.5rem;
-    left: auto;
-    transform: none;
-    margin: 0;
-    z-index: 2000;
-  }
-  /* MENU POD NAVBAROM */
+  /* 2) MENU (skryté, ale musí mať order) */
   #navbarResponsive {
+    order: 2;
+    flex: 1 1 auto;
+
     position: fixed;
     top: 4rem;
     left: 0;
     width: 100%;
     display: none;
+
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
@@ -549,7 +514,66 @@
     text-align: left;
   }
 
-  .navbar-nav, .nav-item, .nav-link {
+  /* 3) POČASIE – zarovnané doprava pred dropdown */
+  #weatherNav {
+    order: 3;
+    flex: 0 1 auto;
+    min-width: 0;
+
+    margin-left: auto;     /* vytlačí ho doprava */
+    margin-right: 0.5rem;  /* medzera pred dropdownom */
+
+    display: flex;
+    align-items: center;
+
+    img.icon-24 {
+      display: none;
+    }
+
+    #city {
+      display: flex;
+      max-width: 5rem;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      white-space: normal;
+      line-height: 1.1;
+      font-size: 0.7rem;
+      padding: 0;
+    }
+
+    #temp {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* 4) DROPDOWN – úplne vpravo */
+  #rightNav {
+    order: 4;
+    flex-shrink: 0;
+
+    margin-left: 0;
+    margin-right: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  #rightNav .dropdown-menu {
+    position: fixed;
+    top: 4rem;
+    right: 0.5rem;
+    left: auto;
+    transform: none;
+    margin: 0;
+    z-index: 2000;
+  }
+
+  /* WRAPPING FIX */
+  .navbar-nav,
+  .nav-item,
+  .nav-link {
     max-width: 100%;
     overflow-wrap: break-word;
   }

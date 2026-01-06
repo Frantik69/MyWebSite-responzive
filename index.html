@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Contact Frantik's programmer, custom programming.">
     <meta name="author" content="Frantik69">
+    <meta property="og:title" content="František Dupaľ – webdeveloper">
+    <meta property="og:description" content="Zhotovovanie webstránok, úprava design-u, vývoj webových aplikácií.">
+    <meta property="og:image" content="https://frantisek.dupal.sk/src/assets/kod-java.jpg"> <!--TODO - prepisat adresu podla skutocnosti -->
+    <meta property="og:url" content="https://frantisek.dupal.sk"> <!--TODO - prepisat adresu podla skutocnosti -->
     <!-- 
     /////////////////////////////////////////////////////////////////////////
       Indexovať a sledovať odkazy (default) 
@@ -13,149 +17,115 @@
     <meta name="robots" content="noindex, follow">
     Prečo: Umožňuje presne riadiť, čo má byť viditeľné vo vyhľadávaní
     ////////////////////////////////////////////////////////////////////////
-    <meta property="og:title" content="Kaviareň Staré Mesto – výberová káva">
-    <meta property="og:description" content="Výberová káva a remeselné dezerty v centre Košíc.">
-    <meta property="og:image" content="https://priklad.sk/og-image.jpg">
-    <meta property="og:url" content="https://priklad.sk">
-    <meta name="twitter:card" content="summary_large_image">
-    Prečo: Lepšia prezentácia zvyšuje pravdepodobnosť preklikov a návštevnosti
     -->
-
-
     <title>František Dupaľ - webdeveloper | Košice - SK</title>
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="src/assets/favicon.png" sizes="64x64">
     <!-- BOOTSTRAP + CUSTOM CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="canonical" href="https://frantisek.dupal.sk/menu"> <!--TODO - dopisat adresu podla skutocnosti -->
+    <link rel="canonical" href="https://frantisek.dupal.sk/menu"> <!--TODO - prepisat adresu podla skutocnosti -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
-  <script>
-      window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-  <div class="container-fluid">
-
-    <!-- TOGGLER + LOGO WRAPPER -->
-    <div id="mobileLeft">
-
-      <!-- TOGGLER -->
-      <button class="navbar-toggler" 
-              type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target="#navbarResponsive" 
-              aria-controls="navbarResponsive" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- LOGO -->
-      <div id="logoWrapper">
-        <div id="logo" class="navbar-brand align-items-center text-decoration-none">
-
-          <img src="src/assets/img/logo.png" alt="Logo" class="logo me-2">
-
-          <div class="logo-text flex-column">
-            <h1 class="h6 mb-0">
-              František<span class="fw-bold text-uppercase">Dupaľ</span>
-            </h1>
-            <small class="text-uppercase">webdeveloper</small>
+    <script>
+        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container-fluid">
+        <!-- TOGGLER + LOGO WRAPPER -->
+        <div id="mobileLeft">
+          <!-- TOGGLER -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <!-- LOGO -->
+          <div id="logoWrapper">
+            <div id="logo" class="navbar-brand align-items-center text-decoration-none">
+              <img src="src/assets/img/logo.png" alt="Logo" class="logo me-2">
+              <div class="logo-text flex-column">
+                <h1 class="h6 mb-0">
+                  František<span class="fw-bold text-uppercase">Dupaľ</span>
+                </h1>
+                <small class="text-uppercase">webdeveloper</small>
+              </div>
+            </div>
           </div>
-
         </div>
-      </div>
-
-    </div> <!-- /#mobileLeft -->
-
-    <!-- POČASIE -->
-    <a id="weatherNav" class="menu-item align-items-center ms-4 text-decoration-none"
-    data-translate-info="weatherInfo"
-      href="https://openweathermap.org/" 
-      target="_blank" rel="noopener noreferrer">
-      <img id="icon" alt="weather icon" class="icon-24 me-2">
-      <span id="city" class="me-2"></span>
-      <span id="temp"></span>
-    </a>
-
-    <!-- MENU -->
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav mx-auto">
-        <li id="homeNav" class="nav-item menu-item" data-translate-info="homeInfo">
-          <a class="nav-link" href="#home">
-            <i class="fas fa-home menu-icon"></i>
-            <span data-translate="home"></span>
-          </a>
-        </li>
-
-        <li id="portfolioNav" class="nav-item menu-item" data-translate-info="portfolioInfo">
-          <a class="nav-link" href="#portfolio">
-            <i class="fas fa-briefcase menu-icon"></i>
-            <span data-translate="portfolio"></span>
-          </a>
-        </li>
-
-        <li id="skillsNav" class="nav-item menu-item" data-translate-info="skillsInfo">
-          <a class="nav-link" href="#skills">
-            <i class="fas fa-code menu-icon"></i>
-            <span data-translate="subtitleSkills"></span>
-          </a>
-        </li>
-
-        <li id="aboutNav" class="nav-item menu-item" data-translate-info="aboutInfo">
-          <a class="nav-link" href="#about">
-            <i class="fas fa-user menu-icon"></i>
-            <span data-translate="aboutMe"></span>
-          </a>
-        </li>
-
-        <li id="contactNav" class="nav-item menu-item" data-translate-info="contactInfoInfo" >
-          <a class="nav-link" href="#contact">
-            <i class="fas fa-envelope menu-icon"></i>
-            <span data-translate="contact"></span>
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- PRAVÝ BLOK - JAZYKOVÝ PREPÍNAČ -->
-    <ul class="navbar-nav ms-auto" id="rightNav">
-      <li class="nav-item dropdown menu-item">
-        <a class="nav-link dropdown-toggle d-flex align-items-center"
-           href="#" id="languageDropdown" role="button"
-           data-bs-toggle="dropdown" aria-expanded="false">
-          <img id="selected-flag" src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-1">
-          <span id="selected-lang">SK</span>
+        <!-- POČASIE -->
+        <a id="weatherNav" class="menu-item align-items-center text-decoration-none" data-translate-info="weatherInfo" href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
+          <img id="icon" alt="weather icon" class="icon-24 me-2">
+          <span id="city" class="me-2"></span>
+          <span id="temp"></span>
         </a>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" id="languageMenu">
-          <li>
-            <a class="dropdown-item" href="#" data-lang="sk" data-translate-info="langSkInfo">
-              <img src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-2">
-              <span class="lang-text" data-translate="btnSk"></span>
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li id="homeNav" class="nav-item menu-item" data-translate-info="homeInfo">
+              <a class="nav-link" href="#home" aria-label="Home section">
+                <i class="fas fa-home menu-icon"></i>
+                <span data-translate="home"></span>
+              </a>
+            </li>
+            <li id="portfolioNav" class="nav-item menu-item" data-translate-info="portfolioInfo">
+              <a class="nav-link" href="#portfolio" aria-label="Portfolio section">
+                <i class="fas fa-briefcase menu-icon"></i>
+                <span data-translate="portfolio"></span>
+              </a>
+            </li>
+            <li id="skillsNav" class="nav-item menu-item" data-translate-info="skillsInfo">
+              <a class="nav-link" href="#skills" aria-label="Skills section">
+                <i class="fas fa-code menu-icon"></i>
+                <span data-translate="subtitleSkills"></span>
+              </a>
+            </li>
+            <li id="aboutNav" class="nav-item menu-item" data-translate-info="aboutInfo">
+              <a class="nav-link" href="#about" aria-label="About section">
+                <i class="fas fa-user menu-icon"></i>
+                <span data-translate="aboutMe"></span>
+              </a>
+            </li>
+            <li id="contactNav" class="nav-item menu-item" data-translate-info="contactInfoInfo" >
+              <a class="nav-link" href="#contact"aria-label="Contact section">
+                <i class="fas fa-envelope menu-icon"></i>
+                <span data-translate="contact"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- PRAVÝ BLOK - JAZYKOVÝ PREPÍNAČ -->
+        <ul class="navbar-nav ms-auto" id="rightNav">
+          <li class="nav-item dropdown menu-item">
+            <a class="nav-link dropdown-toggle d-flex align-items-center"
+              href="#" id="languageDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img id="selected-flag" src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-1">
+              <span id="selected-lang">SK</span>
             </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#" data-lang="en" data-translate-info="langEnInfo">
-              <img src="src/assets/img/flags/uk.png" alt="English" class="flag-24x16 me-2">
-              <span class="lang-text" data-translate="btnEn"></span>
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#" data-lang="de" data-translate-info="langDeInfo">
-              <img src="src/assets/img/flags/de.png" alt="Deutsch" class="flag-24x16 me-2">
-              <span class="lang-text" data-translate="btnDe"></span>
-            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" id="languageMenu">
+              <li>
+                <a class="dropdown-item" href="#" data-lang="sk" data-translate-info="langSkInfo">
+                  <img src="src/assets/img/flags/sk.png" alt="Slovak" class="flag-24x16 me-2">
+                  <span class="lang-text" data-translate="btnSk"></span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-lang="en" data-translate-info="langEnInfo">
+                  <img src="src/assets/img/flags/uk.png" alt="English" class="flag-24x16 me-2">
+                  <span class="lang-text" data-translate="btnEn"></span>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-lang="de" data-translate-info="langDeInfo">
+                  <img src="src/assets/img/flags/de.png" alt="Deutsch" class="flag-24x16 me-2">
+                  <span class="lang-text" data-translate="btnDe"></span>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
-      </li>
-    </ul>
-
-  </div>
-</nav>
-
-    
+      </div>
+    </nav>
     <!-- MODAL PRE POČASIE -->
     <div id="weatherModal" class="modal-overlay">
       <div class="modal-bubble">
@@ -166,7 +136,6 @@
         </div>
       </div>
     </div>
-
     <!-- HOME -->
     <header id="home">
       <div class="home-container">
@@ -191,7 +160,6 @@
         </div>
       </div>
     </header>
-    
     <!-- PORTFOLIO SECTION -->
     <section id="portfolio" class="page-section bg-primary text-white mb-0">
       <div class="portfolio-container">
@@ -213,7 +181,7 @@
               <p class="profile-position" data-translate="title">Java programátor</p>
               <hr class="profile-divider">
               <h3 data-translate="aboutMe"></h3>
-              <a id="aboutPreview" data-translate-info="portfolioAboutMeInfo" class="aboutPreview" href="#about"></a>
+              <a id="aboutPreview" data-translate-info="portfolioAboutMeInfo" class="aboutPreview" href="#about" aria-label="About section"></a>
             </div>
             <div class="left-bottom">
               <!-- Desktop verzia (neklikateľná) -->
@@ -387,7 +355,6 @@
             <div class="portfolio-links">
               <a href="https://github.com/Frantik69" class="btn btn-outline-dark me-2" data-translate-info="portfolioLinkInfo" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i> GitHub</a>
             </div>
-
             <!-- MODAL PRE GITHUB -->
             <div id="GitHubModal" class="modal-overlay">
               <div class="modal-bubble">
@@ -398,12 +365,10 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
-
     <!-- SKILLS SECTION -->
     <section class="page-section bg-primary text-white mb-0" id="skills">
       <div class="skills-container">
@@ -506,7 +471,6 @@
         </div>
       </div>
     </section>
-
     <!-- ABOUTME SECTION -->
     <section class="page-section bg-primary text-white mb-0" id="about">
       <div class="about-container">
@@ -524,104 +488,90 @@
         </div>
       </div>
     </section>
-    
-<!-- CONTACT SECTION -->
-<section class="page-section" id="contact">
-  <div class="contact-container">
-    <h2 data-translate="formTitle" class="page-section-heading text-center text-uppercase text-secondary mb-0">
-      Kontaktuj ma
-    </h2>
-
-    <!-- DIVIDER -->
-    <div class="divider-custom">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-      <div class="divider-custom-line"></div>
-    </div>
-
-    <!-- CONTACT INFO -->
-    <p class="contact-info">
-      <img src="src/assets/img/email.png" alt="email" class="email-icon">
-      <span data-translate="contactInfo" data-translate-html>
-        If you want to tell me something, send me an email at 
-        <strong>frantisek.dupal.webdeveloper@gmail.com</strong>
-      </span>
-    </p>
-
-    <!-- CONTACT FORM -->
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <form action="https://formspree.io/f/xwvepdrk" method="POST" id="contactForm" autocomplete="on">
-          <input type="hidden" name="_subject" value="📩 Nová správa z portfólia – František Dupal">
-
-          <!-- ROW 1 -->
-          <div class="row g-0 mb-3 align-items-center">
-            <div class="col-auto">
-              <label for="name" data-translate="formNameLabel">Meno</label>
-            </div>
-            <div class="col-auto ms-1">
-              <input type="text" id="name" name="Meno"
-                placeholder="Vaše meno / Your name"
-                data-translate-placeholder="placeholderName"
-                required class="form-control"
-                autocomplete="name">
-            </div>
-
-            <div class="col-auto ms-3">
-              <label for="email" data-translate="formEmailLabel">Email</label>
-            </div>
-            <div class="col-auto ms-1">
-              <input type="email" id="email" name="Email"
-                placeholder="Váš email / Your email"
-                data-translate-placeholder="placeholderEmail"
-                required class="form-control"
-                autocomplete="email">
-            </div>
+    <!-- CONTACT SECTION -->
+    <section class="page-section" id="contact">
+      <div class="contact-container">
+        <h2 data-translate="formTitle" class="page-section-heading text-center text-uppercase text-secondary mb-0">
+          Kontaktuj ma
+        </h2>
+        <!-- DIVIDER -->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- CONTACT INFO -->
+        <p class="contact-info">
+          <img src="src/assets/img/email.png" alt="email" class="email-icon">
+          <span data-translate="contactInfo" data-translate-html>
+            If you want to tell me something, send me an email at 
+            <strong>frantisek.dupal.webdeveloper@gmail.com</strong>
+          </span>
+        </p>
+        <!-- CONTACT FORM -->
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <form action="https://formspree.io/f/xwvepdrk" method="POST" id="contactForm" autocomplete="on">
+              <input type="hidden" name="_subject" value="📩 Nová správa z portfólia – František Dupal">
+              <!-- ROW 1 -->
+              <div class="row g-0 mb-3 align-items-center">
+                <div class="col-auto">
+                  <label for="name" data-translate="formNameLabel">Meno</label>
+                </div>
+                <div class="col-auto ms-1">
+                  <input type="text" id="name" name="Meno"
+                    placeholder="Vaše meno / Your name"
+                    data-translate-placeholder="placeholderName"
+                    required class="form-control"
+                    autocomplete="name">
+                </div>
+                <div class="col-auto ms-3">
+                  <label for="email" data-translate="formEmailLabel">Email</label>
+                </div>
+                <div class="col-auto ms-1">
+                  <input type="email" id="email" name="Email"
+                    placeholder="Váš email / Your email"
+                    data-translate-placeholder="placeholderEmail"
+                    required class="form-control"
+                    autocomplete="email">
+                </div>
+              </div>
+              <!-- ROW 2 -->
+              <div class="row g-0 mb-3">
+                <div class="col-auto">
+                  <label for="message" data-translate="formMessageLabel">Správa</label>
+                </div>
+              </div>
+              <!-- ROW 3 -->
+              <div class="row g-0 mb-3">
+                <div class="col-12">
+                  <textarea id="message" name="Správa" rows="5"
+                    placeholder="Vaša správa... / Your message..."
+                    data-translate-placeholder="placeholderMessage"
+                    required class="form-control"
+                    autocomplete="off"></textarea>
+                </div>
+              </div>
+              <!-- TURNSTILE reCAPTCHA -->
+              <div class="row g-0 mb-3">
+                <div class="col text-center">
+                  <div id="turnstile-container" class="cf-turnstile" autocomplete="off"></div>
+                </div>
+              </div>
+              <!-- SUBMIT BUTTON -->
+              <div class="row g-0">
+                <div class="col text-center">
+                  <button id="submitBtn" type="submit" data-translate="formSubmit"
+                    class="btn btn-primary menu-item" data-translate-info="sendInfo">
+                    Odoslať
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <!-- ROW 2 -->
-          <div class="row g-0 mb-3">
-            <div class="col-auto">
-              <label for="message" data-translate="formMessageLabel">Správa</label>
-            </div>
-          </div>
-
-          <!-- ROW 3 -->
-          <div class="row g-0 mb-3">
-            <div class="col-12">
-              <textarea id="message" name="Správa" rows="5"
-                placeholder="Vaša správa... / Your message..."
-                data-translate-placeholder="placeholderMessage"
-                required class="form-control"
-                autocomplete="off"></textarea>
-            </div>
-          </div>
-
-          <!-- TURNSTILE reCAPTCHA -->
-          <div class="row g-0 mb-3">
-            <div class="col text-center">
-              <div id="turnstile-container" class="cf-turnstile" autocomplete="off"></div>
-            </div>
-          </div>
-
-          <!-- SUBMIT BUTTON -->
-          <div class="row g-0">
-            <div class="col text-center">
-              <button id="submitBtn" type="submit" data-translate="formSubmit"
-                class="btn btn-primary menu-item" data-translate-info="sendInfo">
-                Odoslať
-              </button>
-            </div>
-          </div>
-
-        </form>
+        </div>
       </div>
-    </div>
-
-  </div>
-</section>
-
-
+    </section>
     <!-- FOOTER -->
     <footer id="footer" class="footer text-center custom-footer">
       <div class="container">
@@ -631,17 +581,14 @@
         </div>
       </div>
     </footer>
-
     <!-- COPYRIGHT -->
     <div data-translate="copyright" data-translate-html id="copyright" class="fixed-bottom py-1 text-center custom-copyright">
       <div class="container">Vytvorené © František Dupaľ</div>
     </div>
-
     <!-- CONFIRMATION OVERLAY -->
     <div id="overlay" class="formMessage">
       <div id="overlayMessage"></div>
     </div>
-
     <!-- MODAL PRE PDF -->
     <div id="pdfModal" class="modal-overlay">
       <div class="pdf-wrapper">
@@ -649,7 +596,6 @@
         <img id="pdfImage" src="" alt="Certifikát">
       </div>
     </div>
-
     <!-- BOOTSTRAP BUNDLE JS + VLASTNY JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="src/js/translations.js"></script>

@@ -22,16 +22,18 @@ html {
 
 /* HLAVNÉ NASTAVENIA TELA STRÁNKY */
 body {
-    margin: 0 auto;
-    font-family: $body-font-family;
-    font-size: $body-font-size;
-    font-weight: $body-font-weight;
-    line-height: $body-line-height;
-    color: $body-color;
-    background-color: $body-bg;
-    position: relative;
-    padding-top: 4rem; /* miesto pre navbar */
-    padding-bottom: 2rem;
+  width:100vw;
+  max-width: 100%;
+  margin: 0 auto;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-height;
+  color: $body-color;
+  background-color: $body-bg;
+  position: relative;
+  padding-top: 4rem; /* miesto pre navbar */
+  padding-bottom: 2rem;
 }
 
 // ===============================================
