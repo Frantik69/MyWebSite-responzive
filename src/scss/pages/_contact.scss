@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -6,7 +7,7 @@
 
 /* HLAVNÝ WRAPPER KONTAKTNEJ SEKCIÍ */
 #contact {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
   color: #000;
   background-color: #f9f9f9;
@@ -55,9 +56,6 @@
   }
 }
 
-$navbar-height:4rem;
-$copyright-height:1.75rem;
-
 @include mobile {
   #contact {
     border: 1;
@@ -66,7 +64,7 @@ $copyright-height:1.75rem;
     width: 100%;
 
     /* 1) min-height = výška displeja mínus navbar */
-    min-height: calc(100vh - #{$navbar-height+$copyright-height});
+    min-height: calc(100dvh - (4rem + 1.75rem));
 
     /* 2) max-height = výška obsahu */
     max-height: fit-content;
@@ -86,7 +84,7 @@ $copyright-height:1.75rem;
     height: auto;
 
     width: 90vw;
-    max-width: 90%;
+    max-width: 100%;
     position: relative;
   }
 }

@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -6,11 +7,23 @@
 // ===============================================
 
 #about {
-  min-height: calc(100vh - 6rem);
+  min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
   background-color: base.$first-middle;
   padding: 2rem 1rem;
   border-radius: 0.5rem;
+  width: 100%;
+  max-width: 100%;
+
+  .about-page {
+      flex: 2.5;
+      min-width: 500px;
+      background: linear-gradient(to bottom, base.$second-middle, base.$first-middle);
+      padding-left: 6rem;
+      padding-right: 6rem;
+      padding-top: 2rem;
+      color: black;
+  }
 
   /* FLEX LAYOUT PRE DVA STĹPCE */
   .row {
@@ -35,6 +48,7 @@
 
   /* TEXTOVÁ ČASŤ (ĽAVÝ + PRAVÝ STĹPEC) */
   .about-info {
+    color: #ffffff;
     text-shadow:
       -1px -1px 0 black,
        1px -1px 0 black,
@@ -57,25 +71,53 @@
 // ===============================================
 
 @include tablet-landscape {
+
+   #about {
+    border: 1;
+    display: flex;
+    flex-direction: column;
+
+    /* 1) min-height = výška displeja mínus navbar */
+    min-height: calc(100dvh - (4rem + 1.75rem));
+
+    /* 2) max-height = výška obsahu */
+    max-height: fit-content;
+
+  }
+
+  #about .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 1) výška podľa obsahu */
+    height: auto;
+
+    width: 90vw;
+    max-width: 90%;
+    position: relative;
+  }
+
   #about .row {
     flex-wrap: wrap;
+    gap:0rem;
+  }
+  #about .about-info {
+    line-height: 1.6rem;
+    font-size: 1.2rem;
   }
 }
 
 @include mobile {
 
-  $navbar-height: 4rem;
-  $copyright-height: 1.75rem;
-
-
   #about {
     border: 1;
     display: flex;
     flex-direction: column;
-    width: 100%;
 
     /* 1) min-height = výška displeja mínus navbar */
-    min-height: calc(100vh - #{$navbar-height+$copyright-height});
+    min-height: calc(100dvh - (4rem + 1.75rem));
 
     /* 2) max-height = výška obsahu */
     max-height: fit-content;
@@ -83,6 +125,12 @@
     /* 3) ak je #home vyšší než obsah → centrovanie */
     justify-content: center;
     align-items: center;
+  }
+
+  #about .about-page {
+    min-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   #about .about-container {

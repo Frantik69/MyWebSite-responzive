@@ -22,9 +22,9 @@ html {
 
 /* HLAVNÉ NASTAVENIA TELA STRÁNKY */
 body {
-  width:100vw;
-  max-width: 100%;
-  margin: 0 auto;
+  width:100%;
+  max-width: none;
+  margin: 0;
   font-family: $body-font-family;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
@@ -36,6 +36,10 @@ body {
   padding-bottom: 2rem;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 // ===============================================
 // RESPONSIVE HOOKS – OPTIONAL
 // ===============================================
@@ -44,9 +48,23 @@ html {
   font-size: 100%; // pripravené pre fluidné rem, nemení dizajn
 }
 
+@media (max-width: 992px) {
+    body{
+    padding-top: 4rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body{
+    padding-top: 4rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
 @media (max-width: 600px) {
   html {
-    scroll-padding-top: 4rem; // mobilný navbar býva menší
+    scroll-padding-top: 4rem;
   }
 }
 @media (max-width: 576px) {

@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -7,13 +8,14 @@
 
 /* HLAVNÝ WRAPPER HOME SEKCIÍ */
 #home {
-  min-height: calc(100vh - 4rem);
+  min-height: calc(100dvh -  ($navbar-height + $copyright-height));
+  max-height:fit-content;
   display: flex;
   align-items: center;          /* vertikálne centrovanie obsahu */
   border: 1px solid #000000;
   border-radius: 0.5rem;
   background-color: base.$middle;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
 
   /* FLEX LAYOUT PRE VNÚTORNÝ OBSAH */
@@ -28,13 +30,16 @@
     flex-direction: column;     /* nadpis, divider, text pod sebou */
     align-items: center;        /* horizontálne centrovanie */
     justify-content: flex-start;/* drží obsah hore */
-    margin-top: 10vh;           /* posun od vrchu */
+    margin-top: 20vh;           /* posun od vrchu */
+  }
+  .img-fluid {
+    margin-top: 10vh;
   }
 
   /* VNÚTORNÝ CONTAINER */
   .home-container {
     width: 65vw;
-    margin: 0 auto;
+    margin: auto;
   }
 
   /* NADPIS */
@@ -85,30 +90,15 @@
 
 /* TABLET LANDSCAPE (≤ 992px) */
 @include tablet-landscape {
-  #home .home-container {
-    width: 80vw;
-  }
-
-  #home .left-text {
-    margin-top: 6vh;
-  }
-}
-
-/* MOBILE (≤ 576px) */
-@include mobile {
-
-  $navbar-height: 4rem;
-  $copyright-height: 1.75rem;
-
-  #home {
+   #home {
     border: 1;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
 
     /* 1) min-height = výška displeja mínus navbar */
-    min-height: calc(100vh - #{$navbar-height+$copyright-height});
+    min-height: calc(100dvh - (4rem + 1.75rem));
 
     /* 2) max-height = výška obsahu */
     max-height: fit-content;
@@ -126,8 +116,73 @@
 
     /* 1) výška podľa obsahu */
     height: auto;
+    position: relative;
 
-    width: 90vw;
+    .left-text {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0rem;
+      text-align: center;
+    }
+
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.5rem auto 0 auto;
+    }
+  }
+
+  .fade-in-title {
+    margin-bottom: 0;
+  }
+
+  .my-1 {
+    margin-bottom: 1rem;
+  }
+
+  #home h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #home p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+
+/* MOBILE (≤ 576px) */
+@include mobile {
+  #home {
+    border: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+
+    /* 1) min-height = výška displeja mínus navbar */
+    min-height: calc(100dvh - (4rem + 1.75rem));
+
+    /* 2) max-height = výška obsahu */
+    max-height: fit-content;
+
+    /* 3) ak je #home vyšší než obsah → centrovanie */
+    justify-content: center;
+    align-items: center;
+  }
+
+  #home .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    /* 1) výška podľa obsahu */
+    height: auto;
     position: relative;
 
     .left-text {

@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -5,45 +6,28 @@
 // SKILLS – ZOZNAM ZRUČNOSTÍ (HLAVNÁ SEKCIA)
 // ===============================================
 
-/* HLAVNÝ WRAPPER SKILLS SEKCIÍ */
 #skills {
-  min-height: calc(120vh - 4rem);
-  border: 0.0625rem solid #000000;
+  min-height: calc(100dvh - ($navbar-height + $copyright-height));
+  border: 1px solid #000000;
   background-color: base.$second-middle;
   padding: 2rem 1rem;
   border-radius: 0.5rem;
+  width: 100%;
+  max-width: 100%;
 
-  /* FLEX LAYOUT PRE DVA STĹPCE */
   .row {
     display: flex;
     flex-wrap: nowrap;
-    gap: 2rem;
+    gap: 1rem;
     margin: 0;
   }
 
-  /* VNÚTORNÝ CONTAINER */
-  .skills-container {
-    width: 80vw;
-    margin: 0 auto;
-  }
-
-  /* NADPIS */
   h2 {
     text-shadow:
       0.125rem 0.125rem 0 #070707,
       0.1875rem 0.1875rem 0.4375rem #464646;
   }
 
-  /* TEXTOVÁ ČASŤ (ĽAVÝ STĹPEC) */
-  .skills-info {
-    text-shadow:
-      -1px -1px 0 black,
-       1px -1px 0 black,
-      -1px  1px 0 black,
-       1px  1px 0 black;
-  }
-
-  /* IKONA V DIVIDERI */
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: #ffffff;
@@ -51,95 +35,125 @@
       0.125rem 0.125rem 0 #070707,
       0.1875rem 0.1875rem 0.4375rem #464646;
   }
+
+  .skills-container {
+    width: 65vw;
+    margin: 0 auto;
+
+    .skills-page {
+      flex: 2.5;
+      min-width: 300px;
+      background: linear-gradient(to bottom, base.$secondary, base.$second-middle);
+      padding-left: 2rem;
+      padding-right: 4rem;
+      padding-top: 2rem;
+      color: black;
+
+      .skill-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.3rem;
+        width: 100%;
+        margin-bottom: 0.5rem;
+
+        .skill-left {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          flex: 0 0 8rem;
+          min-height: 8rem;
+          padding: 0rem;
+        }
+
+        .skill-icon {
+          width: 2rem;
+          height: 2rem;
+          object-fit: contain;
+          margin-bottom: 0.5rem;
+        }
+
+        .skill-title {
+          font-size: 1rem;
+          margin: 0;
+        }
+
+        .skill-desc {
+          flex: 1;
+          opacity: 0;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+
+        .skill-desc.show {
+          opacity: 1;
+          max-height: 300px;
+          margin-left: 0;
+          background: rgba(255, 254, 254, 0.6);
+          padding: 1rem;
+          border-radius: 0.5rem;
+          width: 100%;
+          text-align: left;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
 }
-
-/* ===============================================
-   SKILL CARD – LAYOUT & NORMALIZÁCIA
-   =============================================== */
-
-.skill-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.3rem;
-  width: 100%;
-  margin-bottom: 0.5rem;
-
-  /* aby všetky skill-left mali rovnakú výšku */
-  .skill-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;      /* vertikálne centrovanie */
-    align-items: center;          /* horizontálne centrovanie */
-    text-align: center;
-    flex: 0 0 8rem;               /* pevná šírka, výška sa vyrovná podľa najväčšej */
-    min-height: 8rem;             /* výška podľa najväčšej karty */
-    padding: 0rem;
-  }
-
-  .skill-icon {
-    width: 3rem;
-    height: 3rem;
-    object-fit: contain;
-    margin-bottom: 0.5rem;
-  }
-
-  .skill-title {
-    font-size: 1.1rem;
-    margin: 0;
-  }
-
-  /* POPIS – default hidden */
-  .skill-desc {
-    flex: 1;
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-
-  /* POPIS – po zobrazení */
-  .skill-desc.show {
-    opacity: 1;
-    max-height: 500px;
-    margin-left: 0;
-
-    /* rovnaký štýl ako timeline-content.show */
-    background: rgba(255, 254, 254, 0.072);
-    padding: 1rem;
-    border-radius: 0.5rem;
-    width: 100%;
-    text-align: left;
-    font-size: 0.8rem;
-  }
-}
-
 
 // ===============================================
-// RESPONSIVE SKILLS UTILITIES – VOLITEĽNÉ
+// RESPONSIVE SKILLS UTILITIES
 // ===============================================
 
 /* TABLET LANDSCAPE (≤ 992px) */
 @include tablet-landscape {
   #skills .skills-container {
-    width: 80vw;
+    width: 90vw; // FIX – rovnaké správanie ako mobile
+  }
+
+  #skills .skills-page {
+    padding-right: 1rem; // FIX – zruší desktopový 4rem padding
+    padding-left: 1rem;
   }
 
   #skills .row {
     flex-wrap: wrap;
   }
+  
 }
 
 /* TABLET (≤ 768px) */
 @include tablet {
   #skills .skills-container {
-    width: 85vw;
+    width: 90vw;
+  }
+
+  #skills .skills-page {
+    padding-right: 1rem;
+    padding-left: 1rem;
   }
 }
 
 /* MOBILE (≤ 576px) */
 @include mobile {
+
+  #skills {
+    padding-left: 0;   // aby nebol extra padding mimo kontajnera
+    padding-right: 0;
+  }
+
   #skills .skills-container {
-    width: 90vw;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;         // zruší centrovanie → kontajner ide od kraja po kraj
+    padding: 0;
+  }
+
+  #skills .skills-page {
+    padding-left: 1rem;
+    padding-right: 1rem;   // toto je teraz JEDINÉ horizontálne odsadenie
   }
 
   #skills h2 {
@@ -150,7 +164,6 @@
     text-align: center;
     font-size: 0.9rem;
   }
-
 
   #skills .row {
     flex-direction: column;
@@ -163,39 +176,40 @@
     align-items: center;
     width: 100%;
     margin-bottom: 0.5rem;
-    gap: 0.2rem !important;
+    gap: 1.5rem !important;
+  }
 
-    .skill-left {
-      flex: 0 0 20%;        // presne 1/4 šírky skill-card
-      max-width: 20%;       // nedovolí prekročiť 1/4
-      min-height: 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 1rem;
-      margin: 0;
-    }
+  .skill-card .skill-left {
+    flex: 0 0 20%;
+    max-width: 20%;
+    min-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 0;
+  }
 
-    .skill-desc {
-      flex: 1;              // zvyšných 75 %
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      text-align: left;
-    }
+  .skill-card .skill-desc {
+    flex: 1;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
 
-    .skill-desc.show {
-      opacity: 1;
-      max-height: 500px;
-      padding: 0.5rem;
-      margin-left: 0.25rem;
-      background: rgba(201, 201, 201, 0.2);
-      border-radius: 0.5rem;
-      font-size: 0.8rem;
-    }
+  .skill-card .skill-desc.show {
+    opacity: 1;
+    max-height: 500px;
+    padding: 0.5rem;
+    margin-left: 0.25rem;
+    background: rgba(201, 201, 201, 0.2);
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    width: 100%;
   }
 }
 

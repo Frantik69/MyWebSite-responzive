@@ -779,3 +779,4 @@ if (modal) modal.style.display = "none";
 
 const tooltipOverlay = document.querySelector(".tooltip-follow");
 if (tooltipOverlay) tooltipOverlay.style.display = "none";
+

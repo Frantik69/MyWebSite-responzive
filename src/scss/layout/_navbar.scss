@@ -9,7 +9,7 @@
 #mainNav {
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   z-index: 1030;
   height: 4rem;
@@ -253,7 +253,7 @@
 @include tablet-landscape {
   /* menšie logo */
   #logo {
-    margin-left: 0.1rem;
+    margin-left: 1rem;
 
     img.logo {
       height: 3rem;
@@ -364,15 +364,16 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vh;
-    max-width: 100vh;
+    width: 100%;
+    max-width: 100%;
     z-index: 1000;
     overflow-x: clip;
   }
 
   /* HLAVNÝ FLEX RIADOK */
   #mainNav .container-fluid {
-    min-width: 100%;
+    width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -420,8 +421,8 @@
     position: absolute !important;
     inset: 0;
     margin: auto;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3rem;
+    height: 3rem;
 
     display: flex;
     align-items: center;
@@ -521,13 +522,15 @@
     min-width: 0;
 
     margin-left: auto;     /* vytlačí ho doprava */
-    margin-right: 0.5rem;  /* medzera pred dropdownom */
+    margin-right: 1rem;  /* medzera pred dropdownom */
 
     display: flex;
     align-items: center;
 
     img.icon-24 {
-      display: none;
+      height: 3rem;
+      width: 3rem;
+      vertical-align: middle;
     }
 
     #city {

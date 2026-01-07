@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -7,7 +8,7 @@
 
 /* HLAVNÝ WRAPPER PORTFÓLIA */
 #portfolio {
-  min-height: calc(120vh - 4rem);
+  min-height: calc(100dvh - ($navbar-height + $copyright-height));
   text-align: center;
   padding: 2rem 1rem;
   background-color: base.$secondary;
@@ -310,7 +311,18 @@
 
 /* (max-width: 992px) → tablet-landscape */
 @include tablet-landscape {
+  #portfolio .portfolio-container,
+  #portfolio .portfolio-content,
+  #portfolio .portfolio-left,
+  #portfolio .portfolio-right {
+    width: 90vw;     // rovnaká šírka pre všetky
+    max-width: none; // odstráni obmedzenie 500px
+    margin: 0 auto;  // centrovanie
+  }
+  
   .portfolio-content {
-    width: 90vw;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }

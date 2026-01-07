@@ -36,7 +36,38 @@
 // RESPONSIVE FOOTER UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-/* MENŠÍ COPYRIGHT BAR NA MOBILOCH */
+@include tablet-landscape {
+  .custom-footer {
+    padding: 0.75rem;
+  }
+
+  .custom-copyright {
+    height: 1.75rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .custom-footer {
+    border-radius: 0.4rem;
+  }
+}
+
+@include tablet {
+  .custom-footer {
+    padding: 0.75rem;
+  }
+
+  .custom-copyright {
+    height: 1.75rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .custom-footer {
+    border-radius: 0.4rem;
+  }
+}
+
 @include mobile {
   .custom-footer {
     padding: 0.75rem;
@@ -47,10 +78,7 @@
     padding: 0.4rem 0.75rem;
     font-size: 0.85rem;
   }
-}
 
-/* VÄČŠÍ TAP TARGET NA MOBILOCH */
-@include mobile {
   .custom-footer {
     border-radius: 0.4rem;
   }
