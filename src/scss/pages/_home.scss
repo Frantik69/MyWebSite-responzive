@@ -157,32 +157,22 @@
 
 /* MOBILE (≤ 576px) */
 @include mobile {
+
   #home {
     border: 1;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 100%;
-
-    /* 1) min-height = výška displeja mínus navbar */
     min-height: calc(100dvh - (4rem + 1.75rem));
-
-    /* 2) max-height = výška obsahu */
-    max-height: fit-content;
-
-    /* 3) ak je #home vyšší než obsah → centrovanie */
-    justify-content: center;
-    align-items: center;
   }
 
   #home .home-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;   // centrovanie celého obsahu
     align-items: center;
-    justify-content: flex-start;
-
-    /* 1) výška podľa obsahu */
-    height: auto;
+    height: 100%;              // musí zabrať celú výšku
     position: relative;
 
     .left-text {
@@ -193,6 +183,7 @@
       align-items: center;
       margin-bottom: 0rem;
       text-align: center;
+      margin-top: 0;
     }
 
     .img-fluid {
