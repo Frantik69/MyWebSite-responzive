@@ -46,6 +46,19 @@
   align-items: center !important;
 }
 
+/* FIX – Cloudflare Turnstile overflow */
+#turnstile-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cf-turnstile iframe {
+  max-width: 100% !important;
+  width: 100% !important;
+  display: block;
+}
+
+
 /* RESPONSIVE GRID UTILITIES – LARGE (≥992px) */
 @media (min-width: 992px) {
   .col-lg-6 {

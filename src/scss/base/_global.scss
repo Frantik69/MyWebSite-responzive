@@ -12,7 +12,7 @@ html,
 body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-anchor: none;
+  /*overflow-anchor: none;*/
 }
 
 /* POSUN PRI SCROLLOVANÍ – REZERVA PRE FIXNÝ NAVBAR */
@@ -22,9 +22,8 @@ html {
 
 /* HLAVNÉ NASTAVENIA TELA STRÁNKY */
 body {
-  width:100%;
-  max-width: none;
   margin: 0;
+  max-width: 100%;
   font-family: $body-font-family;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
@@ -32,10 +31,12 @@ body {
   color: $body-color;
   background-color: $body-bg;
   position: relative;
-  padding-top: 4rem; /* miesto pre navbar */
-  padding-bottom: 2rem;
+
+  padding-top: 4rem;      /* miesto pre navbar */
+  padding-bottom: 2rem;   /* miesto pre copyright */
 }
 
+/* BOX-SIZING PRE CELÝ DOKUMENT */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -45,18 +46,18 @@ body {
 // ===============================================
 
 html {
-  font-size: 100%; // pripravené pre fluidné rem, nemení dizajn
+  font-size: 100%;
 }
 
 @media (max-width: 992px) {
-    body{
+  body {
     padding-top: 4rem;
     padding-bottom: 1.75rem;
   }
 }
 
 @media (max-width: 768px) {
-  body{
+  body {
     padding-top: 4rem;
     padding-bottom: 1.75rem;
   }
@@ -67,8 +68,9 @@ html {
     scroll-padding-top: 4rem;
   }
 }
+
 @media (max-width: 576px) {
-  body{
+  body {
     padding-top: 4rem;
     padding-bottom: 1.75rem;
   }
@@ -78,13 +80,14 @@ html {
   }
 }
 
+/* PODPORA PRE SAFE-AREA (iPhone notch) */
 body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
 }
 
 // Breakpoint hooky – zatiaľ prázdne
-@media (max-width: 1200px) { /* desktop down */ }
-@media (max-width: 992px)  { /* tablet landscape */ }
-@media (max-width: 768px)  { /* tablet portrait */ }
-@media (max-width: 576px)  { /* mobile */ }
+@media (max-width: 1200px) { }
+@media (max-width: 992px)  { }
+@media (max-width: 768px)  { }
+@media (max-width: 576px)  { }

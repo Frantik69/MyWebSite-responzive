@@ -235,13 +235,18 @@
 /* (max-width: 576px) → mobile */
 @include mobile {
 
+  #portfolio {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   #portfolio .portfolio-container,
   #portfolio .portfolio-content,
   #portfolio .portfolio-left,
   #portfolio .portfolio-right {
-    width: 90vw;     // rovnaká šírka pre všetky
-    max-width: none; // odstráni obmedzenie 500px
-    margin: 0 auto;  // centrovanie
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 
     li {
       font-size: 0.8rem;
@@ -316,10 +321,11 @@
   #portfolio .portfolio-content,
   #portfolio .portfolio-left,
   #portfolio .portfolio-right {
-    width: 90vw;     // rovnaká šírka pre všetky
-    max-width: none; // odstráni obmedzenie 500px
-    margin: 0 auto;  // centrovanie
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
+
   
   .portfolio-content {
     flex-direction: column;

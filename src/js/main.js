@@ -177,7 +177,7 @@ function INIT_NAVBAR() {
       rootMargin: '0px 0px -40%',
     });
   }
-
+if (window.innerWidth > 992) {
   window.addEventListener('wheel', function(e) {
   e.preventDefault();
   window.scrollBy({
@@ -185,6 +185,7 @@ function INIT_NAVBAR() {
     behavior: 'smooth'
     });
   }, { passive: false });
+}
 
   // Zatvorenie menu v mobile
   const navbarToggler = document.querySelector('.navbar-toggler');
