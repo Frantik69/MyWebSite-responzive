@@ -108,6 +108,13 @@
   }
 }
 
+/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD MOBILE */
+@mixin hide-above-tablet {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
 /* FLUID SPACING – plynulé odsadenia bez zmeny dizajnu */
 @mixin fluid-space($min, $max) {
   margin: clamp($min, 2vw, $max);

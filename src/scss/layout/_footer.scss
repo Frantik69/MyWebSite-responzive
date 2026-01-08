@@ -12,6 +12,7 @@
   border-radius: 0.5rem;
   position: static;
   width: 100%;
+  max-width: 100%;
 }
 
 /* FIXNÝ COPYRIGHT BAR PRI SPODKU VIEWPORTU */
@@ -20,6 +21,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  max-width: 100%;
   background-color: rgba(22, 24, 26, 0.7);
   border: 1px solid black;
   display: flex;
@@ -39,47 +41,36 @@
 @include tablet-landscape {
   .custom-footer {
     padding: 0.75rem;
+    border-radius: 0.4rem;
   }
 
   .custom-copyright {
     height: 1.75rem;
     padding: 0.4rem 0.75rem;
     font-size: 0.85rem;
-  }
-
-  .custom-footer {
-    border-radius: 0.4rem;
   }
 }
 
 @include tablet {
   .custom-footer {
     padding: 0.75rem;
+    border-radius: 0.4rem;    
   }
-
   .custom-copyright {
     height: 1.75rem;
-    padding: 0.4rem 0.75rem;
+    padding: 0.4rem 0.5rem;
     font-size: 0.85rem;
-  }
-
-  .custom-footer {
-    border-radius: 0.4rem;
   }
 }
 
 @include mobile {
   .custom-footer {
     padding: 0.75rem;
+    border-radius: 0.4rem;
   }
-
   .custom-copyright {
     height: 1.75rem;
-    padding: 0.4rem 0.75rem;
+    padding: 0.4rem 0.5rem;
     font-size: 0.85rem;
-  }
-
-  .custom-footer {
-    border-radius: 0.4rem;
   }
 }
