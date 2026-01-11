@@ -67,20 +67,20 @@
 }
 
 // ===============================================
-// RESPONSIVE HOME UTILITIES DESKTOP-DOWN
+// RESPONSIVE HOME UTILITIES DESKTOP-DOWN (≤1200px)
+// Zachováva desktop layout
 // ===============================================
 
 @include desktop-down {
   #home {
     border: 1px solid transparent;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     max-width: 100%;
     max-height: fit-content;
-    justify-content: center;
-    align-items: center;
   }
+
+  /* odstránené flex-column, centrovanie, margin-top úpravy */
+  /* desktop layout zostáva nezmenený */
 
   #home,
   #home .home-container,
@@ -93,12 +93,34 @@
     max-width: 100%;
     margin: 0;
     padding: 0;
+  }
 
+  /* nič ďalšie sa tu nemení */
+}
+
+// ===============================================
+// RESPONSIVE HOME UTILITIES TABLET-LANDSCAPE (≤992px)
+// Sem presunuté všetky zmeny, ktoré predtým rozbíjali desktop-down
+// ===============================================
+
+@include tablet-landscape {
+
+  #home {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #home .home-container {
     @include flex-column;
     justify-content: center;
     align-items: center;
     height: auto;
     position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   #home .left-text {
@@ -106,6 +128,7 @@
     @include flex-column;
     justify-content: center;
     align-items: center;
+    margin-top: 0;        // z desktop-down presunuté sem
     margin-bottom: 0;
     text-align: center;
   }
@@ -114,6 +137,15 @@
     height: auto;
     display: block;
     margin: 0.5rem auto 0 auto;
+    max-width: 80%;       // pôvodné tablet-landscape
+  }
+
+  #home h1 {
+    font-size: 2rem;
+  }
+
+  #home p {
+    font-size: 1.2rem;
   }
 
   .fade-in-title {
@@ -126,29 +158,7 @@
 }
 
 // ===============================================
-// RESPONSIVE HOME UTILITIES TABLET-LANDSCAPE
-// ===============================================
-
-@include tablet-landscape {
-  #home .left-text {
-    margin-top: 0;
-  }
-
-  #home .img-fluid {
-    max-width: 80%;
-  }
-
-  #home h1 {
-    font-size: 2rem;
-  }
-
-  #home p {
-    font-size: 1.2rem;
-  }
-}
-
-// ===============================================
-// RESPONSIVE HOME UTILITIES TABLET
+// RESPONSIVE HOME UTILITIES TABLET (≤768px)
 // ===============================================
 
 @include tablet {
@@ -170,7 +180,7 @@
 }
 
 // ===============================================
-// RESPONSIVE HOME UTILITIES MOBILE
+// RESPONSIVE HOME UTILITIES MOBILE (≤576px)
 // ===============================================
 
 @include mobile {
