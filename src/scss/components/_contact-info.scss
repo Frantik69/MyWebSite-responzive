@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -27,21 +28,19 @@
 }
 
 
-
 // ===============================================
-// RESPONSIVE CONTACT UTILITIES – VOLITEĽNÉ
+// RESPONSIVE CONTACT UTILITIES
 // ===============================================
 
-/* MENŠIA IKONA NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIA IKONA NA MOBILOCH */
   .contact-info .email-icon {
     width: 28px;
     height: 28px;
   }
-}
 
-/* STACK LAYOUT NA ÚZKYCH MOBILOCH */
-@include mobile {
+  /* STACK LAYOUT NA ÚZKYCH MOBILOCH */
   .contact-info {
     flex-direction: column;
     gap: 0.5rem;

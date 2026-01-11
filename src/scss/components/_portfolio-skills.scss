@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -12,22 +13,22 @@
 
 /* SKILLS S RATINGOM – HVIEZDY + TEXT V JEDNOM RIADKU */
 .skills li[data-rating] {
-  list-style: none;        /* odstráni guličky */
-  padding-left: 0;         /* zarovnanie k ľavému okraju */
-  margin-left: 0;          /* istota, že nič netrčí */
-  display: flex;           /* hviezdy + text vedľa seba */
-  align-items: center;     /* vertikálne zarovnanie */
-  gap: 0.3rem;             /* medzera medzi hviezdami a textom */
-  white-space: nowrap;     /* nezalamovať text */
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
 }
 
-
 // ===============================================
-// RESPONSIVE SKILLS UTILITIES – VOLITEĽNÉ
+// RESPONSIVE SKILLS UTILITIES
 // ===============================================
 
-/* MENŠIE SKILLS NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE SKILLS NA MOBILOCH */
   .skills li {
     font-size: 0.75rem;
   }
@@ -35,10 +36,8 @@
   .skills li[data-rating] {
     gap: 0.25rem;
   }
-}
 
-/* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
-@include mobile {
+  /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
   .skills li[data-rating] {
     flex-wrap: wrap;
     white-space: normal;

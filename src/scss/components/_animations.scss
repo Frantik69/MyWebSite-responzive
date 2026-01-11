@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -54,7 +55,6 @@
   to { opacity: 0; transform: translateY(-15px); }
 }
 
-
 /* APLIKÁCIA POP ANIMÁCIE NA NAVIGAČNÚ BUBLINU */
 .navbar-nav .nav-link.show-bubble .hover-bubble {
   animation: bubblePop 0.4s ease forwards;
@@ -83,9 +83,8 @@
   to { transform: rotate(360deg); }
 }
 
-
 // ===============================================
-// RESPONSIVE ANIMATION UTILITIES – VOLITEĽNÉ
+// RESPONSIVE ANIMATION UTILITIES
 // ===============================================
 
 /* SLABŠIE ANIMÁCIE NA MOBILOCH (úspora výkonu) */
@@ -111,4 +110,3 @@
     transform: none !important;
   }
 }
-

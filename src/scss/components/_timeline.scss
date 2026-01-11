@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -87,13 +88,13 @@
   top: 0;
 }
 
-
 // ===============================================
-// RESPONSIVE TIMELINE UTILITIES – VOLITEĽNÉ
+// RESPONSIVE TIMELINE UTILITIES
 // ===============================================
 
-/* MENŠÍ GRID NA MOBILOCH */
 @include mobile {
+
+  /* MENŠÍ GRID NA MOBILOCH */
   .timeline-item {
     grid-template-columns: 4.5rem 1fr;
     column-gap: 1rem;
@@ -102,19 +103,15 @@
   .timeline-date {
     font-size: 0.75rem;
   }
-}
 
-/* MENŠIE BODKY NA MOBILOCH */
-@include mobile {
+  /* MENŠIE BODKY NA MOBILOCH */
   .timeline-item::before {
     width: 6px;
     height: 6px;
     left: -2px;
   }
-}
 
-/* MENŠÍ TEXT NA MOBILOCH */
-@include mobile {
+  /* MENŠÍ TEXT NA MOBILOCH */
   .timeline-content {
     font-size: 0.75rem;
   }

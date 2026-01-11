@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -21,37 +22,35 @@
 
 /* IKONA V MENU (FONT-BASED ICON) */
 .menu-icon {
-  color: #ffffff;        /* biela farba */
-  font-size: inherit;    /* rovnaká veľkosť ako text */
-  line-height: inherit;  /* rovnaká výška riadku */
+  color: #ffffff;
+  font-size: inherit;
+  line-height: inherit;
   vertical-align: middle;
-  margin-right: 0.3rem;  /* medzera medzi ikonou a textom */
+  margin-right: 0.3rem;
 }
-
 
 // ===============================================
 // RESPONSIVE ICON UTILITIES
 // ===============================================
 
 @include tablet-landscape {
- 
+
   .flag-24x16 {
     width: 20px;
     height: 12px;
   }
 
   .menu-icon {
-  font-size: 1.3rem;    /* rovnaká veľkosť ako text */
-  line-height: inherit;  /* rovnaká výška riadku */
-  vertical-align: middle;
-  margin-right: 0.2rem;  /* medzera medzi ikonou a textom */
+    font-size: 1.3rem;
+    line-height: inherit;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+  }
 }
 
-
-}
-
-/* MENŠIE IKONY NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE IKONY NA MOBILOCH */
   .icon-24,
   #icon {
     width: 20px;
@@ -62,10 +61,8 @@
     width: 20px;
     height: 14px;
   }
-}
 
-/* VÄČŠÍ TAP TARGET PRE IKONY V MENU NA MOBILOCH */
-@include mobile {
+  /* VÄČŠÍ TAP TARGET PRE IKONY V MENU NA MOBILOCH */
   .menu-icon {
     margin-right: 0.4rem;
   }

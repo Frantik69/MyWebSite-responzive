@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -6,22 +7,22 @@
 
 /* FARBA TEXTU PRE TLAČIDLO V KONTAKT SEKCII */
 #contact .btn.menu-item::after {
-  color: #000; /* čierny text */
+  color: #000;
 }
 
 /* ZÁKLAD TLAČIDLA – MUSÍ MAŤ RELATÍVNU POZÍCIU */
 .btn.menu-item {
   position: relative;
-  overflow: hidden; /* pekné zaoblenie bez presahov */
+  overflow: hidden;
 }
 
 /* VNÚTORNÁ BUBBLINA PRE HOVER EFEKT */
 .btn.menu-item .hover-bubble {
   position: absolute;
   inset: 0;
-  background-color: rgba(58, 90, 123, 0.9); /* #3a8a8b s alpha */
+  background-color: rgba(58, 90, 123, 0.9);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  border-radius: 30px; /* kopíruje zaoblenie tlačidla */
+  border-radius: 30px;
   padding: 0.75rem 1.5rem;
   color: #fff;
   font-weight: 500;
@@ -46,50 +47,44 @@
   visibility: hidden;
 }
 
-
 /* ===============================================
    SPINNER – LOADING STAV TLAČIDLA
 =============================================== */
 
-/* ZÁKLADNÝ STAV LOADING TLAČIDLA */
 .btn-loading {
   position: relative;
   pointer-events: none;
   opacity: 0.8;
 }
 
-/* SPINNER ANIMÁCIA */
 .btn-loading::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1.125rem;   /* 18px */
-  height: 1.125rem;  /* 18px */
-  margin-top: -0.5625rem; /* -9px */
-  margin-left: -0.5625rem; /* -9px */
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: -0.5625rem;
+  margin-left: -0.5625rem;
   border: 2px solid transparent;
   border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
 
-
-
 // ===============================================
 // RESPONSIVE BUTTON UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-/* MENŠIE BUBBLES NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE BUBBLES NA MOBILOCH */
   .btn.menu-item .hover-bubble {
     padding: 0.5rem 1rem;
     border-radius: 20px;
   }
-}
 
-/* MENŠÍ SPINNER NA MOBILOCH */
-@include mobile {
+  /* MENŠÍ SPINNER NA MOBILOCH */
   .btn-loading::after {
     width: 0.875rem;
     height: 0.875rem;
@@ -98,7 +93,7 @@
   }
 }
 
-/* REDUCED MOTION – IBA NA MOBILOCH (aby nič nezmizlo) */
+/* REDUCED MOTION – IBA NA MOBILOCH */
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
   .btn.menu-item .hover-bubble,
   .btn.menu-item.show-bubble .hover-bubble {

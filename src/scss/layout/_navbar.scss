@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -5,7 +6,6 @@
 // NAVBAR – HLAVNÁ NAVIGÁCIA (FIXNÁ HORE)
 // ===============================================
 
-/* ===== ZÁKLAD NAVBARU ===== */
 #mainNav {
   position: fixed;
   top: 0;
@@ -15,16 +15,14 @@
   height: 4rem;
   min-height: 4rem;
   border: 1px solid black;
-  border-radius: 0.5rem;
-  background: linear-gradient(90deg, base.$primary, base.$secondary);
-  display: flex;
-  align-items: center;
+  @include rounded($radius-base);
+  @include gradient-bg(base.$primary, base.$secondary);
+  @include flex-row-center;
   overflow-x: clip;
 }
-/* ===== VNÚTORNÝ CONTAINER ===== */
+
 #mainNav .container-fluid {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   justify-content: space-between;
   width: 100%;
   min-width: 100%;
@@ -36,17 +34,12 @@
      1px  1px 0 black;
 }
 
-/* ===============================================
-   ĽAVÝ BLOK – LOGO + POČASIE
-=============================================== */
 #leftNav {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
 }
-/* LOGO */
+
 #logo {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   text-decoration: none;
   color: inherit;
   margin-left: 1rem;
@@ -58,15 +51,14 @@
 
   .logo-text h1,
   .logo-text small {
-    margin: 0;
+    @include logo-text-reset;
     line-height: 1.2;
   }
 }
-/* POČASIE V NAVIGÁCII */
+
 #weatherNav {
   text-decoration: none;
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   margin-left: 4rem;
   gap: 0.5rem;
 
@@ -89,19 +81,14 @@
   }
 }
 
-/* ===============================================
-   STRED – MENU (COLLAPSE)
-=============================================== */
 #navbarResponsive {
   flex: 1 1 auto;
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   justify-content: center;
 }
 
 #navbarResponsive .navbar-nav {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   margin: 0;
   padding: 0;
 }
@@ -109,63 +96,47 @@
 .navbar-nav .nav-item {
   margin: 0 0.3rem;
 }
-/* ODKAZY V MENU */
+
 .navbar-nav .nav-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0.4rem 0.6rem;
-  line-height: 1.2;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  overflow: hidden;
+  @include nav-link-base;
 }
-/* HOVER STAV */
+
 .navbar-nav .nav-link:hover {
   background-color: rgba(58, 90, 123, 0.9);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  @include shadow-default;
   transform: scale(1.05);
 }
-/* ACTIVE STAV */
+
 .navbar-nav .nav-link.active {
   background-color: rgba(58, 90, 123, 0.7);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  @include shadow-default;
 }
 
 .navbar-nav .nav-link.active:hover {
   background-color: rgba(58, 90, 123, 0.8);
   transform: scale(1.05);
 }
-/* HOVER PRE NEAKTÍVNE POLOŽKY */
+
 .navbar-nav .nav-link:not(.active):hover {
   background-color: rgba(58, 90, 123, 0.4);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  @include shadow-default;
   transform: scale(1.05);
 }
 
-/* ===============================================
-   HOVER BUBBLINA (TOOLTIP V MENU)
-=============================================== */
 .navbar-nav .nav-link .hover-bubble {
   position: absolute;
   inset: 0;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  border-radius: 0.5rem;
+  @include shadow-default;
+  @include rounded($radius-base);
   padding: 0.4rem;
   color: #fff;
   font-weight: 400;
   line-height: 1.2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-row-center;
   text-align: center;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
-
   white-space: normal;
   overflow-wrap: break-word;
   hyphens: auto;
@@ -178,21 +149,8 @@
   opacity: 1;
 }
 
-.navbar-nav .nav-link.show-bubble > *:not(.hover-bubble) {
-  visibility: visible;
-}
-
-.navbar-nav .nav-link:not(.active).show-bubble .hover-bubble {
-  background-color: rgba(58, 138, 139, 0.8);
-  opacity: 1;
-}
-
-/* ===============================================
-   PRAVÝ BLOK – JAZYKOVÝ PREPÍNAČ
-=============================================== */
 #languageDropdown {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   gap: 0.5rem;
   padding: 0;
   line-height: 1.2;
@@ -202,26 +160,22 @@
   background-color: rgba(255, 255, 255, 0.95);
   color: #222;
   text-shadow: none;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  @include shadow-default;
   border: 1px solid rgba(0,0,0,0.1);
 }
 
 #rightNav {
   margin-left: auto;
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   margin-right: 1rem;
 }
 
-/* ===============================================
-   VŠEOBECNÉ NASTAVENIA
-=============================================== */
 .navbar-nav {
   list-style: none;
   display: flex;
   flex-direction: row;
 }
-/* DESKTOP ROZBALENIE (≥992px) */
+
 @include lg {
   .navbar-expand-lg #navbarResponsive {
     display: flex;
@@ -230,25 +184,25 @@
     display: none;
   }
 }
-/* SKRYŤ TOGGLER NA VŠETKÝCH ZARIADENIACH NAD MOBILE */
+
 .navbar-toggler {
   @include hide-above-tablet;
 }
-/* CUSTOM NAVBAR (BEZ VERTIKÁLNEHO PADDINGU) */
+
 .custom-nav .container-fluid {
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   justify-content: space-between;
 }
 
 .custom-nav.navbar {
   --bs-navbar-padding-y: 0;
 }
+
 // ===============================================
-// RESPONSIVE NAVBAR – DESKTOP-DOWN (≤1200px)
+// DESKTOP-DOWN (≤1200px)
 // ===============================================
+
 @include desktop-down {
-  /* menšie logo */
   #logo {
     margin-left: 1rem;
 
@@ -266,10 +220,10 @@
 
     .logo-text h1,
     .logo-text small {
-    line-height: 1.2rem;
+      line-height: 1.2rem;
     }
   }
-  /* menší weather text + menšia ikona */
+
   #weatherNav {
     margin-left: 2.5rem;
     gap: 0.3rem;
@@ -286,14 +240,13 @@
     }
   }
 
-  /* FIX OREZÁVANIA TEXTU SK */
   #languageDropdown,
   #languageDropdown * {
     overflow: visible;
     -webkit-mask-image: none;
     mask-image: none;
   }
-  /* menší font v hl. menu */
+
   .navbar-nav .nav-link {
     font-size: 0.7rem;
     padding: 0.05rem 0.3rem;
@@ -301,72 +254,17 @@
 
   #languageDropdown {
     gap: 0.2rem;
-    display: flex;
-    align-items: center;
+    @include flex-row-center;
     height: auto;
     line-height: 1.2;
   }
-  #navbarResponsive {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#navbarResponsive .navbar-nav {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding-left: 2rem;
-}
-
-.navbar-nav .nav-item {
-  margin: 0;
-  white-space: nowrap;
-}
-/* ODKAZY V MENU */
-.navbar-nav .nav-link {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0.4rem 0.6rem;
-  line-height: 1.2;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-  overflow: hidden;
-}
-/* HOVER STAV */
-.navbar-nav .nav-link:hover {
-  background-color: rgba(58, 90, 123, 0.9);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  transform: scale(1.05);
-}
-/* ACTIVE STAV */
-.navbar-nav .nav-link.active {
-  background-color: rgba(58, 90, 123, 0.7);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-.navbar-nav .nav-link.active:hover {
-  background-color: rgba(58, 90, 123, 0.8);
-  transform: scale(1.05);
-}
-/* HOVER PRE NEAKTÍVNE POLOŽKY */
-.navbar-nav .nav-link:not(.active):hover {
-  background-color: rgba(58, 90, 123, 0.4);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  transform: scale(1.05);
-}
 }
 
 // ===============================================
-// RESPONSIVE NAVBAR – TABLET LANDSCAPE (≤ 992px)
+// TABLET LANDSCAPE (≤ 992px)
 // ===============================================
+
 @include tablet-landscape {
-  /* menšie logo */
   #logo {
     margin-left: 1rem;
 
@@ -384,10 +282,10 @@
 
     .logo-text h1,
     .logo-text small {
-    line-height: 0.8;
+      line-height: 0.8;
     }
   }
-  /* menší weather text + menšia ikona */
+
   #weatherNav {
     margin-left: 1rem;
     gap: 0.1rem;
@@ -403,20 +301,20 @@
 
   #navbarResponsive .navbar-nav {
     padding-left: 1rem;
-    
+
     .nav-item {
       margin: 0;
       white-space: nowrap;
     }
   }
-  /* FIX OREZÁVANIA TEXTU SK */
+
   #languageDropdown,
   #languageDropdown * {
     overflow: visible;
     -webkit-mask-image: none;
     mask-image: none;
   }
-  /* menší font v hl. menu */
+
   .navbar-nav .nav-link {
     font-size: 0.7rem;
     padding: 0.05rem 0.3rem;
@@ -424,19 +322,19 @@
 
   #languageDropdown {
     gap: 0.2rem;
-    display: flex;
-    align-items: center;
+    @include flex-row-center;
     height: auto;
     line-height: 1.2;
   }
 }
 
 // ===============================================
-// RESPONSIVE NAVBAR – TABLET (≤ 768px)
+// TABLET (≤ 768px)
 // ===============================================
+
 @include tablet {
 
-   #mainNav {
+  #mainNav {
     height: 4rem;
     min-height: 4rem;
     position: fixed;
@@ -448,7 +346,6 @@
     overflow-x: clip;
   }
 
-  /* HLAVNÝ FLEX RIADOK */
   #mainNav .container-fluid {
     width: 100%;
     max-width: 100%;
@@ -456,7 +353,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;   /* dôležité */
+    justify-content: flex-start;
     padding: 0;
     gap: 0.4rem;
     flex-wrap: nowrap;
@@ -470,7 +367,6 @@
     box-sizing: border-box;
   }
 
-  /* 1) TOGGLER + LOGO */
   #mobileLeft {
     order: 1;
     display: flex;
@@ -484,7 +380,7 @@
     background: none !important;
     border: none !important;
     padding: 0.2rem;
-    position: relative;   /* umožní centrovať logo */
+    position: relative;
     width: 3.5rem;
     height: 3.5rem;
     z-index: 20;
@@ -495,19 +391,16 @@
     }
   }
 
-  /* LOGO – centrované v toggleri */
   #logoWrapper {
     position: absolute !important;
     inset: 0;
     margin: auto;
     width: 3rem;
     height: 3rem;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    pointer-events: none; /* toggler ostáva klikateľný */
+    pointer-events: none;
     z-index: 1;
   }
 
@@ -526,14 +419,12 @@
     display: block;
   }
 
-  /* TEXT LOGA – posunutý doprava od obrázka */
   #logoWrapper .logo-text {
     position: absolute !important;
     left: 85%;
     top: 50%;
     transform: translateY(-50%);
     margin-left: 0.2rem;
-
     display: flex;
     flex-direction: column;
     line-height: 1;
@@ -547,19 +438,14 @@
     line-height: 1;
   }
 
-  /* Pôvodné logo v #leftNav vypneme */
-
-  /* 2) MENU (skryté, ale musí mať order) */
   #navbarResponsive {
     order: 2;
     flex: 1 1 auto;
-
     position: fixed;
     top: 4rem;
     left: 0;
     width: 100%;
     display: none;
-
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
@@ -591,15 +477,12 @@
     text-align: left;
   }
 
-  /* 3) POČASIE – zarovnané doprava pred dropdown */
   #weatherNav {
     order: 3;
     flex: 0 1 auto;
     min-width: 0;
-
-    margin-left: auto;     /* vytlačí ho doprava */
-    margin-right: 1rem;  /* medzera pred dropdownom */
-
+    margin-left: auto;
+    margin-right: 1rem;
     display: flex;
     align-items: center;
 
@@ -626,14 +509,11 @@
     }
   }
 
-  /* 4) DROPDOWN – úplne vpravo */
   #rightNav {
     order: 4;
     flex-shrink: 0;
-
     margin-left: 0;
     margin-right: 0.5rem;
-
     display: flex;
     align-items: center;
     padding-left: 0;
@@ -649,7 +529,6 @@
     z-index: 2000;
   }
 
-  /* WRAPPING FIX */
   .navbar-nav,
   .nav-item,
   .nav-link {
@@ -659,11 +538,11 @@
 }
 
 // ===============================================
-// RESPONSIVE NAVBAR UTILITIES – MOBILE (≤ 576px)
+// MOBILE (≤ 576px)
 // ===============================================
+
 @include mobile {
 
-  /* NAVBAR FIXNÝ */
   #mainNav {
     height: 4rem;
     min-height: 4rem;
@@ -676,14 +555,13 @@
     overflow-x: clip;
   }
 
-  /* HLAVNÝ FLEX RIADOK */
   #mainNav .container-fluid {
     width: 100%;
     min-width: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;   /* dôležité */
+    justify-content: flex-start;
     padding: 0;
     gap: 0.4rem;
     flex-wrap: nowrap;
@@ -697,7 +575,6 @@
     box-sizing: border-box;
   }
 
-  /* 1) TOGGLER + LOGO */
   #mobileLeft {
     order: 1;
     display: flex;
@@ -711,7 +588,7 @@
     background: none !important;
     border: none !important;
     padding: 0.2rem;
-    position: relative;   /* umožní centrovať logo */
+    position: relative;
     width: 3.5rem;
     height: 3.5rem;
     z-index: 20;
@@ -722,19 +599,16 @@
     }
   }
 
-  /* LOGO – centrované v toggleri */
   #logoWrapper {
     position: absolute !important;
     inset: 0;
     margin: auto;
     width: 3rem;
     height: 3rem;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    pointer-events: none; /* toggler ostáva klikateľný */
+    pointer-events: none;
     z-index: 1;
   }
 
@@ -753,14 +627,12 @@
     display: block;
   }
 
-  /* TEXT LOGA – posunutý doprava od obrázka */
   #logoWrapper .logo-text {
     position: absolute !important;
     left: 85%;
     top: 50%;
     transform: translateY(-50%);
     margin-left: 0.2rem;
-
     display: flex;
     flex-direction: column;
     line-height: 1;
@@ -774,12 +646,10 @@
     line-height: 1;
   }
 
-  /* Pôvodné logo v #leftNav vypneme */
   #leftNav {
     display: none !important;
   }
 
-  /* 2) MENU (skryté, ale musí mať order) */
   #navbarResponsive {
     order: 2;
     flex: 1 1 auto;
@@ -791,7 +661,9 @@
     left: 0;
     width: 100%;
     display: flex;
-    opacity: 0; transform: translateX(-100%) translateZ(0); pointer-events: none;
+    opacity: 0;
+    transform: translateX(-100%) translateZ(0);
+    pointer-events: none;
     transition: transform 0.5s ease, opacity 0.5s ease;
     will-change: max-height, transform, opacity;
 
@@ -802,12 +674,12 @@
     border-radius: 0.5rem;
     z-index: 999;
   }
-  
-  #navbarResponsive.show-animated { opacity: 1; transform: translateX(0) translateZ(0); pointer-events: auto; transform: translateX(0) translateZ(0); }
 
-  /*#navbarResponsive.show {
-    display: flex;
-  }*/
+  #navbarResponsive.show-animated {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+    pointer-events: auto;
+  }
 
   #navbarResponsive .navbar-nav {
     width: 100%;
@@ -829,15 +701,12 @@
     font-size: clamp(0.75rem, 2.5vw, 1rem);
   }
 
-  /* 3) POČASIE – zarovnané doprava pred dropdown */
   #weatherNav {
     order: 3;
     flex: 0 1 auto;
     min-width: 0;
-
-    margin-left: auto;     /* vytlačí ho doprava */
-    margin-right: 1rem;  /* medzera pred dropdownom */
-
+    margin-left: auto;
+    margin-right: 1rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -865,14 +734,11 @@
     }
   }
 
-  /* 4) DROPDOWN – úplne vpravo */
   #rightNav {
     order: 4;
     flex-shrink: 0;
-
     margin-left: 0;
     margin-right: 0.5rem;
-
     display: flex;
     align-items: center;
     padding-left: 0;
@@ -888,7 +754,6 @@
     z-index: 2000;
   }
 
-  /* WRAPPING FIX */
   .navbar-nav,
   .nav-item,
   .nav-link {

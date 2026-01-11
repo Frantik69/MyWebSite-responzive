@@ -4,26 +4,23 @@
 // GRID – JEDNODUCHÉ RESPONSÍVNE STĹPCE
 // ===============================================
 
-/* LARGE (≥ 992px) – POLOVIČNÝ STĹPEC */
+/* LARGE (≥ 992px) */
 @include lg {
   .col-lg-6 {
     flex: 0 0 auto;
     width: 50%;
   }
+
+  .col-lg-12 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
 }
 
-/* SMALL (≥ 576px) – POLOVIČNÝ STĹPEC */
+/* SMALL (≥ 576px) */
 @include sm {
   .col-sm-6 {
     flex: 0 0 auto;
     width: 50%;
-  }
-}
-
-/* LARGE (≥ 992px) – PLNÁ ŠÍRKA */
-@include lg {
-  .col-lg-12 {
-    flex: 0 0 auto;
-    width: 100%;
   }
 }

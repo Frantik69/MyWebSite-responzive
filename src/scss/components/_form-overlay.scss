@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -65,9 +66,8 @@
   font-weight: bold;
 }
 
-
 // ===============================================
-// RESPONSIVE FORM OVERLAY UTILITIES – VOLITEĽNÉ
+// RESPONSIVE FORM OVERLAY UTILITIES
 // ===============================================
 
 /* MENŠIA BUBBLINA NA MOBILOCH */

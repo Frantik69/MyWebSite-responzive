@@ -1,27 +1,16 @@
 @charset "UTF-8";
 @use "variables" as *;
 
-/* DEFINÍCIA KÓDOVANIA – musí byť na začiatku hlavného SCSS súboru */
-
 // ===============================================
 // GLOBAL BASE SETTINGS
 // ===============================================
 
-/* ZÁKLADNÉ NASTAVENIA HTML A BODY */
-html,
-body {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-/* POSUN PRI SCROLLOVANÍ – REZERVA PRE FIXNÝ NAVBAR */
 html {
   scroll-padding-top: 4rem;
+  font-size: 100%;
 }
 
-/* HLAVNÉ NASTAVENIA TELA STRÁNKY */
 body {
-  margin: 0;
   max-width: 100%;
   font-family: $body-font-family;
   font-size: $body-font-size;
@@ -31,22 +20,16 @@ body {
   background-color: $body-bg;
   position: relative;
 
-  padding-top: 4rem;      /* miesto pre navbar */
-  padding-bottom: 2rem;   /* miesto pre copyright */
-}
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 
-/* BOX-SIZING PRE CELÝ DOKUMENT */
-*, *::before, *::after {
-  box-sizing: border-box;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 // ===============================================
 // RESPONSIVE HOOKS – OPTIONAL
 // ===============================================
-
-html {
-  font-size: 100%;
-}
 
 @media (max-width: 992px) {
   body {
@@ -55,38 +38,8 @@ html {
   }
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-top: 4rem;
-    padding-bottom: 1.75rem;
-  }
-}
-
-@media (max-width: 600px) {
-  html {
-    scroll-padding-top: 4rem;
-  }
-}
-
 @media (max-width: 576px) {
-  body {
-    padding-top: 4rem;
-    padding-bottom: 1.75rem;
-  }
-
   .formMessage {
     display: none !important;
   }
 }
-
-/* PODPORA PRE SAFE-AREA (iPhone notch) */
-body {
-  padding-left: env(safe-area-inset-left);
-  padding-right: env(safe-area-inset-right);
-}
-
-// Breakpoint hooky – zatiaľ prázdne
-@media (max-width: 1200px) { }
-@media (max-width: 992px)  { }
-@media (max-width: 768px)  { }
-@media (max-width: 576px)  { }

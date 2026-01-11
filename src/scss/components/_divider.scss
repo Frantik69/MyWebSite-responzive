@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -8,46 +9,45 @@
 .divider-custom {
   margin: 0.25rem 0 1.5rem;
   width: 100%;
-  display: inline-flex; /* prispôsobí sa obsahu */
+  display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
 /* ĽAVÁ A PRAVÁ ČIARA DIVIDERA */
 .divider-custom-line {
-  flex: 1;              /* roztiahne sa rovnomerne */
-  max-width: 7rem;      /* maximálna dĺžka čiary */
+  flex: 1;
+  max-width: 7rem;
   height: 0.15rem;
   background-color: white;
   border-radius: 1rem;
-  filter: drop-shadow(0.125rem 0.125rem 0 #070707) drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+  filter: drop-shadow(0.125rem 0.125rem 0 #070707)
+          drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
 }
 
 /* IKONA UPROSTRED DIVIDERA */
 .divider-custom-icon {
   font-size: 1rem;
-  margin: 0 1rem;       /* medzera medzi čiarami */
+  margin: 0 1rem;
   color: white;
-  filter: drop-shadow(0.125rem 0.125rem 0 #070707) drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+  filter: drop-shadow(0.125rem 0.125rem 0 #070707)
+          drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
 }
-
 
 // ===============================================
 // RESPONSIVE DIVIDER UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-/* MENŠIA IKONA NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIA IKONA NA MOBILOCH */
   .divider-custom-icon {
     font-size: 0.875rem;
     margin: 0 0.75rem;
   }
-}
 
-/* KRATŠIE ČIARY NA ÚZKYCH MOBILOCH */
-@include mobile {
+  /* KRATŠIE ČIARY NA ÚZKYCH MOBILOCH */
   .divider-custom-line {
     max-width: 5rem;
   }
 }
-

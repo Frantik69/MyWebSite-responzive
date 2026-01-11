@@ -59,6 +59,59 @@
 
 
 // ===============================================
+// 🔥 NOVÉ MIXINY – PRIDANÉ PRE OPTIMALIZÁCIU KÓDU
+// ===============================================
+
+/* DEFAULT TEXT SHADOW – používaný v h2, ikonách, nadpisoch */
+@mixin text-shadow-default {
+  text-shadow:
+    0.125rem 0.125rem 0 #070707,
+    0.1875rem 0.1875rem 0.4375rem #464646;
+}
+
+/* DEFAULT DROP SHADOW – používaný v hover bubblinách, kartách */
+@mixin shadow-default {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* FLEX ROW CENTER – display:flex + align-items:center */
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+/* NAVBAR LINK BASE – základný štýl pre .nav-link */
+@mixin nav-link-base {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  line-height: 1.2;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+/* LOGO TEXT RESET – h1 + small v logu */
+@mixin logo-text-reset {
+  margin: 0;
+  line-height: 1;
+}
+
+/* MOBILE MENU WRAPPER – používaný v tablet/mobile nav */
+@mixin mobile-menu-box {
+  @include flex-column;
+  align-items: flex-start;
+  padding: 1rem;
+  @include gradient-bg(base.$primary, base.$secondary);
+  @include rounded(0.5rem);
+}
+
+
+// ===============================================
 // RESPONSIVE MIXINS – PRIDANÉ PRE CELÝ PROJEKT
 // ===============================================
 
@@ -108,7 +161,7 @@
   }
 }
 
-/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD MOBILE */
+/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD TABLET */
 @mixin hide-above-tablet {
   @media (min-width: 768px) {
     display: none !important;

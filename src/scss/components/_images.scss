@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -37,28 +38,24 @@ figure {
   color: #6c757d;
 }
 
-
 // ===============================================
-// RESPONSIVE IMAGE UTILITIES – VOLITEĽNÉ
+// RESPONSIVE IMAGE UTILITIES
 // ===============================================
 
-/* MENŠIE SPODNÉ ODSTUPY NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE SPODNÉ ODSTUPY NA MOBILOCH */
   .img-fluid {
     margin-bottom: 4rem;
   }
-}
 
-/* MENŠIA MINIATÚRA NA MOBILOCH */
-@include mobile {
+  /* MENŠIA MINIATÚRA NA MOBILOCH */
   .img-thumbnail {
     padding: 0.2rem;
     border-radius: 0.4rem;
   }
-}
 
-/* MENŠÍ TEXT POPISU NA MOBILOCH */
-@include mobile {
+  /* MENŠÍ TEXT POPISU NA MOBILOCH */
   .figure-caption {
     font-size: 0.8em;
   }

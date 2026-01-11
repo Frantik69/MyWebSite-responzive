@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -27,20 +28,18 @@ caption {
 .table-light     { --bs-table-bg: #f8f9fa; }
 .table-dark      { --bs-table-bg: #212529; color: #fff; }
 
-
 // ===============================================
 // RESPONSIVE TABLE UTILITIES
 // ===============================================
 
-/* MENŠÍ CAPTION NA MOBILOCH */
 @include mobile {
+
+  /* MENŠÍ CAPTION NA MOBILOCH */
   caption {
     font-size: 0.9rem;
   }
-}
 
-/* HORIZONTÁLNY SCROLL PRI ÚZKYCH TABUĽKACH */
-@include mobile {
+  /* HORIZONTÁLNY SCROLL PRI ÚZKYCH TABUĽKACH */
   .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

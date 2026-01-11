@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -21,6 +22,7 @@
     h1 {
       font-size: 1.2rem;
     }
+
     small {
       font-size: 0.85rem;
       font-weight: 600;
@@ -39,6 +41,7 @@
     width: 4rem;
     height: 4rem;
   }
+
   img.logo {
     width: 4rem;
     height: 4rem;
@@ -46,13 +49,13 @@
   }
 }
 
-
 // ===============================================
 // RESPONSIVE LOGO UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-/* MENŠIE LOGO NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE LOGO NA MOBILOCH */
   #logo .logo,
   #logo img.logo {
     width: 3rem;
@@ -60,16 +63,14 @@
   }
 
   #logo .logo-text h1 {
-    font-size: 7rem;
+    font-size: 0.7rem;
   }
 
   #logo .logo-text small {
     font-size: 0.65rem;
   }
-}
 
-/* VÄČŠÍ TAP TARGET NA MOBILOCH */
-@include mobile {
+  /* VÄČŠÍ TAP TARGET NA MOBILOCH */
   #logo {
     gap: 0.25rem;
   }

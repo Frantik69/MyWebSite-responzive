@@ -4,7 +4,7 @@
 
 /* HLAVNÝ HEADER BLOK */
 header {
-  min-height: calc(100vh - 4rem); /* výška okna mínus navbar */
+  min-height: calc(100dvh - 6rem); /* výška okna mínus navbar a copyright */
   margin-top: 0;
   padding-top: 0;
 }
@@ -13,8 +13,3 @@ header {
 header > *:first-child {
   margin-top: 0;
 }
-
-
-// ===============================================
-// RESPONSIVE HEADER UTILITIES
-// ===============================================

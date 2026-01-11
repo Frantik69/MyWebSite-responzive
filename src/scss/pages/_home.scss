@@ -7,12 +7,11 @@
 // ===============================================
 
 #home {
-  min-height: calc(100dvh -  ($navbar-height + $copyright-height));
+  min-height: calc(100dvh - ($navbar-height + $copyright-height));
   max-height: fit-content;
-  display: flex;
-  align-items: center;
+  @include flex-row-center;
   border: 1px solid #000000;
-  border-radius: 0.5rem;
+  @include rounded($radius-base);
   background-color: base.$middle;
   width: 100%;
   max-width: 100%;
@@ -23,8 +22,7 @@
   }
 
   .left-text {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
     justify-content: flex-start;
     margin-top: 20vh;
@@ -36,38 +34,29 @@
 
   .home-container {
     width: 100%;
-    max-width: 65rem; // alebo 1200px, alebo 65vw ak chceš, ale s max-width
+    max-width: 65rem;
     margin: 0 auto;
-}
-
+  }
 
   h1 {
     color: #cbcbcb;
-    text-shadow:
-      0.125rem 0.125rem 0 #070707,
-      0.1875rem 0.1875rem 0.4375rem #464646;
+    @include soft-text-shadow;
   }
 
   p {
     color: #cbcbcb;
-    text-shadow:
-      0.125rem 0.125rem 0 #070707,
-      0.1875rem 0.1875rem 0.4375rem #464646;
+    @include soft-text-shadow;
   }
 
   .divider-custom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
     width: 100%;
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: #cbcbcb;
-    text-shadow:
-      0.125rem 0.125rem 0 #070707,
-      0.1875rem 0.1875rem 0.4375rem #464646;
+    @include soft-text-shadow;
   }
 
   .divider-custom-line {
@@ -81,10 +70,9 @@
 // RESPONSIVE HOME UTILITIES
 // ===============================================
 
-/* TABLET LANDSCAPE (≤ 992px) */
 @include tablet-landscape {
   #home {
-    border: 1;
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -96,8 +84,7 @@
   }
 
   #home .home-container {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     align-items: center;
     justify-content: flex-start;
     height: auto;
@@ -105,11 +92,10 @@
 
     .left-text {
       width: 100%;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 0rem;
+      margin-bottom: 0;
       text-align: center;
     }
 
@@ -140,11 +126,9 @@
   }
 }
 
-/* MOBILE (≤ 576px) */
 @include mobile {
-
   #home {
-    border: 1;
+    border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -158,28 +142,24 @@
     overflow-x: hidden;
   }
 
-
-  /* ⭐ FIX: home-container musí byť 100 % široký už pri prvom renderi */
   #home .home-container {
-    width: 100%;          // FIX
-    max-width: 100%;      // FIX
-    margin: 0;            // FIX – zruší centrovanie
-    padding: 0;           // FIX – zabráni pretečeniu
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   // centrovanie celého obsahu
+    @include flex-column;
+    justify-content: center;
     align-items: center;
     height: 100%;
     position: relative;
 
     .left-text {
       width: 100%;
-      display: flex;
-      flex-direction: column;
+      @include flex-column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 0rem;
+      margin-bottom: 0;
       text-align: center;
       margin-top: 0;
     }

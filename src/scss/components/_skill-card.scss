@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/mixins" as *;
 
 // ===============================================
@@ -40,13 +41,13 @@
   align-self: center;
 }
 
-
 // ===============================================
 // RESPONSIVE SKILL CARD UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-/* MENŠIE IKONY NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIE IKONY NA MOBILOCH */
   .skill-icon {
     width: 48px;
   }
@@ -54,10 +55,8 @@
   .skill-left {
     width: 60px;
   }
-}
 
-/* MENŠÍ TEXT NA MOBILOCH */
-@include mobile {
+  /* MENŠÍ TEXT NA MOBILOCH */
   .skill-title {
     font-size: 0.55rem;
   }
@@ -65,10 +64,8 @@
   .skill-desc {
     font-size: 0.75rem;
   }
-}
 
-/* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
-@include mobile {
+  /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
   .skill-card {
     gap: 0.75rem;
   }

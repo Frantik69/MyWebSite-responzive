@@ -1,3 +1,4 @@
+@use "../base/variables" as *;
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
@@ -18,7 +19,6 @@
   transform: translateY(-1px); // optické vyrovnanie
   color: base.$rating-empty;   // fallback
 }
-
 
 // ===============================================
 // RESPONSIVE RATING UTILITIES – VOLITEĽNÉ

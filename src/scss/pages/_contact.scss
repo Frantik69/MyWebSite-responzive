@@ -5,29 +5,25 @@
 // CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
 // ===============================================
 
-/* HLAVNÝ WRAPPER KONTAKTNEJ SEKCIÍ */
 #contact {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
   color: #000;
   background-color: #f9f9f9;
   padding: 2rem 1rem;
-  border-radius: 0.5rem;
+  @include rounded($radius-base);
 
-  /* NADPIS */
   h2 {
     text-shadow:
       0.125rem 0.125rem 0 #6e97c3,
       0.1875rem 0.1875rem 0.4375rem #666;
   }
 
-  /* VNÚTORNÝ CONTAINER */
   .contact-container {
     width: 60vw;
     margin: 0 auto;
   }
 
-  /* DIVIDER – ČIARA */
   .divider-custom-line {
     background-color: #000;
     filter:
@@ -35,7 +31,6 @@
       drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
   }
 
-  /* DIVIDER – IKONA */
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: #000000;
@@ -45,43 +40,31 @@
   }
 }
 
-
 // ===============================================
-// RESPONSIVE CONTACT UTILITIES – VOLITEĽNÉ
+// RESPONSIVE CONTACT UTILITIES
 // ===============================================
 
 @include tablet-landscape {
   #contact .contact-container {
-    width: 80vw; /* jemné rozšírenie pre menšie displeje */
+    width: 80vw;
   }
 }
 
 @include mobile {
   #contact {
-    border: 1;
-    display: flex;
-    flex-direction: column;
+    border: 1px solid transparent;
+    @include flex-column;
     width: 100%;
-
-    /* 1) min-height = výška displeja mínus navbar */
     min-height: calc(100dvh - (4rem + 1.75rem));
-
-    /* 2) max-height = výška obsahu */
     max-height: fit-content;
-
-    /* 3) ak je #contact vyšší než obsah → centrovanie */
     justify-content: center;
     align-items: center;
   }
 
   #contact .contact-container {
-    flex-direction: column;
-    align-items: center;
+    @include flex-column;
     justify-content: flex-start;
-
-    /* 1) výška podľa obsahu */
     height: auto;
-
     width: 90vw;
     max-width: 100%;
     position: relative;

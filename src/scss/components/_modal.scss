@@ -11,10 +11,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;               /* defaultne skryté */
-  align-items: center;         /* vertikálne centrovanie */
-  justify-content: center;     /* horizontálne centrovanie */
-  background: rgba(0,0,0,0.4); /* polopriehľadné pozadie */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
   color: #ffffff;
   z-index: 2000;
 }
@@ -100,28 +100,25 @@
 
 
 // ===============================================
-// RESPONSIVE MODAL UTILITIES – VOLITEĽNÉ
+// RESPONSIVE MODAL UTILITIES
 // ===============================================
 
-/* MENŠIA BUBBLINA NA MOBILOCH */
 @include mobile {
+
+  /* MENŠIA BUBBLINA NA MOBILOCH */
   .modal-bubble {
     padding: 0.75rem;
     min-width: 220px;
     max-width: 260px;
   }
-}
 
-/* MENŠIE PDF PREVIEW NA MOBILOCH */
-@include mobile {
+  /* MENŠIE PDF PREVIEW NA MOBILOCH */
   .pdf-wrapper {
     max-width: 90vw;
     margin-bottom: 1.5rem;
   }
-}
 
-/* MENŠIE CLOSE TLAČIDLO NA MOBILOCH */
-@include mobile {
+  /* MENŠIE CLOSE TLAČIDLO NA MOBILOCH */
   .pdf-close {
     top: 8px;
     right: 8px;
