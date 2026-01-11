@@ -47,6 +47,11 @@
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
+/* BOX SHADOW PRE STATICKE BUBLINY S TEXTOM */
+@mixin bubble-box-shadow {
+  filter: drop-shadow(0px 5px 10px rgba(61, 61, 61, 0.5));
+}
+
 /* ROUNDED BLOCK – univerzálne zaoblenie */
 @mixin rounded($radius: 0.5rem) {
   border-radius: $radius;
@@ -61,10 +66,6 @@
 @mixin gradient-bg-nav($from, $to) {
   background: linear-gradient(to right, $from, $to);
 }
-
-// ===============================================
-// 🔥 NOVÉ MIXINY – PRIDANÉ PRE OPTIMALIZÁCIU KÓDU
-// ===============================================
 
 /* DEFAULT TEXT SHADOW – používaný v h2, ikonách, nadpisoch */
 @mixin text-shadow-default {
@@ -89,6 +90,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 0.4rem 0.6rem;
   line-height: 1.2;
   text-decoration: none;

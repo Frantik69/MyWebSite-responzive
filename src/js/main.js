@@ -272,8 +272,8 @@ document.addEventListener("DOMContentLoaded", INIT_GITHUB_MODAL);
 // === INIT_TOOLTIP_FOLLOW ===
 function INIT_TOOLTIP_FOLLOW() {
   const OFFSET_X_RIGHT = 16;
-  const OFFSET_X_LEFT  = -165;
-  const OFFSET_Y = 25;
+  const OFFSET_X_LEFT  = -115;
+  const OFFSET_Y = 35;
 
   const overlay = document.createElement('div');
   overlay.className = 'tooltip-follow';

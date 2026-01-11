@@ -67,73 +67,19 @@
 }
 
 // ===============================================
-// RESPONSIVE HOME UTILITIES
+// RESPONSIVE HOME UTILITIES DESKTOP-DOWN
 // ===============================================
 
-@include tablet-landscape {
+@include desktop-down {
   #home {
     border: 1px solid transparent;
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 100%;
-    min-height: calc(100dvh - (4rem + 1.75rem));
     max-height: fit-content;
     justify-content: center;
     align-items: center;
-  }
-
-  #home .home-container {
-    @include flex-column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    position: relative;
-
-    .left-text {
-      width: 100%;
-      @include flex-column;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0;
-      text-align: center;
-    }
-
-    .img-fluid {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0.5rem auto 0 auto;
-    }
-  }
-
-  .fade-in-title {
-    margin-bottom: 0;
-  }
-
-  .my-1 {
-    margin-bottom: 1rem;
-  }
-
-  #home h1 {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  #home p {
-    font-size: 1.2rem;
-    text-align: center;
-  }
-}
-
-@include mobile {
-  #home {
-    border: 1px solid transparent;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100%;
-    min-height: calc(100dvh - (4rem + 1.75rem));
   }
 
   #home,
@@ -151,25 +97,23 @@
     @include flex-column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: auto;
     position: relative;
+  }
 
-    .left-text {
-      width: 100%;
-      @include flex-column;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0;
-      text-align: center;
-      margin-top: 0;
-    }
+  #home .left-text {
+    width: 100%;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+    text-align: center;
+  }
 
-    .img-fluid {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0.5rem auto 0 auto;
-    }
+  #home .img-fluid {
+    height: auto;
+    display: block;
+    margin: 0.5rem auto 0 auto;
   }
 
   .fade-in-title {
@@ -179,14 +123,62 @@
   .my-1 {
     margin-bottom: 1rem;
   }
+}
+
+// ===============================================
+// RESPONSIVE HOME UTILITIES TABLET-LANDSCAPE
+// ===============================================
+
+@include tablet-landscape {
+  #home .left-text {
+    margin-top: 0;
+  }
+
+  #home .img-fluid {
+    max-width: 80%;
+  }
+
+  #home h1 {
+    font-size: 2rem;
+  }
+
+  #home p {
+    font-size: 1.2rem;
+  }
+}
+
+// ===============================================
+// RESPONSIVE HOME UTILITIES TABLET
+// ===============================================
+
+@include tablet {
+  #home .left-text {
+    margin-top: 5vh;
+  }
+
+  #home .img-fluid {
+    max-width: 80%;
+  }
 
   #home h1 {
     font-size: 1.6rem;
-    text-align: center;
   }
 
   #home p {
     font-size: 0.9rem;
-    text-align: center;
+  }
+}
+
+// ===============================================
+// RESPONSIVE HOME UTILITIES MOBILE
+// ===============================================
+
+@include mobile {
+  #home .left-text {
+    margin-top: 0;
+  }
+
+  #home .img-fluid {
+    max-width: 100%;
   }
 }

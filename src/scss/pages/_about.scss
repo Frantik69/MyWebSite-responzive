@@ -66,7 +66,6 @@
   #about {
     border: 1px solid transparent;
     @include flex-column;
-    min-height: calc(100dvh - (4rem + 1.75rem));
     max-height: fit-content;
   }
 
@@ -96,7 +95,6 @@
   #about {
     border: 1px solid transparent;
     @include flex-column;
-    min-height: calc(100dvh - (4rem + 1.75rem));
     max-height: fit-content;
     justify-content: center;
     align-items: center;
