@@ -586,7 +586,11 @@ function onTurnstileSuccess(token) {
 // === UPDATE_WEATHER_UI ===
 function updateWeatherUI(data) {
   document.getElementById("city").textContent = data.name;
-  document.getElementById("temp").textContent = Math.round(data.main.temp) + "°C";
+
+  // ZISTENIE, ČI JE LOKALITA V USA
+  const isUSA = data.sys?.country === "US"; // PREPOČET NA °F, AK JE USA
+  const tempC = data.main.temp; const tempF = (tempC * 9/5) + 32; document.getElementById("temp").textContent = isUSA ? Math.round(tempF) + "°F" : Math.round(tempC) + "°C";
+  
   document.getElementById("icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 }
 
@@ -781,3 +785,13 @@ if (modal) modal.style.display = "none";
 const tooltipOverlay = document.querySelector(".tooltip-follow");
 if (tooltipOverlay) tooltipOverlay.style.display = "none";
 
+// ======================================================
+// ======= ANIMÁCIA MENU PRI KLIKNUTI NA TOGGLER ========
+// ======================================================
+
+const toggler = document.querySelector('.navbar-toggler');
+const menu = document.getElementById('navbarResponsive');
+
+toggler.addEventListener('click', () => {
+  menu.classList.toggle('show-animated');
+});
