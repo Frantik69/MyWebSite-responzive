@@ -16,7 +16,7 @@
   min-height: 4rem;
   border: 1px solid black;
   @include rounded($radius-base);
-  @include gradient-bg(base.$primary, base.$secondary);
+  @include gradient-bg-nav(base.$primary, base.$secondary);
   @include flex-row-center;
   overflow-x: clip;
 }
@@ -449,7 +449,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
-    background: linear-gradient(90deg, base.$primary, base.$secondary);
+    @include gradient-bg-nav(base.$primary, base.$secondary);
     border-radius: 0.5rem;
     z-index: 999;
   }
@@ -670,7 +670,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 1rem;
-    background: linear-gradient(90deg, base.$primary, base.$secondary);
+    @include gradient-bg-nav(base.$primary, base.$secondary);
     border-radius: 0.5rem;
     z-index: 999;
   }

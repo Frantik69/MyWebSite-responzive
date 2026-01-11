@@ -52,11 +52,15 @@
   border-radius: $radius;
 }
 
-/* GRADIENT BACKGROUND – pre tvoje sekcie */
+/* GRADIENT BACKGROUND – pre sekcie */
 @mixin gradient-bg($from, $to) {
   background: linear-gradient(to bottom, $from, $to);
 }
 
+/* GRADIENT BACKGROUND – pre menu */
+@mixin gradient-bg-nav($from, $to) {
+  background: linear-gradient(to right, $from, $to);
+}
 
 // ===============================================
 // 🔥 NOVÉ MIXINY – PRIDANÉ PRE OPTIMALIZÁCIU KÓDU
