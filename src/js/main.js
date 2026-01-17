@@ -886,7 +886,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ======================================================
-// === ŽIVÝ DÁTUM + ČAS NAD SIDE NAVBAROM ===============
+// ==== ŽIVÝ DÁTUM + MENINY + ČAS NAD SIDE NAVBAROM =====
 // ======================================================
 
 function updateSideNavClock() {
@@ -895,11 +895,12 @@ function updateSideNavClock() {
 
   const dateEl = box.querySelector(".date");
   const timeEl = box.querySelector(".time");
+  const namedayEl = box.querySelector(".nameday");
 
   const now = new Date();
 
   const dateStr = now.toLocaleDateString("sk-SK", {
-    weekday: "long",
+    weekday: "short",
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
@@ -911,10 +912,12 @@ function updateSideNavClock() {
     second: "2-digit"
   });
 
+  const nameday = getTodayNameday();
+
   dateEl.textContent = dateStr;
+  namedayEl.textContent = nameday ? `Meniny má: ${nameday}` : "";
   timeEl.textContent = timeStr;
 }
 
-// aktualizácia každú sekundu
 setInterval(updateSideNavClock, 1000);
 updateSideNavClock();

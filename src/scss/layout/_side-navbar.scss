@@ -179,3 +179,13 @@ body.invert-floating .side-nav-divider {
   border-top-color: rgba(0,0,0,0.8);
 }
 
+#sideNavTime .nameday {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  opacity: 0.9;
+}
+
+/* Kontakt – invertované farby */
+body.invert-floating #sideNavTime .nameday {
+  color: black;
+  text-shadow: none;
+}
