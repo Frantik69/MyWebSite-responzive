@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Contact Frantik's programmer, custom programming.">
+    <meta name="description" content="Kontaktujte programátora, s vlastným programátorským myslením."> <!-- TODO - SK/EN verzia pre EN jazyk (multilang routing) - Contact a programmer with your own programming mindset. -->
     <meta name="author" content="Frantik69">
     <meta property="og:title" content="František Dupaľ – webdeveloper">
     <meta property="og:description" content="Zhotovovanie webstránok, úprava design-u, vývoj webových aplikácií.">
-    <meta property="og:image" content="https://frantisek.dupal.sk/src/assets/kod-java.jpg"> <!--TODO - prepisat adresu podla skutocnosti -->
+    <meta property="og:image" content="https://frantisek.dupal.sk/public/kod-java.jpg"> <!--TODO - prepisat adresu podla skutocnosti -->
     <meta property="og:url" content="https://frantisek.dupal.sk"> <!--TODO - prepisat adresu podla skutocnosti -->
-    <!-- 
+    <!--
     /////////////////////////////////////////////////////////////////////////
       Indexovať a sledovať odkazy (default) 
     <meta name="robots" content="index, follow">
@@ -22,8 +22,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="src/assets/favicon.png" sizes="64x64">
     <!-- BOOTSTRAP + CUSTOM CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="canonical" href="https://frantisek.dupal.sk/menu"> <!--TODO - prepisat adresu podla skutocnosti -->
+    <link rel="canonical" href="https://frantisek.dupal.sk/"> <!--TODO - prepisat adresu podla skutocnosti -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
@@ -41,7 +40,7 @@
           </button>
           <!-- LOGO -->
           <div id="logoWrapper">
-            <div id="logo" class="navbar-brand align-items-center text-decoration-none">
+            <div id="logo" class="navbar-collapse align-items-center text-decoration-none">
               <img src="src/assets/img/logo.png" alt="Logo" class="logo me-2">
               <div class="logo-text flex-column">
                 <h1 class="h6 mb-0">
@@ -53,10 +52,10 @@
           </div>
         </div>
         <!-- POČASIE -->
-        <a id="weatherNav" class="menu-item align-items-center text-decoration-none" data-translate-info="weatherInfo" href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
-          <img id="icon" alt="weather icon" class="icon-24 me-2">
-          <span id="city" class="me-2"></span>
-          <span id="temp"></span>
+        <a id="weatherNav" class="weatherNav menu-item align-items-center text-decoration-none" data-translate-info="weatherInfo" href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
+          <img class="weather-icon icon-24 me-2" alt="Ikona počasia">
+          <span class="weather-city me-2"></span>
+          <span class="weather-temp"></span>
         </a>
         <!-- MENU -->
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -126,8 +125,35 @@
         </ul>
       </div>
     </nav>
+    <!-- BOČNÉ MENU -->
+    <nav id="sideNav" class="side-nav">
+      <div id="sideNavTime" class="side-nav-time">
+        <span class="date"></span>
+        <span class="time"></span>
+      </div>
+
+      <hr class="side-nav-divider">
+      
+      <ul>
+        <li><a href="#home" data-translate="home"><i class="fas fa-home menu-icon"></i>Home</a></li>
+        <li><a href="#portfolio" data-translate="portfolio"><i class="fas fa-briefcase menu-icon"></i>Portfolio</a></li>
+        <li><a href="#skills" data-translate="subtitleSkills"><i class="fas fa-code menu-icon"></i>Skills</a></li>
+        <li><a href="#about" data-translate="aboutMe"><i class="fas fa-user menu-icon"></i>About</a></li>
+        <li><a href="#contact" data-translate="contact"><i class="fas fa-envelope menu-icon"></i>Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <!-- POČASIE – mimo navbaru -->
+    <a id="weatherFloating" class="weatherNav" href="https://openweathermap.org/"target="_blank">
+      <div class="weather-row">
+        <img class="weather-icon" alt="Icona Počasia">
+        <span class="weather-temp"></span>
+      </div>
+      <span class="weather-city"></span>
+    </a>
+
     <!-- MODAL PRE POČASIE -->
-    <div id="weatherModal" class="modal-overlay">
+    <div id="weatherModal" class="modal-overlay" role="dialog" aria-modal="true">
       <div class="modal-bubble">
         <p data-translate="changePage"></p>
         <div class="d-flex justify-content-between mt-2">
@@ -137,7 +163,7 @@
       </div>
     </div>
     <!-- HOME -->
-    <header id="home">
+    <header id="home">  <!-- TODO - Pridat odkaz s certifikátmi. -->
       <div class="home-container">
         <div class="row">
           <!-- ĽAVÁ STRANA: VYCENTROVANÝ TEXT -->
@@ -155,7 +181,7 @@
           </div>
           <!-- PRAVÁ STRANA: VYCENTROVANÝ OBRÁZOK -->
           <div class="col-lg-6 d-flex justify-content-center">
-            <img src="src/assets/img/my-photo.png" alt="my-photo" class="img-fluid zoom-img">
+            <img src="src/assets/img/my-photo.png" alt="Fotografia Františka Dupaľa" class="img-fluid zoom-img">
           </div>
         </div>
       </div>
@@ -176,11 +202,11 @@
           <!-- ĽAVÝ STĹPEC -->
           <div class="portfolio-left">
             <div class="left-top">
-              <img src="src/assets/img/my-photo-reverse.png" alt="František Dupaľ" class="profile-photo">
-              <h2 class="profile-name">František Dupaľ</h2>
+              <img src="src/assets/img/my-photo-reverse.png" alt="Fotografia Františka Dupaľa" class="profile-photo">
+              <h3 class="profile-name">František Dupaľ</h3>
               <p class="profile-position" data-translate="title">Java programátor</p>
               <hr class="profile-divider">
-              <h3 data-translate="aboutMe"></h3>
+              <h4 data-translate="aboutMe"></h4>
               <a id="aboutPreview" data-translate-info="portfolioAboutMeInfo" class="aboutPreview" href="#about" aria-label="About section"></a>
             </div>
             <div class="left-bottom">
@@ -262,12 +288,12 @@
                   <ul class="sublist">
                     <li>
                       <span data-translate-sublist="zakladjava"></span>
-                      <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/Certifikat_Webove_stranky_krok_za_krokom.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a>
+                      <a href="#" role="button" aria-label="Zobraziť certifikát Základy Javy" class="show-pdf" data-pdf="src/assets/certificates/Certifikat_Webove_stranky_krok_za_krokom.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a>
                     </li>
                     <li data-translate-sublist="OOP">Objektovo-orientované programovanie v Jave (certifikát)</li>
                     <li data-translate-sublist="kolekcie">Kolekcie, prúdy, súbory (certifikát)</li>
                     <li data-translate-sublist="webdesign">Moderný webdesign (certifikát)</li>
-                    <li data-translate-sublist="MysQL">MySQL (certifikát)</li>
+                    <li data-translate-sublist="MySQL">MySQL (certifikát)</li>
                     <li data-translate-sublist="JSzaklady">JavaScript základy (certifikát)</li>
                     <li>Spring Boot</li>
                     <li data-translate-sublist="React">React základy</li>
@@ -280,7 +306,7 @@
               <li class="timeline-item">
                 <div class="timeline-date">2023–2024</div>
                 <div class="timeline-content">
-                  <span data-translate="portfolioSkillmea2">Rekvalifikačný kurz Java pre junior programátorv - SKILLMEA s.r.o.</span>
+                  <span data-translate="portfolioSkillmea2">Rekvalifikačný kurz Java pre junior programátorov - SKILLMEA s.r.o.</span>
                   <a href="#" class="show-pdf tooltip-item" data-pdf="src/assets/certificates/skillmea-certifikat-java-pre-junior-programatorov.png" data-translate="certifikat" data-translate-info="certifikatInfo">(certifikát)</a><br>
                   <ul class="sublist">
                     <li>Maven</li>
@@ -384,10 +410,10 @@
             <div class="col-lg-6 skills-info">
               <div class="skill-card">
                 <div class="skill-left">
-                <img src="src/icons/intellij-idea-logo-black-and-white.png" alt="InteliJIDEA icon" class="skill-icon">
-                <h3 class="skill-title">InteliJ IDEA</h3>
+                <img src="src/icons/intellij-idea-logo-black-and-white.png" alt="data-translate = IntelliJ.IDEA.icon" class="skill-icon">
+                <h3 class="skill-title">IntelliJ IDEA</h3>
                 </div>
-                <p class="skill-desc" data-translate="inteliJIDEAskills"></p>
+                <p class="skill-desc" data-translate="intelliJIDEAskills"></p>
               </div>
               <div class="skill-card">
                 <div class="skill-left">
@@ -492,7 +518,7 @@
         </div>
       </div>
     </section>
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION --><!-- TODO - Doplnit <input ... aria-describedby="nameError"><div id="nameError" class="error-msg"></div> -->
     <section class="page-section" id="contact">
       <div class="contact-container">
         <h2 data-translate="formTitle" class="page-section-heading text-center text-uppercase text-secondary mb-0">
@@ -506,9 +532,9 @@
         </div>
         <!-- CONTACT INFO -->
         <p class="contact-info">
-          <img src="src/assets/img/email.png" alt="email" class="email-icon">
+          <img src="src/assets/img/email.png" alt="Ikona emailu" class="email-icon"><!-- TODO - preklad - If you want to tell me something... -->
           <span data-translate="contactInfo" data-translate-html>
-            If you want to tell me something, send me an email at 
+            Ak mi chceš niečo povedať, pošli mi e-mail na
             <strong>frantisek.dupal.webdeveloper@gmail.com</strong>
           </span>
         </p>
@@ -579,9 +605,11 @@
     <!-- FOOTER -->
     <footer id="footer" class="footer text-center custom-footer">
       <div class="container">
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <h4 data-translate="location" data-translate-html class="text-uppercase mb-2">Lokalita</h4>
-          <p data-translate="locationInfo" data-translate-html class="lead mb-0"></p>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h4 data-translate="location" data-translate-html class="text-uppercase mb-2">Lokalita</h4>
+            <p data-translate="locationInfo" data-translate-html class="lead mb-0"></p>
+          </div>
         </div>
       </div>
     </footer>
@@ -590,13 +618,13 @@
       <div class="container">Vytvorené © František Dupaľ</div>
     </div>
     <!-- CONFIRMATION OVERLAY -->
-    <div id="overlay" class="formMessage">
+    <div id="overlay" class="formMessage" role="alertdialog" aria-live="assertive">
       <div id="overlayMessage"></div>
     </div>
     <!-- MODAL PRE PDF -->
     <div id="pdfModal" class="modal-overlay">
-      <div class="pdf-wrapper">
-        <button class="pdf-close">✕</button>
+      <div class="pdf-wrapper" role="dialog">
+        <button class="pdf-close" aria-label="Zavrieť modálne okno">✕</button>
         <img id="pdfImage" src="" alt="Certifikát">
       </div>
     </div>

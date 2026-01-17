@@ -66,6 +66,33 @@
   }
 }
 
+/* ===============================================
+   SIDE NAVBAR – Desktop a vyššie (≥1200px)
+   =============================================== */
+
+  #home .home-container{
+    padding-left: 8rem;
+
+    #weatherNav {
+      display: flex;
+      align-items: center;
+      justify-content: center;   // horizontálne centrovanie obsahu
+      width: 100%;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    #weatherNav img {
+      display: inline-block;
+    }
+
+    #weatherNav #temp {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+   
 // ===============================================
 // RESPONSIVE HOME UTILITIES DESKTOP-DOWN (≤1200px)
 // Zachováva desktop layout

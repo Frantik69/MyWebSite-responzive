@@ -585,13 +585,24 @@ function onTurnstileSuccess(token) {
 
 // === UPDATE_WEATHER_UI ===
 function updateWeatherUI(data) {
-  document.getElementById("city").textContent = data.name;
+  const icons = document.querySelectorAll(".weather-icon");
+  const temps = document.querySelectorAll(".weather-temp");
+  const cities = document.querySelectorAll(".weather-city");
 
-  // ZISTENIE, ČI JE LOKALITA V USA
-  const isUSA = data.sys?.country === "US"; // PREPOČET NA °F, AK JE USA
-  const tempC = data.main.temp; const tempF = (tempC * 9/5) + 32; document.getElementById("temp").textContent = isUSA ? Math.round(tempF) + "°F" : Math.round(tempC) + "°C";
-  
-  document.getElementById("icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+  // Mesto
+  cities.forEach(c => c.textContent = data.name);
+
+  // Teplota (°C / °F podľa krajiny)
+  const isUSA = data.sys?.country === "US";
+  const tempC = data.main.temp;
+  const tempF = (tempC * 9/5) + 32;
+  const finalTemp = isUSA ? Math.round(tempF) + "°F" : Math.round(tempC) + "°C";
+
+  temps.forEach(t => t.textContent = finalTemp);
+
+  // Ikona
+  const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+  icons.forEach(i => i.src = iconUrl);
 }
 
 // === FETCH_WEATHER_BY_COORDS ===
@@ -637,6 +648,7 @@ async function loadWeather() {
   const apiKey = await getApiKey();
   const cached = localStorage.getItem("weatherData");
 
+  // Cache platná 1 hodinu
   if (cached) {
     const parsed = JSON.parse(cached);
     if (Date.now() - parsed.timestamp < 3600000) {
@@ -668,6 +680,7 @@ async function loadWeather() {
 }
 
 document.addEventListener("DOMContentLoaded", loadWeather);
+
 
 // ======================================================
 // ============== FOOTER – AKTUÁLNY ROK =================
@@ -795,3 +808,113 @@ const menu = document.getElementById('navbarResponsive');
 toggler.addEventListener('click', () => {
   menu.classList.toggle('show-animated');
 });
+
+// ======================================================
+// === ZOBRAZENIE sideNav + weatherFloating podľa zón ===
+// ======================================================
+
+function updateFloatingVisibility() {
+  const sideNav = document.getElementById("sideNav");
+  const weather = document.getElementById("weatherFloating");
+
+  // Bezpečnostná kontrola
+  if (!sideNav || !weather) return;
+
+  // Zobrazujeme len na desktopoch (>=1200px)
+  if (window.innerWidth < 1200) {
+    sideNav.classList.remove("visible");
+    weather.classList.remove("visible");
+    document.body.classList.remove("invert-floating");
+    return;
+  }
+
+  const sections = document.querySelectorAll("section, header");
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+
+  const OFFSET = 10 * 16; // 10rem (pri root 16px)
+
+  let shouldShow = false;
+  let inContact = false;
+
+  // 1) Úvodná obrazovka + 10rem
+  if (scrollY <= windowHeight + OFFSET) {
+    shouldShow = true;
+  }
+
+  // 2) Každá sekcia: zóna [top - 10rem, top]
+  sections.forEach(sec => {
+    const top = sec.offsetTop;
+
+    if (scrollY >= top - OFFSET && scrollY <= top) {
+      shouldShow = true;
+
+      // Kontakt má svetlé pozadie → invertujeme farby
+      if (sec.id === "contact") {
+        inContact = true;
+      }
+    }
+  });
+
+  // Prepnutie viditeľnosti
+  sideNav.classList.toggle("visible", shouldShow);
+  weather.classList.toggle("visible", shouldShow);
+
+  // Prepnutie farebnej schémy pre kontakt
+  document.body.classList.toggle("invert-floating", inContact);
+}
+
+// SCROLL
+document.addEventListener("scroll", updateFloatingVisibility);
+
+// RESIZE
+window.addEventListener("resize", updateFloatingVisibility);
+
+// LOAD
+window.addEventListener("load", () => {
+  requestAnimationFrame(updateFloatingVisibility);
+});
+
+// KLIK NA ODKAZ (aby sa zóna prepočítala po skoku)
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", () => {
+    setTimeout(() => {
+      document.body.offsetHeight; // forced reflow
+      updateFloatingVisibility();
+    }, 50);
+  });
+});
+
+// ======================================================
+// === ŽIVÝ DÁTUM + ČAS NAD SIDE NAVBAROM ===============
+// ======================================================
+
+function updateSideNavClock() {
+  const box = document.getElementById("sideNavTime");
+  if (!box) return;
+
+  const dateEl = box.querySelector(".date");
+  const timeEl = box.querySelector(".time");
+
+  const now = new Date();
+
+  const dateStr = now.toLocaleDateString("sk-SK", {
+    weekday: "long",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
+
+  const timeStr = now.toLocaleTimeString("sk-SK", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
+  dateEl.textContent = dateStr;
+  timeEl.textContent = timeStr;
+}
+
+// aktualizácia každú sekundu
+setInterval(updateSideNavClock, 1000);
+updateSideNavClock();

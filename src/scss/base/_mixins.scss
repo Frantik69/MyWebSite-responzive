@@ -122,6 +122,13 @@
 // ===============================================
 
 /* BREAKPOINTY – univerzálne použiteľné */
+
+@mixin desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
 @mixin desktop-down {
   @media (max-width: 1200px) {
     @content;

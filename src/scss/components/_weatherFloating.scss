@@ -1,0 +1,90 @@
+@use "../base/variables" as *;
+@use "../base/index" as base;
+@use "../base/mixins" as *;
+
+/* ===============================================
+   weatherFloating – samostatný prvok počasia
+   =============================================== */
+
+#weatherFloating {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  @include desktop {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  position: fixed;
+  right: 5rem;   /* presne 5rem od pravého okraja */
+  top: 6rem;     /* môžeš upraviť podľa potreby */
+  z-index: 1000;
+
+  @include flex-column;
+  align-items: flex-end;
+  text-align: right;
+
+  gap: 0.3rem;
+  text-decoration: none;
+
+  color: base.$light;
+
+  /* jemné škálovanie podľa výšky displeja */
+  font-size: clamp(0.8rem, 1.2vh, 1.2rem);
+
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
+}
+
+#weatherFloating .weather-row {
+  @include flex-row-center;
+  gap: clamp(0.3rem, 1vw, 0.8rem);
+}
+
+#weatherFloating .weather-icon {
+  width: clamp(48px, 5vw, 80px);
+  height: auto;
+  animation: weather-sway 5s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+
+#weatherFloating .weather-temp {
+  font-size: clamp(1.2rem, 2.5vw, 3rem);
+  font-weight: 400;
+}
+
+#weatherFloating .weather-city {
+  font-size: clamp(0.7rem, 1vw, 1.2rem);
+  opacity: 0.9;
+}
+
+/* animácia ikonky */
+@keyframes weather-sway {
+  0%   { transform: rotate(5deg); }
+  25%  { transform: rotate(5deg); }
+  50%  { transform: rotate(5deg); }
+  75%  { transform: rotate(-5deg); }
+  100% { transform: rotate(5deg); }
+}
+
+body.invert-floating #weatherFloating {
+  color: black;
+  text-shadow: none;
+}
+
+/* 🔒 Ikonka počasia sa NESMIE meniť pri invert-floating */
+body.invert-floating #weatherFloating .weather-icon {
+  filter: none;        /* zachová pôvodný vzhľad */
+  color: inherit;      /* alebo explicitne: color: base.$light; ak je SVG viazané na currentColor */
+}
+
+

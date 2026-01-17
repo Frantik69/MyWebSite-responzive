@@ -6,8 +6,12 @@
 // ===============================================
 
 html {
-  scroll-padding-top: $navbar-height;
   font-size: 100%;
+}
+
+header[id],
+section[id] {
+  scroll-margin-top: $navbar-height; // 4rem
 }
 
 body {

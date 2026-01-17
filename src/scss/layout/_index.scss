@@ -1,4 +1,21 @@
 @forward "navbar";
+@forward "side-navbar";
 @forward "footer";
 @forward "grid";
 @forward "grid-form";
+
+/* ============================================
+   INVERT MODE – len v sekcii kontakt
+   ============================================ */
+
+body.invert-floating {
+  #sideNav li a,
+  #weatherFloating {
+    color: black !important;
+    text-shadow: none !important;
+  }
+
+  #weatherFloating .weather-icon {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
