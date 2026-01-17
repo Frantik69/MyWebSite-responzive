@@ -26,9 +26,9 @@
   &.visible { opacity: 1; pointer-events: auto; }
 
   /* GRID: top offset → menu → bottom offset */
-  grid-template-rows: 0rem 1fr 23rem;
+  grid-template-rows: 6rem 1fr 25rem;
 
-  padding-top: 11.2rem;
+  padding-top: 6.5rem;
   padding-bottom: 5rem;
 
   justify-items: center;

@@ -2,7 +2,7 @@
 // ========= TRANSLATIONS (SK, EN, DE) ==================
 // ======================================================
 
-const translations = {
+export const translations = {
   sk: {
     aboutInfo: "Niečo o mne",
     aboutInfo1:"Som freelance programátor a webový dizajnér, ktorý sa špecializuje na tvorbu moderných, responzívnych a vizuálne precíznych webových stránok. Každý projekt beriem ako jedinečnú príležitosť ukázať spojenie technickej presnosti a estetického cítenia.\n<br> Moje zručnosti zahŕňajú:</br> \n<span style='color:#3a8a8b'><b>- Pixel-perfect web design</b></span> - každý detail je presne tam, kde má byť. <br><span style='color:#3a8a8b'><b>- UI/UX optimalizáciu</b></span> - aby sa návštevníci cítili prirodzene a pohodlne.</br><span style='color:#3a8a8b'><b>- Modulárnu architektúru CSS a Bootstrap</b></span> - čistý, udržiavateľný kód, ktorý sa dá ľahko rozširovať.",
@@ -80,6 +80,7 @@ const translations = {
     motto: "František Dupaľ",
     mottoText: "“Dizajn s dušou, kód s presnosťou.”",
     MySQL: "MySQL (certifikát)",
+    nameday: "Meniny má:",
     no: "Nie",
     noInfo: "Kliknutim zrušíte presmerovanie.",
     OOP: "Objektovo-orientované programovanie v Jave (certifikát)",
@@ -216,6 +217,7 @@ const translations = {
     motto: "František Dupaľ",
     mottoText: "“Design with soul, code with precision.”",
     MySQL: "MySQL (Certificate)",
+    nameday: "Name day is:",
     no: "No",
     noInfo: "Click to cancel the redirection.",
     OOP: "Object-Oriented Programming in Java (Certificate)",
@@ -351,6 +353,7 @@ const translations = {
     motto: "František Dupaľ",
     mottoText: "„Mit Seele designen, mit Präzision programmieren.“",
     MySQL: "MySQL (Zertifikat)",
+    nameday: "Feiert heute Namenstag:",
     no: "Nein",
     noInfo: "Klicken, um die Weiterleitung abzubrechen.",
     OOP: "Objektorientierte Programmierung in Java (Zertifikat)",

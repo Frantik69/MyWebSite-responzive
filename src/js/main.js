@@ -1,4 +1,25 @@
 import '../scss/main.scss';
+import { SK_NAMEDAYS, DE_NAMEDAYS, EN_NAMEDAYS } from "./meniny.js";
+import { translations } from "./translations.js";
+
+// ======================================================
+// ============= PREPÍNAČ PRE KALENDÁRE =================
+// ======================================================
+
+const NAMEDAYS = {
+  sk: SK_NAMEDAYS,
+  de: DE_NAMEDAYS,
+  en: EN_NAMEDAYS
+};
+
+function getTodayNameday(lang) {
+  const now = new Date();
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const key = `${mm}-${dd}`;
+
+  return NAMEDAYS[lang]?.[key] || "";
+}
 
 // ======================================================
 // === JAZYK & PREKLAD ==================================
@@ -898,26 +919,30 @@ function updateSideNavClock() {
   const namedayEl = box.querySelector(".nameday");
 
   const now = new Date();
+  const lang = localStorage.getItem("lang") || "sk";
 
-  const dateStr = now.toLocaleDateString("sk-SK", {
-    weekday: "short",
+  const dateStr = now.toLocaleDateString(lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US", {
+    weekday: "long",
     year: "numeric",
     month: "2-digit",
     day: "2-digit"
   });
 
-  const timeStr = now.toLocaleTimeString("sk-SK", {
+  const timeStr = now.toLocaleTimeString(lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit"
   });
 
-  const nameday = getTodayNameday();
+  const nameday = getTodayNameday(lang);
+  const t = translations[lang] || translations.sk;
 
   dateEl.textContent = dateStr;
-  namedayEl.textContent = nameday ? `Meniny má: ${nameday}` : "";
+  namedayEl.textContent = nameday ? `${t.nameday} ${nameday}` : "";
   timeEl.textContent = timeStr;
+
 }
 
 setInterval(updateSideNavClock, 1000);
 updateSideNavClock();
+
