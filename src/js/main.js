@@ -1055,35 +1055,63 @@ document.addEventListener("DOMContentLoaded", () => {
   const certTrack = document.getElementById("certTrack");
   if (!certTrack) return;
 
-  // Zoznam certifikátov – automaticky
   const certificateFiles = [
-    "cert1.png",
-    "cert2.png",
-    "cert3.png",
-    "cert4.png",
-    "cert5.png",
-    "cert6.png"
-    // pridaj ďalšie podľa potreby
+    "Certificate_Java_Basic.png",
+    "Certifikat_Webove_stranky_krok_za_krokom.png",
+    "skillmea-certifikat-java-pre-junior-programatorov.png",
+    "skillmea-certifikat-java-pre-pokrocilych.png",
+    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
   ];
 
-  certificateFiles.forEach(file => {
-    const img = document.createElement("img");
-    img.src = `src/assets/certificates/${file}`;
-    img.alt = "Certificate";
-    certTrack.appendChild(img);
-  });
+  // Vloženie obrázkov
+  function render() {
+    certTrack.innerHTML = "";
+    certificateFiles.forEach(file => {
+      const img = document.createElement("img");
+      img.src = `src/assets/certificates/${file}`;
+      img.alt = file;
 
-  // Posúvanie
-  let offset = 0;
-  const step = 150; // px posunu
+      img.addEventListener("click", () => {
+        const modal = document.getElementById('pdfModal');
+        const modalImg = document.getElementById('pdfImage');
+        modalImg.src = `src/assets/certificates/${file}`;
+        modal.style.display = 'flex';
+        adjustModalPosition();
+      });
 
-  document.querySelector(".cert-arrow.left").addEventListener("click", () => {
-    offset += step;
-    certTrack.style.transform = `translateX(${offset}px)`;
-  });
+      certTrack.appendChild(img);
+    });
+  }
 
-  document.querySelector(".cert-arrow.right").addEventListener("click", () => {
-    offset -= step;
-    certTrack.style.transform = `translateX(${offset}px)`;
-  });
+  render();
+
+  // Zistenie šírky jedného certifikátu
+  function getItemWidth() {
+    const first = certTrack.querySelector("img");
+    return first ? first.offsetWidth + 16 : 120; // 16 = gap
+  }
+
+  function slide() {
+    const itemWidth = getItemWidth();
+
+    // 1) animovaný posun
+    certTrack.style.transition = "transform 0.6s ease";
+    certTrack.style.transform = `translateX(-${itemWidth}px)`;
+
+    // 2) po animácii presunieme prvý prvok na koniec
+    setTimeout(() => {
+      const first = certificateFiles.shift();
+      certificateFiles.push(first);
+
+      // 3) re-render
+      render();
+
+      // 4) reset transform BEZ animácie
+      certTrack.style.transition = "none";
+      certTrack.style.transform = "translateX(0)";
+    }, 600);
+  }
+
+  // Automatický posun každé 3 sekundy
+  setInterval(slide, 3000);
 });
