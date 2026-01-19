@@ -7,6 +7,7 @@
 // ===============================================
 
 #home {
+  position: relative;
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   max-height: fit-content;
   @include flex-row-center;
@@ -218,4 +219,67 @@
   #home .img-fluid {
     max-width: 100%;
   }
+}
+
+/* ===============================================
+   CERTIFIKÁTY – FILMOVÝ PÁS
+   =============================================== */
+
+#home .certificates-carousel {
+  position: absolute;
+  bottom: 3rem;
+  left: 40%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 30rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  z-index: 20;
+}
+
+#home .cert-track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.2);
+}
+
+#home .cert-track {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  transition: transform 0.4s ease;
+}
+
+#home .cert-track img {
+  height: 90px;
+  width: auto;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+}
+
+#home .cert-track img:hover {
+  transform: scale(1.1);
+}
+
+/* Šípky */
+#home .cert-arrow {
+  background: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#home .cert-arrow:hover {
+  background: rgba(0,0,0,0.7);
 }

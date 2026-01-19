@@ -2,7 +2,7 @@
 // === MENINY (SK) ======================================
 // ======================================================
 
-export const SK_NAMEDAYS = {       //TODO - meniny pre EN/DE, Sviatky nevypisovať meniny ma:...
+export const SK_NAMEDAYS = {
   "01-01": "Nový rok, Deň vzniku SR",
   "01-02": "Alexandra",
   "01-03": "Daniela",
@@ -1141,3 +1141,39 @@ export const EN_NAMEDAYS = {
   "12-30": "Eugenia",
   "12-31": "Sylvester"
 };
+
+export const SK_HOLIDAYS = {
+  "01-01": "Nový rok, Deň vzniku SR",
+  "01-06": "Zjavenie Pána (Traja králi)",
+  "05-01": "Sviatok práce",
+  "05-08": "Deň víťazstva nad fašizmom",
+  "07-05": "Sviatok sv. Cyrila a Metoda",
+  "08-29": "Výročie SNP",
+  "09-01": "Deň Ústavy SR",
+  "09-15": "Sedembolestná Panna Mária",
+  "11-01": "Sviatok všetkých svätých",
+  "11-17": "Deň boja za slobodu a demokraciu",
+  "12-24": "Štedrý deň",
+  "12-25": "Prvý sviatok vianočný",
+  "12-26": "Druhý sviatok vianočný"
+};
+
+export const EN_HOLIDAYS = {
+  "01-01": "New Year’s Day",
+  "07-04": "Independence Day (USA)",
+  "11-11": "Veterans Day",
+  "12-24": "Christmas Eve",
+  "12-25": "Christmas Day",
+  "12-26": "Boxing Day"
+};
+
+
+export const DE_HOLIDAYS = {
+  "01-01": "Neujahr",
+  "05-01": "Tag der Arbeit",
+  "10-03": "Tag der Deutschen Einheit",
+  "12-24": "Heiliger Abend",
+  "12-25": "Erster Weihnachtstag",
+  "12-26": "Zweiter Weihnachtstag"
+};
+

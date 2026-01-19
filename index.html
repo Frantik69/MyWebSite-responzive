@@ -127,32 +127,58 @@
     </nav>
     <!-- BOČNÉ MENU -->
     <nav id="sideNav" class="side-nav">
-      <div id="sideNavTime" class="side-nav-time">
-        <span class="date"></span>
-        <span class="nameday" data-translate="nameday"></span>
-        <span class="time"></span>
+      <div class="sideNav-center">
+        <div class="sideNav-content">
+          <div id="sideNavTime" class="side-nav-time">
+            <span class="time"></span>
+            <hr class="side-nav-divider">
+            <span class="date"></span>
+            <span class="nameday" data-translate="nameday"></span>
+          </div>
+          <hr class="side-nav-divider">
+          <ul>
+            <li class="menu-item" data-translate-info="homeInfo">
+              <a href="#home">
+                <i class="fas fa-home menu-icon"></i>
+                <span data-translate="home"></span>
+              </a>
+            </li>
+            <li class="menu-item" data-translate-info="portfolioInfo">
+              <a href="#portfolio">
+                <i class="fas fa-briefcase menu-icon"></i>
+                <span data-translate="portfolio"></span>
+              </a>
+            </li>
+            <li class="menu-item" data-translate-info="skillsInfo">
+              <a href="#skills">
+                <i class="fas fa-code menu-icon"></i>
+                <span data-translate="subtitleSkills"></span>
+              </a>
+            </li>
+            <li class="menu-item" data-translate-info="aboutInfo">
+              <a href="#about">
+                <i class="fas fa-user menu-icon"></i>
+                <span data-translate="aboutMe"></span>
+              </a>
+            </li>
+            <li class="menu-item" data-translate-info="contactInfoInfo">
+              <a href="#contact">
+                <i class="fas fa-envelope menu-icon"></i>
+                <span data-translate="contact"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <hr class="side-nav-divider">
-
-      <ul>
-        <li><a href="#home" data-translate="home"><i class="fas fa-home menu-icon"></i>Home</a></li>
-        <li><a href="#portfolio" data-translate="portfolio"><i class="fas fa-briefcase menu-icon"></i>Portfolio</a></li>
-        <li><a href="#skills" data-translate="subtitleSkills"><i class="fas fa-code menu-icon"></i>Skills</a></li>
-        <li><a href="#about" data-translate="aboutMe"><i class="fas fa-user menu-icon"></i>About</a></li>
-        <li><a href="#contact" data-translate="contact"><i class="fas fa-envelope menu-icon"></i>Kontakt</a></li>
-      </ul>
     </nav>
-
     <!-- POČASIE – mimo navbaru -->
-    <a id="weatherFloating" class="weatherNav" href="https://openweathermap.org/"target="_blank">
+    <a id="weatherFloating" class="weatherNav" data-translate-info="weatherInfo" href="https://openweathermap.org/"target="_blank" rel="noopener noreferrer">
       <div class="weather-row">
-        <img class="weather-icon" alt="Icona Počasia">
+        <img class="weather-icon" alt="Ikona počasia">
         <span class="weather-temp"></span>
       </div>
       <span class="weather-city"></span>
     </a>
-
     <!-- MODAL PRE POČASIE -->
     <div id="weatherModal" class="modal-overlay" role="dialog" aria-modal="true">
       <div class="modal-bubble">
@@ -179,6 +205,15 @@
             </div>
             <!-- MOTTO -->
             <p data-translate="mottoText" class="font-weight-light mb-0 slide-in-right">My motto</p>
+            <div class="certificates-carousel">
+              <button class="cert-arrow left" type="button" aria-label="Posun doľava"> <i class="fas fa-chevron-left"></i></button>
+              <div class="cert-track-wrapper">
+                <div class="cert-track" id="certTrack">
+                  <!-- JS sem vloží certifikáty -->
+                </div>
+              </div>
+              <button class="cert-arrow right" type="button" aria-label="Posun doprava"> <i class="fas fa-chevron-right"></i> </button>
+            </div>
           </div>
           <!-- PRAVÁ STRANA: VYCENTROVANÝ OBRÁZOK -->
           <div class="col-lg-6 d-flex justify-content-center">

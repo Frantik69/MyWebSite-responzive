@@ -9,64 +9,122 @@
 #sideNav {
   display: none;
   position: fixed;
-  left: 3vw;
-  top: 0;
-  bottom: 0;
-  width: clamp(180px, 14vw, 260px);
+  left: 2.5vw;
+  top: $navbar-height;
+  bottom: $copyright-height;
+  width: clamp(180px, 13vw, 260px);
   z-index: 999;
   overflow: hidden;
 
   @include desktop {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
   }
 
-  &.visible { opacity: 1; pointer-events: auto; }
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 
-  /* GRID: top offset → menu → bottom offset */
-  grid-template-rows: 6rem 1fr 25rem;
-
-  padding-top: 6.5rem;
-  padding-bottom: 5rem;
-
-  justify-items: center;
-  align-items: start;
-
-  gap: clamp(1.5rem, 3vh, 3.5rem);
-
-  /* Dynamické škálovanie celého navbaru */
-  --scale: clamp(0.7, 1vh, 1);
+  --scale: 1;
   transform: scale(var(--scale));
-  transform-origin: top left;
+  transform-origin: center;
+
+  @media (max-height: 900px) { --scale: 0.95; }
+  @media (max-height: 800px) { --scale: 0.90; }
+  @media (max-height: 700px) { --scale: 0.85; }
+  @media (max-height: 600px) { --scale: 0.80; }
+  @media (max-height: 520px) { --scale: 0.75; }
+  @media (max-height: 460px) { --scale: 0.70; }
+}
+
+/* wrapper pre centrovanie */
+.sideNav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-block: auto;
+}
+
+/* obsah side-navu (čas + divider + menu) */
+.sideNav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  width: 100%;
 }
 
 /* ============================
-   MENU ICON – SVG tieň
+   DÁTUM + ČAS
    ============================ */
 
-#sideNav .menu-icon {
+#sideNavTime {
+  width: 100%;
+  text-align: right;
+  color: base.$light;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  letter-spacing: 0.1px;
+
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1em;
-  margin-right: auto;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
 }
 
-#sideNav .menu-icon svg {
-  width: 1em;
-  height: 1em;
-  display: block;
-
-  filter:
-    drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.6))
-    drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
+#sideNavTime .time {
+  font-size: clamp(1.2rem, 1.6vw, 2rem);
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
 }
 
-#sideNav li a:hover .menu-icon svg {
-  filter: none;
-  color: #000;
+#sideNavTime .nameday {
+  font-size: clamp(0.8rem, 1vw, 1rem);
+  opacity: 0.9;
+}
+
+#sideNavTime .nameday.holiday {
+  color: #e63946;
+  font-weight: 600;
+}
+
+body.invert-floating #sideNavTime {
+  color: black;
+  text-shadow: none;
+}
+
+body.invert-floating #sideNavTime .nameday {
+  color: black;
+}
+
+body.invert-floating #sideNavTime .nameday.holiday {
+  color: #c62828 !important;
+}
+
+/* ============================
+   ODDĚLOVAČ
+   ============================ */
+
+.side-nav-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid rgba(255,255,255,0.5);
+  margin: 0.5rem 0;
+}
+
+body.invert-floating .side-nav-divider {
+  border-top-color: rgba(0,0,0,0.9);
 }
 
 /* ============================
@@ -77,7 +135,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 80%;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -118,6 +176,9 @@
      0.5px -0.5px 0 black,
     -0.5px  0.5px 0 black,
      0.5px  0.5px 0 black;
+
+  position: relative;
+  overflow: hidden;
 }
 
 #sideNav li a:hover {
@@ -132,60 +193,86 @@
      0.25px  0.25px 0 black;
 }
 
-body.invert-floating #sideNav {
+body.invert-floating #sideNav li a {
   color: black;
-
-  li a {
-    color: black;
-    text-shadow: none;
-  }
+  text-shadow: none;
 }
-/* ===============================================
-   DÁTUM + ČAS NAD SIDE NAVBAROM
-   =============================================== */
 
-#sideNavTime {
-  width: 80%;
-  text-align: right;
-  color: base.$light;
-  font-size: clamp(0.8rem, 1vw, 1rem);
-  letter-spacing: 0.5px;
+/* ============================
+   MENU ICON – SVG tieň
+   ============================ */
 
+#sideNav .menu-icon {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-
-  text-shadow:
-    -0.5px -0.5px 0 black,
-     0.5px -0.5px 0 black,
-    -0.5px  0.5px 0 black,
-     0.5px  0.5px 0 black;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  margin-right: auto;
 }
 
-.side-nav-divider {
-  width: 80%;
-  border: none;
-  border-top: 2px solid rgba(255,255,255,0.3);
-  margin: 0;
+#sideNav .menu-icon svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+
+  filter:
+    drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.6))
+    drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
 }
 
-/* Kontakt – invertované farby */
-body.invert-floating #sideNavTime {
-  color: black;
-  text-shadow: none;
+#sideNav li a:hover .menu-icon svg {
+  filter: none;
+  color: #000;
 }
 
-body.invert-floating .side-nav-divider {
-  border-top-color: rgba(0,0,0,0.8);
+/* ============================
+   HOVER BUBBLE – SIDE NAVBAR
+   ============================ */
+
+#sideNav .hover-bubble {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(57, 57, 57, 0.3);
+  color: rgb(255, 255, 255);
+
+  border-radius: inherit;
+  z-index: 5;
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  /* nové vlastnosti */
+  overflow: hidden;       /* text sa schová mimo bubliny */
+  white-space: nowrap;    /* nezalamovať */
+  font-size: 0.9rem !important;      /* väčší text */
+  font-weight: 600;
 }
 
-#sideNavTime .nameday {
-  font-size: clamp(0.8rem, 1vw, 1rem);
-  opacity: 0.9;
+/* animovaný text vo vnútri bubliny */
+#sideNav .hover-bubble span {
+  display: inline-block;
+  padding-left: 100%;     /* text začne mimo bubliny */
+  animation: sideNavMarquee 6s linear infinite;
 }
 
-/* Kontakt – invertované farby */
-body.invert-floating #sideNavTime .nameday {
-  color: black;
-  text-shadow: none;
+/* zobrazenie bubliny */
+#sideNav a.show-bubble .hover-bubble {
+  opacity: 1;
+}
+
+/* invert mód */
+body.invert-floating #sideNav .hover-bubble {
+  background: rgba(255, 255, 255, 0.6);
+  color: rgb(0, 0, 0);
+}
+
+/* ANIMÁCIA – marquee efekt */
+@keyframes sideNavMarquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }

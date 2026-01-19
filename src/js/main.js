@@ -1,5 +1,6 @@
 import '../scss/main.scss';
 import { SK_NAMEDAYS, DE_NAMEDAYS, EN_NAMEDAYS } from "./meniny.js";
+import { SK_HOLIDAYS, EN_HOLIDAYS, DE_HOLIDAYS } from "./meniny.js";
 import { translations } from "./translations.js";
 
 // ======================================================
@@ -11,6 +12,13 @@ const NAMEDAYS = {
   de: DE_NAMEDAYS,
   en: EN_NAMEDAYS
 };
+
+const HOLIDAYS = {
+  sk: SK_HOLIDAYS,
+  en: EN_HOLIDAYS,
+  de: DE_HOLIDAYS
+};
+
 
 function getTodayNameday(lang) {
   const now = new Date();
@@ -67,9 +75,12 @@ function setLanguage(lang) {
 
   // Tooltipy
   document.querySelectorAll("[data-translate-info]").forEach(el => {
-    const key = el.getAttribute("data-translate-info");
-    el.setAttribute("data-tooltip", t[key]);
-  });
+  const key = el.getAttribute("data-translate-info");
+  const value = t[key];
+  if (value) {
+    el.setAttribute("data-tooltip", value);
+  }
+});
 
   // Sublist
   document.querySelectorAll("[data-translate-sublist]").forEach(el => {
@@ -227,23 +238,29 @@ document.addEventListener('DOMContentLoaded', INIT_NAVBAR);
 
 // === INIT_WEATHER_MODAL ===
 function INIT_WEATHER_MODAL() {
-  const weatherLink = document.getElementById("weatherNav");
+  const weatherLinks = document.querySelectorAll(".weatherNav"); // oba elementy
   const modal = document.getElementById("weatherModal");
   const confirmBtn = document.getElementById("confirmWeather");
   const cancelBtn = document.getElementById("cancelWeather");
 
-  if (!weatherLink || !modal) return;
+  if (!weatherLinks.length || !modal) return;
 
   modal.style.display = "none";
 
-  weatherLink.addEventListener("click", function(e) {
-    e.preventDefault();
-    modal.style.display = "flex";
+  weatherLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      modal.style.display = "flex";
+
+      // uložíme si URL, na ktorú sa má ísť po potvrdení
+      modal.dataset.targetUrl = link.href;
+    });
   });
 
   confirmBtn?.addEventListener("click", function() {
     modal.style.display = "none";
-    window.open(weatherLink.href, "_blank");
+    const url = modal.dataset.targetUrl;
+    if (url) window.open(url, "_blank");
   });
 
   cancelBtn?.addEventListener("click", function() {
@@ -252,6 +269,7 @@ function INIT_WEATHER_MODAL() {
 }
 
 document.addEventListener("DOMContentLoaded", INIT_WEATHER_MODAL);
+
 
 // ======================================================
 // ==---------------= MODAL PRE GITHUB ==================
@@ -358,7 +376,7 @@ function INIT_TOOLTIP_FOLLOW() {
     overlay.classList.remove('showing');
   }
 
-  const items = document.querySelectorAll('.menu-item, .dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .show-pdf, .aboutPreview, .contact-email, .portfolio-links a');
+  const items = document.querySelectorAll('.dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .show-pdf, .aboutPreview, .contact-email, .portfolio-links a, #weatherFloating');
   items.forEach(item => {
     item.addEventListener('mouseenter', e => showBubble(e.currentTarget));
     item.addEventListener('mousemove', positionOverlay);
@@ -374,16 +392,24 @@ function INIT_TOOLTIP_FOLLOW() {
 document.addEventListener("DOMContentLoaded", INIT_TOOLTIP_FOLLOW);
 
 // ======================================================
-// ============= NAVIGATION BUBBLE ======================
+// ============= NAVIGATION BUBBLE (MAIN NAV) ===========
 // ======================================================
 
-// === INIT_NAV_HOVER_BUBBLE ===
 function INIT_NAV_HOVER_BUBBLE() {
-  document.querySelectorAll('.nav-item.menu-item .nav-link').forEach(link => {
+  // IBA hlavné menu – odstránený sideNav selektor
+  const links = document.querySelectorAll('.nav-item.menu-item .nav-link');
+
+  links.forEach(link => {
     link.addEventListener('mouseenter', () => {
+      // filter pre top-right menu ostáva
       if (link.closest('#rightNav') || link.id === 'languageDropdown') return;
 
-      const infoKey = link.closest('.nav-item').getAttribute('data-translate-info');
+      const parent = link.closest('.nav-item, .menu-item');
+      if (!parent) return;
+
+      const infoKey = parent.getAttribute('data-translate-info');
+      if (!infoKey) return;
+
       const lang = localStorage.getItem("lang") || "sk";
       const t = translations[lang] || translations.sk;
       const text = t[infoKey] || infoKey;
@@ -420,6 +446,8 @@ function INIT_NAV_HOVER_BUBBLE() {
 }
 
 document.addEventListener("DOMContentLoaded", INIT_NAV_HOVER_BUBBLE);
+
+
 
 // ======================================================
 // =========== SCROLLSPY REFRESH PRI RESIZE =============
@@ -921,28 +949,141 @@ function updateSideNavClock() {
   const now = new Date();
   const lang = localStorage.getItem("lang") || "sk";
 
-  const dateStr = now.toLocaleDateString(lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  });
+  const mm = String(now.getMonth() + 1).padStart(2, "0");
+  const dd = String(now.getDate()).padStart(2, "0");
+  const key = `${mm}-${dd}`;
 
-  const timeStr = now.toLocaleTimeString(lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
-  });
+  const dateStr = now.toLocaleDateString(
+    lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US",
+    { weekday: "long", year: "numeric", month: "2-digit", day: "2-digit" }
+  );
+
+  const timeStr = now.toLocaleTimeString(
+    lang === "sk" ? "sk-SK" : lang === "de" ? "de-DE" : "en-US",
+    { hour: "2-digit", minute: "2-digit", second: "2-digit" }
+  );
 
   const nameday = getTodayNameday(lang);
+  const holiday = HOLIDAYS[lang]?.[key] || null;
   const t = translations[lang] || translations.sk;
 
-  dateEl.textContent = dateStr;
-  namedayEl.textContent = nameday ? `${t.nameday} ${nameday}` : "";
-  timeEl.textContent = timeStr;
+  // --- UPPERCASE weekday + čiarka len pre SK ---
+  const parts = dateStr.split(" ");
+  let weekday = parts[0].toUpperCase();
 
+  if (lang === "sk") {
+    weekday += ",";
+  }
+
+  // --- Zvyšok dátumu bez medzier ---
+  const rest = parts.slice(1).join("").replace(/\s+/g, "");
+
+  // --- Výsledný formát ---
+  const finalDate = `${weekday} ${rest}`;
+  dateEl.textContent = finalDate;
+
+  // --- Meniny / sviatok ---
+  if (holiday) {
+    namedayEl.textContent = holiday;
+    namedayEl.classList.add("holiday");
+  } else {
+    namedayEl.textContent = nameday ? `${t.nameday} ${nameday}` : "";
+    namedayEl.classList.remove("holiday");
+  }
+
+  timeEl.textContent = timeStr;
 }
 
 setInterval(updateSideNavClock, 1000);
 updateSideNavClock();
 
+// ======================================================
+// ================== SIDENAV BUBBLE ====================
+// ======================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sideNavLinks = document.querySelectorAll("#sideNav .menu-item > a");
+
+  sideNavLinks.forEach(link => {
+    let timer = null;
+
+    link.addEventListener("mouseenter", () => {
+      const parent = link.closest(".menu-item");
+      if (!parent) return;
+
+      const infoKey = parent.getAttribute("data-translate-info");
+      if (!infoKey) return;
+
+      const lang = localStorage.getItem("lang") || "sk";
+      const t = translations[lang] || translations.sk;
+      const text = t[infoKey] || infoKey;
+
+      // vytvorenie bubliny, ak ešte neexistuje
+      let bubble = link.querySelector(".hover-bubble");
+      if (!bubble) {
+        bubble = document.createElement("div");
+        bubble.className = "hover-bubble";
+        link.appendChild(bubble);
+      }
+
+      // vloženie textu do <span> pre animáciu
+      bubble.innerHTML = `<span>${text}</span>`;
+
+      // zobraziť bublinu
+      link.classList.add("show-bubble");
+
+      // reset starého timeru
+      if (timer) clearTimeout(timer);
+
+      // skryť po 10 sekundách
+      timer = setTimeout(() => {
+        link.classList.remove("show-bubble");
+      }, 3000);
+    });
+
+    link.addEventListener("mouseleave", () => {
+      link.classList.remove("show-bubble");
+    });
+  });
+});
+
+// ======================================================
+// =============== CERTIFICATE CAROUSEL =================
+// ======================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const certTrack = document.getElementById("certTrack");
+  if (!certTrack) return;
+
+  // Zoznam certifikátov – automaticky
+  const certificateFiles = [
+    "cert1.png",
+    "cert2.png",
+    "cert3.png",
+    "cert4.png",
+    "cert5.png",
+    "cert6.png"
+    // pridaj ďalšie podľa potreby
+  ];
+
+  certificateFiles.forEach(file => {
+    const img = document.createElement("img");
+    img.src = `src/assets/certificates/${file}`;
+    img.alt = "Certificate";
+    certTrack.appendChild(img);
+  });
+
+  // Posúvanie
+  let offset = 0;
+  const step = 150; // px posunu
+
+  document.querySelector(".cert-arrow.left").addEventListener("click", () => {
+    offset += step;
+    certTrack.style.transform = `translateX(${offset}px)`;
+  });
+
+  document.querySelector(".cert-arrow.right").addEventListener("click", () => {
+    offset -= step;
+    certTrack.style.transform = `translateX(${offset}px)`;
+  });
+});

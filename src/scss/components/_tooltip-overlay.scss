@@ -53,28 +53,6 @@
   border: 1px solid rgba(0,0,0,0.1);
 }
 
-/* STATICKÝ TOOLTIP NAD PRVKOM 
-.tooltip-text {
-  visibility: hidden;
-  width: 220px;
-  background-color: #000;
-  color: #fff;
-  text-align: center;
-  border-radius: $radius-base;
-  padding: 0.5rem;
-  position: absolute;
-  bottom: 125%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-  font-size: 0.8rem;
-}
-
-/* ZOBRAZENIE TOOLTIPU PRI HOVER
-.lang-flag:hover .tooltip-text {
-  visibility: visible;
-}*/
-
 // ===============================================
 // RESPONSIVE TOOLTIP UTILITIES – VOLITEĽNÉ
 // ===============================================
