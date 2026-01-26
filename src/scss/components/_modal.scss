@@ -85,6 +85,28 @@
   background: rgba(0,0,0,0.9);
 }
 
+.pdf-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  background: rgba(58, 90, 123, 0.4);
+}
+
+.pdf-arrow.left { left: 0.5rem; }
+.pdf-arrow.right { right: 0.5rem; }
+
+.pdf-arrow:hover {
+  color: #3a8a8b;
+  background: rgba(58, 90, 123, 0.5);
+}
+
+
 /* TEXTOVÉ TIEŇOVANIE PRE POTVRDZOVACIE TLAČIDLÁ */
 #confirmWeather,
 #cancelWeather,

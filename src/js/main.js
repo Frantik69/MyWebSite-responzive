@@ -376,13 +376,32 @@ function INIT_TOOLTIP_FOLLOW() {
     overlay.classList.remove('showing');
   }
 
-  const items = document.querySelectorAll('.dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .show-pdf, .aboutPreview, .contact-email, .portfolio-links a, #weatherFloating');
+  const items = document.querySelectorAll(
+    '.dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .aboutPreview, .contact-email, .portfolio-links a, #weatherFloating'
+  );
+
   items.forEach(item => {
     item.addEventListener('mouseenter', e => showBubble(e.currentTarget));
     item.addEventListener('mousemove', positionOverlay);
     item.addEventListener('click', onLeave);
     item.addEventListener('mouseleave', onLeave);
   });
+
+  //delegácia pre dynamické prvky (vrátane certifikátov)
+  document.addEventListener('mouseenter', e => {
+    const target = e.target.closest('[data-translate-info]');
+    if (!target) return;
+    showBubble(target);
+  }, true);
+
+  document.addEventListener('mousemove', e => {
+    positionOverlay(e);
+  }, true);
+
+  document.addEventListener('mouseleave', e => {
+    if (!e.relatedTarget) onLeave();
+  }, true);
+
 
   window.addEventListener('mouseout', (e) => {
     if (!e.relatedTarget) onLeave();
@@ -751,35 +770,87 @@ document.addEventListener("DOMContentLoaded", INIT_FOOTER_YEAR);
 
 // === INIT_PDF_MODAL ===
 function INIT_PDF_MODAL() {
-  document.querySelectorAll('.show-pdf').forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
+  const modal = document.getElementById('pdfModal');
+  const img = document.getElementById('pdfImage');
+  const closeBtn = document.querySelector('.pdf-close');
+  const arrowLeft = document.querySelector('.pdf-arrow.left');
+  const arrowRight = document.querySelector('.pdf-arrow.right');
 
-      const imgSrc = this.getAttribute('data-pdf');
-      const modal = document.getElementById('pdfModal');
-      const img = document.getElementById('pdfImage');
+  if (!modal || !img || !closeBtn || !arrowLeft || !arrowRight) return;
 
-      img.src = imgSrc;
-      modal.style.display = 'flex';
+  // Zoznam certifikátov – rovnaký ako v carouseli
+  const certificateFiles = [
+    "Certificate_Java_Basic.png",
+    "Certifikat_Webove_stranky_krok_za_krokom.png",
+    "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png",
+    "Certifikat_MySQL_databazy_krok_za_krokom.png",
+    "Certifikat_Zakladne_konstrukcie_jazyka_Java.png",
+    "skillmea-certifikat-java-pre-junior-programatorov.png",
+    "skillmea-certifikat-java-pre-pokrocilych.png",
+    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
+  ];
 
-      adjustModalPosition();
-    });
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const file = certificateFiles[index];
+    img.src = `src/assets/certificates/${file}`;
+  }
+
+  // Delegovaný click – otvorenie modalu
+  document.addEventListener('click', e => {
+    const target = e.target.closest('.show-pdf');
+    if (!target) return;
+
+    e.preventDefault();
+
+    const imgSrc = target.getAttribute('data-pdf');
+    if (!imgSrc) return;
+
+    // Nájdeme index obrázka
+    const fileName = imgSrc.split('/').pop();
+    currentIndex = certificateFiles.indexOf(fileName);
+
+    showImage(currentIndex);
+
+    modal.style.display = 'flex';
+    if (typeof stopAutoSlide === "function") stopAutoSlide();
+    adjustModalPosition();
   });
 
-  document.querySelector('.pdf-close').addEventListener('click', () => {
-    document.getElementById('pdfModal').style.display = 'none';
-    document.getElementById('pdfImage').src = "";
+  // Šípka vľavo
+  arrowLeft.addEventListener('click', e => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + certificateFiles.length) % certificateFiles.length;
+    showImage(currentIndex);
   });
 
-  document.getElementById('pdfModal').addEventListener('click', function (e) {
-    if (e.target === this) {
-      this.style.display = 'none';
-      document.getElementById('pdfImage').src = "";
+  // Šípka vpravo
+  arrowRight.addEventListener('click', e => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % certificateFiles.length;
+    showImage(currentIndex);
+  });
+
+  // Zatvorenie modalu
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    img.src = "";
+    if (typeof restartAutoSlide === "function") restartAutoSlide();
+  });
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      img.src = "";
+      if (typeof restartAutoSlide === "function") restartAutoSlide();
     }
   });
 }
 
 document.addEventListener("DOMContentLoaded", INIT_PDF_MODAL);
+
+
 
 // === ADJUST_MODAL_POSITION ===
 function adjustModalPosition() {
@@ -1046,72 +1117,165 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
 // ======================================================
 // =============== CERTIFICATE CAROUSEL =================
 // ======================================================
 
-document.addEventListener("DOMContentLoaded", () => {
-  const certTrack = document.getElementById("certTrack");
+// Globálne premenne – spoločné pre carousel aj modal
+let autoSlide = null;
+let restartTimeout = null;
+let certTrack = null;
+
+// Zoznam certifikátov – zdieľaný medzi carouselom a modalom
+const certificateFiles = [
+  "Certificate_Java_Basic.png",
+  "Certifikat_Webove_stranky_krok_za_krokom.png",
+  "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png",
+  "Certifikat_MySQL_databazy_krok_za_krokom.png",
+  "Certifikat_Zakladne_konstrukcie_jazyka_Java.png",
+  "skillmea-certifikat-java-pre-junior-programatorov.png",
+  "skillmea-certifikat-java-pre-pokrocilych.png",
+  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
+];
+
+// ============================
+// POMOCNÉ FUNKCIE
+// ============================
+
+function isModalOpen() {
+  const modal = document.getElementById("pdfModal");
+  return modal && modal.style.display === "flex";
+}
+
+function getItemWidth() {
+  if (!certTrack) return 120;
+  const first = certTrack.querySelector("img");
+  return first ? first.offsetWidth + 16 : 120; // 16 = gap
+}
+
+function renderCertificates() {
   if (!certTrack) return;
 
-  const certificateFiles = [
-    "Certificate_Java_Basic.png",
-    "Certifikat_Webove_stranky_krok_za_krokom.png",
-    "skillmea-certifikat-java-pre-junior-programatorov.png",
-    "skillmea-certifikat-java-pre-pokrocilych.png",
-    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
-  ];
+  certTrack.innerHTML = "";
+  certificateFiles.forEach(file => {
+    const img = document.createElement("img");
+    const src = `src/assets/certificates/${file}`;
+    const key = file.replace(/\.[^.]+$/, "");
 
-  // Vloženie obrázkov
-  function render() {
-    certTrack.innerHTML = "";
-    certificateFiles.forEach(file => {
-      const img = document.createElement("img");
-      img.src = `src/assets/certificates/${file}`;
-      img.alt = file;
+    img.src = src;
+    img.alt = key;
 
-      img.addEventListener("click", () => {
-        const modal = document.getElementById('pdfModal');
-        const modalImg = document.getElementById('pdfImage');
-        modalImg.src = `src/assets/certificates/${file}`;
-        modal.style.display = 'flex';
-        adjustModalPosition();
-      });
+    // pre PDF modal
+    img.classList.add("show-pdf");
+    img.setAttribute("data-pdf", src);
 
-      certTrack.appendChild(img);
+    // pre tooltip
+    img.setAttribute("data-translate-info", key);
+
+    certTrack.appendChild(img);
+  });
+}
+
+// ============================
+// SLIDE FUNKCIE (globálne)
+// ============================
+
+function manualSlide(direction) {
+  if (!certTrack) return;
+
+  const itemWidth = getItemWidth();
+
+  certTrack.style.transition = "transform 0.6s ease";
+  certTrack.style.transform =
+    direction === "left"
+      ? `translateX(${itemWidth}px)`
+      : `translateX(-${itemWidth}px)`;
+
+  certTrack.addEventListener(
+    "transitionend",
+    () => {
+      if (direction === "left") {
+        certificateFiles.unshift(certificateFiles.pop());
+      } else {
+        certificateFiles.push(certificateFiles.shift());
+      }
+
+      renderCertificates();
+
+      certTrack.style.transition = "none";
+      certTrack.style.transform = "translateX(0)";
+      void certTrack.offsetWidth; // force reflow
+    },
+    { once: true }
+  );
+}
+
+function slide() {
+  if (isModalOpen()) return;
+  manualSlide("right");
+}
+
+// ============================
+// OVLÁDANIE AUTO SLIDE
+// ============================
+
+function stopAutoSlide() {
+  if (autoSlide !== null) {
+    clearInterval(autoSlide);
+    autoSlide = null;
+  }
+  if (restartTimeout !== null) {
+    clearTimeout(restartTimeout);
+    restartTimeout = null;
+  }
+}
+
+function restartAutoSlide() {
+  if (restartTimeout !== null) {
+    clearTimeout(restartTimeout);
+  }
+  restartTimeout = setTimeout(() => {
+    autoSlide = setInterval(slide, 3000);
+  }, 3000);
+}
+
+// ============================
+// INIT CAROUSEL
+// ============================
+
+document.addEventListener("DOMContentLoaded", () => {
+  certTrack = document.getElementById("certTrack");
+  if (!certTrack) return;
+
+  const btnLeft = document.querySelector("#home .cert-arrow.left");
+  const btnRight = document.querySelector("#home .cert-arrow.right");
+  const carouselWrapper = document.querySelector("#home .cert-track-wrapper");
+
+  renderCertificates();
+
+  // Hover pause
+  if (carouselWrapper) {
+    carouselWrapper.addEventListener("mouseenter", stopAutoSlide);
+    carouselWrapper.addEventListener("mouseleave", restartAutoSlide);
+  }
+
+  // Šípky
+  if (btnLeft) {
+    btnLeft.addEventListener("click", () => {
+      stopAutoSlide();
+      manualSlide("left");
+      restartAutoSlide();
     });
   }
 
-  render();
-
-  // Zistenie šírky jedného certifikátu
-  function getItemWidth() {
-    const first = certTrack.querySelector("img");
-    return first ? first.offsetWidth + 16 : 120; // 16 = gap
+  if (btnRight) {
+    btnRight.addEventListener("click", () => {
+      stopAutoSlide();
+      manualSlide("right");
+      restartAutoSlide();
+    });
   }
 
-  function slide() {
-    const itemWidth = getItemWidth();
-
-    // 1) animovaný posun
-    certTrack.style.transition = "transform 0.6s ease";
-    certTrack.style.transform = `translateX(-${itemWidth}px)`;
-
-    // 2) po animácii presunieme prvý prvok na koniec
-    setTimeout(() => {
-      const first = certificateFiles.shift();
-      certificateFiles.push(first);
-
-      // 3) re-render
-      render();
-
-      // 4) reset transform BEZ animácie
-      certTrack.style.transition = "none";
-      certTrack.style.transform = "translateX(0)";
-    }, 600);
-  }
-
-  // Automatický posun každé 3 sekundy
-  setInterval(slide, 3000);
+  // Spusti autoSlide po inicializácii
+  autoSlide = setInterval(slide, 3000);
 });

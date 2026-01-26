@@ -361,8 +361,8 @@
 
   #navbarResponsive {
     @include gradient-bg-nav(base.$primary, base.$secondary);
-    max-height: calc(100vh - ($navbar-height + $copyright-height));
     max-height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100vh - ($navbar-height + $copyright-height));
     display: none;
   }
 
