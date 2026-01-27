@@ -1,4 +1,15 @@
 import '../scss/main.scss';
+import flagSK from "../assets/img/flags/sk.png";
+import flagEN from "../assets/img/flags/uk.png";
+import flagDE from "../assets/img/flags/de.png";
+import c1 from "../assets/certificates/Certificate_Java_Basic.png";
+import c2 from "../assets/certificates/Certifikat_Webove_stranky_krok_za_krokom.png";
+import c3 from "../assets/certificates/Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png";
+import c4 from "../assets/certificates/Certifikat_MySQL_databazy_krok_za_krokom.png";
+import c5 from "../assets/certificates/Certifikat_Zakladne_konstrukcie_jazyka_Java.png";
+import c6 from "../assets/certificates/skillmea-certifikat-java-pre-junior-programatorov.png";
+import c7 from "../assets/certificates/skillmea-certifikat-java-pre-pokrocilych.png";
+import c8 from "../assets/certificates/skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png";
 import { SK_NAMEDAYS, DE_NAMEDAYS, EN_NAMEDAYS } from "./meniny.js";
 import { SK_HOLIDAYS, EN_HOLIDAYS, DE_HOLIDAYS } from "./meniny.js";
 import { translations } from "./translations.js";
@@ -94,9 +105,10 @@ function setLanguage(lang) {
 
   const selectedFlag = document.getElementById("selected-flag");
   if (selectedFlag) {
-    if (lang === "sk") selectedFlag.src = "src/assets/img/flags/sk.png";
-    else if (lang === "en") selectedFlag.src = "src/assets/img/flags/uk.png";
-    else if (lang === "de") selectedFlag.src = "src/assets/img/flags/de.png";
+    if (lang === "sk") selectedFlag.src = flagSK;
+    else if (lang === "en") selectedFlag.src = flagEN;
+    else if (lang === "de") selectedFlag.src = flagDE;
+
   }
 
   // Dynamický náhľad "O mne"
@@ -277,7 +289,7 @@ document.addEventListener("DOMContentLoaded", INIT_WEATHER_MODAL);
 
 // === INIT_GITHUB_MODAL ===
 function INIT_GITHUB_MODAL() {
-  const githubLink = document.querySelector(".portfolio-links a"); // ✔️ správny element
+  const githubLink = document.querySelector(".portfolio-links a");
   const modal = document.getElementById("GitHubModal");
   const confirmBtn = document.getElementById("confirmGitHub");
   const cancelBtn = document.getElementById("cancelGitHub");
@@ -293,7 +305,7 @@ function INIT_GITHUB_MODAL() {
 
   confirmBtn?.addEventListener("click", function() {
     modal.style.display = "none";
-    window.open(githubLink.href, "_blank"); // ✔️ otvorí GitHub
+    window.open(githubLink.href, "_blank");
   });
 
   cancelBtn?.addEventListener("click", function() {
@@ -778,23 +790,24 @@ function INIT_PDF_MODAL() {
 
   if (!modal || !img || !closeBtn || !arrowLeft || !arrowRight) return;
 
-  // Zoznam certifikátov – rovnaký ako v carouseli
-  const certificateFiles = [
-    "Certificate_Java_Basic.png",
-    "Certifikat_Webove_stranky_krok_za_krokom.png",
-    "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png",
-    "Certifikat_MySQL_databazy_krok_za_krokom.png",
-    "Certifikat_Zakladne_konstrukcie_jazyka_Java.png",
-    "skillmea-certifikat-java-pre-junior-programatorov.png",
-    "skillmea-certifikat-java-pre-pokrocilych.png",
-    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
-  ];
+  // Mapa názov súboru -> importovaný asset
+  const CERT_MAP = {
+    "Certificate_Java_Basic.png": c1,
+    "Certifikat_Webove_stranky_krok_za_krokom.png": c2,
+    "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png": c3,
+    "Certifikat_MySQL_databazy_krok_za_krokom.png": c4,
+    "Certifikat_Zakladne_konstrukcie_jazyka_Java.png": c5,
+    "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
+    "skillmea-certifikat-java-pre-pokrocilych.png": c7,
+    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8
+  };
 
+  const certificateFiles = Object.keys(CERT_MAP);
   let currentIndex = 0;
 
   function showImage(index) {
-    const file = certificateFiles[index];
-    img.src = `src/assets/certificates/${file}`;
+    const fileName = certificateFiles[index];
+    img.src = CERT_MAP[fileName];
   }
 
   // Delegovaný click – otvorenie modalu
@@ -804,12 +817,11 @@ function INIT_PDF_MODAL() {
 
     e.preventDefault();
 
-    const imgSrc = target.getAttribute('data-pdf');
-    if (!imgSrc) return;
+    const fileName = target.getAttribute('data-pdf');
+    if (!fileName) return;
 
-    // Nájdeme index obrázka
-    const fileName = imgSrc.split('/').pop();
     currentIndex = certificateFiles.indexOf(fileName);
+    if (currentIndex === -1) return;
 
     showImage(currentIndex);
 
@@ -832,13 +844,14 @@ function INIT_PDF_MODAL() {
     showImage(currentIndex);
   });
 
-  // Zatvorenie modalu
+  // Zatvorenie modalu – krížik
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
     img.src = "";
     if (typeof restartAutoSlide === "function") restartAutoSlide();
   });
 
+  // Zatvorenie modalu – klik mimo bubliny
   modal.addEventListener('click', e => {
     if (e.target === modal) {
       modal.style.display = 'none';
@@ -849,8 +862,6 @@ function INIT_PDF_MODAL() {
 }
 
 document.addEventListener("DOMContentLoaded", INIT_PDF_MODAL);
-
-
 
 // === ADJUST_MODAL_POSITION ===
 function adjustModalPosition() {
