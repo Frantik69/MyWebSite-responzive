@@ -858,7 +858,6 @@ function INIT_PDF_MODAL() {
   });
 }
 
-
 document.addEventListener("DOMContentLoaded", INIT_PDF_MODAL);
 
 // === ADJUST_MODAL_POSITION ===
