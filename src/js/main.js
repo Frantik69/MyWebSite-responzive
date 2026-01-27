@@ -1125,6 +1125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 // ======================================================
 // =============== CERTIFICATE CAROUSEL =================
 // ======================================================
@@ -1134,17 +1135,20 @@ let autoSlide = null;
 let restartTimeout = null;
 let certTrack = null;
 
-// Zoznam certifikátov – zdieľaný medzi carouselom a modalom
-const certificateFiles = [
-  "Certificate_Java_Basic.png",
-  "Certifikat_Webove_stranky_krok_za_krokom.png",
-  "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png",
-  "Certifikat_MySQL_databazy_krok_za_krokom.png",
-  "Certifikat_Zakladne_konstrukcie_jazyka_Java.png",
-  "skillmea-certifikat-java-pre-junior-programatorov.png",
-  "skillmea-certifikat-java-pre-pokrocilych.png",
-  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png"
-];
+// Importované obrázky – rovnaké ako v modale
+const CERT_MAP = {
+  "Certificate_Java_Basic.png": c1,
+  "Certifikat_Webove_stranky_krok_za_krokom.png": c2,
+  "Certifikat_Kompletny_kurz_CSS_frameworku_Bootstrap.png": c3,
+  "Certifikat_MySQL_databazy_krok_za_krokom.png": c4,
+  "Certifikat_Zakladne_konstrukcie_jazyka_Java.png": c5,
+  "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
+  "skillmea-certifikat-java-pre-pokrocilych.png": c7,
+  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8
+};
+
+// Pole názvov súborov (poradie pre carousel)
+const certificateFiles = Object.keys(CERT_MAP);
 
 // ============================
 // POMOCNÉ FUNKCIE
@@ -1158,34 +1162,31 @@ function isModalOpen() {
 function getItemWidth() {
   if (!certTrack) return 120;
   const first = certTrack.querySelector("img");
-  return first ? first.offsetWidth + 16 : 120; // 16 = gap
+  return first ? first.offsetWidth + 16 : 120;
 }
 
 function renderCertificates() {
   if (!certTrack) return;
 
   certTrack.innerHTML = "";
+
   certificateFiles.forEach(file => {
     const img = document.createElement("img");
-    const src = `src/assets/certificates/${file}`;
-    const key = file.replace(/\.[^.]+$/, "");
 
-    img.src = src;
-    img.alt = key;
+    img.src = CERT_MAP[file];
+    img.alt = file.replace(/\.[^.]+$/, "");
 
-    // pre PDF modal
     img.classList.add("show-pdf");
-    img.setAttribute("data-pdf", src);
+    img.setAttribute("data-pdf", file);
 
-    // pre tooltip
-    img.setAttribute("data-translate-info", key);
+    img.setAttribute("data-translate-info", file);
 
     certTrack.appendChild(img);
   });
 }
 
 // ============================
-// SLIDE FUNKCIE (globálne)
+// SLIDE FUNKCIE
 // ============================
 
 function manualSlide(direction) {
@@ -1212,7 +1213,7 @@ function manualSlide(direction) {
 
       certTrack.style.transition = "none";
       certTrack.style.transform = "translateX(0)";
-      void certTrack.offsetWidth; // force reflow
+      void certTrack.offsetWidth;
     },
     { once: true }
   );
@@ -1224,24 +1225,16 @@ function slide() {
 }
 
 // ============================
-// OVLÁDANIE AUTO SLIDE
+// AUTO SLIDE
 // ============================
 
 function stopAutoSlide() {
-  if (autoSlide !== null) {
-    clearInterval(autoSlide);
-    autoSlide = null;
-  }
-  if (restartTimeout !== null) {
-    clearTimeout(restartTimeout);
-    restartTimeout = null;
-  }
+  if (autoSlide !== null) clearInterval(autoSlide);
+  if (restartTimeout !== null) clearTimeout(restartTimeout);
 }
 
 function restartAutoSlide() {
-  if (restartTimeout !== null) {
-    clearTimeout(restartTimeout);
-  }
+  if (restartTimeout !== null) clearTimeout(restartTimeout);
   restartTimeout = setTimeout(() => {
     autoSlide = setInterval(slide, 3000);
   }, 3000);
@@ -1261,13 +1254,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCertificates();
 
-  // Hover pause
   if (carouselWrapper) {
     carouselWrapper.addEventListener("mouseenter", stopAutoSlide);
     carouselWrapper.addEventListener("mouseleave", restartAutoSlide);
   }
-
-  // Šípky
   if (btnLeft) {
     btnLeft.addEventListener("click", () => {
       stopAutoSlide();
@@ -1275,7 +1265,6 @@ document.addEventListener("DOMContentLoaded", () => {
       restartAutoSlide();
     });
   }
-
   if (btnRight) {
     btnRight.addEventListener("click", () => {
       stopAutoSlide();
@@ -1283,7 +1272,5 @@ document.addEventListener("DOMContentLoaded", () => {
       restartAutoSlide();
     });
   }
-
-  // Spusti autoSlide po inicializácii
   autoSlide = setInterval(slide, 3000);
 });
