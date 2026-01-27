@@ -8,11 +8,9 @@
 
 #home {
   position: relative;
-  display: flex;
-  align-items: stretch;
+  @include flex-row-center;
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   max-height: fit-content;
-  @include flex-row-center;
   border: 1px solid #000000;
   @include rounded($radius-base);
   background-color: base.$middle;
@@ -20,13 +18,12 @@
   max-width: 100%;
 
   .row {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
   }
 
   .left-text {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     justify-content: space-between;
     height: 100%;
   }
@@ -35,7 +32,6 @@
   .left-top {
     @include flex-column;
     justify-content: center;
-    align-items: center;
     text-align: center;
     flex: 1;
   }
@@ -85,32 +81,30 @@
    SIDE NAVBAR – Desktop a vyššie (≥1200px)
    =============================================== */
 
-  #home .home-container{
-    padding-left: 8rem;
+#home .home-container {
+  padding-left: 8rem;
 
-    #weatherNav {
-      display: flex;
-      align-items: center;
-      justify-content: center;   // horizontálne centrovanie obsahu
-      width: 100%;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    #weatherNav img {
-      display: inline-block;
-    }
-
-    #weatherNav #temp {
-      font-size: 1rem;
-      font-weight: 600;
-    }
+  #weatherNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
   }
 
-   
+  #weatherNav img {
+    display: inline-block;
+  }
+
+  #weatherNav #temp {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
 // ===============================================
 // RESPONSIVE HOME UTILITIES DESKTOP-DOWN (≤1200px)
-// Zachováva desktop layout
 // ===============================================
 
 @include desktop-down {
@@ -140,7 +134,6 @@
 // ====================================================
 
 @include tablet-landscape {
-
   #home {
     @include flex-column;
     justify-content: center;
@@ -220,10 +213,9 @@
 // ===============================================
 
 @include mobile {
-
   #home-anchor {
-  height: 4rem; /* výška navbaru */
-}
+    height: 4rem;
+  }
 
   #home .left-bottom {
     padding-top: 0rem;
@@ -274,7 +266,6 @@
   transform: scale(1.1);
 }
 
-/* Šípky vo vnútri track-wrapperu */
 #home .cert-arrow {
   position: absolute;
   top: 50%;

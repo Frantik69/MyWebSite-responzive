@@ -13,7 +13,6 @@
   padding: 2rem 1rem;
   @include rounded($radius-base);
   width: 100%;
-  max-width: 100%;
 
   .about-page {
     flex: 2.5;
@@ -29,7 +28,6 @@
     display: flex;
     flex-wrap: nowrap;
     gap: 2rem;
-    margin: 0;
   }
 
   .about-container {

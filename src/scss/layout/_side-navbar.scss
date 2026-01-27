@@ -16,7 +16,7 @@
   z-index: 999;
   overflow: hidden;
 
-  @include desktop {
+  @include desktop{
     display: flex;
     flex-direction: column;
     opacity: 0;

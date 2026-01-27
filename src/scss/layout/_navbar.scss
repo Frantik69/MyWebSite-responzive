@@ -33,10 +33,6 @@
      1px  1px 0 black;
 }
 
-#leftNav {
-  @include flex-row-center;
-}
-
 #logo {
   @include flex-row-center;
   text-decoration: none;
@@ -194,15 +190,6 @@
 
 .navbar-toggler {
   @include hide-above-tablet;
-}
-
-.custom-nav .container-fluid {
-  @include flex-row-center;
-  justify-content: space-between;
-}
-
-.custom-nav.navbar {
-  --bs-navbar-padding-y: 0;
 }
 
 // ===============================================
@@ -368,11 +355,6 @@
 
   #navbarResponsive.show {
     display: flex;
-  }
-
-  /* mobile-specific overrides */
-  #leftNav {
-    display: none !important;
   }
 
   .navbar-nav .nav-link {

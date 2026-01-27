@@ -15,7 +15,6 @@ section[id] {
 }
 
 body {
-  max-width: 100%;
   font-family: $body-font-family;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
@@ -34,16 +33,3 @@ body {
 // ===============================================
 // RESPONSIVE HOOKS – OPTIONAL
 // ===============================================
-
-@media (max-width: 992px) {
-  body {
-    padding-top: 4rem;
-    padding-bottom: 1.75rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .formMessage {
-    display: none !important;
-  }
-}

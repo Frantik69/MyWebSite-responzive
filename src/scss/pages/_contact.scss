@@ -40,6 +40,21 @@
   }
 }
 
+.error-msg {
+  font-size: 0.85rem;
+  color: #d9534f;
+  margin-top: 0.25rem;
+  min-height: 1rem;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  pointer-events: none;
+}
+
+.error-msg.show {
+  opacity: 1;
+}
+
+
 // ===============================================
 // RESPONSIVE CONTACT UTILITIES
 // ===============================================
@@ -65,7 +80,6 @@
     justify-content: flex-start;
     height: auto;
     width: 90vw;
-    max-width: 100%;
     position: relative;
   }
 }

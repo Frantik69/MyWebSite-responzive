@@ -390,7 +390,7 @@ function INIT_TOOLTIP_FOLLOW() {
   //delegácia pre dynamické prvky (vrátane certifikátov)
   document.addEventListener('mouseenter', e => {
     const target = e.target.closest('[data-translate-info]');
-    if (!target) return;
+    if (!target || target.closest('#sideNav')) return;
     showBubble(target);
   }, true);
 
