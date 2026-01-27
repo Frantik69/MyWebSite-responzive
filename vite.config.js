@@ -4,6 +4,7 @@ import purgecss from "vite-plugin-purgecss";
 const isProduction = process.env.NODE_ENV === "production";
 
 export default defineConfig({
+  base: "/MyWebSite-responzive/",
   plugins: [
     isProduction &&
       purgecss({
