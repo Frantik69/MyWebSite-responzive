@@ -634,82 +634,90 @@
         <div class="row justify-content-center">
           <div class="col-auto">
             <form action="https://formspree.io/f/xwvepdrk"
-                  method="POST"
-                  id="contactForm"
-                  autocomplete="on">
-              <input type="hidden" name="_subject"
-                    value="📩 Nová správa z portfólia – František Dupal">
-              <!-- ROW 1 -->
-              <div class="row g-0 mb-3 align-items-center">
-                <div class="col-12">
-                  <label for="name" data-translate="formNameLabel">Meno</label>
-                </div>
-                <div class="col-12 ms-1">
-                  <input type="text" aria-describedby="nameError"
-                        id="name"
-                        name="name"
-                        placeholder="Vaše meno / Your name"
-                        data-translate-placeholder="placeholderName"
-                        required
-                        aria-required="true"
-                        class="form-control"
-                        autocomplete="name">
-                  <div id="nameError" class="error-msg"></div>        
-                </div>
-                <div class="col-12 ms-3">
-                  <label for="email" data-translate="formEmailLabel">Email</label>
-                </div>
-                <div class="col-12 ms-1">
-                  <input type="email" aria-describedby="emailError"
-                        id="email"
-                        name="email"
-                        placeholder="Váš email / Your email"
-                        data-translate-placeholder="placeholderEmail"
-                        required
-                        class="form-control"
-                        autocomplete="email">
-                  <div id="emailError" class="error-msg"></div>   
-                </div>
-              </div>
-              <!-- ROW 2 -->
-              <div class="row g-0 mb-3">
-                <div class="col-12">
-                  <label for="message" data-translate="formMessageLabel">Správa</label>
-                </div>
-              </div>
-              <!-- ROW 3 -->
-              <div class="row g-0 mb-3">
-                <div class="col-12">
-                  <textarea id="message"
-                            name="Správa"
-                            rows="5"
-                            placeholder="Vaša správa... / Your message..."
-                            data-translate-placeholder="placeholderMessage"
-                            required
-                            class="form-control"
-                            autocomplete="off"></textarea>
-                  <div id="messageError" class="error-msg"></div>
-                </div>
-              </div>
-              <!-- TURNSTILE -->
-              <div class="row g-0 mb-3">
-                <div class="col text-center">
-                  <div id="turnstile-container" class="cf-turnstile" autocomplete="off"></div>
-                </div>
-              </div>
-              <!-- SUBMIT BUTTON -->
-              <div class="row g-0">
-                <div class="col text-center">
-                  <button id="submitBtn"
-                          type="submit"
-                          data-translate="formSubmit"
-                          class="btn btn-primary menu-item"
-                          data-translate-info="sendInfo">
-                    Odoslať
-                  </button>
-                </div>
-              </div>
-            </form>
+      method="POST"
+      id="contactForm"
+      autocomplete="on">
+
+  <input type="hidden" name="_subject"
+        value="📩 Nová správa z portfólia – František Dupal">
+
+  <!-- MENO -->
+  <div class="row g-0 mb-3 align-items-center">
+    <div class="col-12">
+      <label for="name" data-translate="formNameLabel">Meno</label>
+    </div>
+    <div class="col-12 ms-1">
+      <input type="text"
+            id="name"
+            name="name"
+            placeholder="Vaše meno / Your name"
+            data-translate-placeholder="placeholderName"
+            required
+            aria-required="true"
+            class="form-control"
+            autocomplete="given-name">
+      <div id="nameError" class="error-msg"></div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="col-12 ms-3">
+      <label for="email" data-translate="formEmailLabel">Email</label>
+    </div>
+    <div class="col-12 ms-1">
+      <input type="email"
+            id="email"
+            name="email"
+            placeholder="Váš email / Your email"
+            data-translate-placeholder="placeholderEmail"
+            required
+            class="form-control"
+            autocomplete="email">
+      <div id="emailError" class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- SPRÁVA -->
+  <div class="row g-0 mb-3">
+    <div class="col-12">
+      <label for="message" data-translate="formMessageLabel">Správa</label>
+    </div>
+  </div>
+
+  <div class="row g-0 mb-3">
+    <div class="col-12">
+      <textarea id="message"
+                name="message"
+                rows="5"
+                placeholder="Vaša správa... / Your message..."
+                data-translate-placeholder="placeholderMessage"
+                required
+                class="form-control"
+                autocomplete="on"></textarea>
+      <div id="messageError" class="error-msg"></div>
+    </div>
+  </div>
+
+  <!-- TURNSTILE -->
+  <div class="row g-0 mb-3">
+    <div class="col text-center">
+      <div id="turnstile-container" class="cf-turnstile"></div>
+    </div>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="row g-0">
+    <div class="col text-center">
+      <button id="submitBtn"
+              type="submit"
+              data-translate="formSubmit"
+              class="btn btn-primary menu-item"
+              data-translate-info="sendInfo">
+        Odoslať
+      </button>
+    </div>
+  </div>
+</form>
+
           </div>
         </div>
       </div>

@@ -76,10 +76,18 @@
   }
 }
 
-/* SKRYŤ POČASIE NA DESKTOPOCH ≥1200px */
-@include desktop {
+/* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
+@include lg {
   #weatherNav {
-    display: none !important; 
+    display: none !important;
+  }
+    #navbarResponsive .navbar-nav {
+    padding-left: 1rem;
+
+    .nav-item {
+      margin: 0;
+      white-space: nowrap;
+    }
   }
 }
 
@@ -190,68 +198,6 @@
 
 .navbar-toggler {
   @include hide-above-tablet;
-}
-
-// ===============================================
-// DESKTOP-DOWN (≤1200px)
-// ===============================================
-@include desktop-down {
-  #logo {
-    margin-left: 1rem;
-
-    img.logo {
-      height: 4rem;
-    }
-
-    .logo-text h1 {
-      font-size: 1.2rem;
-    }
-
-    .logo-text small {
-      font-size: 1rem;
-    }
-
-    .logo-text h1,
-    .logo-text small {
-      line-height: 1.2rem;
-    }
-  }
-
-  #weatherNav {
-    margin-left: 2.5rem;
-    gap: 0.3rem;
-
-    img.icon-24 {
-      height: 3rem;
-    }
-
-    #city {
-      font-size: 0.9rem;
-    }
-
-    #temp {
-      font-size: 1rem;
-    }
-  }
-
-  #languageDropdown,
-  #languageDropdown * {
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
-  }
-
-  .navbar-nav .nav-link {
-    font-size: 0.7rem;
-    padding: 0.05rem 0.3rem;
-  }
-
-  #languageDropdown {
-    gap: 0.2rem;
-    @include flex-row-center;
-    height: auto;
-    line-height: 1.2;
-  }
 }
 
 // ===============================================

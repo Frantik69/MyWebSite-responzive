@@ -13,10 +13,11 @@
   top: $navbar-height;
   bottom: $copyright-height;
   width: clamp(180px, 13vw, 260px);
+  max-width: 16%;
   z-index: 999;
   overflow: hidden;
 
-  @include desktop{
+  @include lg{
     display: flex;
     flex-direction: column;
     opacity: 0;
@@ -275,4 +276,10 @@ body.invert-floating #sideNav .hover-bubble {
 @keyframes sideNavMarquee {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
+}
+
+@include desktop-down {
+  #sideNav {
+    left: 1vw;
+  }
 }

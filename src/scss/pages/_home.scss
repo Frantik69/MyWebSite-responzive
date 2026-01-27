@@ -15,7 +15,6 @@
   @include rounded($radius-base);
   background-color: base.$middle;
   width: 100%;
-  max-width: 100%;
 
   .row {
   display: flex;
@@ -45,7 +44,7 @@
 
   .home-container {
     width: 100%;
-    max-width: 70rem;
+    max-width: 80rem;
     margin: 0 auto;
   }
 
@@ -77,8 +76,22 @@
   }
 }
 
+@include desktop-down{
+  #home {
+    .home-container {
+      max-width: 50rem;
+    }
+    .left-bottom {
+      padding-top: 3rem;
+    }
+    .img-fluid {
+      height: auto;
+      max-width: 90%;
+    }
+  }
+}
 /* ===============================================
-   SIDE NAVBAR – Desktop a vyššie (≥1200px)
+   SIDE NAVBAR – Desktop a vyššie (>992px)
    =============================================== */
 
 #home .home-container {
@@ -100,32 +113,6 @@
   #weatherNav #temp {
     font-size: 1rem;
     font-weight: 600;
-  }
-}
-
-// ===============================================
-// RESPONSIVE HOME UTILITIES DESKTOP-DOWN (≤1200px)
-// ===============================================
-
-@include desktop-down {
-  #home {
-    border: 1px solid transparent;
-    width: 100%;
-    max-width: 100%;
-    max-height: fit-content;
-  }
-
-  #home,
-  #home .home-container,
-  #home .left-text {
-    overflow-x: hidden;
-  }
-
-  #home .home-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
   }
 }
 
@@ -298,13 +285,13 @@
    CERTIFIKÁTY – ZOBRAZIŤ IBA NA DESKTOP (≥1200px)
    =============================================== */
 
-@include desktop {
+@include lg {
   #home .certificates-carousel {
     display: flex !important;
   }
 }
 
-@include desktop-down {
+@include tablet-landscape {
   #home .certificates-carousel {
     display: none !important;
   }

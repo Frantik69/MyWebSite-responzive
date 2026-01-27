@@ -81,13 +81,15 @@
 
 /* REDUCED MOTION – IBA NA MOBILOCH (aby overlay nezmizol) */
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
-  .formMessage {
-    transition: none !important;
-    opacity: 1 !important;
-    transform: none !important;
+  .formMessage:not(.show),
+  #overlayMessage:not(.show #overlayMessage) {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(20px) !important;
   }
 
-  #overlayMessage {
+  .formMessage.show,
+  .formMessage.show #overlayMessage {
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;

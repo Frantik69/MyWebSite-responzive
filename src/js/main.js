@@ -221,15 +221,15 @@ function INIT_NAVBAR() {
       rootMargin: '0px 0px -40%',
     });
   }
-if (window.innerWidth > 992) {
-  window.addEventListener('wheel', function(e) {
-  e.preventDefault();
-  window.scrollBy({
-    top: e.deltaY < 0 ? -50 : 50,
-    behavior: 'smooth'
-    });
-  }, { passive: false });
-}
+  if (window.innerWidth > 992) {
+    window.addEventListener('wheel', function(e) {
+    e.preventDefault();
+    window.scrollBy({
+      top: e.deltaY < 0 ? -50 : 50,
+      behavior: 'smooth'
+      });
+    }, { passive: false });
+  }
 
   // Zatvorenie menu v mobile
   const navbarToggler = document.querySelector('.navbar-toggler');
@@ -509,6 +509,7 @@ function INIT_CONTACT_FORM() {
   if (!contactForm || !submitBtn) return;
 
   contactForm.addEventListener("submit", async e => {
+    contactForm.requestSubmit();
     e.preventDefault();
 
     const lang = localStorage.getItem("lang") || "sk";
@@ -948,8 +949,8 @@ function updateFloatingVisibility() {
   // Bezpečnostná kontrola
   if (!sideNav || !weather) return;
 
-  // Zobrazujeme len na desktopoch (>=1200px)
-  if (window.innerWidth < 1200) {
+  // Zobrazujeme len na desktopoch (>=992px)
+  if (window.innerWidth < 992) {
     sideNav.classList.remove("visible");
     weather.classList.remove("visible");
     document.body.classList.remove("invert-floating");

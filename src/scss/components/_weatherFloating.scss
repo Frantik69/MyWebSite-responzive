@@ -11,7 +11,7 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 
-  @include desktop {
+  @include tablet-landscape {
     opacity: 0;
     pointer-events: none;
   }
@@ -84,7 +84,13 @@ body.invert-floating #weatherFloating {
 /* 🔒 Ikonka počasia sa NESMIE meniť pri invert-floating */
 body.invert-floating #weatherFloating .weather-icon {
   filter: none;        /* zachová pôvodný vzhľad */
-  color: inherit;      /* alebo explicitne: color: base.$light; ak je SVG viazané na currentColor */
+  color: base.$light;      /* alebo explicitne: color: base.$light; ak je SVG viazané na currentColor */
 }
 
-
+@include desktop-down {
+  
+  #weatherFloating {
+    right: 2rem;
+    top: 6rem;
+  }
+}
