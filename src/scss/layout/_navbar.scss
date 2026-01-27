@@ -76,21 +76,6 @@
   }
 }
 
-/* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
-@include lg {
-  #weatherNav {
-    display: none !important;
-  }
-    #navbarResponsive .navbar-nav {
-    padding-left: 1rem;
-
-    .nav-item {
-      margin: 0;
-      white-space: nowrap;
-    }
-  }
-}
-
 #navbarResponsive {
   flex: 1 1 auto;
   @include flex-row-center;
@@ -198,6 +183,25 @@
 
 .navbar-toggler {
   @include hide-above-tablet;
+}
+
+// ===============================================
+// LG (> 992px)
+// ===============================================
+
+@include lg {
+  /* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
+  #weatherNav {
+    display: none !important;
+  }
+  #navbarResponsive .navbar-nav {
+    padding-left: 1rem;
+    
+    .nav-item {
+      margin: 0;
+      white-space: nowrap;
+    }
+  }
 }
 
 // ===============================================

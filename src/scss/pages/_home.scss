@@ -77,20 +77,6 @@
   }
 }
 
-@include desktop-down{
-  #home {
-    .home-container {
-      max-width: 50rem;
-    }
-    .left-bottom {
-      padding-top: 3rem;
-    }
-    .img-fluid {
-      height: auto;
-      max-width: 90%;
-    }
-  }
-}
 /* ===============================================
    SIDE NAVBAR – Desktop a vyššie (>992px)
    =============================================== */
@@ -295,5 +281,23 @@
 @include tablet-landscape {
   #home .certificates-carousel {
     display: none !important;
+  }
+}
+
+@include desktop-down{
+  #home {
+    .home-container {
+      max-width:50rem;
+    }
+    .left-bottom {
+      padding-top: 2rem;
+    }
+    .img-fluid {
+      height: auto;
+      max-width: 90%;
+    }
+    .certificates-carousel {
+      width: 85%;
+    }
   }
 }
