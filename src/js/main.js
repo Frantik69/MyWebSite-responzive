@@ -802,11 +802,12 @@ function INIT_PDF_MODAL() {
     "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8
   };
 
-  const certificateFiles = Object.keys(CERT_MAP);
+  // 🔥 Dôležité: iný názov, aby sa to nebilo s carouselom
+  const modalFiles = Object.keys(CERT_MAP);
   let currentIndex = 0;
 
   function showImage(index) {
-    const fileName = certificateFiles[index];
+    const fileName = modalFiles[index];
     img.src = CERT_MAP[fileName];
   }
 
@@ -820,7 +821,7 @@ function INIT_PDF_MODAL() {
     const fileName = target.getAttribute('data-pdf');
     if (!fileName) return;
 
-    currentIndex = certificateFiles.indexOf(fileName);
+    currentIndex = modalFiles.indexOf(fileName);
     if (currentIndex === -1) return;
 
     showImage(currentIndex);
@@ -830,28 +831,24 @@ function INIT_PDF_MODAL() {
     adjustModalPosition();
   });
 
-  // Šípka vľavo
   arrowLeft.addEventListener('click', e => {
     e.stopPropagation();
-    currentIndex = (currentIndex - 1 + certificateFiles.length) % certificateFiles.length;
+    currentIndex = (currentIndex - 1 + modalFiles.length) % modalFiles.length;
     showImage(currentIndex);
   });
 
-  // Šípka vpravo
   arrowRight.addEventListener('click', e => {
     e.stopPropagation();
-    currentIndex = (currentIndex + 1) % certificateFiles.length;
+    currentIndex = (currentIndex + 1) % modalFiles.length;
     showImage(currentIndex);
   });
 
-  // Zatvorenie modalu – krížik
   closeBtn.addEventListener('click', () => {
     modal.style.display = 'none';
     img.src = "";
     if (typeof restartAutoSlide === "function") restartAutoSlide();
   });
 
-  // Zatvorenie modalu – klik mimo bubliny
   modal.addEventListener('click', e => {
     if (e.target === modal) {
       modal.style.display = 'none';
@@ -860,6 +857,7 @@ function INIT_PDF_MODAL() {
     }
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", INIT_PDF_MODAL);
 
