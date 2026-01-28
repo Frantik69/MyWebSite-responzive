@@ -10,6 +10,7 @@ import c5 from "../assets/certificates/Certifikat_Zakladne_konstrukcie_jazyka_Ja
 import c6 from "../assets/certificates/skillmea-certifikat-java-pre-junior-programatorov.png";
 import c7 from "../assets/certificates/skillmea-certifikat-java-pre-pokrocilych.png";
 import c8 from "../assets/certificates/skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png";
+import c9 from "../assets/certificates/Certifikat_Objektovo_orientovane_programovanie_v_Jave.png";
 import { SK_NAMEDAYS, DE_NAMEDAYS, EN_NAMEDAYS } from "./meniny.js";
 import { SK_HOLIDAYS, EN_HOLIDAYS, DE_HOLIDAYS } from "./meniny.js";
 import { translations } from "./translations.js";
@@ -800,7 +801,8 @@ function INIT_PDF_MODAL() {
     "Certifikat_Zakladne_konstrukcie_jazyka_Java.png": c5,
     "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
     "skillmea-certifikat-java-pre-pokrocilych.png": c7,
-    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8
+    "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8,
+    "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9
   };
 
   // 🔥 Dôležité: iný názov, aby sa to nebilo s carouselom
@@ -949,7 +951,7 @@ function updateFloatingVisibility() {
   // Bezpečnostná kontrola
   if (!sideNav || !weather) return;
 
-  // Zobrazujeme len na desktopoch (>=992px)
+  // Zobrazujeme len na desktopoch (>992px)
   if (window.innerWidth < 992) {
     sideNav.classList.remove("visible");
     weather.classList.remove("visible");
@@ -1145,7 +1147,8 @@ const CERT_MAP = {
   "Certifikat_Zakladne_konstrukcie_jazyka_Java.png": c5,
   "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
   "skillmea-certifikat-java-pre-pokrocilych.png": c7,
-  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8
+  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8,
+  "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9
 };
 
 // Pole názvov súborov (poradie pre carousel)

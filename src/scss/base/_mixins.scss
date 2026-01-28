@@ -150,14 +150,14 @@
 
 /* SMALL (≥ 576px) – pre grid a menšie layouty */
 @mixin sm {
-  @media (min-width: 576px) {
+  @media (min-width: 577px) {
     @content;
   }
 }
 
 /* LARGE (≥ 992px) – pre grid a väčšie layouty */
 @mixin lg {
-  @media (min-width: 992px) {
+  @media (min-width: 993px) {
     @content;
   }
 }
@@ -171,7 +171,7 @@
 
 /* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD TABLET */
 @mixin hide-above-tablet {
-  @media (min-width: 768px) {
+  @media (min-width: 769px) {
     display: none !important;
   }
 }
@@ -204,6 +204,7 @@
 // NAVBAR – MOBILE/TABLET BASE LAYOUT
 // ===============================================
 @mixin navbar-mobile-base {
+  
   #mainNav {
     height: 4rem;
     min-height: 4rem;

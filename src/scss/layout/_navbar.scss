@@ -186,25 +186,6 @@
 }
 
 // ===============================================
-// LG (> 992px)
-// ===============================================
-
-@include lg {
-  /* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
-  #weatherNav {
-    display: none !important;
-  }
-  #navbarResponsive .navbar-nav {
-    padding-left: 1rem;
-    
-    .nav-item {
-      margin: 0;
-      white-space: nowrap;
-    }
-  }
-}
-
-// ===============================================
 // TABLET LANDSCAPE (≤ 992px)
 // ===============================================
 @include tablet-landscape {
@@ -313,5 +294,24 @@
 
   #weatherNav {
     gap: 0.5rem;
+  }
+}
+
+// ===============================================
+// LG (> 992px)
+// ===============================================
+
+@include lg {
+  /* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
+  body #weatherNav {
+    display: none !important;
+  }
+  #navbarResponsive .navbar-nav {
+    padding-left: 1rem;
+    
+    .nav-item {
+      margin: 0;
+      white-space: nowrap;
+    }
   }
 }
