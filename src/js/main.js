@@ -11,6 +11,15 @@ import c6 from "../assets/certificates/skillmea-certifikat-java-pre-junior-progr
 import c7 from "../assets/certificates/skillmea-certifikat-java-pre-pokrocilych.png";
 import c8 from "../assets/certificates/skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png";
 import c9 from "../assets/certificates/Certifikat_Objektovo_orientovane_programovanie_v_Jave.png";
+import c10 from "../assets/certificates/Certifikat_Kolekcie_a_prudy_v_Jave.png";
+import c11 from "../assets/certificates/Certifikat_Praca_so_subormi_v_Jave.png";
+import c12 from "../assets/certificates/Certifikat_Testovanie_v_Jave.png";
+import c13 from "../assets/certificates/Certifikat_Zaklady_Spring_Boot_frameworku_pre_Javu.png";
+import c14 from "../assets/certificates/Certifikat_Databaza_a_Hibernate_v_Spring_Boot_-_Blog.png";
+import c15 from "../assets/certificates/Certifikat_Zaklady_React.png";
+import c16 from "../assets/certificates/Certifikat_Best_practices_pre_navrh_softwaru.png";
+import c17 from "../assets/certificates/Certifikat_Git.png";
+import c18 from "../assets/certificates/Certifikat_UML.png";
 import { SK_NAMEDAYS, DE_NAMEDAYS, EN_NAMEDAYS } from "./meniny.js";
 import { SK_HOLIDAYS, EN_HOLIDAYS, DE_HOLIDAYS } from "./meniny.js";
 import { translations } from "./translations.js";
@@ -802,7 +811,16 @@ function INIT_PDF_MODAL() {
     "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
     "skillmea-certifikat-java-pre-pokrocilych.png": c7,
     "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8,
-    "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9
+    "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9,
+    "Certifikat_Kolekcie_a_prudy_v_Jave.png": c10,
+    "Certifikat_Praca_so_subormi_v_Jave.png": c11,
+    "Certifikat_Testovanie_v_Jave.png": c12,
+    "Certifikat_Zaklady_Spring_Boot_frameworku_pre_Javu.png": c13,
+    "Certifikat_Databaza_a_Hibernate_v_Spring_Boot_-_Blog.png": c14,
+    "Certifikat_Zaklady_React.png": c15,
+    "Certifikat_Best_practices_pre_navrh_softwaru.png": c16,
+    "Certifikat_Git.png": c17,
+    "Certifikat_UML.png": c18
   };
 
   // 🔥 Dôležité: iný názov, aby sa to nebilo s carouselom
@@ -1148,7 +1166,16 @@ const CERT_MAP = {
   "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
   "skillmea-certifikat-java-pre-pokrocilych.png": c7,
   "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8,
-  "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9
+  "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9,
+  "Certifikat_Kolekcie_a_prudy_v_Jave.png": c10,
+  "Certifikat_Praca_so_subormi_v_Jave.png": c11,
+  "Certifikat_Testovanie_v_Jave.png": c12,
+  "Certifikat_Zaklady_Spring_Boot_frameworku_pre_Javu.png": c13,
+  "Certifikat_Databaza_a_Hibernate_v_Spring_Boot_-_Blog.png": c14,
+  "Certifikat_Zaklady_React.png": c15,
+  "Certifikat_Best_practices_pre_navrh_softwaru.png": c16,
+  "Certifikat_Git.png": c17,
+  "Certifikat_UML.png": c18
 };
 
 // Pole názvov súborov (poradie pre carousel)
