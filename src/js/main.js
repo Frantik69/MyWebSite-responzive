@@ -399,7 +399,7 @@ function INIT_TOOLTIP_FOLLOW() {
   }
 
   const items = document.querySelectorAll(
-    '.dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .aboutPreview, .contact-email, .portfolio-links a, #weatherFloating'
+    '.dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, #confirmGitHub, #cancelGitHub, .aboutPreview, .contact-email, .portfolio-links a, #weatherFloating, .show-pdf'
   );
 
   items.forEach(item => {
