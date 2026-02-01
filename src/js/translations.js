@@ -431,7 +431,7 @@ export const translations = {
     noInfo: "Klicken, um die Weiterleitung abzubrechen.",
     OOP: "Objektorientierte Programmierung in Java (Zertifikat)",
     ORM: "Datenbanken, Mini-ORM-Framework, Quelldateien",
-    pageTitle: "František Dupaľ Website",
+    pageTitle: "Webseite František Dupaľ",
     placeholderEmail: "Ihre E-Mail",
     placeholderMessage: "Ihre Nachricht...",
     placeholderName: "Ihr Name",
