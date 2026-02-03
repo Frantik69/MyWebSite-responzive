@@ -9,7 +9,7 @@
 #skills {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
-  background-color: base.$second-middle;
+  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   padding: 2rem 1rem;
   @include rounded(0.5rem);
   width: 100%;
@@ -37,11 +37,15 @@
     .skills-page {
       flex: 2.5;
       min-width: 300px;
-      @include gradient-bg(base.$secondary, base.$second-middle);
+      background-image: linear-gradient(to right, base.$primary, base.$first-light);
       padding-left: 1rem;
       padding-right: 2rem;
       padding-top: 2rem;
+      padding-bottom: 2rem;
       color: black;
+      border-radius: $radius-base;
+      border: 1px solid #000000;
+      @include bubble-box-shadow;
 
       .skill-card {
         @include flex-row-center;

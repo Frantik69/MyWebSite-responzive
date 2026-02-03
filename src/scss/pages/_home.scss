@@ -13,8 +13,9 @@
   max-height: fit-content;
   border: 1px solid #000000;
   @include rounded($radius-base);
-  background-color: base.$middle;
+  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   width: 100%;
+  max-width: 100%;
 
   .row {
   display: flex;
@@ -74,6 +75,9 @@
     flex: 1;
     height: 2px;
     background-color: #cbcbcb;
+  }
+  .img-fluid{
+    @include bubble-box-shadow;
   }
 }
 
@@ -225,6 +229,7 @@
   margin-top: 4rem;
   display: flex;
   justify-content: center;
+    @include bubble-box-shadow;
 }
 
 #home .cert-track-wrapper {

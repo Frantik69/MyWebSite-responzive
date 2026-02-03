@@ -1,5 +1,6 @@
 @use "../base/variables" as *;
 @use "../base/mixins" as *;
+@use "../base/index" as base;
 
 // ===============================================
 // CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
@@ -7,9 +8,9 @@
 
 #contact {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid #000000;
+  border: 1.2px solid #000000;
   color: #000;
-  background-color: #f9f9f9;
+  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   padding: 2rem 1rem;
   @include rounded($radius-base);
 

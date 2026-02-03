@@ -23,7 +23,7 @@
 
   position: fixed;
   right: 5rem;   /* presne 5rem od pravého okraja */
-  top: 6rem;     /* môžeš upraviť podľa potreby */
+  top: 7rem;     /* môžeš upraviť podľa potreby */
   z-index: 1000;
 
   @include flex-column;
@@ -33,16 +33,11 @@
   gap: 0.3rem;
   text-decoration: none;
 
-  color: base.$light;
+  color: base.$dark;
 
   /* jemné škálovanie podľa výšky displeja */
   font-size: clamp(0.8rem, 1.2vh, 1.2rem);
 
-  text-shadow:
-    -0.5px -0.5px 0 black,
-     0.5px -0.5px 0 black,
-    -0.5px  0.5px 0 black,
-     0.5px  0.5px 0 black;
 }
 
 #weatherFloating .weather-row {
@@ -76,16 +71,6 @@
   100% { transform: rotate(5deg); }
 }
 
-body.invert-floating #weatherFloating {
-  color: black;
-  text-shadow: none;
-}
-
-/* 🔒 Ikonka počasia sa NESMIE meniť pri invert-floating */
-body.invert-floating #weatherFloating .weather-icon {
-  filter: none;        /* zachová pôvodný vzhľad */
-  color: base.$light;      /* alebo explicitne: color: base.$light; ak je SVG viazané na currentColor */
-}
 
 @include desktop-down {
   

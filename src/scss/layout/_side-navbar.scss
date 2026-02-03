@@ -100,19 +100,6 @@
   font-weight: 600;
 }
 
-body.invert-floating #sideNavTime {
-  color: black;
-  text-shadow: none;
-}
-
-body.invert-floating #sideNavTime .nameday {
-  color: black;
-}
-
-body.invert-floating #sideNavTime .nameday.holiday {
-  color: #c62828 !important;
-}
-
 /* ============================
    ODDĚLOVAČ
    ============================ */
@@ -124,9 +111,6 @@ body.invert-floating #sideNavTime .nameday.holiday {
   margin: 0.5rem 0;
 }
 
-body.invert-floating .side-nav-divider {
-  border-top-color: rgba(0,0,0,0.9);
-}
 
 /* ============================
    MENU LIST
@@ -169,7 +153,7 @@ body.invert-floating .side-nav-divider {
   letter-spacing: 1px;
   text-decoration: none;
 
-  box-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 1px 0px rgba(202, 202, 202, 0.787);
   transition: 0.25s ease;
 
   text-shadow:
@@ -194,10 +178,6 @@ body.invert-floating .side-nav-divider {
      0.25px  0.25px 0 black;
 }
 
-body.invert-floating #sideNav li a {
-  color: black;
-  text-shadow: none;
-}
 
 /* ============================
    MENU ICON – SVG tieň
@@ -266,11 +246,6 @@ body.invert-floating #sideNav li a {
   opacity: 1;
 }
 
-/* invert mód */
-body.invert-floating #sideNav .hover-bubble {
-  background: rgba(255, 255, 255, 0.6);
-  color: rgb(0, 0, 0);
-}
 
 /* ANIMÁCIA – marquee efekt */
 @keyframes sideNavMarquee {

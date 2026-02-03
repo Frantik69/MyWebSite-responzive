@@ -9,19 +9,23 @@
 #about {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
-  background-color: base.$first-middle;
-  padding: 2rem 1rem;
+  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
+  padding: 2rem 2rem;
   @include rounded($radius-base);
   width: 100%;
 
   .about-page {
     flex: 2.5;
     min-width: 500px;
-    @include gradient-bg(base.$second-middle, base.$first-middle);
+    background-image: linear-gradient(to right, base.$primary, base.$first-light);
     padding-left: 6rem;
     padding-right: 6rem;
     padding-top: 2rem;
+    padding-bottom: 2rem;
     color: black;
+    border-radius: $radius-base;
+    border: 1px solid #000000;
+    @include bubble-box-shadow;
   }
 
   .row {

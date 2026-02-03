@@ -10,7 +10,7 @@
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   text-align: center;
   padding: 2rem 1rem;
-  background-color: base.$secondary;
+  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   border: 0.0625rem solid #000000;
   @include rounded(0.5rem);
 
@@ -39,6 +39,10 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  border: 1px solid #000000;
+  border-radius: 0.5rem;
+  @include bubble-box-shadow;
+
 }
 
 // ===============================================
@@ -48,11 +52,13 @@
 .portfolio-left {
   flex: 1;
   min-width: 300px;
-  @include gradient-bg($primary, $secondary);
+  background-color: $primary;
   color: $body-color;
   padding: 1rem;
   @include flex-column;
   justify-content: space-between;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 
   .profile-photo {
     width: 300px;
@@ -97,10 +103,11 @@
 
   .left-bottom {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
 
     .contact-email {
-      font-size: clamp(0.8rem, 0.9vw, 1rem);
+      font-size: clamp(0.7rem, 0.8vw, 0.9rem);
       text-decoration: none;
       color: $body-color;
 
@@ -127,11 +134,14 @@
 .portfolio-right {
   flex: 2.5;
   min-width: 300px;
-  @include gradient-bg(#fff, $secondary);
+  background-color: $first-light;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 2rem;
+  padding-bottom: 2rem;
   color: black;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 
   .section-title {
     text-transform: uppercase;
