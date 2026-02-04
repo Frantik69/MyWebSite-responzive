@@ -21,9 +21,11 @@
   }
 
   .contact-container {
-    width: 60vw;
-    margin: 0 auto;
-  }
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 
   .divider-custom-line {
     background-color: #000;
@@ -80,7 +82,23 @@
     @include flex-column;
     justify-content: flex-start;
     height: auto;
-    width: 90vw;
     position: relative;
+    width: 100%;
+    max-width: 100%;
   }
 }
+
+.contact-info {
+  flex-wrap: wrap;
+  text-align: center;
+}
+.email-icon {
+  flex-shrink: 0;
+  @include bubble-box-shadow;
+}
+#contact input,
+#contact textarea {
+  max-width: 100%;
+}
+
+
