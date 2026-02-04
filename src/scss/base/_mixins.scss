@@ -1,3 +1,5 @@
+@use "sass:list";
+
 // ===============================================
 // GLOBAL MIXINS – PRE CELÝ PROJEKT
 // ===============================================
@@ -157,7 +159,7 @@
 
 /* LARGE (≥ 992px) – pre grid a väčšie layouty */
 @mixin lg {
-  @media (min-width: 993px) {
+  @media (min-width: 992px) {
     @content;
   }
 }
@@ -199,6 +201,28 @@
     display: block !important;
   }
 }
+
+@mixin scale-by-height($steps...) {
+  --scale: 1;
+  transform: scale(var(--scale));
+  transform-origin: center;
+
+  @each $step in $steps {
+    $height: list.nth($step, 1);
+    $value: list.nth($step, 2);
+
+    @media (max-height: #{$height}) {
+      --scale: #{$value};
+    }
+  }
+}
+
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
 
 // ===============================================
 // NAVBAR – MOBILE/TABLET BASE LAYOUT

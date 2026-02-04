@@ -13,7 +13,7 @@
   z-index: 1030;
   height: 4rem;
   min-height: 4rem;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   @include rounded($radius-base);
   @include gradient-bg-nav(base.$primary, base.$secondary);
   @include flex-row-center;
@@ -189,6 +189,7 @@
 // TABLET LANDSCAPE (≤ 992px)
 // ===============================================
 @include tablet-landscape {
+  
   #logo {
     margin-left: 1rem;
 
@@ -275,6 +276,7 @@
 // MOBILE (≤ 576px)
 // ===============================================
 @include mobile {
+  
   @include navbar-mobile-base;
 
   #navbarResponsive {
@@ -302,10 +304,13 @@
 // ===============================================
 
 @include lg {
-  /* SKRYŤ POČASIE NA ZARIADENIACH ≥992px */
-  body #weatherNav {
+  
+  nav #weatherNav,
+  #mainNav #weatherNav,
+  #weatherNav {
     display: none !important;
   }
+
   #navbarResponsive .navbar-nav {
     padding-left: 1rem;
     

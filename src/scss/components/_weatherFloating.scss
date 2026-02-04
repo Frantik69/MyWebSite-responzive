@@ -7,8 +7,8 @@
    =============================================== */
 
 #weatherFloating {
-  opacity: 0;
-  pointer-events: none;
+  opacity: 1;
+  pointer-events: auto;
   transition: opacity 0.3s ease;
 
   @include tablet-landscape {
@@ -16,14 +16,9 @@
     pointer-events: none;
   }
 
-  &.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
   position: fixed;
-  right: 5rem;   /* presne 5rem od pravého okraja */
-  top: 7rem;     /* môžeš upraviť podľa potreby */
+  right: 5rem;
+  top: 7rem;
   z-index: 1000;
 
   @include flex-column;
@@ -35,10 +30,14 @@
 
   color: base.$dark;
 
-  /* jemné škálovanie podľa výšky displeja */
   font-size: clamp(0.8rem, 1.2vh, 1.2rem);
-
 }
+
+#weatherFloating.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 
 #weatherFloating .weather-row {
   @include flex-row-center;
@@ -77,5 +76,12 @@
   #weatherFloating {
     right: 2rem;
     top: 6rem;
+  }
+}
+
+@media (max-width: 992px), (orientation: portrait) {
+  #weatherFloating {
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 }

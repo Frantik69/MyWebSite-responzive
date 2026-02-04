@@ -1,6 +1,12 @@
+@use "variables";
 @forward "variables";
+@use "mixins";
 @forward "mixins";
+@use "reset";
 @forward "reset";
+@use "global";
 @forward "global";
+@use "typography";
 @forward "typography";
+@use "utilities";
 @forward "utilities";

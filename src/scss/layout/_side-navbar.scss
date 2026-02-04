@@ -253,8 +253,16 @@
   100% { transform: translateX(-100%); }
 }
 
-@include desktop-down {
+@media (min-width: 992px) and (max-width: 1200px) {
   #sideNav {
     left: 1vw;
   }
+}
+
+@include between(992px, 1200px) {
+  #sideNav { left: 1vw; }
+}
+
+@include lg {
+  #sideNav { display: flex; }
 }
