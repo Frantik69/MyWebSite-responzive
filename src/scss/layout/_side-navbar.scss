@@ -6,24 +6,33 @@
    SIDE NAVBAR – len desktop
    ============================ */
 
-#sideNav {
-  display: none;
-  position: fixed;
-  left: 2.5vw;
-  top: $navbar-height;
-  bottom: $copyright-height;
-  width: clamp(180px, 13vw, 260px);
-  max-width: 16%;
-  z-index: 999;
-  overflow: hidden;
-
-  @include lg{
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+  #sideNav {
+    display: none;
   }
+
+  @include mobile {
+    #sideNav {
+    display: flex !important;
+    }
+  }
+
+  #sideNav {
+    position: fixed;
+    left: 2.5vw;
+    top: $navbar-height;
+    bottom: $copyright-height;
+    width: clamp(180px, 13vw, 260px);
+    max-width: 16%;
+    z-index: 999;
+    overflow: hidden;
+
+    @include lg {
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
 
   &.visible {
     opacity: 1;
@@ -57,7 +66,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: 0.2rem;
   width: 100%;
 }
 
@@ -67,11 +76,10 @@
 
 #sideNavTime {
   width: 100%;
-  text-align: right;
+  text-align: left;
   color: base.$light;
   font-size: clamp(0.8rem, 1vw, 1rem);
   letter-spacing: 0.1px;
-
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
@@ -86,7 +94,6 @@
 #sideNavTime .time {
   font-size: clamp(1.2rem, 1.6vw, 2rem);
   font-weight: 700;
-  text-align: center;
   width: 100%;
 }
 
@@ -265,4 +272,93 @@
 
 @include lg {
   #sideNav { display: flex; }
+}
+@include mobile {
+
+  #sideNav {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 4rem; // presne ako navbarResponsive
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 999;
+    background: linear-gradient(to right, base.$primary, base.$secondary);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease, opacity 0.3s ease;
+  }
+
+  #sideNav.show-mobile {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  #sideNav .sideNav-content {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  #sideNav ul {
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  #sideNav li a {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+    background-color: rgba(255,255,255,0.1);
+  }
+}
+#sideNavWeather {
+  width: 100%;
+  text-align: left;
+  color: base.$light;
+  margin-top: 0.5rem;
+
+  .weather-inline {
+    @include flex-row-center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .weather-icon {
+    width: 1.8rem;
+    height: auto;
+    transform-origin: 50% 60%;
+    animation: weather-sway 5s ease-in-out infinite;
+  }
+
+  .weather-city {
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+
+  .weather-temp {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+#sideNavDateBlock {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  .date {
+    font-size: 0.9rem;
+  }
+
+  .nameday {
+    font-size: 0.85rem;
+    opacity: 0.9;
+  }
 }

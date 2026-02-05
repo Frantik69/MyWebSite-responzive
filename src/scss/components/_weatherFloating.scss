@@ -6,6 +6,17 @@
    weatherFloating – samostatný prvok počasia
    =============================================== */
 
+   #weatherFloating {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #weatherFloating {
+    display: flex;
+  }
+}
+
+
 #weatherFloating {
   opacity: 0;
   pointer-events: none;

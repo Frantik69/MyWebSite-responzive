@@ -8,10 +8,10 @@
 
 #contact {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid #000000;
   color: #000;
   background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   padding: 2rem 1rem;
+  border: 1px solid #000000;
   @include rounded($radius-base);
 
   h2 {
@@ -70,7 +70,8 @@
 
 @include mobile {
   #contact {
-    border: 1px solid transparent;
+    border: 1px solid #000000;
+    @include rounded($radius-base);
     @include flex-column;
     width: 100%;
     max-height: fit-content;

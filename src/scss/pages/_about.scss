@@ -20,8 +20,8 @@
     background-image: linear-gradient(to right, base.$primary, base.$first-light);
     padding: 2rem 4rem;
     color: black;
-    border-radius: $radius-base;
     border: 1px solid #000000;
+    @include rounded($radius-base);
     @include bubble-box-shadow;
   }
 
@@ -63,7 +63,8 @@
 @include tablet-landscape {
 
   #about {
-    border: 1px solid transparent;
+    border: 1px solid #000000;
+    @include rounded($radius-base);
     @include flex-column;
     max-height: fit-content;
   }
@@ -92,7 +93,8 @@
 @include mobile {
 
   #about {
-    border: 1px solid transparent;
+    border: 1px solid #000000;
+    @include rounded($radius-base);
     @include flex-column;
     max-height: fit-content;
     justify-content: center;

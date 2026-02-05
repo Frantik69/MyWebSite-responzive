@@ -240,16 +240,6 @@ function INIT_NAVBAR() {
       });
     }, { passive: false });
   }
-
-  // Zatvorenie menu v mobile
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  document.querySelectorAll('#navbarResponsive .nav-link').forEach(item => {
-    item.addEventListener('click', () => {
-      if (window.getComputedStyle(navbarToggler).display !== 'none') {
-        navbarToggler.click();
-      }
-    });
-  });
 }
 
 document.addEventListener('DOMContentLoaded', INIT_NAVBAR);
@@ -291,6 +281,23 @@ function INIT_WEATHER_MODAL() {
 }
 
 document.addEventListener("DOMContentLoaded", INIT_WEATHER_MODAL);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggler = document.querySelector(".navbar-toggler");
+  const sideNav = document.getElementById("sideNav");
+
+  if (toggler && sideNav) {
+    toggler.addEventListener("click", () => {
+      sideNav.classList.toggle("show-mobile");
+    });
+  }
+
+  document.querySelectorAll("#sideNav .menu-item a").forEach(link => {
+    link.addEventListener("click", () => {
+      sideNav.classList.remove("show-mobile");
+    });
+  });
+});
 
 
 // ======================================================
@@ -1042,9 +1049,9 @@ function updateSideNavClock() {
   const box = document.getElementById("sideNavTime");
   if (!box) return;
 
-  const dateEl = box.querySelector(".date");
-  const timeEl = box.querySelector(".time");
-  const namedayEl = box.querySelector(".nameday");
+  const dateEl = document.querySelector("#sideNavDateBlock .date");
+  const namedayEl = document.querySelector("#sideNavDateBlock .nameday");
+  const timeEl = document.querySelector("#sideNavTime .time");
 
   const now = new Date();
   const lang = localStorage.getItem("lang") || "sk";

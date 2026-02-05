@@ -198,16 +198,17 @@
     }
 
     .logo-text h1 {
-      font-size: 1rem;
+      font-style: italic;
+      font-size: 1.1rem;
     }
 
     .logo-text small {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
 
     .logo-text h1,
     .logo-text small {
-      line-height: 0.8;
+      line-height: 1rem;
     }
   }
 
@@ -257,6 +258,7 @@
 // TABLET (≤ 768px)
 // ===============================================
 @include tablet {
+
   @include navbar-mobile-base;
 
   /* tablet-specific overrides */
@@ -295,7 +297,7 @@
   }
 
   #weatherNav {
-    gap: 0.5rem;
+    display: none !important;
   }
 }
 
@@ -304,7 +306,7 @@
 // ===============================================
 
 @include lg {
-  
+
   nav #weatherNav,
   #mainNav #weatherNav,
   #weatherNav {
