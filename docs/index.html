@@ -25,8 +25,8 @@
     <!-- BOOTSTRAP + CUSTOM CSS -->
     <link rel="canonical" href="https://frantisek.dupal.sk/"> <!--TODO - prepisat adresu podla skutocnosti -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
-    <script type="module" crossorigin src="/MyWebSite-responzive/assets/index-D_txzXKU.js"></script>
-    <link rel="stylesheet" crossorigin href="/MyWebSite-responzive/assets/index-AiUHzkIp.css">
+    <script type="module" crossorigin src="/MyWebSite-responzive/assets/index-B97gdJcQ.js"></script>
+    <link rel="stylesheet" crossorigin href="/MyWebSite-responzive/assets/index-TnvRiq8N.css">
   </head>
   <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0">
     <script>
@@ -38,9 +38,7 @@
         <!-- TOGGLER + LOGO WRAPPER -->
         <div id="mobileLeft" class="d-flex align-items-center">
           <!-- TOGGLER -->
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                  aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <!-- LOGO -->
@@ -140,13 +138,34 @@
     <nav id="sideNav" class="side-nav">
       <div class="sideNav-center">
         <div class="sideNav-content">
+
+          <!-- TIME -->
           <div id="sideNavTime" class="side-nav-time">
             <span class="time"></span>
-            <hr class="side-nav-divider">
+          </div>
+
+          <hr class="side-nav-divider">
+
+          <!-- WEATHER -->
+          <div id="sideNavWeather">
+            <div class="weather-inline">
+              <img class="weather-icon" src="" alt="">
+              <span class="weather-city"></span>
+              <span class="weather-temp"></span>
+            </div>
+          </div>
+
+          <hr class="side-nav-divider">
+
+          <!-- DATE + NAMEDAY -->
+          <div id="sideNavDateBlock" class="side-nav-date">
             <span class="date"></span>
             <span class="nameday" data-translate="nameday"></span>
           </div>
+
           <hr class="side-nav-divider">
+
+          <!-- MENU -->
           <ul>
             <li class="menu-item" data-translate-info="homeInfo">
               <a href="#home" aria-label="Sekcia Domov">
@@ -154,24 +173,28 @@
                 <span data-translate="home"></span>
               </a>
             </li>
+
             <li class="menu-item" data-translate-info="portfolioInfo">
               <a href="#portfolio" aria-label="Sekcia Portfólio">
                 <i class="fas fa-briefcase menu-icon"></i>
                 <span data-translate="portfolio"></span>
               </a>
             </li>
+
             <li class="menu-item" data-translate-info="skillsInfo">
               <a href="#skills" aria-label="Sekcia Zručnosti">
                 <i class="fas fa-code menu-icon"></i>
                 <span data-translate="subtitleSkills"></span>
               </a>
             </li>
+
             <li class="menu-item" data-translate-info="aboutInfo">
               <a href="#about" aria-label="Sekcia O mne">
                 <i class="fas fa-user menu-icon"></i>
                 <span data-translate="aboutMe"></span>
               </a>
             </li>
+
             <li class="menu-item" data-translate-info="contactInfoInfo">
               <a href="#contact" aria-label="Sekcia Kontakt">
                 <i class="fas fa-envelope menu-icon"></i>
@@ -182,6 +205,7 @@
         </div>
       </div>
     </nav>
+
     <!-- POČASIE – mimo navbaru -->
     <main>
     <a id="weatherFloating" class="weatherNav" data-translate-info="weatherInfo" href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
