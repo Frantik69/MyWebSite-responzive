@@ -9,7 +9,8 @@
     <meta property="og:description" content="Zhotovovanie webstránok, úprava design-u, vývoj webových aplikácií.">
     <meta property="og:image" content="https://frantik69.github.io/MyWebSite-responzive/kod-java.jpg"> <!--TODO - prepisat adresu podla skutocnosti -->
     <meta property="og:url" content="https://frantik69.github.io"> <!--TODO - prepisat adresu podla skutocnosti -->
-    <meta name="theme-color" content="#3a5a7b">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d1b2a" media="(prefers-color-scheme: dark)">
     <!--
     /////////////////////////////////////////////////////////////////////////
       Indexovať a sledovať odkazy (default) 
@@ -510,16 +511,6 @@
             <div class="portfolio-links">
               <a href="https://github.com/Frantik69" class="btn btn-outline-dark me-2" data-translate-info="portfolioLinkInfo" target="_blank" rel="noopener"><i class="fab fa-github me-1"></i> GitHub</a>
             </div>
-            <!-- MODAL PRE GITHUB -->
-            <div id="GitHubModal" class="modal-overlay" role="dialog" aria-modal="true">
-              <div class="modal-bubble">
-                <p data-translate="changePage"></p>
-                <div class="d-flex justify-content-between mt-2">
-                  <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub">Kliknutim sa otvori nova karta s GitHubom</button>
-                  <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -814,6 +805,16 @@
         <img id="pdfImage" src="" alt="Certifikát">
         <!-- Šípka vpravo -->
         <button class="pdf-arrow right" aria-label="Nasledujúci certifikát">&#10095;</button>
+      </div>
+    </div>
+    <!-- MODAL PRE GITHUB -->
+    <div id="GitHubModal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-bubble">
+        <p data-translate="changePage"></p>
+        <div class="d-flex justify-content-between mt-2">
+            <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub">Kliknutim sa otvori nova karta s GitHubom</button>
+            <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button>
+        </div>
       </div>
     </div>
     <!-- BOOTSTRAP BUNDLE JS + VLASTNY JS -->

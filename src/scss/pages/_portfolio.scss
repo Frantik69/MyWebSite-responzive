@@ -9,7 +9,6 @@
 #portfolio {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   text-align: center;
-  padding: 2rem 0.5rem;
   background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   border: 1px solid #000000;
   @include rounded(0.5rem);
@@ -17,7 +16,7 @@
   .portfolio-container {
     width: 65vw;
     margin: 0 auto;
-
+    padding: 2rem 0.5rem;
   }
 
   h2 {

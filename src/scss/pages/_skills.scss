@@ -10,7 +10,7 @@
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;
   background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
-  padding: 2rem 0.5rem;
+
   @include rounded(0.5rem);
   width: 100%;
 
@@ -31,8 +31,9 @@
   }
 
   .skills-container {
-    width: 65vw;
+    width: 66vw;
     margin: 0 auto;
+    padding: 2rem 0.5rem;
 
     .skills-page {
       flex: 2.5;
