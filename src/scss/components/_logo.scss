@@ -58,20 +58,16 @@
   /* MENŠIE LOGO NA MOBILOCH */
   #logo .logo,
   #logo img.logo {
-    width: 3rem;
-    height: 3rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
 
   #logo .logo-text h1 {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 
   #logo .logo-text small {
     font-size: 0.65rem;
   }
 
-  /* VÄČŠÍ TAP TARGET NA MOBILOCH */
-  #logo {
-    gap: 0.25rem;
-  }
 }
