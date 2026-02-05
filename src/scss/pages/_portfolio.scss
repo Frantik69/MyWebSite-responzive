@@ -9,14 +9,15 @@
 #portfolio {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 2rem 0.5rem;
   background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
-  border: 0.0625rem solid #000000;
+  border: 1px solid #000000;
   @include rounded(0.5rem);
 
   .portfolio-container {
     width: 65vw;
     margin: 0 auto;
+
   }
 
   h2 {
@@ -39,8 +40,7 @@
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid #000000;
-  border-radius: 0.5rem;
+
   @include bubble-box-shadow;
 
 }
@@ -59,20 +59,25 @@
   justify-content: space-between;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
+  border: 1px solid #000000;
+  @include rounded($radius-base);
 
   .profile-photo {
     width: 300px;
     margin-bottom: 1rem;
+    
   }
 
   .profile-name {
     margin: 0;
     text-align: center;
+    font-size: 1.3rem;
   }
 
   .profile-position {
     font-style: italic;
     text-align: center;
+    font-size: 1.2rem;
   }
 
   .profile-divider {
@@ -92,12 +97,12 @@
     margin: 0 auto;
     color: $body-color;
     text-decoration: none;
-    font-size: x-small;
+    font-size: small;
     transition: transform 0.25s ease;
 
     &:hover {
       text-decoration: none;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
@@ -107,7 +112,7 @@
     text-align: center;
 
     .contact-email {
-      font-size: clamp(0.7rem, 0.8vw, 0.9rem);
+      font-size: clamp(0.8rem, 0.75vw, 1.1rem);
       text-decoration: none;
       color: $body-color;
 
@@ -140,24 +145,32 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   color: black;
+  border: 1px solid #000000;
+  @include rounded($radius-base);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 
   .section-title {
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .skills-columns {
     display: flex;
     justify-content: space-between;
-    gap: 0.2rem;
+    gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     .skills-col {
       flex: 1;
       min-width: 200px;
+
+      h4 {
+        font-size: 1.1rem;
+      }
+
     }
   }
 
@@ -165,8 +178,9 @@
     @extend .list-unstyled;
 
     li {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
       position: relative;
+      font-size: 1rem;
     }
   }
 
@@ -183,6 +197,7 @@
       .timeline-date {
         font-weight: bold;
         margin-bottom: 0.3rem;
+        font-size: 1.2rem;
       }
 
       .timeline-content {
@@ -190,6 +205,18 @@
         padding: 1rem;
         @include rounded(0.5rem);
         @include bubble-box-shadow;
+
+        a.certifikat {
+          font-size: 1.1rem;
+        }
+
+        span{
+          font-size: 1.1rem;
+        }
+        li{
+          font-size: $body-font-size;
+          line-height: 1.2;
+        }
       }
     }
   }
@@ -226,7 +253,7 @@
     width: 100%;
 
     li {
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
   }
 
@@ -248,7 +275,7 @@
     text-align: center;
 
     #aboutPreview {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -263,7 +290,7 @@
         width: 100%;
         margin-bottom: 0.3rem;
         text-align: left;
-        font-size: 1rem;
+        font-size: 1.1rem;
       }
 
       .timeline-content {
@@ -272,7 +299,7 @@
         text-align: left;
 
         .show {
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
       }
     }

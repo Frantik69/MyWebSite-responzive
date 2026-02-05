@@ -78,7 +78,7 @@ p.tagline {
 
 /* SKRATKY (INITIALISM) */
 .initialism {
-  font-size: 0.875em;
+  font-size: 0.5em;
   text-transform: uppercase;
 }
 
@@ -127,9 +127,6 @@ hr {
 @include mobile {
   h1.main-title {
     font-size: 2rem;
-  }
-  p.tagline {
-    font-size: 1.125rem;
   }
 }
 

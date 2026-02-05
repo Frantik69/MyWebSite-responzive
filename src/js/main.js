@@ -1016,8 +1016,7 @@ function updateFloatingVisibility() {
   sideNav.classList.toggle("visible", shouldShow);
   weather.classList.toggle("visible", shouldShow);
 
-  // Prepnutie farebnej schémy pre kontakt
-  document.body.classList.toggle("invert-floating", inContact);
+
 }
 
 // SCROLL

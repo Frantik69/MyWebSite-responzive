@@ -77,7 +77,7 @@
 }
 
 @mixin light-box-shadow {
-  filter: drop-shadow(0px 5px 10px rgba(255, 255, 255, 0.854));
+  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.7));
 }
 
 /* FLEX ROW CENTER – display:flex + align-items:center */
@@ -264,14 +264,18 @@
   .navbar-toggler {
     background: none !important;
     border: none !important;
-    width: 3.5rem;
+    width: 4rem;
     height: auto;
     z-index: 20;
     flex-shrink: 0;
 
     i {
       font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    & :hover {
+      color: #070707;
     }
   }
 

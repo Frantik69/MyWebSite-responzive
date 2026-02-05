@@ -16,6 +16,12 @@
     }
   }
 
+  @include tablet {
+    #sideNav {
+    display: flex !important;
+    }
+  }
+
   #sideNav {
     position: fixed;
     left: 2.5vw;
@@ -360,5 +366,49 @@
   .nameday {
     font-size: 0.85rem;
     opacity: 0.9;
+  }
+}
+
+@include tablet {
+
+  #sideNav {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 4rem; // presne ako navbarResponsive
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 999;
+    background: linear-gradient(to right, base.$primary, base.$secondary);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease, opacity 0.3s ease;
+  }
+
+  #sideNav.show-mobile {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  #sideNav .sideNav-content {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  #sideNav ul {
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  #sideNav li a {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.7rem 1rem;
+    background-color: rgba(255,255,255,0.1);
   }
 }

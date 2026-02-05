@@ -264,16 +264,26 @@
   /* tablet-specific overrides */
   #navbarResponsive {
     @include gradient-bg-nav(base.$primary, base.$secondary);
-    max-height: calc(100vh - ($navbar-height + $copyright-height));
     max-height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100vh - ($navbar-height + $copyright-height));
     display: none;
   }
 
   #navbarResponsive.show {
     display: flex;
   }
-}
+   .navbar-nav .nav-link {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+  }
 
+  #weatherNav {
+    display: none !important;
+  }
+  .navbar-toggler {
+    width: 5rem;
+    height: auto;
+  }
+}
 // ===============================================
 // MOBILE (≤ 576px)
 // ===============================================
@@ -307,8 +317,6 @@
 
 @include lg {
 
-  nav #weatherNav,
-  #mainNav #weatherNav,
   #weatherNav {
     display: none !important;
   }
