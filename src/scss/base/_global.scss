@@ -21,10 +21,10 @@ body {
   line-height: $body-line-height;
   color: $body-color;
   background-color: $body-bg;
-  position: relative;
+  position: relative;//TODO  nepotrebujem, ak nič nepoziciujem voči body
 
-  padding-top: 4rem;
-  padding-bottom: 1.75rem;
+  padding-top: $navbar-height; //TODO - je natvrdo $navbar-height sa nepouziva. duplicita
+  padding-bottom: $copyright-height; //TODO -kvoli copyrightu nie je v konflikte s fixed-bottom?
 
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -32,10 +32,6 @@ body {
 
 body.nav-open {
   overflow: hidden;
-  height: 100dvh;
+  height: 100dvh; //TODO - môže spôsobiť problémy na iOS (dynamic viewport) – preverit podľa JS.
   touch-action: none;
 }
-
-// ===============================================
-// RESPONSIVE HOOKS – OPTIONAL
-// ===============================================

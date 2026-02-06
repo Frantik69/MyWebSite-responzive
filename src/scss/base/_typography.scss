@@ -10,7 +10,8 @@ h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "Montserrat", var(--bs-font-sans-serif);
+  font-family: "Montserrat", var(--bs-font-sans-serif);/*TODO - font-family: "Montserrat", var(--bs-font-sans-serif) Ale v _variables.scss máš
+                                                        $body-font-family: $font-sans-serif. → nejednotnosť typografie.*/
   font-weight: 700;
   line-height: 1.2;
 }
@@ -71,7 +72,7 @@ p.tagline {
 }
 
 /* INLINE POLOŽKY ZOZNAMU */
-.list-inline-item {
+.list-inline-item {         /* TODO - má margin-right, ale Bootstrap to už má. → duplicita.*/
   display: inline-block;
   margin-right: 0.5rem;
 }

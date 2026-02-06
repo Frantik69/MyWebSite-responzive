@@ -1,6 +1,10 @@
 @use "../base/variables" as *;
 @use "../base/mixins" as *;
 
+/* TODO - fadeInUp, slideInRight, fadeIn, fadeInScale → veľa podobných animácií, niektoré sa líšia len smerom alebo scale. Da sa zlúčiť do parametrického mixinu.*/
+/* TODO - slideDown a slideUp → používam? V HTML nieje žiadna trieda, ktorá ich aplikuje. */
+/* TODO - .navbar-nav .nav-link.show-bubble .hover-bubble → závislosť na .hover-bubble z _buttons.scss → prepojenie komponentov (nie ideálne).*/
+
 // ===============================================
 // ANIMATIONS – DEFINÍCIE APLIKOVANÝCH ANIMÁCIÍ
 // ===============================================
@@ -97,7 +101,7 @@
   }
 }
 
-/* VYPNUTIE ANIMÁCIÍ NA MOBILOCH PRE REDUCED MOTION */
+/* VYPNUTIE ANIMÁCIÍ NA MOBILOCH PRE REDUCED MOTION *//* TODO - Globálne vypnutie animácií na mobile + reduced motion → Veľmi agresívne (vypne všetko).*/
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;

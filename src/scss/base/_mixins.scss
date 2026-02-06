@@ -1,18 +1,25 @@
 @use "sass:list";
 
+/* TODO - Breakpoint mixiny sú duplicity Bootstrapu
+Bootstrap už má: @include media-breakpoint-up(sm), @include media-breakpoint-down(lg)
+Mixiny sú funkčné, ale: zvyšujú veľkosť CSS, duplikuju systém, ktorý už existuje. - Navrhnut, čo ponechať. */
+
+/* TODO - hide-above-mobile, hide-above-tablet, hide-mobile, show-mobile → všetko sú duplicity Bootstrap tried: .d-none d-sm-block, .d-block d-sm-none
+Neskôr navrhnem odstránenie. */
+
 // ===============================================
 // GLOBAL MIXINS – PRE CELÝ PROJEKT
 // ===============================================
 
 /* FLEX CENTER – horizontálne aj vertikálne centrovanie */
-@mixin flex-center {
+@mixin flex-center { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /* FLEX COLUMN – stĺpcové rozloženie */
-@mixin flex-column {
+@mixin flex-column { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
   display: flex;
   flex-direction: column;
 }
@@ -38,7 +45,7 @@
 }
 
 /* TEXT SHADOW PRE SVETLÉ NADPISY */
-@mixin soft-text-shadow($color1: #070707, $color2: #464646) {
+@mixin soft-text-shadow($color1: #070707, $color2: #464646) { //TODO - Duplicitné text-shadow mixiny soft-text-shadow text-shadow-default → veľmi podobné, líšia sa len hodnotami. Neskôr navrhnem parametrizáciu.
   text-shadow:
     0.125rem 0.125rem 0 $color1,
     0.1875rem 0.1875rem 0.4375rem $color2;
@@ -55,24 +62,24 @@
 }
 
 /* GRADIENT BACKGROUND – pre sekcie */
-@mixin gradient-bg($from, $to) {
+@mixin gradient-bg($from, $to) { //TODO - Duplicitné gradient mixiny gradient-bg gradient-bg-nav → líšia sa len smerom. Stačí jeden mixin s parametrom direction.
   background: linear-gradient(to bottom, $from, $to);
 }
 
 /* GRADIENT BACKGROUND – pre menu */
-@mixin gradient-bg-nav($from, $to) {
+@mixin gradient-bg-nav($from, $to) { //TODO - Duplicitné gradient mixiny gradient-bg gradient-bg-nav → líšia sa len smerom. Stačí jeden mixin s parametrom direction.
   background: linear-gradient(to right, $from, $to);
 }
 
 /* DEFAULT TEXT SHADOW – používaný v h2, ikonách, nadpisoch */
-@mixin text-shadow-default {
+@mixin text-shadow-default {//TODO - Duplicitné text-shadow mixiny soft-text-shadow text-shadow-default → veľmi podobné, líšia sa len hodnotami. Neskôr navrhnem parametrizáciu.
   text-shadow:
     0.125rem 0.125rem 0 #070707,
     0.1875rem 0.1875rem 0.4375rem #464646;
 }
 
 /* DEFAULT DROP SHADOW – používaný v hover bubblinách, kartách */
-@mixin shadow-default {
+@mixin shadow-default { 
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
@@ -81,7 +88,7 @@
 }
 
 /* FLEX ROW CENTER – display:flex + align-items:center */
-@mixin flex-row-center {
+@mixin flex-row-center { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
   display: flex;
   align-items: center;
 }
@@ -231,7 +238,8 @@
 // ===============================================
 // NAVBAR – MOBILE/TABLET BASE LAYOUT
 // ===============================================
-@mixin navbar-mobile-base {
+@mixin navbar-mobile-base { /* TODO - navbar-mobile-base je obrovský mixin Toto je problém: mixin obsahuje celý layout pri každom použití sa celý kód duplikuje ak
+                            ho používam 1×, je to OK ak 2×, CSS sa nafúkne. Presunúť do samostatného SCSS modulu, nepoužívať ako mixin */
 
   #mainNav {
     height: 4rem;
@@ -274,7 +282,7 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    & :hover {
+    &:hover {
       color: #070707;
     }
   }
@@ -291,7 +299,7 @@
 
 
   #logo {
-    all: unset;
+    all: unset; //TODO - Nebezpečné: zrušíš aj display, aj pointer-events, aj všetko. Neskôr preverím, či to nespôsobuje bugy
     display: flex;
     align-items: center;
     justify-content: center;
@@ -321,7 +329,7 @@
     flex-direction: column;
     padding: 1rem;
     border-radius: 0.5rem;
-    z-index: 999;
+    z-index: 999; //TODO - z-index: 999 a z-index: 2000 → nekonzistentné, neskôr navrhnem systém.
   }
 
   #navbarResponsive.show {

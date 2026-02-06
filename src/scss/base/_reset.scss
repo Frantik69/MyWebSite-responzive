@@ -14,14 +14,14 @@ html,
 body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  margin: 0;
+  margin: 0; /*Reset margin/padding na html, body, ale v _global.scss ich znova nastavujem. → duplicita.*/
   padding: 0;
 }
 
 html {
   line-height: 1.15;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+  touch-action: manipulation; //TODO - touch-action: manipulation na html → môže kolidovať s vlastným JS gestami (mám?).
 }
 
 /* Normalize additions */
@@ -33,11 +33,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
 }
 
 ul, ol {

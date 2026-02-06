@@ -118,8 +118,8 @@ $logo: url("@/assets/img/logo.png");
       background-size: calc(100% - 1rem) auto;
       background-origin: content-box;
       filter: blur(15px);
-      opacity: 0.7; // môžeš upraviť podľa potreby
-      z-index: -1; // aby bolo ZA obsahom }
+      opacity: 0.7;
+      z-index: -1;
     }
 
     #sideNav.show-mobile {
@@ -137,7 +137,7 @@ $logo: url("@/assets/img/logo.png");
     display: flex !important;
     flex-direction: column;
 
-    position: fixed;
+    position: relative;
     top: $navbar-height;
     bottom: $copyright-height;
     left: -100%;
@@ -186,6 +186,19 @@ $logo: url("@/assets/img/logo.png");
 
     #sideNavTime .time {
       font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $logo;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: calc(100% - 1rem) auto;
+      background-origin: content-box;
+      filter: blur(15px);
+      opacity: 0.7;
+      z-index: -1;
     }
   }
 
