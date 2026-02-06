@@ -244,6 +244,31 @@ function INIT_NAVBAR() {
 
 document.addEventListener('DOMContentLoaded', INIT_NAVBAR);
 
+// SWIPE TO CLOSE SIDENAV
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleGesture() {
+  const swipeDistance = touchStartX - touchEndX;
+
+  // Minimálna dĺžka swipu (aby to nebolo príliš citlivé)
+  if (swipeDistance > 60) {
+    // Zatvoriť menu
+    sideNav.classList.remove("show-mobile");
+    document.body.classList.remove("nav-open");
+  }
+}
+
+sideNav.addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+sideNav.addEventListener("touchend", (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+});
+
+
 // ======================================================
 // === MODAL PRE POČASIE ================================
 // ======================================================
@@ -286,7 +311,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggler = document.querySelector(".navbar-toggler");
   const sideNav = document.getElementById("sideNav");
 
-  if (toggler && sideNav) {
+  if (!sideNav) return;
+
+  // Toggler + body scroll lock
+  if (toggler) {
     toggler.addEventListener("click", () => {
       const isOpen = sideNav.classList.toggle("show-mobile");
 
@@ -297,12 +325,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // Klik na položku menu = zatvoriť + odomknúť scroll
   document.querySelectorAll("#sideNav .menu-item a").forEach(link => {
     link.addEventListener("click", () => {
       sideNav.classList.remove("show-mobile");
       document.body.classList.remove("nav-open");
     });
   });
+
+  // ============================
+  // SWIPE ZPRAVA DOĽAVA = ZATVORIŤ
+  // ============================
+
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  sideNav.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  sideNav.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+
+    const swipeDistance = touchStartX - touchEndX;
+
+    // swipe doprava → doľava (min. 60px)
+    if (swipeDistance > 60 && sideNav.classList.contains("show-mobile")) {
+      sideNav.classList.remove("show-mobile");
+      document.body.classList.remove("nav-open");
+    }
+  }, { passive: true });
 });
 
 // ======================================================

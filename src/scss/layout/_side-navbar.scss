@@ -2,6 +2,8 @@
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
+$logo: url("@/assets/img/logo.png");
+
 /* ============================
    DESKTOP SIDE NAVBAR
    ============================ */
@@ -57,7 +59,7 @@
     display: flex !important;
     flex-direction: column;
 
-    position: fixed;
+    position: relative;
     top: $navbar-height;
     bottom: $copyright-height;
     left: -100%;
@@ -72,7 +74,28 @@
     border-radius: 0 0.5rem 0.5rem 0;
 
     z-index: 999;
-    background: linear-gradient(to right, base.$primary, base.$secondary);
+
+    /* LOGO + GRADIENT AKO VIACVRSTVOVÉ POZADIE */
+    background-image:
+      $logo,
+      linear-gradient(to right, base.$primary, base.$secondary);
+
+    background-repeat:
+      no-repeat,
+      no-repeat;
+
+    background-position:
+      top center,
+      center;
+      
+    background-size:
+      calc(100% - 1rem) auto,
+      cover;
+
+    background-origin:
+      content-box,
+      border-box;
+
 
     opacity: 0;
     pointer-events: none;
@@ -85,15 +108,28 @@
     #sideNavTime .time {
       font-size: clamp(1.8rem, 3vw, 2rem);
     }
-  }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $logo;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: calc(100% - 1rem) auto;
+      background-origin: content-box;
+      filter: blur(15px);
+      opacity: 0.7; // môžeš upraviť podľa potreby
+      z-index: -1; // aby bolo ZA obsahom }
+    }
 
-  #sideNav.show-mobile {
-    left: 0;
-    opacity: 1;
-    pointer-events: auto;
-  }
+    #sideNav.show-mobile {
+      left: 0;
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-  
+    #sideNav.closing { opacity: 0; }
+  }
 }
 
 @include tablet {
@@ -117,7 +153,28 @@
     border: 1px solid #000000;
 
     z-index: 999;
-    background: linear-gradient(to right, base.$primary, base.$secondary);
+
+    /* LOGO + GRADIENT AKO VIACVRSTVOVÉ POZADIE */
+    background-image:
+      $logo,
+      linear-gradient(to right, base.$primary, base.$secondary);
+
+    background-repeat:
+      no-repeat,
+      no-repeat;
+
+    background-position:
+      top center,
+      center;
+
+    background-size:
+      calc(100% - 2rem) auto,
+      cover;
+
+    background-origin:
+      content-box,
+      border-box;
+
 
     opacity: 0;
     pointer-events: none;

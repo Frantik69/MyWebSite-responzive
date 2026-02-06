@@ -3,6 +3,11 @@ import purgecss from 'vite-plugin-purgecss';
 
 export default defineConfig({
   base: "/MyWebSite-responzive/",
+  resolve: {
+    alias: {
+      '@': '/src'
+    }
+  },
   plugins: [
     purgecss({
       content: ['./index.html', './src/**/*.{js,ts,jsx,tsx,html}'],
