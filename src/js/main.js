@@ -288,17 +288,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (toggler && sideNav) {
     toggler.addEventListener("click", () => {
-      sideNav.classList.toggle("show-mobile");
+      const isOpen = sideNav.classList.toggle("show-mobile");
+
+      if (isOpen) {
+        document.body.classList.add("nav-open");
+      } else {
+        document.body.classList.remove("nav-open");
+      }
     });
   }
-
   document.querySelectorAll("#sideNav .menu-item a").forEach(link => {
     link.addEventListener("click", () => {
       sideNav.classList.remove("show-mobile");
+      document.body.classList.remove("nav-open");
     });
   });
 });
-
 
 // ======================================================
 // ==---------------= MODAL PRE GITHUB ==================

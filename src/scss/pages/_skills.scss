@@ -123,8 +123,15 @@
 }
 
 @include tablet {
-  #skills .skills-container {
-    width: 90vw;
+  #skills {
+  padding: 2rem 0.5rem;
+  }
+  
+   #skills .skills-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   #skills .skills-page {

@@ -34,6 +34,13 @@
   .about-container {
     width: 65vw;
     margin: 0 auto;
+    span {
+    text-shadow:
+    -0.8px -0.8px 0 black,
+     0.8px -0.8px 0 black,
+    -0.8px  0.8px 0 black,
+     0.8px  0.8px 0 black;
+    }
   }
 
   h2 {

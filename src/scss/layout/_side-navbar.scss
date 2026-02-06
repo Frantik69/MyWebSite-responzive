@@ -3,61 +3,159 @@
 @use "../base/mixins" as *;
 
 /* ============================
-   SIDE NAVBAR – len desktop
+   DESKTOP SIDE NAVBAR
    ============================ */
 
+#sideNav {
+  display: none;
+}
+
+@include lg {
   #sideNav {
-    display: none;
-  }
-
-  @include mobile {
-    #sideNav {
     display: flex !important;
-    }
-  }
+    flex-direction: column;
 
-  @include tablet {
-    #sideNav {
-    display: flex !important;
-    }
-  }
-
-  #sideNav {
     position: fixed;
     left: 2.5vw;
     top: $navbar-height;
     bottom: $copyright-height;
+
     width: clamp(180px, 13vw, 260px);
     max-width: 16%;
+
     z-index: 999;
     overflow: hidden;
 
-    @include lg {
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 
-  &.visible {
+    --scale: 1;
+    transform: scale(var(--scale));
+    transform-origin: center;
+  }
+
+  #sideNav.visible {
     opacity: 1;
     pointer-events: auto;
   }
 
-  --scale: 1;
-  transform: scale(var(--scale));
-  transform-origin: center;
-
-  @media (max-height: 900px) { --scale: 0.95; }
-  @media (max-height: 800px) { --scale: 0.90; }
-  @media (max-height: 700px) { --scale: 0.85; }
-  @media (max-height: 600px) { --scale: 0.80; }
-  @media (max-height: 520px) { --scale: 0.75; }
-  @media (max-height: 460px) { --scale: 0.70; }
+  @media (max-height: 900px) { #sideNav { --scale: 0.95; } }
+  @media (max-height: 800px) { #sideNav { --scale: 0.90; } }
+  @media (max-height: 700px) { #sideNav { --scale: 0.85; } }
+  @media (max-height: 600px) { #sideNav { --scale: 0.80; } }
+  @media (max-height: 520px) { #sideNav { --scale: 0.75; } }
+  @media (max-height: 460px) { #sideNav { --scale: 0.70; } }
 }
 
-/* wrapper pre centrovanie */
+/* ============================
+   MOBILE + TABLET SIDE NAVBAR
+   ============================ */
+
+@include mobile {
+  #sideNav {
+    display: flex !important;
+    flex-direction: column;
+
+    position: fixed;
+    top: $navbar-height;
+    bottom: $copyright-height;
+    left: -100%;
+
+    width: 100%;
+    max-width: 300px;
+
+    height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100dvh - ($navbar-height + $copyright-height));
+
+    padding: 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+
+    z-index: 999;
+    background: linear-gradient(to right, base.$primary, base.$secondary);
+
+    opacity: 0;
+    pointer-events: none;
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    transition: left 0.35s ease, opacity 0.3s ease;
+  
+    #sideNavTime .time {
+      font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+  }
+
+  #sideNav.show-mobile {
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  
+}
+
+@include tablet {
+  #sideNav {
+    display: flex !important;
+    flex-direction: column;
+
+    position: fixed;
+    top: $navbar-height;
+    bottom: $copyright-height;
+    left: -100%;
+
+    width: 100%;
+    max-width: 300px;
+
+    height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100dvh - ($navbar-height + $copyright-height));
+
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #000000;
+
+    z-index: 999;
+    background: linear-gradient(to right, base.$primary, base.$secondary);
+
+    opacity: 0;
+    pointer-events: none;
+
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    transition: left 0.35s ease, opacity 0.3s ease;
+
+    #sideNavTime .time {
+      font-size: clamp(1.8rem, 3vw, 2rem);
+    }
+  }
+
+  #sideNav.show-mobile {
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ============================
+   LANDSCAPE MOBILE FIX
+   ============================ */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  #sideNav {
+    top: $navbar-height;
+    padding: 0.5rem;
+    height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100dvh - ($navbar-height + $copyright-height));
+  }
+}
+
+/* ============================
+   ZVYŠOK TVOJHO KÓDU (BEZ ZMIEN)
+   ============================ */
+
 .sideNav-center {
   display: flex;
   flex-direction: column;
@@ -67,7 +165,6 @@
   margin-block: auto;
 }
 
-/* obsah side-navu (čas + divider + menu) */
 .sideNav-content {
   display: flex;
   flex-direction: column;
@@ -75,10 +172,6 @@
   gap: 0.2rem;
   width: 100%;
 }
-
-/* ============================
-   DÁTUM + ČAS
-   ============================ */
 
 #sideNavTime {
   width: 100%;
@@ -89,12 +182,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-
   text-shadow:
-    -0.5px -0.5px 0 black,
-     0.5px -0.5px 0 black,
-    -0.5px  0.5px 0 black,
-     0.5px  0.5px 0 black;
+    -0.8px -0.8px 0 black,
+     0.8px -0.8px 0 black,
+    -0.8px  0.8px 0 black,
+     0.8px  0.8px 0 black;
 }
 
 #sideNavTime .time {
@@ -113,10 +205,6 @@
   font-weight: 600;
 }
 
-/* ============================
-   ODDĚLOVAČ
-   ============================ */
-
 .side-nav-divider {
   width: 100%;
   border: none;
@@ -124,17 +212,11 @@
   margin: 0.5rem 0;
 }
 
-
-/* ============================
-   MENU LIST
-   ============================ */
-
 #sideNav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   gap: clamp(0.5rem, 1.2vh, 1.5rem);
@@ -144,10 +226,6 @@
 #sideNav li {
   width: 100%;
 }
-
-/* ============================
-   POLOŽKY MENU
-   ============================ */
 
 #sideNav li a {
   display: flex;
@@ -183,18 +261,12 @@
   background: rgba(255, 255, 255, 0.02);
   transform: translateY(-5px);
   color: black;
-
   text-shadow:
     -0.25px -0.25px 0 black,
      0.25px -0.25px 0 black,
     -0.25px  0.25px 0 black,
      0.25px  0.25px 0 black;
 }
-
-
-/* ============================
-   MENU ICON – SVG tieň
-   ============================ */
 
 #sideNav .menu-icon {
   display: flex;
@@ -208,7 +280,6 @@
   width: 1em;
   height: 1em;
   display: block;
-
   filter:
     drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.6))
     drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
@@ -219,109 +290,40 @@
   color: #000;
 }
 
-/* ============================
-   HOVER BUBBLE – SIDE NAVBAR
-   ============================ */
-
 #sideNav .hover-bubble {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: rgba(57, 57, 57, 0.3);
   color: rgb(255, 255, 255);
-
   border-radius: inherit;
   z-index: 5;
   pointer-events: none;
-
   opacity: 0;
   transition: opacity 0.35s ease;
-
-  /* nové vlastnosti */
-  overflow: hidden;       /* text sa schová mimo bubliny */
-  white-space: nowrap;    /* nezalamovať */
-  font-size: 0.9rem !important;      /* väčší text */
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.9rem !important;
   font-weight: 600;
 }
 
-/* animovaný text vo vnútri bubliny */
 #sideNav .hover-bubble span {
   display: inline-block;
-  padding-left: 100%;     /* text začne mimo bubliny */
+  padding-left: 100%;
   animation: sideNavMarquee 6s linear infinite;
 }
 
-/* zobrazenie bubliny */
 #sideNav a.show-bubble .hover-bubble {
   opacity: 1;
 }
 
-
-/* ANIMÁCIA – marquee efekt */
 @keyframes sideNavMarquee {
   0%   { transform: translateX(0%); }
   100% { transform: translateX(-100%); }
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-  #sideNav {
-    left: 1vw;
-  }
-}
-
-@include between(992px, 1200px) {
-  #sideNav { left: 1vw; }
-}
-
-@include lg {
-  #sideNav { display: flex; }
-}
-@include mobile {
-
-  #sideNav {
-    display: flex !important;
-    flex-direction: column;
-    position: fixed;
-    top: 4rem; // presne ako navbarResponsive
-    left: 0;
-    width: 100%;
-    max-width: 300px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    z-index: 999;
-    background: linear-gradient(to right, base.$primary, base.$secondary);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-100%);
-    transition: transform 0.35s ease, opacity 0.3s ease;
-  }
-
-  #sideNav.show-mobile {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-  }
-
-  #sideNav .sideNav-content {
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  #sideNav ul {
-    width: 100%;
-    gap: 0.7rem;
-  }
-
-  #sideNav li a {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.7rem 1rem;
-    background-color: rgba(255,255,255,0.1);
-  }
-}
 #sideNavWeather {
   width: 100%;
   text-align: left;
@@ -345,19 +347,35 @@
   .weather-city {
     font-size: 0.9rem;
     opacity: 0.9;
+    text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
   }
 
   .weather-temp {
     font-size: 1rem;
     font-weight: 600;
+    text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
   }
 }
+
 #sideNavDateBlock {
   width: 100%;
   text-align: left;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
 
   .date {
     font-size: 0.9rem;
@@ -366,49 +384,5 @@
   .nameday {
     font-size: 0.85rem;
     opacity: 0.9;
-  }
-}
-
-@include tablet {
-
-  #sideNav {
-    display: flex !important;
-    flex-direction: column;
-    position: fixed;
-    top: 4rem; // presne ako navbarResponsive
-    left: 0;
-    width: 100%;
-    max-width: 300px;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    z-index: 999;
-    background: linear-gradient(to right, base.$primary, base.$secondary);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-100%);
-    transition: transform 0.35s ease, opacity 0.3s ease;
-  }
-
-  #sideNav.show-mobile {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateX(0);
-  }
-
-  #sideNav .sideNav-content {
-    align-items: flex-start;
-    width: 100%;
-  }
-
-  #sideNav ul {
-    width: 100%;
-    gap: 0.7rem;
-  }
-
-  #sideNav li a {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.7rem 1rem;
-    background-color: rgba(255,255,255,0.1);
   }
 }
