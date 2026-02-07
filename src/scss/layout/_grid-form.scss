@@ -5,6 +5,24 @@
 // FORMS – GRIDOVÝ FORMULÁR + ZÁKLADNÉ INPUTY
 // ===============================================
 
+/*TODO - Toto je duplicita _forms.scss  
+→ oba súbory definujú: form layout, label, input, textarea, button → dvojité CSS.
+
+Farby natvrdo (#ccc, #6c757d)  
+→ duplicita s premennými.
+
+button, [type="submit"] prepisuje všetky tlačidlá  
+→ koliduje s _buttons.scss.
+
+@include bubble-box-shadow  
+→ duplicita s inými komponentmi.
+
+Breakpoint mixiny  
+→ duplicita s Bootstrap breakpoints.
+
+border-radius: 30px natvrdo  
+→ duplicita s $radius-large.*/
+
 /* HLAVNÝ FORMULÁR – GRID LAYOUT */
 form {
   display: grid;

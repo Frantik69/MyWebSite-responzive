@@ -6,12 +6,12 @@
 // ===============================================
 
 /* FARBA TEXTU PRE TLAČIDLO V KONTAKT SEKCII */
-#contact .btn.menu-item::after {
+#contact .btn.menu-item::after { /* TODO - → hack → dá sa vyriešiť lepšie.*/
   color: #000;
 }
 
 /* ZÁKLAD TLAČIDLA – MUSÍ MAŤ RELATÍVNU POZÍCIU */
-.btn.menu-item {
+.btn.menu-item { //TODO - .btn.menu-item → menu-item je pôvodne navigačná trieda → miešaš UI logiku
   position: relative;
   overflow: hidden;
 }
@@ -36,7 +36,7 @@
   transition: opacity 0.3s ease;
 }
 
-/* ZOBRAZENIE BUBLINY PRI .show-bubble */
+/* ZOBRAZENIE BUBLINY PRI .show-bubble *//* TODO - → duplicita s animáciami (bubblePop) → komponent závisí na animáciách → nie ideálne. */
 .btn.menu-item.show-bubble .hover-bubble {
   animation: bubblePop 0.4s ease forwards;
   opacity: 1;
@@ -44,7 +44,7 @@
 
 /* SKRYTIE PÔVODNÉHO OBSAHU TLAČIDLA */
 .btn.menu-item.show-bubble > *:not(.hover-bubble) {
-  visibility: hidden;
+  visibility: hidden;     //TODO - → môže spôsobiť layout shift.
 }
 
 /* ===============================================
@@ -67,7 +67,7 @@
   margin-top: -0.5625rem;
   margin-left: -0.5625rem;
   border: 2px solid transparent;
-  border-top-color: #fff;
+  border-top-color: #fff;           //TODO - farba je natvrdo #fff
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
@@ -76,7 +76,7 @@
 // RESPONSIVE BUTTON UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-@include mobile {
+@include mobile {     //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE BUBBLES NA MOBILOCH */
   .btn.menu-item .hover-bubble {

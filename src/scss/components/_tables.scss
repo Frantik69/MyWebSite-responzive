@@ -14,11 +14,11 @@ table {
 /* POPIS TABUĽKY (CAPTION) */
 caption {
   padding: 0.5rem 0;
-  color: #6c757d;
+  color: #6c757d;                                       //TODO - Natvrdo definované farby (#6c757d) → duplicita s premennými.
   text-align: left;
 }
 
-/* BOOTSTRAP ŠTÝLY PRE FAREBNÉ TABUĽKY */
+/* BOOTSTRAP ŠTÝLY PRE FAREBNÉ TABUĽKY */                 //TODO - Duplicita s Bootstrap .table-* triedami → Bootstrap už má .table-primary, .table-secondary, atď.
 .table-primary   { --bs-table-bg: #3a5a7b; }
 .table-secondary { --bs-table-bg: #3a8a8b; }
 .table-success   { --bs-table-bg: #d1e7dd; }
@@ -32,7 +32,7 @@ caption {
 // RESPONSIVE TABLE UTILITIES
 // ===============================================
 
-@include mobile {
+@include mobile {         //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠÍ CAPTION NA MOBILOCH */
   caption {

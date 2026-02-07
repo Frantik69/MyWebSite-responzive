@@ -2,6 +2,23 @@
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
+/*TODO - 1. Farby natvrdo (#000000, rgba(...), #ffffff)
+Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), color: black → duplicita s $dark, $light, $primary, $secondary.
+❗ 2. Prepisuješ Bootstrap .list-unstyled cez @extend → @extend je nebezpečný, môže spôsobiť: nafúknutie CSS, nečakané prepisy, konflikty v iných sekciách
+.skills {
+  @extend .list-unstyled;
+}
+❗ 3. .portfolio-content a .portfolio-container majú pevné šírky (65vw) → na veľkých monitoroch to vyzerá úzke → na menších monitoroch to môže spôsobiť overflow
+❗ 4. .portfolio-left a .portfolio-right majú pevné min-width: 300px → môže spôsobiť horizontálny scroll na mobiloch → duplicita s mobile blokom, kde to rušíš
+❗ 5. .profile-photo { width: 300px; } → natvrdo → neadaptívne → duplicita s mobile override (220px)
+❗ 6. .skills-columns duplicuje Bootstrap grid → Bootstrap už rieši: flex, wrap, columns
+❗ 7. .timeline je definovaná tu aj v components/_timeline.scss → duplicita → 2 rôzne verzie timeline v projekte
+❗ 8. .skill-card definovaná tu aj v components/_skill-card.scss → duplicita → 2 rôzne verzie skill-card v projekte
+❗ 9. Breakpoint mixiny (@include mobile, @include tablet, @include tablet-landscape) → duplicita s Bootstrap breakpoints → CSS je 3× väčšie, ako musí byť
+❗ 10. Mobile blok je extrémne dlhý a prepisuje všetko → veľa duplicít → prepisuje desktop aj tablet verziu → ťažké na údržbu
+❗ 11. .timeline .timeline-item má úplne inú štruktúru ako timeline v components → 2 rôzne timeline systémy → JS môže zlyhať, ak sa spolieha na triedy
+❗ 12. .aboutPreview má hover scale(1.1) → spôsobuje layout shift → nevyzerá dobre pri rýchlom pohybe myši*/
+
 // ===============================================
 // PORTFOLIO – HLAVNÁ SEKCIA PROFILU
 // ===============================================

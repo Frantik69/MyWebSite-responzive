@@ -4,6 +4,10 @@
 // GRID – JEDNODUCHÉ RESPONSÍVNE STĹPCE
 // ===============================================
 
+/*TODO - Duplicita Bootstrap gridu  
+Bootstrap už má: .col-lg-6, .col-lg-12, .col-sm-6 → tento súbor je úplne zbytočný.
+Breakpoint mixiny (@include lg, @include sm) → duplicita s Bootstrap breakpoints.*/
+
 /* LARGE (≥ 992px) */
 @include lg {
   .col-lg-6 {

@@ -5,6 +5,22 @@
 // FOOTER – HLAVNÝ FOOTER + FIXNÝ COPYRIGHT BAR
 // ===============================================
 
+/*TODO - Farby natvrdo (#26282a, rgba(22,24,26,0.7), black)  
+→ duplicita s $dark, $light, $primary, $secondary.
+
+position: fixed + height: 1.75rem  
+→ koliduje s body { padding-bottom: 1.75rem; } v _global.scss.
+→ ak zmeníš výšku copyrightu, musíš meniť aj body padding → neudržateľné.
+
+Breakpoint mixiny (@include tablet-landscape, @include tablet, @include mobile)  
+→ duplicita s Bootstrap breakpoints.
+
+Tri rovnaké bloky pre tablet-landscape, tablet, mobile  
+→ všetky majú rovnaké hodnoty → zbytočné 3×.
+
+Z-index 1030  
+→ Bootstrap navbar má 1030 → môže sa prekrývať.*/
+
 /* HLAVNÝ FOOTER POD STRÁNKOU */
 .custom-footer {
   background-color: #26282a;

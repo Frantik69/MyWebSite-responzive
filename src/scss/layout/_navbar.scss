@@ -2,6 +2,28 @@
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
+/*TODO - 1. Najväčší problém: extrémna duplicita kódu
+Navbar má 3 kompletné verzie: desktop, tablet, mobile. A navyše: @include navbar-mobile-base sa opakuje 2× (tablet + mobile) veľa rovnakých override blokov sa opakuje
+v tablet + mobile. Výsledok: CSS je 3× väčšie, ako musí byť.
+❗ 2. navbar-mobile-base je obrovský mixin → nafukuje CSS
+Tento mixin obsahuje: kompletný layout, kompletné pozície, kompletné štýly pre toggler, logo, nav, rightNav. A ty ho voláš: 2x → celý kód sa duplikuje 2×.
+❗ 3. Farby natvrdo (#fff, rgba(...), black)
+Príklady:color: #fff; border: 1px solid rgb(0,0,0); background-color: rgba(58, 90, 123, 0.9); → duplicita s $light, $dark, $primary, $secondary.
+❗ 4. Z-index konflikt
+Navbar: z-index: 1030 Copyright: z-index: 1030 Modaly: 2000 Tooltip: 2050 Overlay: 9999 → chaos v stacking kontejnery.
+❗ 5. #weatherNav je v navbare, ale má rovnaké triedy ako sideNav + floating weather → spôsobuje konflikty v JS aj CSS.
+❗ 7. Prepisuješ Bootstrap navbar, ale používaš jeho triedy .navbar-expand-lg, .navbar-toggler, .navbar-nav, .nav-item, .nav-link
+→ ale všetko prepisuješ vlastnými štýlmi → duplicita + riziko konfliktov.
+❗ 8. white-space: nowrap na nav-item → môže spôsobiť overflow na menších displejoch.
+❗ 9. img.logo má rôzne veľkosti v rôznych breakpoints desktop: 4rem, tablet: 3rem, mobile: 3.5rem → nejednotné, ťažké na údržbu.
+❗ 10. #languageDropdown * { overflow: visible; } → veľmi nebezpečné, prepisuje overflow na všetkých vnorených elementoch.
+❗ 11. max-height: calc(100dvh - ...) 2× za sebou 
+max-height: calc(100dvh - ($navbar-height + $copyright-height));
+max-height: calc(100vh - ($navbar-height + $copyright-height));
+→ duplicita.
+❗ 12. display: none !important na weatherNav → JS ho už nikdy neukáže.
+❗ 13. @include lg blok na konci skrýva weatherNav aj na desktop → v HTML máš weatherNav v navbare, ale SCSS ho skrýva.*/
+
 // ===============================================
 // NAVBAR – HLAVNÁ NAVIGÁCIA (FIXNÁ HORE)
 // ===============================================
@@ -70,10 +92,9 @@
     line-height: 1;
     margin: 0;
   }
-
-  :hover {
-    text-decoration: none;
-  }
+}
+#weatherNav:hover {
+  text-decoration: none;
 }
 
 #navbarResponsive {

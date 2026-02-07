@@ -4,6 +4,37 @@
 
 $logo: url("@/assets/img/logo.png");
 
+/*TODO - Najväčší problém: extrémna duplicita medzi mobile a tablet verziou → Oba bloky sú takmer identické. → CSS sa duplikuje 2×. → Údržba je ťažká.
+❗ 2. Desktop verzia má 7 samostatných @media (max-height) pravidiel
+scss
+@media (max-height: 900px) { ... }
+@media (max-height: 800px) { ... }
+...
+→ extrémna duplicita → toto má byť mixin (už ho máš: scale-by-height) → CSS je zbytočne nafúknuté
+❗ 3. Farby natvrdo (#000, rgba(...), #e63946)
+Príklady: border: 1px solid #000000, background: rgba(57,57,57,0.3), color: #e63946, box-shadow: 0px 1px 0px rgba(202,202,202,0.787)
+→ duplicita s $dark, $light, $danger, $primary, $secondary.
+❗ 4. Background-image používa absolútnu cestu s @ aliasom
+scss
+$logo: url("@/assets/img/logo.png");
+→ SCSS nepozná alias @  → funguje iba v bundleri (Vite/Webpack) -> môže zlyhať pri build-e alebo deployi
+❗ 6. display: flex !important v mobile aj tablet verzii → prepisuješ desktop verziu → JS nemá kontrolu nad tým, či sideNav existuje alebo nie
+→ môže spôsobovať problémy pri toggleri
+❗ 7. Z-index systém je nekonzistentný sideNav: 999, navbar: 1030, modaly: 2000, tooltip: 2050, overlay: 9999, → sideNav môže byť prekrytý navbarom
+→ alebo prekryť weatherFloating
+❗ 8. Weather blok v sideNav používa rovnaké triedy ako navbar + floating weather .weather-icon, .weather-city, .weather-temp
+→ CSS aj JS sa prepisujú medzi 3 rôznymi blokmi → spôsobuje bugy (už si ich videl)
+❗ 9. Hover efekty sú extrémne silné (translateY(-5px)) → môže spôsobovať layout shift → nevyzerá dobre pri rýchlom pohybe myši
+❗ 10. Marquee animácia v hover-bubble scss 
+@keyframes sideNavMarquee { ... }
+→ animácia beží stále → vysoká záťaž CPU na slabších zariadeniach → nepotrebuješ to pre každý hover
+❗ 11. Mobile + tablet height výpočty sú duplikované scss
+height: calc(100dvh - ($navbar-height + $copyright-height));
+max-height: calc(100dvh - ($navbar-height + $copyright-height));
+→ 2× rovnaký riadok → duplicita
+❗ 12. overflow-y: auto + -webkit-overflow-scrolling: touch
+→ OK, ale musíš mať padding-bottom kvôli copyrightu → inak posledné položky budú nekliknuteľné*/
+
 /* ============================
    DESKTOP SIDE NAVBAR
    ============================ */
@@ -59,7 +90,7 @@ $logo: url("@/assets/img/logo.png");
     display: flex !important;
     flex-direction: column;
 
-    position: relative;
+    position: fixed;
     top: $navbar-height;
     bottom: $copyright-height;
     left: -100%;
@@ -122,13 +153,13 @@ $logo: url("@/assets/img/logo.png");
       z-index: -1;
     }
 
-    #sideNav.show-mobile {
+    .show-mobile {
       left: 0;
       opacity: 1;
       pointer-events: auto;
     }
 
-    #sideNav.closing { opacity: 0; }
+    .closing { opacity: 0; }
   }
 }
 
@@ -137,7 +168,7 @@ $logo: url("@/assets/img/logo.png");
     display: flex !important;
     flex-direction: column;
 
-    position: relative;
+    position: fixed;
     top: $navbar-height;
     bottom: $copyright-height;
     left: -100%;

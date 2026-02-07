@@ -6,7 +6,7 @@
 // ===============================================
 
 /* HLAVNÝ WRAPPER PRE KONTAKTNÉ INFORMÁCIE */
-.contact-info {
+.contact-info {     //TODO - Flex + gap + center → duplicita s mixinmi (flex-center) aj s Bootstrap utilitami.
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
 }
 
 /* IKONA EMAILU V KONTAKTNOM BLOKU */
-.contact-info .email-icon {
+.contact-info .email-icon { //TODO - .email-icon veľkosti natvrdo → navrhnut jednotný systém ikon.
   width: 35px;
   height: 35px;
   margin: 0;
@@ -32,7 +32,7 @@
 // RESPONSIVE CONTACT UTILITIES
 // ===============================================
 
-@include mobile {
+@include mobile {   //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIA IKONA NA MOBILOCH */
   .contact-info .email-icon {

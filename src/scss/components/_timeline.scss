@@ -5,6 +5,24 @@
 // TIMELINE – VERTIKÁLNA ČASOVÁ OS (PORTFOLIO)
 // ===============================================
 
+/*TODO - Farby natvrdo (#192876, #08193c, #000, rgba(...))  
+→ duplicita s premennými.
+
+font-size: 0.8rem, 0.7rem, 0.75rem  
+→ duplicita s typografiou.
+
+Breakpoint mixiny (@include mobile)  
+→ duplicita s Bootstrap breakpoints.
+
+timeline-item::before má pevné hodnoty (11px)  
+→ duplicita s mobilnou verziou (tie isté hodnoty).
+
+white-space: nowrap na dátume  
+→ môže spôsobiť overflow na malých displejoch.
+
+grid-template-columns: 6rem 1fr  
+→ natvrdo → neskôr navrhnem fluidnejší systém.*/
+
 /* HLAVNÝ ZOZNAM TIMELINE */
 .timeline {
   position: relative;

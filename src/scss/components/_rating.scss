@@ -6,6 +6,9 @@
 // RATING – HVIEZDIČKOVÉ HODNOTENIE (UNICODE ★)
 // ===============================================
 
+/* TODO - .rating a .star sa v HTML zatiaľ nepoužívajú → možno mŕtvy kód.
+transform: translateY(-1px) → natvrdo → neskôr navrhnem lepšie vertikálne zarovnanie.*/
+
 .rating {
   font-size: base.$rating-size !important;
   display: inline-block;

@@ -2,6 +2,26 @@
 @use "../base/index" as base;
 @use "../base/mixins" as *;
 
+/*TODO - 1. Farby natvrdo (#cbcbcb, #000000, rgba(...))
+Príklady:color: #cbcbcb, border: 1px solid #000000, background: rgba(0,0,0,0.2), box-shadow: 0 0 6px rgba(0,0,0,0.4) → duplicita s $light, $dark, $primary, $secondary.
+❗ 2. Prepisuješ Bootstrap .row → Bootstrap už má .row → toto môže rozbiť grid v iných sekciách.
+#home .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+❗ 3. max-width: 80rem + padding-left: 8rem → layout sa posúva doprava → koliduje so sideNav → na menších desktopoch to spôsobuje asymetriu
+❗ 4. min-height: calc(100dvh - ...) → rovnaký problém ako v ostatných sekciách → ak sa zmení výška navbaru/copyrightu → musíš meniť všade
+❗ 5. Tablet-landscape, tablet, mobile bloky sú takmer identické → duplicita → CSS je 3× väčšie, ako musí byť
+❗ 6. Certifikátový carousel má natvrdo veľkosti height: 90px gap: 1rem padding: 0.5rem → duplicita s layout mixinmi → neadaptívne pre rôzne DPI
+❗ 7. @include desktop-down + @include tablet-landscape + @include tablet + @include mobile → extrémne veľa breakpointov → duplicita s Bootstrap breakpoints → ťažká údržba
+❗ 8. #weatherNav v home sekcii → rovnaký problém ako v navbar + sideNav + floating weather → rovnaké triedy → JS aj CSS sa prepisujú → spôsobuje bugy
+❗ 9. max-height: fit-content → zbytočné, default je auto → nič to nerieši
+❗ 10. .img-fluid override → prepisuje Bootstrap .img-fluid → môže rozbiť obrázky v iných sekciách
+#home .img-fluid {
+  height: auto;
+  max-width: 90%;
+}*/
+
 // ===============================================
 // HOME – ÚVODNÁ LANDING SEKCIA
 // ===============================================

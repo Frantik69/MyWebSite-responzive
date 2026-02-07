@@ -6,6 +6,30 @@
 // ABOUT – INFORMÁCIE O MNE (SEKCIA PROFILU)
 // ===============================================
 
+/*TODO - Farby natvrdo (#000000, black)  
+→ duplicita s $dark.
+
+Gradienty natvrdo  
+→ duplicita s mixinom gradient-bg.
+
+min-width: 500px v .about-page  
+→ rozbíja layout na mobiloch, nepotrebuješ to.
+
+.row { flex-wrap: nowrap; }  
+→ prepisuje Bootstrap .row, môže rozbiť grid.
+
+Breakpoint mixiny (@include tablet-landscape, @include mobile)  
+→ duplicita s Bootstrap breakpoints.
+
+Tablet a mobile bloky sú takmer identické  
+→ duplicita.
+
+Natvrdo definované paddingy (2rem 4rem)  
+→ duplicita s layout mixinmi.
+
+max-height: fit-content  
+→ zbytočné, default je auto. */
+
 #about {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;

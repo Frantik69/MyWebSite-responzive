@@ -6,6 +6,30 @@
    weatherFloating – samostatný prvok počasia
    =============================================== */
 
+/* TODO - Farby natvrdo (base.$dark je OK, ale ostatné rgba sú natvrdo)  
+→ duplicita s premennými.
+
+Veľkosti ikon natvrdo (48px, 80px)  
+→ duplicita s _icons.scss.
+
+Breakpoint mixiny (@include desktop-down)  
+→ duplicita s Bootstrap breakpoints.
+
+3 rôzne media queries pre orientáciu  
+→ veľmi komplikované, dá sa zjednodušiť.
+
+display: none !important  
+→ môže kolidovať s JS, ktorý pridáva .visible.
+
+Animácia weather-sway je natvrdo  
+→ duplicita s inými animáciami (bubblePop, slideInRight).
+
+pointer-events: none v default stave  
+→ ak JS zlyhá, prvok bude navždy neklikateľný.
+
+Z-index 1000  
+→ koliduje s navbarom (tiež 1000). */
+
 #weatherFloating {
   opacity: 0;
   pointer-events: none;

@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  @include light-box-shadow;
+  @include light-box-shadow;                        //TODO - → duplicita s inými komponentmi, ktoré používajú drop-shadow natvrdo.
 
   /* TEXTOVÁ ČASŤ LOGA */
   .logo-text {
@@ -19,7 +19,7 @@
     color: #194484;
     text-align: left;
 
-    h1 {
+    h1 {                                            //TODO - h1 v logu → v HTML je to problém (SEO), v SCSS je to OK, zmeniť.
       font-size: 1.2rem;
     }
 
@@ -37,7 +37,7 @@
   }
 
   /* SVG / IMG LOGO */
-  .logo {
+  .logo {                                           //TODO - width: 4rem; height: 4rem; → duplicita s inými ikonami (navrhujem jednotný systém veľkostí).
     width: 4rem;
     height: 4rem;
   }

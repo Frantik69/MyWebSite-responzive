@@ -5,6 +5,8 @@
 // SKILLS – SKILL CARD (IKONA + TEXT)
 // ===============================================
 
+/* TODO → HTML má 12 skill-card blokov → SCSS je OK, ale HTML je extrémne dlhé. */
+
 /* HLAVNÝ WRAPPER PRE SKILL KARTU */
 .skill-card {
   margin-top: 1rem;
@@ -22,14 +24,14 @@
 }
 
 /* IKONA SKILLU */
-.skill-icon {
+.skill-icon {               //TODO - Natvrdo definované veľkosti ikon (64px) → duplicita s _icons.scss.
   width: 64px;
   height: auto;
 }
 
 /* NÁZOV SKILLU POD IKONOU */
 .skill-title {
-  font-size: 0.6rem;
+  font-size: 0.6rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
   text-align: center;
 }
 
@@ -45,10 +47,10 @@
 // RESPONSIVE SKILL CARD UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-@include mobile {
+@include mobile {             //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE IKONY NA MOBILOCH */
-  .skill-icon {
+  .skill-icon {               //TODO - Natvrdo definované veľkosti ikon (48px) → duplicita s _icons.scss.
     width: 48px;
   }
 
@@ -58,11 +60,11 @@
 
   /* MENŠÍ TEXT NA MOBILOCH */
   .skill-title {
-    font-size: 0.55rem;
+    font-size: 0.55rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
   }
 
   .skill-desc {
-    font-size: 0.75rem;
+    font-size: 0.75rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
   }
 
   /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */

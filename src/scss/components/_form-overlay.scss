@@ -21,7 +21,7 @@
   transition:
     opacity 0.4s ease,
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 9999;
+  z-index: 9999;              //TODO - → nekonzistentné so zvyškom projektu (navbar má 1000, modaly 2000).
 }
 
 /* ZOBRAZENIE OVERLAYA */
@@ -33,13 +33,13 @@
 
 /* VNÚTORNÁ BUBBLINA S TEXTOM */
 #overlayMessage {
-  background: #fff;
+  background: #fff;       //TODO - Farby natvrdo (#fff, #222, green, red) → duplicita s premennými.
   color: #222;
   padding: 20px 30px;
   border-radius: 10px;
   font-size: 1.1rem;
   text-align: center;
-  max-width: 400px;
+  max-width: 400px;       //TODO - → natvrdo → navrhnut použitie $container-max-width.
   box-shadow: 0 6px 16px rgba(0,0,0,0.3);
   opacity: 0;
   transform: translateY(20px) scale(0.9);
@@ -81,11 +81,11 @@
 
 /* REDUCED MOTION – IBA NA MOBILOCH (aby overlay nezmizol) */
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
-  .formMessage:not(.show),
+  .formMessage:not(.show),                                        //TODO - .formMessage:not(.show) selektor v reduced motion → veľmi komplikovaný → dá sa zjednodušiť.
   #overlayMessage:not(.show #overlayMessage) {
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translateY(20px) !important;
+    transform: translateY(20px) !important;                       //TODO - → rovnaká hodnota ako v animáciách → duplicita.
   }
 
   .formMessage.show,

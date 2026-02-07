@@ -6,8 +6,8 @@
 @use "pages/index" as pages;
 
 #turnstile-container.dev-placeholder {
-  background: #28a745;
-  color: white;
+  background: base.$success;
+  color: base.$light;
   padding: 1rem;
   border-radius: 0.5rem;
   font-weight: bold;

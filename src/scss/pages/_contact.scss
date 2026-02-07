@@ -6,6 +6,27 @@
 // CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
 // ===============================================
 
+/*TODO - Farby natvrdo (#000, #d9534f, #a4a4a4)  
+→ duplicita s $dark, $danger, $light.
+
+Divider shadow natvrdo  
+→ duplicita s mixinmi.
+
+border: 1px solid #000000  
+→ duplicita s $dark.
+
+Breakpoint mixiny  
+→ duplicita s Bootstrap breakpoints.
+
+Tablet a mobile bloky sú takmer identické  
+→ duplicita.
+
+.contact-info a .email-icon sú už definované v components  
+→ duplicita medzi pages a components.
+
+#contact input, #contact textarea { max-width: 100%; }  
+→ nepotrebné, už majú width:100%.*/
+
 #contact {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   color: #000;

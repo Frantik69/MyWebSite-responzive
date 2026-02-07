@@ -6,6 +6,36 @@
 // SKILLS – ZOZNAM ZRUČNOSTÍ (HLAVNÁ SEKCIA)
 // ===============================================
 
+/*TODO - Farby natvrdo (#000000, #ffffff, rgba(...))  
+→ duplicita s premennými.
+
+Gradienty natvrdo  
+→ duplicita s mixinom.
+
+.row { flex-wrap: nowrap; }  
+→ prepisuje Bootstrap .row.
+
+.skills-container { width: 66vw; }  
+→ natvrdo → rozbíja layout na veľkých monitoroch.
+
+.skills-page { min-width: 300px; }  
+→ môže spôsobiť horizontálny scroll.
+
+Skill-card definovaná tu aj v components/_skill-card.scss  
+→ duplicita.
+
+Breakpoint mixiny  
+→ duplicita s Bootstrap breakpoints.
+
+Tablet a mobile bloky sú takmer identické  
+→ duplicita.
+
+.skill-desc.show má 20+ vlastností  
+→ extrémne dlhý blok, duplicita s default .skill-desc.
+
+Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)  
+→ duplicita s typografiou.*/
+
 #skills {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   border: 1px solid #000000;

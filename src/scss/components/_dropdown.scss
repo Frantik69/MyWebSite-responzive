@@ -5,6 +5,9 @@
 // DROPDOWN – ŠTÝLY PRE MENU A JAZYKOVÝ VÝBER
 // ===============================================
 
+/* TODO - Masívna duplicita s Bootstrap dropdownom. Bootstrap už rieši: pozíciu, show/hide, animácie (ak chceš), pointer-events, visibility,
+→ Dropdown kompletne prepisuje Bootstrap → veľa zbytočného CSS.*/
+
 /* POLOŽKY V DROPDOWNE */
 .dropdown-item {
   text-decoration: none;
@@ -16,13 +19,13 @@
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.1);      //TODO - → môže spôsobovať layout shift v navbare.
   }
 }
 
 /* HLAVNÉ DROPDOWN MENU – SKRYTÝ STAV */
 .dropdown-menu {
-  display: block;
+  display: block;   //TODO - Bootstrap používa display: none → môže to spôsobiť problémy.
   position: absolute;
   top: 100%;
   right: 0;
@@ -60,7 +63,7 @@
   visibility: visible;
   pointer-events: auto;
 
-  max-height: 500px; /* dostatočne veľké pre všetky položky */
+  max-height: 500px;        /* TODO → hack → Navrhnut auto-height animáciu. */
   opacity: 1;
   transform: translateY(0);
 
@@ -73,10 +76,10 @@
     pointer-events 0s;
 }
 
-/* ŠPECIÁLNE POZADIE PRE JAZYKOVÉ MENU */
+/* ŠPECIÁLNE POZADIE PRE JAZYKOVÉ MENU 
 #languageMenu .dropdown-menu {
   background-color: rgba(255, 255, 255, 0.95);
-}
+}*/
 
 /* ZAROVNANIE K PRAVÉMU OKRAJU */
 .dropdown-menu-end {
@@ -95,7 +98,7 @@
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: 0.02rem;
-  color: #fffefe;
+  color: #fffefe;               // TODO - farby natvrdo → duplicita s premennými.
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -106,7 +109,8 @@
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.02rem;
-  color: #fffefe;
+  color: #fffefe;             // TODO - farby natvrdo → duplicita s premennými.
+  display: flex;
   text-transform: uppercase;
 }
 
@@ -127,7 +131,8 @@
 /* VYBRATÁ POLOŽKA – AKTÍVNY STAV */
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active {
-  background-color: rgba(58, 138, 139, 0.5);
+  background-color: rgba(58, 138, 139, 0.5);    // TODO - farby natvrdo → duplicita s premennými.
+  display: flex;
   color: #fff;
   font-weight: 600;
 }
@@ -169,7 +174,7 @@
 // RESPONSIVE DROPDOWN UTILITIES
 // ===============================================
 
-@include tablet-landscape {
+@include tablet-landscape {       //TODO - → duplicita s Bootstrap breakpoints.
 
   #languageMenu .dropdown-item {
     font-size: 0.6rem;
@@ -185,7 +190,7 @@
   }
 }
 
-@include mobile {
+@include mobile {             //TODO → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE POLOŽKY NA MOBILOCH */
   #languageMenu .dropdown-item {

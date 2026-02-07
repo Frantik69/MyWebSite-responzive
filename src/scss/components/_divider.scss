@@ -19,9 +19,9 @@
   flex: 1;
   max-width: 7rem;
   height: 0.15rem;
-  background-color: white;
+  background-color: white;        //TODO - Divider má pevné farby (white)  → navrhnut prepojenie s $light.
   border-radius: 1rem;
-  filter: drop-shadow(0.125rem 0.125rem 0 #070707)
+  filter: drop-shadow(0.125rem 0.125rem 0 #070707)      //TODO - Drop-shadow hodnoty sú natvrdo → duplicita s mixinmi (soft-text-shadow, text-shadow-default).
           drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
 }
 
@@ -30,7 +30,7 @@
   font-size: 1rem;
   margin: 0 1rem;
   color: white;
-  filter: drop-shadow(0.125rem 0.125rem 0 #070707)
+  filter: drop-shadow(0.125rem 0.125rem 0 #070707)    //TODO - Drop-shadow hodnoty sú natvrdo → duplicita s mixinmi (soft-text-shadow, text-shadow-default).
           drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
 }
 
@@ -38,7 +38,7 @@
 // RESPONSIVE DIVIDER UTILITIES – VOLITEĽNÉ
 // ===============================================
 
-@include mobile {
+@include mobile {   //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIA IKONA NA MOBILOCH */
   .divider-custom-icon {

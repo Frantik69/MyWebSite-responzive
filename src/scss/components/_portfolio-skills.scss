@@ -7,12 +7,12 @@
 
 /* ZÁKLADNÝ ŠTÝL PRE POLOŽKY SKILLS */
 .skills li {
-  font-size: 0.8rem;
+  font-size: 0.8rem;              //TODO - → duplicita s typografiou.
   line-height: 1.2;
 }
 
 /* SKILLS S RATINGOM – HVIEZDY + TEXT V JEDNOM RIADKU */
-.skills li[data-rating] {
+.skills li[data-rating] {         //TODO - → rating hviezdičky sa v HTML nikde negenerujú (zatiaľ).
   list-style: none;
   padding-left: 0;
   margin-left: 0;
@@ -26,11 +26,11 @@
 // RESPONSIVE SKILLS UTILITIES
 // ===============================================
 
-@include mobile {
+@include mobile {               //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE SKILLS NA MOBILOCH */
   .skills li {
-    font-size: 0.75rem;
+    font-size: 0.75rem;             //TODO - → duplicita s typografiou.
   }
 
   .skills li[data-rating] {

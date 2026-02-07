@@ -5,8 +5,10 @@
 // FORMS – ZÁKLADNÉ FORMULÁROVÉ PRVKY
 // ===============================================
 
+/* TODO - Kompletný duplicát Bootstrap form štýlov Bootstrap už má: .form-control, .form-label, .btn, .btn-primary → štýly prepisujú Bootstrap → veľa zbytočného CSS. */
+
 /* HLAVNÝ FORMULÁR */
-form {
+form {            //TODO - form { display: grid; gap: 1rem; } → OK, ale Bootstrap grid to vie tiež.
   display: grid;
   gap: 1rem;
   max-width: 600px;
@@ -18,7 +20,7 @@ label {
   display: block;
   font-weight: 500;
   margin-bottom: 0.25rem;
-  color: #212529;
+  color: #212529; //TODO - Farby natvrdo (#ccc, #212529, #3a5a7b)  → duplicita s premennými.
 }
 
 /* INPUTY A TEXTAREA */
@@ -50,12 +52,12 @@ textarea:focus {
 
 /* TLAČIDLO ODOSLAŤ */
 button,
-[type="submit"] {
+[type="submit"] {     //TODO - button, [type="submit"] → prepisuje všetky tlačidlá na stránke.
   background-color: #3a5a7b;
   color: #fff;
   padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 30px;
+  border-radius: 30px;      //TODO - → natvrdo → duplicita s $radius-large.
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
@@ -67,18 +69,11 @@ button:hover,
   background-color: #2c3e50;
 }
 
-/* RESPONSÍVNE ZAROVNANIE FORMULÁRA */
-@media (max-width: 576px) {
-  form {
-    padding: 0 1rem;
-  }
-}
-
 // ===============================================
 // RESPONSIVE FORM UTILITIES
 // ===============================================
 
-@include mobile {
+@include mobile {     //TODO - duplicita
 
   /* MENŠIE INPUTY NA MOBILOCH */
   input,
@@ -97,5 +92,9 @@ button:hover,
   /* VÄČŠÍ TAP TARGET PRE LABELY NA MOBILOCH */
   label {
     font-size: 0.95rem;
+  }
+
+  form {
+    padding: 0 1rem;
   }
 }

@@ -14,7 +14,7 @@ svg {
 
 /* RESPONSÍVNY OBRÁZOK (BOOTSTRAP ŠTÝL) */
 .img-fluid {
-  max-width: 80%;
+  max-width: 80%;             //TODO - → Bootstrap .img-fluid má max-width: 100%. → Override môže rozbiť layout v sekciách (napr. hero image).
   height: auto;
   margin-bottom: 2rem;
 }
@@ -27,7 +27,7 @@ svg {
 }
 
 /* WRAPPER PRE OBRÁZKY S POPISOM */
-figure {
+figure {                                        //TODO - figure a .figure-caption duplicujú Bootstrap → Bootstrap už má tieto štýly.
   text-align: center;
   margin: 0 0 1rem;
 }
@@ -35,14 +35,14 @@ figure {
 /* POPIS OBRÁZKU POD FIGURE */
 .figure-caption {
   font-size: 0.875em;
-  color: #6c757d;
+  color: #6c757d;       //TODO - natvrdo → duplicita s Bootstrap premennými.
 }
 
 // ===============================================
 // RESPONSIVE IMAGE UTILITIES
 // ===============================================
 
-@include mobile {
+@include mobile {         //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE SPODNÉ ODSTUPY NA MOBILOCH */
   .img-fluid {
