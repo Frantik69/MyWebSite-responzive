@@ -1,0 +1,138 @@
+@use "sass:list";
+
+// ===============================================
+// FLEX UTILITIES
+// ===============================================
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+// ===============================================
+// TYPOGRAPHY
+// ===============================================
+
+@mixin fluid-font($min, $max) {
+  font-size: clamp($min, 2vw, $max);
+}
+
+@mixin text-shadow-soft {
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
+}
+
+@mixin text-shadow-strong {
+  text-shadow:
+    -0.8px -0.8px 0 black,
+     0.8px -0.8px 0 black,
+    -0.8px  0.8px 0 black,
+     0.8px  0.8px 0 black;
+}
+
+@mixin text-shadow-heavy {
+  text-shadow:
+    0 0 5px rgba(0,0,0,0.7),
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
+
+@mixin icon-shadow {
+  filter:
+    drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.6))
+    drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
+}
+
+@mixin text-shadow($color1: #070707, $color2: #464646) {
+  text-shadow:
+    0.125rem 0.125rem 0 $color1,
+    0.1875rem 0.1875rem 0.4375rem $color2;
+}
+
+
+// ===============================================
+// BACKGROUND & EFFECTS
+// ===============================================
+
+@mixin gradient-bg($from, $to, $direction: to bottom) {
+  background: linear-gradient($direction, $from, $to);
+}
+
+@mixin rounded($radius: 0.5rem) {
+  border-radius: $radius;
+}
+
+// ===============================================
+// SCROLLBAR
+// ===============================================
+
+@mixin custom-scrollbar($size: 0.5rem, $thumb: #888, $track: #f1f1f1) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track;
+  }
+}
+
+// ===============================================
+// RESPONSIVE UTILITIES
+// ===============================================
+
+@mixin between($min, $max) {
+  @media (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+// ===============================================
+// FLUID SPACING
+// ===============================================
+
+@mixin fluid-space($min, $max) {
+  margin: clamp($min, 2vw, $max);
+}
+
+@mixin fluid-padding($min, $max) {
+  padding: clamp($min, 2vw, $max);
+}
+
+// ===============================================
+// SCALE BY HEIGHT
+// ===============================================
+
+@mixin scale-by-height($steps...) {
+  --scale: 1;
+  transform: scale(var(--scale));
+  transform-origin: center;
+
+  @each $step in $steps {
+    $height: list.nth($step, 1);
+    $value: list.nth($step, 2);
+
+    @media (max-height: #{$height}) {
+      --scale: #{$value};
+    }
+  }
+}

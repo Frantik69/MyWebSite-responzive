@@ -1,0 +1,42 @@
+@use "../../design-system/index" as *;
+
+// ===============================================
+// MODAL – LAYOUT MIXINS
+// ===============================================
+
+@mixin modal-backdrop-base {
+  position: fixed;
+  inset: 0;
+  z-index: $z-backdrop;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@mixin modal-base {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $space-lg;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+@mixin modal-dialog-base {
+  width: 100%;
+  max-width: 32rem;
+  border-radius: $radius-base;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+@mixin modal-section {
+  padding: $space-md;
+}

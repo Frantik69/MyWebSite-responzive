@@ -1,6 +1,5 @@
-@use "../base/variables" as *;
+@use "../design-system/index" as *;
 @use "../base/index" as base;
-@use "../base/mixins" as *;
 
 /* ===============================================
    weatherFloating – samostatný prvok počasia
@@ -47,7 +46,7 @@ Z-index 1000
   gap: 0.3rem;
   text-decoration: none;
 
-  color: base.$dark;
+  color:$dark;
 
   font-size: clamp(0.8rem, 1.2vh, 1.2rem);
 }

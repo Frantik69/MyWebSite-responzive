@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // LOGO – IKONA + TEXTOVÁ ČASŤ
@@ -15,24 +14,23 @@
   /* TEXTOVÁ ČASŤ LOGA */
   .logo-text {
     margin-left: 0.1rem;
-    line-height: 1.2;
-    color: #194484;
+    line-height: 0.7;
+    color: $logo-color;
     text-align: left;
 
-    h1 {                                            //TODO - h1 v logu → v HTML je to problém (SEO), v SCSS je to OK, zmeniť.
-      font-size: 1.2rem;
-    }
-
-    small {
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    /* RESET MARGINOV PRE NADPIS A PODTITUL */
-    h1,
-    small {
+    p {                                       
+      font-size: $font-size-md;
+      font-style: italic;
       margin: 0;
-      line-height: 1.2;
+      line-height: 0.7;
+    }
+
+    small {
+      font-size: $font-size-sm;
+      font-weight: 700;
+      margin: 0;
+      line-height: 0.7;
+
     }
   }
 
@@ -61,13 +59,11 @@
     width: 3.5rem;
     height: 3.5rem;
   }
-
-  #logo .logo-text h1 {
-    font-size: 0.8rem;
-  }
-
-  #logo .logo-text small {
-    font-size: 0.65rem;
-  }
-
+  .logo-text p {                                       
+      font-size: $font-size-md;
+    }
+    small {
+      font-size: $font-size-xs;
+    }
 }
+

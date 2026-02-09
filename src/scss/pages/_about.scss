@@ -1,14 +1,11 @@
-@use "../base/variables" as *;
+@use "../design-system/index" as *;
 @use "../base/index" as base;
-@use "../base/mixins" as *;
 
 // ===============================================
 // ABOUT – INFORMÁCIE O MNE (SEKCIA PROFILU)
 // ===============================================
 
-/*TODO - Farby natvrdo (#000000, black)  
-→ duplicita s $dark.
-
+/*TODO 
 Gradienty natvrdo  
 → duplicita s mixinom gradient-bg.
 
@@ -32,8 +29,8 @@ max-height: fit-content
 
 #about {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid #000000;
-  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
+  border: 1px solid $dark;
+  background-image: linear-gradient(to right, $first-middle, $first-light);
   padding: 2rem 0.5rem;
   @include rounded($radius-base);
   width: 100%;
@@ -41,10 +38,10 @@ max-height: fit-content
   .about-page {
     flex: 2.5;
     min-width: 500px;
-    background-image: linear-gradient(to right, base.$primary, base.$first-light);
+    background-image: linear-gradient(to right, $primary, $first-light);
     padding: 2rem 4rem;
-    color: black;
-    border: 1px solid #000000;
+    color: $dark;
+    border: 1px solid $dark;
     @include rounded($radius-base);
     @include bubble-box-shadow;
   }
@@ -68,12 +65,13 @@ max-height: fit-content
   }
 
   h2 {
-    @include text-shadow-default;
+    @include text-shadow();
+    text-align: center;
   }
 
   .about-info {
     color: $dark;
-    font-size: 1rem;
+    font-size: $font-size-base;
   }
 
   .divider-custom {
@@ -83,7 +81,7 @@ max-height: fit-content
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: $body-color;
-    @include text-shadow-default;
+    @include text-shadow();
   }
 }
 
@@ -94,7 +92,7 @@ max-height: fit-content
 @include tablet-landscape {
 
   #about {
-    border: 1px solid #000000;
+    border: 1px solid $dark;
     @include rounded($radius-base);
     @include flex-column;
     max-height: fit-content;
@@ -117,14 +115,14 @@ max-height: fit-content
 
   #about .about-info {
     line-height: 1.6rem;
-    font-size: 1.2rem;
+    font-size: $font-size-md;
   }
 }
 
 @include mobile {
 
   #about {
-    border: 1px solid #000000;
+    border: 1px solid $dark;
     @include rounded($radius-base);
     @include flex-column;
     max-height: fit-content;
@@ -159,6 +157,6 @@ max-height: fit-content
     width: 100% !important;
     max-width: 100%;
     flex: 0 0 100%;
-    font-size: 1rem;
+    font-size: $font-size-base;
   }
 }

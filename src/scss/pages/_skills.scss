@@ -1,15 +1,12 @@
-@use "../base/variables" as *;
+@use "../design-system/index" as *;
 @use "../base/index" as base;
-@use "../base/mixins" as *;
+
 
 // ===============================================
 // SKILLS – ZOZNAM ZRUČNOSTÍ (HLAVNÁ SEKCIA)
 // ===============================================
 
-/*TODO - Farby natvrdo (#000000, #ffffff, rgba(...))  
-→ duplicita s premennými.
-
-Gradienty natvrdo  
+/*TODO - Gradienty natvrdo  
 → duplicita s mixinom.
 
 .row { flex-wrap: nowrap; }  
@@ -38,8 +35,8 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
 
 #skills {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid #000000;
-  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
+  border: 1px solid $dark;
+  background-image: linear-gradient(to right, $first-middle, $first-light);
 
   @include rounded(0.5rem);
   width: 100%;
@@ -51,13 +48,14 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
   }
 
   h2 {
-    @include soft-text-shadow;
+    @include text-shadow();
+    text-align: center;
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
-    color: #ffffff;
-    @include soft-text-shadow;
+    color: $light;
+    @include text-shadow();
   }
 
   .skills-container {
@@ -68,14 +66,14 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
     .skills-page {
       flex: 2.5;
       min-width: 300px;
-      background-image: linear-gradient(to right, base.$primary, base.$first-light);
+      background-image: linear-gradient(to right, $primary, $first-light);
       padding-left: 1.3rem;
       padding-right: 1rem;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
-      color: black;
+      color: $dark;
       border-radius: $radius-base;
-      border: 1px solid #000000;
+      border: 1px solid $dark;
       @include bubble-box-shadow;
 
       .skill-card {
@@ -101,7 +99,7 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
         }
 
         .skill-title {
-          font-size: 1.2rem;
+          font-size:$font-size-lg;
           margin: 0;
         }
 
@@ -119,11 +117,11 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
           opacity: 1;
           max-height: 300px;
           margin-left: 0;
-          background: rgba(255, 254, 254, 0.6);
+          background: $cards-rgba;
           padding: 1rem;
           @include rounded(0.5rem);
           text-align: left;
-          font-size: 1rem;
+          font-size:$font-size-base;
           flex: 1 1 auto;
           max-width: none;
           @include bubble-box-shadow;
@@ -189,12 +187,13 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
   }
 
   #skills h2 {
+    width: 100%;
     text-align: center;
   }
 
   #skills h3 {
     text-align: center;
-    font-size: 0.9rem;
+    font-size:$font-size-sm;
   }
 
   #skills .row {
@@ -244,9 +243,9 @@ Natvrdo definované font-size (1.2rem, 1rem, 0.9rem)
     opacity: 1;
     max-height: 500px;
 
-    background: rgba(201, 201, 201, 0.2);
+    background: $cards-rgba;
     @include rounded(0.5rem);
-    font-size: 1rem;
+    font-size:$font-size-sm;
     width: 100%;
     overflow-wrap: break-word;
   }

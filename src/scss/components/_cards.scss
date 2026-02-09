@@ -1,0 +1,28 @@
+@use "../layout/mixins/cards" as cards;
+@use "../design-system/index" as *;
+
+/* ===============================================
+   CARDS – LAYOUT ONLY (NO COLORS, NO SHADOWS)
+=============================================== */
+
+.card {
+  @include cards.card-base;
+  @include cards.card-responsive;
+}
+
+.card-header {
+  @include cards.card-header;
+}
+
+.card-body {
+  @include cards.card-body;
+}
+
+.card-footer {
+  @include cards.card-footer;
+}
+
+/* IMAGE CARDS */
+.card-image {
+  @include cards.card-image;
+}

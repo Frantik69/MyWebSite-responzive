@@ -1,0 +1,82 @@
+@use "../layout/mixins/navbar" as navbar;
+@use "../design-system/index" as *;
+
+/* ===============================================
+   NAVBAR – CLEAN, LAYOUT-ONLY, NO COLORS
+=============================================== */
+
+#mainNav {
+  @include navbar.navbar-base;
+}
+
+#mainNav .container-fluid {
+  @include navbar.navbar-container;
+}
+
+/* LOGO */
+#logo {
+  @include navbar.navbar-logo;
+}
+
+/* WEATHER NAV */
+#weatherNav {
+  @include navbar.navbar-weather;
+}
+
+/* NAV LINKS */
+#navbarResponsive {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+}
+
+#navbarResponsive .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: $space-sm;
+}
+
+.navbar-nav .nav-item {
+  display: flex;
+}
+
+.navbar-nav .nav-link {
+  @include navbar.nav-link-base;
+}
+
+.navbar-nav .nav-link:hover {
+  @include navbar.nav-link-hover;
+}
+
+.navbar-nav .nav-link.active {
+  @include navbar.nav-link-active;
+}
+
+/* RIGHT NAV */
+#rightNav {
+  @include navbar.navbar-right;
+}
+
+/* TOGGLER */
+.navbar-toggler {
+  @include navbar.navbar-toggler-base;
+}
+
+/* ===============================================
+   BREAKPOINTS
+=============================================== */
+
+/* DESKTOP */
+@include lg {
+  @include navbar.navbar-desktop-layout;
+}
+
+/* TABLET */
+@include tablet {
+  @include navbar.navbar-tablet-layout;
+}
+
+/* MOBILE */
+@include mobile {
+  @include navbar.navbar-mobile-layout;
+}

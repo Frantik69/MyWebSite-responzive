@@ -1,5 +1,5 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
+
 
 // ===============================================
 // SKILLS – SKILL CARD (IKONA + TEXT)
@@ -31,7 +31,7 @@
 
 /* NÁZOV SKILLU POD IKONOU */
 .skill-title {
-  font-size: 0.6rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
+  font-size:$font-size-xs;
   text-align: center;
 }
 
@@ -39,7 +39,7 @@
 .skill-desc {
   margin: 0;
   line-height: 1.2;
-  font-size: 0.8rem;
+  font-size:$font-size-sm;
   align-self: center;
 }
 
@@ -60,11 +60,11 @@
 
   /* MENŠÍ TEXT NA MOBILOCH */
   .skill-title {
-    font-size: 0.55rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
+    font-size:$font-size-xs;
   }
 
   .skill-desc {
-    font-size: 0.75rem;       //TODO - Natvrdo definované font-size  → duplicita s typografiou.
+    font-size:$font-size-xs;
   }
 
   /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */

@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // DROPDOWN – ŠTÝLY PRE MENU A JAZYKOVÝ VÝBER
@@ -35,8 +34,8 @@
   padding: 0.5rem 0;
   text-align: center;
   border-radius: 0.5rem;
-  background-color: rgba(58, 90, 123, 0.6);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  background-color: rgba($first-middle-rgb, 0.6);
+  box-shadow: 0 6px 12px $dark;
   list-style: none;
 
   /* SKRYTÝ STAV */
@@ -76,11 +75,6 @@
     pointer-events 0s;
 }
 
-/* ŠPECIÁLNE POZADIE PRE JAZYKOVÉ MENU 
-#languageMenu .dropdown-menu {
-  background-color: rgba(255, 255, 255, 0.95);
-}*/
-
 /* ZAROVNANIE K PRAVÉMU OKRAJU */
 .dropdown-menu-end {
   right: 0;
@@ -94,11 +88,11 @@
 
 /* DROPDOWN POLOŽKY PRE JAZYKOVÉ MENU */
 #languageMenu .dropdown-item {
-  font-size: 0.7rem;
+  font-size: $font-size-xs;
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: 0.02rem;
-  color: #fffefe;               // TODO - farby natvrdo → duplicita s premennými.
+  color: $light;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -106,10 +100,10 @@
 
 /* SKRATKA JAZYKA PRI VLAJKE */
 #selected-lang {
-  font-size: 0.85rem;
+  font-size: $font-size-sm;
   font-weight: 500;
   letter-spacing: 0.02rem;
-  color: #fffefe;             // TODO - farby natvrdo → duplicita s premennými.
+  color: $light;
   display: flex;
   text-transform: uppercase;
 }
@@ -131,36 +125,36 @@
 /* VYBRATÁ POLOŽKA – AKTÍVNY STAV */
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active {
-  background-color: rgba(58, 138, 139, 0.5);    // TODO - farby natvrdo → duplicita s premennými.
+  background-color: rgba($second-middle-rgb, 0.4);
   display: flex;
-  color: #fff;
+  color: $light;
   font-weight: 600;
 }
 
 /* STABILNÉ ZVÝRAZNENIE PRE JAZYKOVÉ MENU */
 #languageMenu .dropdown-item.active {
-  background-color: rgba(58, 138, 139, 0.8);
-  color: #fff;
+  background-color: rgba($first-middle-rgb, 0.7);
+  color: $light;
   font-weight: 600;
   border-radius: 0.5rem;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 12px $dark;
 }
 
 #languageMenu .dropdown-item.active:hover {
-  background-color: rgba(58, 138, 139, 0.9);
+  background-color: rgba($second-middle-rgb, 0.5);
   transform: scale(1.05);
 }
 
 #languageMenu .dropdown-item.active:hover,
 #languageMenu .dropdown-item.active:focus {
-  background-color: rgba(58, 138, 139, 0.85);
-  color: #fff;
+  background-color: rgba($second-middle-rgb, 0.85);
+  color: $light;
 }
 
 /* JEMNÝ HOVER PRE NEAKTÍVNE POLOŽKY */
 #languageMenu .dropdown-item:not(.active):hover {
-  background-color: rgba(58, 90, 123, 0.5);
-  color: #fff;
+  background-color: rgba($first-middle-rgb, 0.5);
+  color: $light;
 }
 
 /* VLAJKA V DROPDOWNE */
@@ -177,7 +171,7 @@
 @include tablet-landscape {       //TODO - → duplicita s Bootstrap breakpoints.
 
   #languageMenu .dropdown-item {
-    font-size: 0.6rem;
+    font-size:$font-size-xs;
   }
 
   #selected-flag {
@@ -186,7 +180,7 @@
   }
 
   #selected-lang {
-    font-size: 0.7rem;
+    font-size: $font-size-xs;
   }
 }
 
@@ -194,12 +188,12 @@
 
   /* MENŠIE POLOŽKY NA MOBILOCH */
   #languageMenu .dropdown-item {
-    font-size: 0.65rem;
+    font-size: $font-size-xs;
     gap: 0.35rem;
   }
 
   #selected-lang {
-    font-size: 0.75rem;
+    font-size: $font-size-xs;
   }
 
   #selected-flag {

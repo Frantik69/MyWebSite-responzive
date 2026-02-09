@@ -1,320 +1,97 @@
-@use "../base/variables" as *;
-@use "../base/index" as base;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
-/*TODO - 1. Farby natvrdo (#cbcbcb, #000000, rgba(...))
-Príklady:color: #cbcbcb, border: 1px solid #000000, background: rgba(0,0,0,0.2), box-shadow: 0 0 6px rgba(0,0,0,0.4) → duplicita s $light, $dark, $primary, $secondary.
-❗ 2. Prepisuješ Bootstrap .row → Bootstrap už má .row → toto môže rozbiť grid v iných sekciách.
-#home .row {
-  display: flex;
-  flex-wrap: wrap;
-}
-❗ 3. max-width: 80rem + padding-left: 8rem → layout sa posúva doprava → koliduje so sideNav → na menších desktopoch to spôsobuje asymetriu
-❗ 4. min-height: calc(100dvh - ...) → rovnaký problém ako v ostatných sekciách → ak sa zmení výška navbaru/copyrightu → musíš meniť všade
-❗ 5. Tablet-landscape, tablet, mobile bloky sú takmer identické → duplicita → CSS je 3× väčšie, ako musí byť
-❗ 6. Certifikátový carousel má natvrdo veľkosti height: 90px gap: 1rem padding: 0.5rem → duplicita s layout mixinmi → neadaptívne pre rôzne DPI
-❗ 7. @include desktop-down + @include tablet-landscape + @include tablet + @include mobile → extrémne veľa breakpointov → duplicita s Bootstrap breakpoints → ťažká údržba
-❗ 8. #weatherNav v home sekcii → rovnaký problém ako v navbar + sideNav + floating weather → rovnaké triedy → JS aj CSS sa prepisujú → spôsobuje bugy
-❗ 9. max-height: fit-content → zbytočné, default je auto → nič to nerieši
-❗ 10. .img-fluid override → prepisuje Bootstrap .img-fluid → môže rozbiť obrázky v iných sekciách
-#home .img-fluid {
-  height: auto;
-  max-width: 90%;
-}*/
-
-// ===============================================
-// HOME – ÚVODNÁ LANDING SEKCIA
-// ===============================================
+/* ===============================================
+   HOME – LAYOUT ONLY (NO COLORS, NO TYPOGRAPHY)
+=============================================== */
 
 #home {
   position: relative;
-  @include flex-row-center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  max-height: fit-content;
-  border: 1px solid #000000;
-  @include rounded($radius-base);
-  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
   width: 100%;
   max-width: 100%;
-
-  .row {
-  display: flex;
-  flex-wrap: wrap;
-  }
-
-  .left-text {
-    @include flex-column;
-    justify-content: space-between;
-    height: 100%;
-  }
-
-  /* Horný riadok */
-  .left-top {
-    @include flex-column;
-    padding-top: 3rem;
-    justify-content: center;
-    text-align: center;
-    flex: 1;
-  }
-
-  /* Dolný riadok */
-  .left-bottom {
-    @include flex-center;
-    padding-top: 5rem;
-    flex: 1;
-  }
-
-  .home-container {
-    width: 100%;
-    max-width: 80rem;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #cbcbcb;
-    @include soft-text-shadow;
-  }
-
-  p {
-    color: #cbcbcb;
-    @include soft-text-shadow;
-  }
-
-  .divider-custom {
-    @include flex-center;
-    width: 100%;
-  }
-
-  .divider-custom-icon {
-    margin: 0 0.5rem;
-    color: #cbcbcb;
-    @include soft-text-shadow;
-  }
-
-  .divider-custom-line {
-    flex: 1;
-    height: 2px;
-    background-color: #cbcbcb;
-  }
-  .img-fluid{
-    @include bubble-box-shadow;
-  }
+  padding-inline: $space-md;
 }
 
-@include desktop-down {
-  #home .home-container {
-    max-width:50rem;
-  }
-  #home .left-bottom {
-    padding-top: 2rem;
-  }
-  #home .img-fluid {
-    height: auto;
-    max-width: 90%;
-  }
-  #home .certificates-carousel {
-    width: 85%;
-  }
+#home .home-container {
+  width: 100%;
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  gap: $space-xl;
+}
+
+#home .left-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $space-lg;
+}
+
+#home .left-top,
+#home .left-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#home .divider-custom {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  width: 100%;
+}
+
+#home .divider-custom-line {
+  flex: 1;
+  height: 2px;
+}
+
+#home .img-fluid {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* ===============================================
-   SIDE NAVBAR – Desktop a vyššie (>992px)
-   =============================================== */
-
-#home .home-container {
-    padding-left: 8rem;
-
-  #weatherNav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  #weatherNav img {
-    display: inline-block;
-  }
-
-  #weatherNav #temp {
-    font-size: 1rem;
-    font-weight: 600;
-  }
-}
-
-// ====================================================
-// RESPONSIVE HOME UTILITIES TABLET-LANDSCAPE (≤992px)
-// ====================================================
+   RESPONSIVE
+=============================================== */
 
 @include tablet-landscape {
   #home {
-    @include flex-column;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
 
   #home .home-container {
-    @include flex-column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    position: relative;
-    width: 100%;
+    flex-direction: column;
     max-width: 100%;
-    margin: 0;
     padding: 0;
-  }
-
-  #home .left-text {
-    width: 100%;
-    @include flex-column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    text-align: center;
+    gap: $space-lg;
   }
 
   #home .img-fluid {
-    height: auto;
-    display: block;
-    margin: 0.5rem auto 0 auto;
     max-width: 80%;
-  }
-
-  #home h1 {
-    font-size: 2rem;
-  }
-
-  #home p {
-    font-size: 1.2rem;
-  }
-
-  .fade-in-title {
-    margin-bottom: 0;
-  }
-
-  .my-1 {
-    margin-bottom: 1rem;
+    margin: 0 auto;
   }
 }
-
-// ===============================================
-// RESPONSIVE HOME UTILITIES TABLET (≤768px)
-// ===============================================
 
 @include tablet {
   #home .left-text {
-    margin-top: 1vh;
+    margin-top: $space-md;
   }
-
-  #home .img-fluid {
-    max-width: 80%;
-    padding-bottom: 2rem;
-  }
-
 }
-
-// ===============================================
-// RESPONSIVE HOME UTILITIES MOBILE (≤576px)
-// ===============================================
 
 @include mobile {
-  #home-anchor {
-    height: 4rem;
-  }
-
   #home .left-bottom {
-    padding-top: 0rem;
+    padding-top: 0;
   }
 
   #home .img-fluid {
     max-width: 80%;
-  }
-}
-
-/* ===============================================
-   CERTIFIKÁTY – FILMOVÝ PÁS
-   =============================================== */
-
-#home .certificates-carousel {
-  width: 65%;
-  margin-top: 4rem;
-  display: flex;
-  justify-content: center;
-    @include bubble-box-shadow;
-}
-
-#home .cert-track-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-
-  border-radius: 0.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(0,0,0,0.2);
-}
-
-#home .cert-track {
-  display: flex;
-  gap: 1rem;
-  padding: 0.5rem 0.5rem;
-  transition: transform 0.4s ease;
-}
-
-#home .cert-track img {
-  height: 90px;
-  width: auto;
-  border-radius: 0.3rem;
-  box-shadow: 0 0 6px rgba(0,0,0,0.4);
-  transition: transform 0.2s ease;
-}
-
-#home .cert-track img:hover {
-  transform: scale(1.1);
-}
-
-#home .cert-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-
-  background: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 0.8rem;
-  padding: 0.3rem 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-#home .cert-arrow.left {
-  left: 0.2rem;
-}
-
-#home .cert-arrow.right {
-  right: 0.2rem;
-}
-
-#home .cert-arrow:hover {
-  background: rgba(0,0,0,0.7);
-}
-
-/* ===============================================
-   CERTIFIKÁTY – ZOBRAZIŤ IBA NA DESKTOP (≥1200px)
-   =============================================== */
-
-@include lg {
-  #home .certificates-carousel {
-    display: flex !important;
-  }
-}
-
-@include tablet-landscape {
-  #home .certificates-carousel {
-    display: none !important;
   }
 }

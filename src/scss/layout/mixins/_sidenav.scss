@@ -1,0 +1,152 @@
+@use "../../design-system/index" as *;
+
+// ===============================================
+// SIDENAV – LAYOUT MIXINS
+// ===============================================
+
+// Base sidenav container (common for all breakpoints)
+@mixin sidenav-base {
+  position: fixed;
+  top: $navbar-height;
+  z-index: $z-sidenav;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  --scale: 1;
+  transform: scale(var(--scale));
+  transform-origin: center;
+}
+
+// Desktop layout
+@mixin sidenav-desktop-layout {
+  display: flex !important;
+  flex-direction: column;
+
+  left: 2.5vw;
+  bottom: $copyright-height;
+
+  width: clamp(180px, 13vw, 260px);
+  max-width: 16%;
+}
+
+// Tablet layout
+@mixin sidenav-tablet-layout {
+  display: flex !important;
+  flex-direction: column;
+
+  left: -100%;
+  width: 100%;
+  max-width: 300px;
+
+  height: calc(100dvh - ($navbar-height + $copyright-height));
+
+  padding: $space-md;
+  border-radius: $radius-base;
+  border: 1px solid black;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  transition: left 0.35s ease, opacity 0.3s ease;
+}
+
+// Mobile layout
+@mixin sidenav-mobile-layout {
+  display: flex !important;
+  flex-direction: column;
+
+  left: -100%;
+  width: 100%;
+  max-width: 300px;
+
+  height: calc(100dvh - ($navbar-height + $copyright-height));
+
+  padding: $space-md;
+  border-radius: 0 0.5rem 0.5rem 0;
+
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+
+  transition: left 0.35s ease, opacity 0.3s ease;
+}
+
+// Slide-in behavior (mobile + tablet)
+@mixin sidenav-slide {
+  &.show-mobile {
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &.closing {
+    opacity: 0;
+  }
+}
+
+// Scale by height (desktop)
+@mixin sidenav-scale-by-height {
+  @media (max-height: 900px) { --scale: 0.95; }
+  @media (max-height: 800px) { --scale: 0.90; }
+  @media (max-height: 700px) { --scale: 0.85; }
+  @media (max-height: 600px) { --scale: 0.80; }
+  @media (max-height: 520px) { --scale: 0.75; }
+  @media (max-height: 460px) { --scale: 0.70; }
+}
+
+// ===============================================
+// INTERNAL STRUCTURE
+// ===============================================
+
+@mixin sidenav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-block: auto;
+}
+
+@mixin sidenav-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $space-xs;
+  width: 100%;
+}
+
+@mixin sidenav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.2vh, 1.5rem);
+  align-items: flex-end;
+}
+
+@mixin sidenav-item {
+  width: 100%;
+}
+
+@mixin sidenav-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: clamp(0.6rem, 1.2vh, 1rem) clamp(0.8rem, 1vw, 1.2rem);
+  width: 100%;
+
+  border-radius: $radius-base;
+  transition: 0.25s ease;
+
+  position: relative;
+  overflow: hidden;
+}

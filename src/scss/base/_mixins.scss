@@ -1,35 +1,73 @@
 @use "sass:list";
-
-/* TODO - Breakpoint mixiny sú duplicity Bootstrapu
-Bootstrap už má: @include media-breakpoint-up(sm), @include media-breakpoint-down(lg)
-Mixiny sú funkčné, ale: zvyšujú veľkosť CSS, duplikuju systém, ktorý už existuje. - Navrhnut, čo ponechať. */
-
-/* TODO - hide-above-mobile, hide-above-tablet, hide-mobile, show-mobile → všetko sú duplicity Bootstrap tried: .d-none d-sm-block, .d-block d-sm-none
-Neskôr navrhnem odstránenie. */
+@use "../design-system/index" as *;
 
 // ===============================================
-// GLOBAL MIXINS – PRE CELÝ PROJEKT
+// FLEX UTILITIES – ZJEDNOTENÉ
 // ===============================================
 
 /* FLEX CENTER – horizontálne aj vertikálne centrovanie */
-@mixin flex-center { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 /* FLEX COLUMN – stĺpcové rozloženie */
-@mixin flex-column { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
+@mixin flex-column {
   display: flex;
   flex-direction: column;
 }
 
-/* RESPONSIVE FONT – plynulé škálovanie textu */
+/* FLEX ROW CENTER – display:flex + align-items:center */
+@mixin flex-row-center {
+  display: flex;
+  align-items: center;
+}
+
+// ===============================================
+// TYPOGRAPHY & TEXT EFFECTS
+// ===============================================
+
 @mixin fluid-font($min, $max) {
   font-size: clamp($min, 2vw, $max);
 }
 
-/* CUSTOM SCROLLBAR (voliteľné) */
+@mixin text-shadow($color1: #070707, $color2: #464646) {
+  text-shadow:
+    0.125rem 0.125rem 0 $color1,
+    0.1875rem 0.1875rem 0.4375rem $color2;
+}
+
+
+// ===============================================
+// COLORS & BACKGROUNDS
+// ===============================================
+
+@mixin gradient-bg($from, $to, $direction: to bottom) {
+  background: linear-gradient($direction, $from, $to);
+}
+
+@mixin bubble-box-shadow {
+  filter: drop-shadow(0px 5px 10px rgba(61, 61, 61, 0.5));
+}
+
+@mixin shadow-default {
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+@mixin light-box-shadow {
+  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.7));
+}
+
+@mixin rounded($radius: 0.5rem) {
+  border-radius: $radius;
+}
+
+
+// ===============================================
+// SCROLLBAR
+// ===============================================
+
 @mixin custom-scrollbar($size: 0.5rem, $thumb: #888, $track: #f1f1f1) {
   &::-webkit-scrollbar {
     width: $size;
@@ -44,56 +82,11 @@ Neskôr navrhnem odstránenie. */
   }
 }
 
-/* TEXT SHADOW PRE SVETLÉ NADPISY */
-@mixin soft-text-shadow($color1: #070707, $color2: #464646) { //TODO - Duplicitné text-shadow mixiny soft-text-shadow text-shadow-default → veľmi podobné, líšia sa len hodnotami. Neskôr navrhnem parametrizáciu.
-  text-shadow:
-    0.125rem 0.125rem 0 $color1,
-    0.1875rem 0.1875rem 0.4375rem $color2;
-}
 
-/* BOX SHADOW PRE STATICKE BUBLINY S TEXTOM */
-@mixin bubble-box-shadow {
-  filter: drop-shadow(0px 5px 10px rgba(61, 61, 61, 0.5));
-}
+// ===============================================
+// NAVIGATION UTILITIES
+// ===============================================
 
-/* ROUNDED BLOCK – univerzálne zaoblenie */
-@mixin rounded($radius: 0.5rem) {
-  border-radius: $radius;
-}
-
-/* GRADIENT BACKGROUND – pre sekcie */
-@mixin gradient-bg($from, $to) { //TODO - Duplicitné gradient mixiny gradient-bg gradient-bg-nav → líšia sa len smerom. Stačí jeden mixin s parametrom direction.
-  background: linear-gradient(to bottom, $from, $to);
-}
-
-/* GRADIENT BACKGROUND – pre menu */
-@mixin gradient-bg-nav($from, $to) { //TODO - Duplicitné gradient mixiny gradient-bg gradient-bg-nav → líšia sa len smerom. Stačí jeden mixin s parametrom direction.
-  background: linear-gradient(to right, $from, $to);
-}
-
-/* DEFAULT TEXT SHADOW – používaný v h2, ikonách, nadpisoch */
-@mixin text-shadow-default {//TODO - Duplicitné text-shadow mixiny soft-text-shadow text-shadow-default → veľmi podobné, líšia sa len hodnotami. Neskôr navrhnem parametrizáciu.
-  text-shadow:
-    0.125rem 0.125rem 0 #070707,
-    0.1875rem 0.1875rem 0.4375rem #464646;
-}
-
-/* DEFAULT DROP SHADOW – používaný v hover bubblinách, kartách */
-@mixin shadow-default { 
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
-
-@mixin light-box-shadow {
-  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.7));
-}
-
-/* FLEX ROW CENTER – display:flex + align-items:center */
-@mixin flex-row-center { //TODO - flex-center flex-row-center flex-column → všetky sú len variácie flexu. Navrhnut zlúčenie.
-  display: flex;
-  align-items: center;
-}
-
-/* NAVBAR LINK BASE – základný štýl pre .nav-link */
 @mixin nav-link-base {
   position: relative;
   display: flex;
@@ -109,97 +102,69 @@ Neskôr navrhnem odstránenie. */
   overflow: hidden;
 }
 
-/* LOGO TEXT RESET – h1 + small v logu */
 @mixin logo-text-reset {
   margin: 0;
   line-height: 1;
 }
 
-/* MOBILE MENU WRAPPER – používaný v tablet/mobile nav */
 @mixin mobile-menu-box {
   @include flex-column;
   align-items: flex-start;
   padding: 1rem;
-  @include gradient-bg(base.$primary, base.$secondary);
+  @include gradient-bg(base.$primary, base.$secondary, to right);
   @include rounded(0.5rem);
 }
 
 
 // ===============================================
-// RESPONSIVE MIXINS – PRIDANÉ PRE CELÝ PROJEKT
+// RESPONSIVE BREAKPOINTS – TVOJE PÔVODNÉ (ponechané)
 // ===============================================
 
-/* BREAKPOINTY – univerzálne použiteľné */
-
 @mixin desktop {
-  @media (min-width: 1200px) {
-    @content;
-  }
+  @media (min-width: 1200px) { @content; }
 }
 
 @mixin desktop-down {
-  @media (max-width: 1200px) {
-    @content;
-  }
+  @media (max-width: 1200px) { @content; }
 }
 
 @mixin tablet-landscape {
-  @media (max-width: 992px) {
-    @content;
-  }
+  @media (max-width: 992px) { @content; }
 }
 
 @mixin tablet {
-  @media (max-width: 768px) {
-    @content;
-  }
+  @media (max-width: 768px) { @content; }
 }
 
 @mixin mobile {
-  @media (max-width: 576px) {
-    @content;
-  }
+  @media (max-width: 576px) { @content; }
 }
 
-/* SMALL (≥ 576px) – pre grid a menšie layouty */
 @mixin sm {
-  @media (min-width: 577px) {
-    @content;
-  }
+  @media (min-width: 577px) { @content; }
 }
 
-/* LARGE (≥ 992px) – pre grid a väčšie layouty */
 @mixin lg {
-  @media (min-width: 992px) {
-    @content;
-  }
+  @media (min-width: 992px) { @content; }
 }
 
-/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD MOBILE */
+
+// ===============================================
+// RESPONSIVE VISIBILITY HELPERS
+// ===============================================
+
 @mixin hide-above-mobile {
   @media (min-width: 577px) {
     display: none !important;
   }
 }
 
-/* SKRYŤ NA VŠETKÝCH ZARIADENIACH NAD TABLET */
 @mixin hide-above-tablet {
   @media (min-width: 769px) {
     display: none !important;
   }
 }
 
-/* FLUID SPACING – plynulé odsadenia bez zmeny dizajnu */
-@mixin fluid-space($min, $max) {
-  margin: clamp($min, 2vw, $max);
-}
-
-/* FLUID PADDING – pre sekcie, ktoré sa majú jemne prispôsobovať */
-@mixin fluid-padding($min, $max) {
-  padding: clamp($min, 2vw, $max);
-}
-
-/* HIDE ON MOBILE / SHOW ON MOBILE */
 @mixin hide-mobile {
   @media (max-width: 576px) {
     display: none !important;
@@ -211,6 +176,18 @@ Neskôr navrhnem odstránenie. */
   @media (max-width: 576px) {
     display: block !important;
   }
+}
+
+// ===============================================
+// OTHER UTILITIES
+// ===============================================
+
+@mixin fluid-space($min, $max) {
+  margin: clamp($min, 2vw, $max);
+}
+
+@mixin fluid-padding($min, $max) {
+  padding: clamp($min, 2vw, $max);
 }
 
 @mixin scale-by-height($steps...) {
@@ -233,138 +210,172 @@ Neskôr navrhnem odstránenie. */
     @content;
   }
 }
-
-
 // ===============================================
-// NAVBAR – MOBILE/TABLET BASE LAYOUT
+// TEXT SHADOW MIXINS – PRESNE PODĽA TVOJHO DIZAJNU
 // ===============================================
-@mixin navbar-mobile-base { /* TODO - navbar-mobile-base je obrovský mixin Toto je problém: mixin obsahuje celý layout pri každom použití sa celý kód duplikuje ak
-                            ho používam 1×, je to OK ak 2×, CSS sa nafúkne. Presunúť do samostatného SCSS modulu, nepoužívať ako mixin */
 
-  #mainNav {
-    height: 4rem;
-    min-height: 4rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    overflow-x: hidden;
-  }
-
-  #mainNav .container-fluid {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+// 4-smerný jemný tieň
+@mixin text-shadow-soft {
+  text-shadow:
+    -0.5px -0.5px 0 black,
+     0.5px -0.5px 0 black,
+    -0.5px  0.5px 0 black,
+     0.5px  0.5px 0 black;
 }
 
+// 4-smerný silnejší tieň
+@mixin text-shadow-strong {
+  text-shadow:
+    -0.8px -0.8px 0 black,
+     0.8px -0.8px 0 black,
+    -0.8px  0.8px 0 black,
+     0.8px  0.8px 0 black;
+}
 
-  #mobileLeft {
-    order: 1;
-    display: flex;
-    align-items: center;
-    flex-shrink: 1; // nech sa môže zmenšiť
-  }
+// 5-smerný extra silný tieň (tooltip)
+@mixin text-shadow-heavy {
+  text-shadow:
+    0 0 5px rgba(0,0,0,0.7),
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
+}
 
-  .navbar-toggler {
-    background: none !important;
-    border: none !important;
-    width: 4rem;
-    height: auto;
-    z-index: 20;
-    flex-shrink: 0;
+// Drop-shadow pre SVG ikony
+@mixin icon-shadow {
+  filter:
+    drop-shadow(0.5px 0.5px 1px rgba(0,0,0,0.6))
+    drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
+}
 
-    i {
-      font-size: 1.5rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
+// Základný navbar layout
+@mixin navbar-base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  z-index: $z-navbar;
 
-    &:hover {
-      color: #070707;
-    }
-  }
-
- #logoWrapper {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+
+  padding-inline: $space-md;
+  overflow-x: clip;
 }
+// Container layout
+@mixin navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+// Logo layout
+@mixin navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
 
-
-  #logo {
-    all: unset; //TODO - Nebezpečné: zrušíš aj display, aj pointer-events, aj všetko. Neskôr preverím, či to nespôsobuje bugy
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    @include light-box-shadow;
+  img.logo {
+    height: 4rem;
+    display: block;
   }
 
-  #logo img.logo {
-    height: 3.5rem;
-    width: auto;
-  }
-
-  #logoWrapper .logo-text {
-    margin-left: 0;
+  .logo-text {
     display: flex;
     flex-direction: column;
     line-height: 1;
-    white-space: nowrap;
-    position: static;
-    transform: none;
   }
+}
+// WeatherNav layout
+@mixin navbar-weather {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
 
+  img.icon-24 {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+// Nav links – základ
+@mixin nav-link-base {
+  position: relative;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-base;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// Nav links – hover efekt
+@mixin nav-link-hover {
+  transform: scale(1.05);
+}
+// Nav links – active stav
+@mixin nav-link-active {
+  transform: scale(1.05);
+}
+// RightNav layout
+@mixin navbar-right {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+// Toggler layout
+@mixin navbar-toggler-base {
+  display: none;
+  cursor: pointer;
+}
+// Mobilný layout
+@mixin navbar-mobile {
   #navbarResponsive {
-    order: 3;
-    width: 100%;
-    max-width: 300px;
     display: none;
     flex-direction: column;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    z-index: 999; //TODO - z-index: 999 a z-index: 2000 → nekonzistentné, neskôr navrhnem systém.
+    gap: $space-sm;
   }
 
   #navbarResponsive.show {
     display: flex;
   }
 
-  #navbarResponsive .navbar-nav {
-    width: 100%;
+  #weatherNav {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}
+// Tablet layout
+@mixin navbar-tablet {
+  #navbarResponsive {
+    display: none;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: $space-sm;
   }
 
-  .navbar-nav .nav-item {
-    width: 100%;
-  }
-
-  .navbar-nav .nav-link {
-    width: 100%;
-    padding: 0.7rem 1rem;
-    border-radius: 0.4rem;
-    background-color: rgba(58, 90, 123, 0.3);
-    text-align: left;
-  }
-
-  #rightNav {
-    order: 2;
+  #navbarResponsive.show {
     display: flex;
-    align-items: center;
-    margin-right: 0.5rem;
-    flex-shrink: 0;
   }
 
-  #rightNav .dropdown-menu {
-    position: fixed;
-    top: 4rem;
-    z-index: 2000;
+  #weatherNav {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}
+// Desktop layout
+@mixin navbar-desktop {
+  .navbar-toggler {
+    display: none;
+  }
+
+  #navbarResponsive {
+    display: flex;
   }
 }

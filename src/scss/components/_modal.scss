@@ -1,159 +1,85 @@
-@use "../base/mixins" as *;
+@use "../layout/mixins/modal" as modal;
+@use "../design-system/index" as *;
 
-// ===============================================
-// MODAL – OVERLAY + BUBBLINA + PDF PREVIEW
-// ===============================================
+/* ===============================================
+   MODAL – VISUAL + ANIMATIONS + SAFARI FIX
+=============================================== */
 
-/* HLAVNÝ OVERLAY PRE MODAL */
-.modal-overlay {                        //TODO - Duplicita s form-overlay → oba používajú overlay + bubble + animáciu → rovnaký koncept 2×.
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;                        //TODO - → JS musí meniť display → neskôr navrhnem visibility + opacity.
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.4);
-  color: #ffffff;                     //TODO - Farby natvrdo (#fff, rgba(...))  → duplicita s premennými.
-  z-index: 2000;                        //TODO - Z-index 2000 / 2001 / 10  → nekonzistentný z-index systém.
+/* BACKDROP */
+.modal-backdrop {
+  @include modal.modal-backdrop-base;
+
+  background: rgba($dark, 0.6);
+
+  /* Safari fix */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 
-/* VNÚTORNÁ BUBBLINA MODALU */
-.modal-bubble {
-  background-color: rgba(58, 90, 123, 0.6);
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: 1rem;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
-  padding: 1rem;
-  min-width: 250px;
-  max-width: 300px;
-  text-align: center;
-  z-index: 2001;
-  animation: bubblePop 0.4s ease forwards;
-  text-shadow:                                                //TODO - → duplicita s mixinmi.
-    3px 2px 2px rgba(23, 23, 23, 0.7),
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-/* ODKAZ NA ZOBRAZENIE PDF */
-.show-pdf {
-  text-decoration: none;
-}
-
-/* WRAPPER PRE PDF OBRÁZOK (DYNAMICKÁ VÝŠKA CEZ JS) */
-.pdf-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 80vw;
-  height: auto;
-  overflow: hidden;
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-/* PDF OBRÁZOK */
-.pdf-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+.modal-backdrop.show {
   display: block;
-  border-radius: 0.5rem;
+  opacity: 1;
 }
 
-/* TLAČIDLO ZATVORENIA (X) */
-.pdf-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  z-index: 10;
-  transition: 0.2s;
+/* MODAL WRAPPER */
+.modal {
+  @include modal.modal-base;
 }
 
-.pdf-close:hover {
-  background: rgba(0,0,0,0.9);
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.pdf-arrow {
-  position: absolute;
-  top: 50%;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  transform: translateY(-50%);
-  padding: 0 10px;
-  background: rgba(58, 90, 123, 0.4);
+/* DIALOG */
+.modal-dialog {
+  @include modal.modal-dialog-base;
+
+  background: $cards-rgba;
+  border: 1px solid rgba($dark, 0.3);
+  @include shadow-default;
 }
 
-.pdf-arrow.left { left: 0.5rem; }
-.pdf-arrow.right { right: 0.5rem; }
-
-.pdf-arrow:hover {
-  color: #3a8a8b;
-  background: rgba(58, 90, 123, 0.5);
+.modal.show .modal-dialog {
+  transform: scale(1);
 }
 
+/* HEADER */
+.modal-header {
+  @include modal.modal-section;
+  background: rgba($dark, 0.1);
+  border-bottom: 1px solid rgba($dark, 0.2);
 
-/* TEXTOVÉ TIEŇOVANIE PRE POTVRDZOVACIE TLAČIDLÁ */
-#confirmWeather,
-#cancelWeather,
-#confirmGitHub,
-#cancelGitHub {
-  text-shadow:
-    3px 2px 2px rgba(23, 23, 23, 0.7),
-    -1px -1px 0 #000,
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000;
-}
-
-
-// ===============================================
-// RESPONSIVE MODAL UTILITIES
-// ===============================================
-
-@include mobile {                         //TODO - → duplicita s Bootstrap breakpoints.
-
-  /* MENŠIA BUBBLINA NA MOBILOCH */
-  .modal-bubble {
-    padding: 0.75rem;
-    min-width: 220px;
-    max-width: 260px;
-  }
-
-  /* MENŠIE PDF PREVIEW NA MOBILOCH */
-  .pdf-wrapper {
-    max-width: 90vw;
-    margin-bottom: 1.5rem;
-  }
-
-  /* MENŠIE CLOSE TLAČIDLO NA MOBILOCH */
-  .pdf-close {
-    top: 8px;
-    right: 8px;
-    font-size: 10px;
-    padding: 4px 8px;
+  h5 {
+    color: $light;
+    @include text-shadow-soft;
   }
 }
 
-/* REDUCED MOTION – IBA NA MOBILOCH (aby modal nezmizol) */
-@media (max-width: 576px) and (prefers-reduced-motion: reduce) {
-  .modal-bubble {
-    animation: none !important;
-    transform: none !important;
-    opacity: 1 !important;
+/* BODY */
+.modal-body {
+  @include modal.modal-section;
+  color: $light;
+}
+
+/* FOOTER */
+.modal-footer {
+  @include modal.modal-section;
+  background: rgba($dark, 0.05);
+  border-top: 1px solid rgba($dark, 0.2);
+
+  button {
+    background: linear-gradient(to right, $primary, $secondary);
+    color: $light;
+    @include shadow-default;
+    transition: transform 0.2s ease;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  button:active {
+    transform: scale(0.97);
   }
 }

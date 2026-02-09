@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 /* TODO - fadeInUp, slideInRight, fadeIn, fadeInScale → veľa podobných animácií, niektoré sa líšia len smerom alebo scale. Da sa zlúčiť do parametrického mixinu.*/
 /* TODO - slideDown a slideUp → používam? V HTML nieje žiadna trieda, ktorá ich aplikuje. */

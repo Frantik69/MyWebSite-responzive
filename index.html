@@ -3,54 +3,57 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="Kontaktujte programátora, s vlastným programátorským myslením."> <!-- TODO - SK/EN verzia pre EN jazyk (multilang routing) 
-    - Contact a programmer with your own programming mindset. navrhnem SEO verziu -->
+    <!-- DESCRIPTION (SK verzia) -->
+    <meta name="description" content="Kontaktujte programátora s vlastným programátorským myslením.">
+    <!-- TODO: EN verzia pre EN jazyk (multilang routing) "Contact a programmer with a strong engineering mindset." -->
     <meta name="author" content="Frantik69">
     <meta property="og:title" content="František Dupaľ - webdeveloper">
-    <meta property="og:description" content="Zhotovovanie webstránok, úprava design-u, vývoj webových aplikácií.">
-    <meta property="og:image" content="https://frantik69.github.io/MyWebSite-responzive/kod-java.jpg"> <!--TODO - prepisat adresu podla skutocnosti og:image má 
-    externú URL → po deployi bude treba prelinkovať-->
-    <meta property="og:url" content="https://frantik69.github.io"> <!--TODO - prepisat adresu podla skutocnosti -->
+    <meta property="og:description" content="Zhotovovanie webstránok, úprava designu, vývoj webových aplikácií.">
+    <!-- TODO: prepísať URL po deployi -->
+    <meta property="og:image" content="https://frantik69.github.io/MyWebSite-responzive/kod-java.jpg">
+    <meta property="og:url" content="https://frantik69.github.io">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0d1b2a" media="(prefers-color-scheme: dark)">
-    <!-- TODO
-    /////////////////////////////////////////////////////////////////////////
-      Indexovať a sledovať odkazy (default) 
+    <!-- TODO: robots podľa potreby
     <meta name="robots" content="index, follow">
-          Príklad pre stránky, ktoré nechcete indexovať 
-    <meta name="robots" content="noindex, follow">
-    Prečo: Umožňuje presne riadiť, čo má byť viditeľné vo vyhľadávaní
-    ////////////////////////////////////////////////////////////////////////
     -->
     <title>František Dupaľ - webdeveloper | Košice - SK</title>
     <!-- FAVICON -->
     <link rel="icon" type="image/png" href="src/assets/favicon.png" sizes="64x64">
-    <!-- BOOTSTRAP + CUSTOM CSS -->
-    <link rel="canonical" href="https://frantisek.dupal.sk/"> <!-- TODO - prepisat adresu podla skutocnosti -->
+    <!-- CANONICAL -->
+    <!-- TODO: prepísať adresu podľa skutočného deployu -->
+    <link rel="canonical" href="https://frantisek.dupal.sk/">
+    <link rel="preload" href="src/assets/img/logo.png" as="image">
+    <!-- DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <!-- Cloudflare Turnstile -->
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#mainNav" tabindex="0"><!-- TODO - tabindex="0" na <body> Toto je zbytočné a môže narušiť keyboard navigation.-->
+  <body data-bs-spy="scroll" data-bs-target="#mainNav">
     <script>
-        window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
+      window.FontAwesomeConfig = { autoReplaceSvg: 'nest' };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <!-- NAVIGATION -->
     <nav class="navbar navbar-expand-lg fixed-top d-flex align-items-center" id="mainNav">
       <div class="container-fluid d-flex align-items-center justify-content-between p-0 w-100">
         <!-- TOGGLER + LOGO WRAPPER -->
         <div id="mobileLeft" class="d-flex align-items-center">
           <!-- TOGGLER -->
-          <button class="navbar-toggler" type="button" aria-label="Toggle navigation"> <!-- TODO -Bootstrap toggler bez targetu → JS sa pokúsi nájsť collapse elementy
-            automaticky a to ti rozbilo sideNav, pretože Bootstrap si ho pomýlil s collapsible prvkom. -->
+          <button class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sideNav"
+                  aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
           </button>
           <!-- LOGO -->
-          <div id="logoWrapper" class="d-flex align-items-center justify-content-center"><!-- TODO - chýba preload pre logo (zvýši rýchlosť)-->
+          <div id="logoWrapper" class="d-flex align-items-center justify-content-center">
             <div id="logo" class="d-flex align-items-center text-decoration-none">
               <img src="src/assets/img/logo.png" alt="Logo" class="logo me-2">
               <div class="logo-text d-flex flex-column">
-                <h1 class="h6 mb-0"><!-- TODO - H1 v navigácii nie je vhodný-->
-                  František<span class="fw-bold text-uppercase">Dupaľ</span>
-                </h1>
+                <p class="h6 mb-0">František<span class="fw-bold text-uppercase">Dupaľ</span>
+                </p>
                 <small class="text-uppercase">webdeveloper</small>
               </div>
             </div>
@@ -243,7 +246,7 @@
               </p>
             </div>
             <div class="left-bottom">
-              <div class="certificates-carousel"><!--TODO - Carousel certifikátov nemá fallback obsah - navrhnem fallback text alebo skeleton.-->
+              <div class="certificates-carousel"><!--TODO - Carousel certifikátov nemá fallback obsah - navrhnut fallback text alebo skeleton.-->
                 <div class="cert-track-wrapper d-flex align-items-center">
                   <button class="cert-arrow left" type="button" aria-label="Posun doľava">
                     <i class="fas fa-chevron-left"></i>
@@ -257,10 +260,8 @@
             </div>
           </div>
           <!-- PRAVÁ STRANA: VYCENTROVANÝ OBRÁZOK -->
-          <div class="col-lg-6 d-flex justify-content-center"><!--TODO - Obrázok nemá loading="lazy"-->
-            <img src="src/assets/img/my-photo.png"
-                alt="Profilová fotografia"
-                class="img-fluid zoom-img">
+          <div class="col-lg-6 d-flex justify-content-center">
+            <img src="src/assets/img/my-photo.png" alt="Profilová fotografia" class="img-fluid zoom-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -644,8 +645,6 @@
       </div>
     </section>
     <!-- ABOUTME SECTION -->
-    <!--TODO - Používam data-translate-html - je to bezpečnostne citlivé. Neskôr navrhnem bezpečnejší spôsob.-->
-    <!--TODO - ABOUT sekcia nemá fallback obsah. Neskôr navrhnem: skeleton loading, alebo fallback text v HTML -->
     <section class="page-section bg-primary text-white mb-0" id="about">
       <div class="about-container">
         <h2 data-translate="aboutMe" class="page-section-heading text-center text-uppercase"></h2>
@@ -657,20 +656,22 @@
         <div class="about-page">
           <div class="row">
             <!-- ĽAVÝ STĹPEC -->
-            <div data-translate="aboutInfo1"
-                data-translate-html
-                class="col-lg-6 about-info">
+            <div data-translate="aboutInfo1" data-translate-html class="col-lg-6 about-info">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line short"></div>
             </div>
             <!-- PRAVÝ STĹPEC -->
-            <div data-translate="aboutInfo2"
-                data-translate-html
-                class="col-lg-6 about-info">
+            <div data-translate="aboutInfo2" data-translate-html class="col-lg-6 about-info">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line short"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- CONTACT SECTION --><!-- TODO - Doplnit <input ... aria-describedby="nameError"><div id="nameError" class="error-msg"></div> -->
+    <!-- CONTACT SECTION -->
     <section class="page-section" id="contact">
       <div class="contact-container">
         <h2 data-translate="formTitle"
@@ -684,79 +685,79 @@
         </div>
         <!-- CONTACT INFO -->
         <p class="contact-info d-flex justify-content-center align-items-center text-center">
-          <img src="src/assets/img/email.png" alt="Ikona emailu" class="email-icon"><!--TODO - Email ikona nemá lazy-loading -> loading="lazy"-->
-          <span data-translate="contactInfo" data-translate-html><!--TODO - Používam innerHTML, znamená to: preklad môže obsahovať HTML ak by sa do JSON dostal <script>,
-            je to XSS riziko musíš mať 100 % kontrolu nad prekladmi Nie je to chyba, ale je to bezpečnostne citlivé.-->
-            Ak mi chceš niečo povedať, pošli mi e-mail na
-            <strong>frantisek.dupal.webdeveloper@gmail.com</strong>
+          <img src="src/assets/img/email.png"
+              alt="Ikona emailu"
+              class="email-icon"
+              loading="lazy">
+          <span data-translate="contactInfo" data-translate-html>
+            <!-- Skeleton loading -->
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
           </span>
         </p>
         <!-- CONTACT FORM -->
-        <div class="row justify-content-center"><!--TODO - Navrhnut čistejšiu grid štruktúru - niektoré spacingy sú nejednotné, niektoré sú zbytočné (napr. ms-3 pri labeli)-->
+        <div class="row justify-content-center">
           <div class="col-12">
             <form action="https://formspree.io/f/xwvepdrk"
                   method="POST"
                   id="contactForm"
-                  autocomplete="on"><!--TODO - Formulár používa autocomplete="on" aj autocomplete="off" naraz - nejednotné, prehliadače sa budú správať nepredvídateľne
-                  Neskôr navrhnem jednotné riešenie. -->
+                  autocomplete="on">
               <input type="hidden" name="_subject"
-                    value="📩 Nová správa z portfólia – František Dupal">
+                    value="📩 Nová správa z portfólia - František Dupal">
               <!-- ROW 1 -->
-              <div class="row g-0 mb-3 align-items-center">
+              <div class="row g-0 mb-3">
+                <!-- NAME -->
                 <div class="col-12">
-                  <label for="name" data-translate="formNameLabel">Meno</label>
+                  <label for="name" data-translate="formNameLabel"></label>
+                  <input type="text"
+                         id="name"
+                         name="name"
+                         aria-describedby="nameError"
+                         aria-label="Your Name"
+                         data-translate-aria="placeholderName"
+                         data-translate-placeholder="placeholderName"
+                         required
+                         class="form-control"
+                         autocomplete="name">
+                  <div id="nameError" class="error-msg"></div>
                 </div>
-                <div class="col-12 ms-1"><!--TODO - aria-describedby je správne, ale error divy sú prázdne, ak JS nenaplní error text, screenreader bude čítať prázdny element - navrhnem fallback texty-->
-                  <input type="text" aria-describedby="nameError"
-                        id="name"
-                        name="name"
-                        placeholder="Vaše meno / Your name"
-                        data-translate-placeholder="placeholderName"
-                        required
-                        aria-required="true"
-                        class="form-control"
-                        autocomplete="name"><!--TODO - dvojjazycne placeholdery placeholder="Vaše meno / Your name" - jeden jazyk → preklad doplní správny text-->
-                  <div id="nameError" class="error-msg"></div>        
-                </div>
-                <div class="col-12 ms-3">
-                  <label for="email" data-translate="formEmailLabel">Email</label>
-                </div>
-                <div class="col-12 ms-1">
-                  <input type="email" aria-describedby="emailError"
-                        id="email"
-                        name="email"
-                        placeholder="Váš email / Your email"
-                        data-translate-placeholder="placeholderEmail"
-                        required
-                        class="form-control"
-                        autocomplete="email"><!--TODO - dvojjazycne placeholdery placeholder="Váš email / Your email" - jeden jazyk → preklad doplní správny text-->
-                  <div id="emailError" class="error-msg"></div>   
+                <!-- EMAIL -->
+                <div class="col-12 mt-3">
+                  <label for="email" data-translate="formEmailLabel"></label>
+                  <input type="email"
+                         id="email"
+                         name="email"
+                         aria-describedby="emailError"
+                         aria-label="Your e-mail"
+                         data-translate-aria="placeholderEmail"
+                         data-translate-placeholder="placeholderEmail"
+                         required
+                         class="form-control"
+                         autocomplete="email">
+                  <div id="emailError" class="error-msg"></div>
                 </div>
               </div>
-              <!-- ROW 2 -->
+              <!-- MESSAGE -->
               <div class="row g-0 mb-3">
                 <div class="col-12">
                   <label for="message" data-translate="formMessageLabel"></label>
-                </div>
-              </div>
-              <!-- ROW 3 -->
-              <div class="row g-0 mb-3">
-                <div class="col-12">
                   <textarea id="message"
                             name="message"
                             rows="5"
-                            placeholder="Vaša správa... / Your message..."
+                            aria-describedby="messageError"
+                            aria-label="Your message..."
+                            data-translate-aria="placeholderMessage"
                             data-translate-placeholder="placeholderMessage"
                             required
                             class="form-control"
-                            autocomplete="off"></textarea><!--TODO - dvojjazycne placeholdery placeholder="Vaša správa... / Your message..." - jeden jazyk → preklad doplní správny text-->
-                  <div id="messageError" class="error-msg"></div><!--TODO - Chýba required pri textarea → musí byť naplnený JS-om. Ak JS zlyhá, validácia nebude fungovať.-->
+                            autocomplete="off"></textarea>
+                  <div id="messageError" class="error-msg"></div>
                 </div>
               </div>
               <!-- TURNSTILE -->
               <div class="row g-0 mb-3">
                 <div class="col text-center">
-                  <div id="turnstile-container" class="cf-turnstile" autocomplete="off"></div><!--TODO - Turnstile kontajner má autocomplete="off" - zbytocne-->
+                  <div id="turnstile-container" class="cf-turnstile"></div>
                 </div>
               </div>
               <!-- SUBMIT BUTTON -->
@@ -766,8 +767,7 @@
                           type="submit"
                           data-translate="formSubmit"
                           class="btn btn-primary menu-item"
-                          data-translate-info="sendInfo"><!--TODO - menu-item je určené pre navigáciu, nie pre formuláre. To môže: ovplyvniť hover efekty, ovplyvniť
-                          prekladový systém, ovplyvniť JS selektory. Neskôr navrhnem oddelenie štýlov.-->
+                          data-translate-info="sendInfo">
                     Odoslať
                   </button>
                 </div>
@@ -778,45 +778,49 @@
       </div>
     </section>
     </main>
-    <!-- FOOTER --><!--TODO - Footer má len jeden stĺpec → OK, ale triedy sú pripravené na viac (nie je problém, len poznámka).-->
+    <!-- FOOTER -->
     <footer id="footer" class="footer text-center custom-footer">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 data-translate="location" data-translate-html class="text-uppercase mb-2"></h4><!--TODO - Používam data-translate-html - je to bezpečnostne citlivé. Neskôr navrhnem bezpečnejší spôsob.-->
+            <h4 data-translate="location" data-translate-html class="text-uppercase mb-2"></h4>
             <p data-translate="locationInfo" data-translate-html class="lead mb-0"></p>
           </div>
         </div>
       </div>
     </footer>
     <!-- COPYRIGHT -->
-    <div id="copyright" class="fixed-bottom py-1 text-center custom-copyright" data-translate="copyright" data-translate-html><!--TODO - Používam data-translate-html - je to bezpečnostne citlivé. Neskôr navrhnem bezpečnejší spôsob.-->
-      <div class="container"></div><!--TODO - fixed-bottom môže kolidovať s mobilným sideNav (preverit v SCSS)-->
+    <div id="copyright"
+        class="fixed-bottom py-1 text-center custom-copyright"
+        data-translate="copyright"
+        data-translate-html>
+      <div class="container"></div>
+      <!-- TODO v SCSS pridať bottom padding pre sideNav, ak by prekrývalo obsah. -->
     </div>
     <!-- CONFIRMATION OVERLAY -->
-    <div id="overlay" class="formMessage" role="alertdialog" aria-live="assertive"><!--TODO - chýba aria-labelledby alebo aria-describedby, aria-live="assertive" → OK, ale treba garantovať, že JS tam vždy vlozi text-->
+    <div id="overlay" class="formMessage" role="alertdialog" aria-live="assertive" aria-labelledby="overlayMessage">
       <div id="overlayMessage"></div>
     </div>
-    <!-- MODAL PRE PDF --><!--TODO - Duplicita s GitHub modalom (rovnaká štruktúra, iný obsah)-->
-    <div id="pdfModal" class="modal-overlay" role="dialog" aria-modal="true"><!--TODO - role="dialog" je dvakrát (na wrapperi aj na overlay).-->
-      <div class="pdf-wrapper" role="dialog">
-        <!-- Šípka vľavo --><!--TODO - Šípky sú textové znaky → OK, ale neskôr navrhnem SVG-->
+    <!-- MODAL PRE PDF -->
+    <div id="pdfModal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="pdf-wrapper">
+        <!-- Šípka vľavo --><!-- TODO Odporúčané SVG pre šípky -->
         <button class="pdf-arrow left" aria-label="Predchádzajúci certifikát">&#10094;</button>
         <!-- Zavrieť modal -->
         <button class="pdf-close" aria-label="Zavrieť modálne okno">✕</button>
         <!-- Obrázok certifikátu -->
-        <img id="pdfImage" src="" alt="Certifikát"><!--TODO - nemá lazy-loading-->
+        <img id="pdfImage" src="" alt="Certifikát" loading="lazy">
         <!-- Šípka vpravo -->
         <button class="pdf-arrow right" aria-label="Nasledujúci certifikát">&#10095;</button>
       </div>
     </div>
-    <!-- MODAL PRE GITHUB --><!-- TODO - Rovnaká štruktúra ako weather modal → duplicita.-->
+    <!-- MODAL PRE GITHUB -->
     <div id="GitHubModal" class="modal-overlay" role="dialog" aria-modal="true">
       <div class="modal-bubble">
         <p data-translate="changePage"></p>
         <div class="d-flex justify-content-between mt-2">
-            <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub">Kliknutim sa otvori nova karta s GitHubom</button><!--TODO - Texty v tlačidlách natvrdo v HTML + preklad → zbytočné.--><!--TODO - data-translate-info="yesInfoGitHub" → nový kľúč, ale rovnaký význam ako yesInfo-->
-            <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button><!--TODO - Texty v tlačidlách natvrdo v HTML + preklad → zbytočné.-->
+            <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub" aria-label="yes"></button>
+            <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo" aria-label="no"></button>
         </div>
       </div>
     </div>
@@ -825,8 +829,8 @@
       <div class="modal-bubble">
         <p data-translate="changePage"></p>
         <div class="d-flex justify-content-between mt-2">
-          <button id="confirmWeather" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfo">Kliknutim sa otvori nove okno s pocasim</button><!-- TODO - Tlačidlá majú text v HTML aj v data-translate - navrhnut jednotny system-->
-          <button id="cancelWeather" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo">Kliknutim sa vratite na stranku</button><!--TODO - Texty v tlačidlách natvrdo v HTML + preklad → zbytočné.-->
+          <button id="confirmWeather" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfo" aria-label="yes"></button>
+          <button id="cancelWeather" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo" aria-label="no"></button>
         </div>
       </div>
     </div>

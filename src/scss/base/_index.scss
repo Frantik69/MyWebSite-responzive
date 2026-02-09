@@ -1,13 +1,8 @@
-@use "variables";
-@forward "variables";
-@use "mixins";
-@forward "mixins";
+@charset "UTF-8";
+
+@use "../design-system/index" as *;
+
+/* ostatné importy */
 @use "reset";
-@forward "reset";
 @use "global";
-@forward "global";
 @use "typography";
-@forward "typography";
-@use "utilities";
-@forward "utilities";
-//TODO -zbytocne @use aj @forward - staci jedno

@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // PORTFOLIO – SKILLS LIST (ZAROVNANIE + RATING)
@@ -7,7 +6,7 @@
 
 /* ZÁKLADNÝ ŠTÝL PRE POLOŽKY SKILLS */
 .skills li {
-  font-size: 0.8rem;              //TODO - → duplicita s typografiou.
+  font-size:$font-size-sm;
   line-height: 1.2;
 }
 
@@ -30,7 +29,7 @@
 
   /* MENŠIE SKILLS NA MOBILOCH */
   .skills li {
-    font-size: 0.75rem;             //TODO - → duplicita s typografiou.
+    font-size:$font-size-xs;            //TODO - → duplicita s typografiou.
   }
 
   .skills li[data-rating] {

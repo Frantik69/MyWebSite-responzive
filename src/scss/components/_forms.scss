@@ -1,100 +1,101 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../layout/mixins/forms" as forms;
+@use "../design-system/index" as *;
 
-// ===============================================
-// FORMS – ZÁKLADNÉ FORMULÁROVÉ PRVKY
-// ===============================================
+/* ===============================================
+   FORMS – KOMPONENT (LAYOUT + ŠTÝLY)
+=============================================== */
 
-/* TODO - Kompletný duplicát Bootstrap form štýlov Bootstrap už má: .form-control, .form-label, .btn, .btn-primary → štýly prepisujú Bootstrap → veľa zbytočného CSS. */
-
-/* HLAVNÝ FORMULÁR */
-form {            //TODO - form { display: grid; gap: 1rem; } → OK, ale Bootstrap grid to vie tiež.
+/* FORM WRAPPER */
+form {
   display: grid;
-  gap: 1rem;
+  gap: $space-md;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* POPISKY FORMULÁRA */
+/* FORM GROUP */
+.form-group {
+  @include forms.form-group;
+}
+
+/* LABEL */
 label {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 0.25rem;
-  color: #212529; //TODO - Farby natvrdo (#ccc, #212529, #3a5a7b)  → duplicita s premennými.
+  @include forms.form-label;
+  color: $dark;
 }
 
-/* INPUTY A TEXTAREA */
+/* INPUTS */
 input,
-textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-family: inherit;
-  background-color: #fff;
-  color: #212529;
-  transition: border-color 0.3s ease;
+textarea,
+select {
+  @include forms.form-input;
+  border-color: $gray-300;
+  background-color: $body-bg;
+  color: $dark;
 }
 
-/* FOCUS STAV INPUTOV */
+/* TEXTAREA */
+textarea {
+  @include forms.form-textarea;
+}
+
+/* FOCUS */
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #3a5a7b;
+  border-color: $primary;
 }
 
-/* PLACEHOLDER ŠTÝL */
+/* PLACEHOLDER */
 ::placeholder {
-  color: #6c757d;
+  color: $gray-500;
   opacity: 1;
 }
 
-/* TLAČIDLO ODOSLAŤ */
+/* ROWS */
+.form-row {
+  @include forms.form-row;
+  @include forms.form-responsive;
+}
+
+/* CHECKBOX + RADIO */
+input[type="checkbox"],
+input[type="radio"] {
+  @include forms.form-check;
+}
+
+/* BUTTONS */
 button,
-[type="submit"] {     //TODO - button, [type="submit"] → prepisuje všetky tlačidlá na stránke.
-  background-color: #3a5a7b;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 30px;      //TODO - → natvrdo → duplicita s $radius-large.
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
+input[type="submit"] {
+  @include forms.form-button;
+  background-color: $primary;
+  color: $body-bg;
+  border-radius: $radius-base;
   transition: background-color 0.3s ease;
 }
 
 button:hover,
-[type="submit"]:hover {
-  background-color: #2c3e50;
+input[type="submit"]:hover {
+  background-color: $primary-dark;
 }
 
-// ===============================================
-// RESPONSIVE FORM UTILITIES
-// ===============================================
+/* RESPONSIVE */
+@include mobile {
+  form {
+    padding: 0 $space-sm;
+  }
 
-@include mobile {     //TODO - duplicita
-
-  /* MENŠIE INPUTY NA MOBILOCH */
   input,
   textarea {
-    padding: 0.65rem 0.9rem;
-    font-size: 0.95rem;
+    padding: $space-sm $space-md;
   }
 
-  /* MENŠIE TLAČIDLO NA MOBILOCH */
   button,
-  [type="submit"] {
-    padding: 0.65rem 1.25rem;
-    font-size: 0.95rem;
+  input[type="submit"] {
+    padding: $space-sm $space-lg;
   }
 
-  /* VÄČŠÍ TAP TARGET PRE LABELY NA MOBILOCH */
   label {
-    font-size: 0.95rem;
-  }
-
-  form {
-    padding: 0 1rem;
+    font-size: $font-size-base;
   }
 }

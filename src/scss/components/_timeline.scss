@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // TIMELINE – VERTIKÁLNA ČASOVÁ OS (PORTFOLIO)
@@ -119,7 +118,7 @@ grid-template-columns: 6rem 1fr
   }
 
   .timeline-date {
-    font-size: 0.75rem;
+    font-size:$font-size-xs;
   }
 
   /* MENŠIE BODKY NA MOBILOCH */
@@ -131,10 +130,10 @@ grid-template-columns: 6rem 1fr
 
   /* MENŠÍ TEXT NA MOBILOCH */
   .timeline-content {
-    font-size: 0.75rem;
+    font-size:$font-size-xs;
   }
 
   .sublist {
-    font-size: 0.65rem;
+    font-size:$font-size-xs;
   }
 }

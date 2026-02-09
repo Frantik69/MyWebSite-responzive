@@ -1,0 +1,238 @@
+@use "../layout/mixins/sidenav" as sideNav;
+@use "../design-system/index" as *;
+
+/* ===============================================
+   DESKTOP SIDE NAVBAR
+=============================================== */
+
+#sideNav {
+  @include sideNav.sidenav-base;
+}
+
+@media (min-width: $breakpoint-lg) {
+  #sideNav {
+    @include sideNav.sidenav-desktop-layout;
+  }
+
+  #sideNav.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Scale by height */
+  @media (max-height: 900px) { #sideNav { --scale: 0.95; } }
+  @media (max-height: 800px) { #sideNav { --scale: 0.90; } }
+  @media (max-height: 700px) { #sideNav { --scale: 0.85; } }
+  @media (max-height: 600px) { #sideNav { --scale: 0.80; } }
+  @media (max-height: 520px) { #sideNav { --scale: 0.75; } }
+  @media (max-height: 460px) { #sideNav { --scale: 0.70; } }
+}
+
+/* ===============================================
+   MOBILE + TABLET SIDE NAVBAR
+=============================================== */
+
+@media (max-width: $breakpoint-sm) {
+  #sideNav {
+    @include sideNav.sidenav-mobile-layout;
+
+    background-image:
+      $logo,
+      linear-gradient(to right, $primary, $secondary);
+
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, center;
+    background-size: calc(100% - 1rem) auto, cover;
+    background-origin: content-box, border-box;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $logo;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: calc(100% - 1rem) auto;
+      background-origin: content-box;
+      filter: blur(15px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+
+    .show-mobile {
+      left: 0;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .closing {
+      opacity: 0;
+    }
+  }
+}
+
+/* TABLET */
+@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+  #sideNav {
+    @include sideNav.sidenav-tablet-layout;
+
+    background-image:
+      $logo,
+      linear-gradient(to right, $primary, $secondary);
+
+    background-repeat: no-repeat, no-repeat;
+    background-position: top center, center;
+    background-size: calc(100% - 2rem) auto, cover;
+    background-origin: content-box, border-box;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $logo;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: calc(100% - 1rem) auto;
+      background-origin: content-box;
+      filter: blur(15px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+  }
+
+  #sideNav.show-mobile {
+    left: 0;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* ===============================================
+   LANDSCAPE MOBILE FIX
+=============================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  #sideNav {
+    padding: $space-sm;
+    height: calc(100dvh - ($navbar-height + $copyright-height));
+    max-height: calc(100dvh - ($navbar-height + $copyright-height));
+  }
+}
+
+/* ===============================================
+   INTERNAL STRUCTURE
+=============================================== */
+
+.sideNav-center {
+  @include sideNav.sidenav-center;
+}
+
+.sideNav-content {
+  @include sideNav.sidenav-content;
+}
+
+#sideNavTime {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+
+  .time {
+    font-weight: 700;
+  }
+}
+
+.side-nav-divider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid rgba(255,255,255,0.5);
+  margin: $space-sm 0;
+}
+
+#sideNav ul {
+  @include sideNav.sidenav-list;
+}
+
+#sideNav li {
+  @include sideNav.sidenav-item;
+}
+
+#sideNav li a {
+  @include sideNav.sidenav-link;
+
+  box-shadow: 0px 1px 0px rgba(202, 202, 202, 0.787);
+}
+
+#sideNav li a:hover {
+  transform: translateY(-5px);
+}
+
+#sideNav .menu-icon svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+  @include icon-shadow;
+}
+
+#sideNav li a:hover .menu-icon svg {
+  filter: none;
+}
+
+#sideNav .hover-bubble {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#sideNav .hover-bubble span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: sideNavMarquee 6s linear infinite;
+}
+
+#sideNav a.show-bubble .hover-bubble {
+  opacity: 1;
+}
+
+@keyframes sideNavMarquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+#sideNavWeather {
+  width: 100%;
+  text-align: left;
+
+  .weather-inline {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: $space-sm;
+    width: 100%;
+  }
+
+  .weather-icon {
+    width: 1.8rem;
+    height: auto;
+    transform-origin: 50% 60%;
+    animation: weather-sway 5s ease-in-out infinite;
+  }
+}
+
+#sideNavDateBlock {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+}

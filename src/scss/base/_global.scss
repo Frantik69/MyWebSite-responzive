@@ -1,30 +1,36 @@
 @charset "UTF-8";
-@use "variables" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // GLOBAL BASE SETTINGS
 // ===============================================
 
+// Root font sizing
 html {
   font-size: 100%;
 }
 
+// Scroll offset for anchored sections
 header[id],
 section[id] {
-  scroll-margin-top: $navbar-height; // 4rem
+  scroll-margin-top: $navbar-height;
 }
+
+// ===============================================
+// BODY BASE
+// ===============================================
 
 body {
   font-family: $body-font-family;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
   line-height: $body-line-height;
+
   color: $body-color;
   background-color: $body-bg;
-  position: relative;//TODO  nepotrebujem, ak nič nepoziciujem voči body
 
-  padding-top: $navbar-height; //TODO - je natvrdo $navbar-height sa nepouziva. duplicita
-  padding-bottom: $copyright-height; //TODO -kvoli copyrightu nie je v konflikte s fixed-bottom?
+  padding-top: $navbar-height;
+  padding-bottom: $copyright-height;
 
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -32,6 +38,612 @@ body {
 
 body.nav-open {
   overflow: hidden;
-  height: 100dvh; //TODO - môže spôsobiť problémy na iOS (dynamic viewport) – preverit podľa JS.
+  height: 100dvh;
   touch-action: none;
+}
+
+// ===============================================
+// TYPOGRAPHY SCALE – HEADINGS, PARAGRAPHS, LINKS
+// ===============================================
+
+// Headings
+h1 {
+  font-size: $font-size-xxl;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: $font-size-xl;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: $dark;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: $font-size-md;
+  font-weight: 600;
+  color: $dark;
+  line-height: 1.35;
+}
+
+h5 {
+  font-size: $font-size-base;
+  font-weight: 600;
+  color: $dark;
+  line-height: 1.4;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  font-weight: 600;
+  color: $dark;
+  line-height: 1.4;
+}
+
+// Paragraphs
+p {
+  font-size: $font-size-base;
+  color: $dark;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+// Links
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $secondary;
+    text-decoration: underline;
+  }
+}
+
+// Lists
+ul,
+ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+  color: $dark;
+}
+
+li {
+  line-height: 1.4;
+}
+
+// Blockquotes
+blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid $primary;
+  color: $dark;
+  font-style: italic;
+}
+
+// Code
+code {
+  font-family: $font-monospace;
+  background-color: $first-light;
+  padding: 0.15rem 0.35rem;
+  border-radius: $radius-base;
+  color: $dark;
+}
+
+// Horizontal rule
+hr {
+  border: none;
+  border-top: 1px solid $gray;
+  margin: 1.5rem 0;
+}
+/* ===============================================
+   NAVBAR – VISUAL STYLING (COLORS, FONTS, SHADOWS)
+=============================================== */
+
+#mainNav {
+  @include gradient-bg($primary, $secondary, to right);
+  border-bottom: 1px solid rgba($dark, 0.4);
+  color: $light;
+  text-shadow: -1px -1px 0 black,
+                1px -1px 0 black,
+               -1px  1px 0 black,
+                1px  1px 0 black;
+}
+
+/* LOGO */
+#logo {
+  color: $light;
+
+  img.logo {
+    height: $navbar-logo-height;
+  }
+
+  .logo-text h1 {
+    font-size: $font-size-xl;
+    font-weight: 700;
+  }
+
+  .logo-text small {
+    font-size: $font-size-sm;
+    opacity: 0.9;
+  }
+}
+
+/* WEATHER NAV */
+#weatherNav {
+  color: $light;
+
+  img.icon-24 {
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.6));
+  }
+
+  span {
+    font-size: $font-size-base;
+    font-weight: 500;
+  }
+}
+
+/* NAV LINKS */
+.navbar-nav .nav-link {
+  color: $light;
+  font-size: $font-size-base;
+  font-weight: 600;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba($first-middle-rgb, 0.4);
+  @include shadow-default;
+}
+
+.navbar-nav .nav-link.active {
+  background-color: rgba($first-middle-rgb, 0.7);
+  @include shadow-default;
+}
+
+.navbar-nav .nav-link.active:hover {
+  background-color: rgba($first-middle-rgb, 0.8);
+}
+
+/* HOVER BUBBLE */
+.navbar-nav .nav-link .hover-bubble {
+  background-color: rgba($second-middle-rgb, 0.8);
+  color: $light;
+  border: 1px solid rgba($light, 0.3);
+  @include shadow-default;
+}
+
+/* LANGUAGE DROPDOWN */
+#languageDropdown .hover-bubble {
+  background-color: $cards-rgba;
+  color: $dark;
+  text-shadow: none;
+  border: 1px solid $dark;
+}
+
+/* RIGHT NAV */
+#rightNav {
+  color: $light;
+}
+
+/* TOGGLER */
+.navbar-toggler {
+  color: $light;
+  border: 1px solid rgba($light, 0.4);
+}
+/* ===============================================
+   NAVBAR – TABLET VISUAL STYLING
+=============================================== */
+
+@include tablet {
+
+  /* LOGO */
+  #logo img.logo {
+    height: 3rem;
+  }
+
+  #logo .logo-text h1 {
+    font-size: $font-size-md;
+    font-style: italic;
+  }
+
+  #logo .logo-text small {
+    font-size: $font-size-sm;
+  }
+
+  /* WEATHER NAV – skryté */
+  #weatherNav {
+    display: none !important;
+  }
+
+  /* NAV LINKS */
+  .navbar-nav .nav-link {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    padding: 0.2rem 0.4rem;
+  }
+
+  /* LANGUAGE DROPDOWN FIX */
+  #languageDropdown,
+  #languageDropdown * {
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  /* RESPONSIVE MENU BACKGROUND */
+  #navbarResponsive {
+    @include gradient-bg($primary, $secondary, to right);
+    border-top: 1px solid rgba($light, 0.3);
+  }
+}
+/* ===============================================
+   NAVBAR – MOBILE VISUAL STYLING
+=============================================== */
+
+@include mobile {
+
+  /* LOGO */
+  #logo img.logo {
+    height: 3.5rem;
+  }
+
+  /* WEATHER NAV – skryté */
+  #weatherNav {
+    display: none !important;
+  }
+
+  /* NAV LINKS */
+  .navbar-nav .nav-link {
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* RESPONSIVE MENU BACKGROUND */
+  #navbarResponsive {
+    @include gradient-bg($primary, $secondary, to right);
+    border-top: 1px solid rgba($light, 0.3);
+  }
+
+  /* TOGGLER */
+  .navbar-toggler {
+    width: 4rem;
+    height: auto;
+    color: $light;
+    border: 1px solid rgba($light, 0.4);
+  }
+}
+/* ===============================================
+   NAVBAR – DESKTOP VISUAL STYLING
+=============================================== */
+
+@include lg {
+
+  /* LOGO */
+  #logo {
+    color: $light;
+
+    img.logo {
+      height: 4rem;
+    }
+
+    .logo-text h1 {
+      font-size: $font-size-xl;
+      font-weight: 700;
+    }
+
+    .logo-text small {
+      font-size: $font-size-sm;
+      opacity: 0.9;
+    }
+  }
+
+  /* WEATHER NAV – desktop verzia */
+  #weatherNav {
+    display: flex;
+    color: $light;
+    gap: $space-sm;
+
+    img.icon-24 {
+      height: 3rem;
+      width: 3rem;
+      filter: drop-shadow(0 0 3px rgba(0,0,0,0.6));
+    }
+
+    span {
+      font-size: $font-size-base;
+      font-weight: 500;
+    }
+  }
+
+  /* NAV LINKS */
+  .navbar-nav .nav-link {
+    color: $light;
+    font-size: $font-size-base;
+    font-weight: 600;
+    text-shadow: -1px -1px 0 black,
+                  1px -1px 0 black,
+                 -1px  1px 0 black,
+                  1px  1px 0 black;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: rgba($first-middle-rgb, 0.4);
+    @include shadow-default;
+    transform: scale(1.05);
+  }
+
+  .navbar-nav .nav-link.active {
+    background-color: rgba($first-middle-rgb, 0.7);
+    @include shadow-default;
+  }
+
+  .navbar-nav .nav-link.active:hover {
+    background-color: rgba($first-middle-rgb, 0.8);
+  }
+
+  /* HOVER BUBBLE */
+  .navbar-nav .nav-link .hover-bubble {
+    background-color: rgba($second-middle-rgb, 0.8);
+    color: $light;
+    border: 1px solid rgba($light, 0.3);
+    @include shadow-default;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .navbar-nav .nav-link.show-bubble .hover-bubble {
+    opacity: 1;
+  }
+
+  /* LANGUAGE DROPDOWN */
+  #languageDropdown .hover-bubble {
+    background-color: $cards-rgba;
+    color: $dark;
+    border: 1px solid $dark;
+    text-shadow: none;
+  }
+
+  /* RIGHT NAV */
+  #rightNav {
+    color: $light;
+  }
+
+  /* TOGGLER – skrytý na desktop */
+  .navbar-toggler {
+    display: none;
+  }
+}
+/* HOME */
+#home {
+  background-image: linear-gradient(to right, $first-middle, $first-light);
+  border: 1px solid rgba($dark, 0.4);
+  @include rounded($radius-base);
+}
+
+#home h1,
+#home p,
+#home .divider-custom-icon {
+  color: $first-light;
+  @include text-shadow-soft;
+}
+
+#home .divider-custom-line {
+  background-color: $first-light;
+}
+
+#home .img-fluid {
+  @include bubble-box-shadow;
+}
+
+/* CERTIFICATES */
+.cert-track-wrapper {
+  border: 1px solid $gray;
+  background: $carousel-rgba;
+}
+
+.cert-track img {
+  box-shadow: 2px 2px 4px rgba($dark, 0.6);
+}
+
+.cert-track img:hover {
+  transform: scale(1.1);
+}
+
+.cert-arrow {
+  background: $arrow-bg-rgba;
+  color: $first-light;
+}
+
+.cert-arrow:hover {
+  background: $dark;
+}
+
+/* ===============================================
+   CARDS – VISUAL STYLING
+=============================================== */
+
+.card {
+  background: $cards-rgba;
+  border: 1px solid rgba($dark, 0.2);
+  @include shadow-default;
+}
+
+.card:hover {
+  @include shadow-default;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.card-header {
+  border-bottom: 1px solid rgba($dark, 0.15);
+}
+
+.card-footer {
+  border-top: 1px solid rgba($dark, 0.15);
+}
+
+.card-image img {
+  @include bubble-box-shadow;
+}
+
+.card-success { background: rgba($success, 0.15); }
+.card-warning { background: rgba($warning, 0.15); }
+.card-danger  { background: rgba($danger, 0.15); }
+.card-info    { background: rgba($info, 0.15); }
+
+/* ===============================================
+   FORMS – VISUAL STYLING
+=============================================== */
+
+input,
+textarea,
+select {
+  background: rgba($light, 0.9);
+  border: 1px solid rgba($dark, 0.3);
+  color: $dark;
+  @include shadow-default;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: $primary;
+  box-shadow: 0 0 6px rgba($primary, 0.4);
+}
+
+label {
+  color: $light;
+  text-shadow: -1px -1px 0 black,
+                1px -1px 0 black,
+               -1px  1px 0 black,
+                1px  1px 0 black;
+}
+
+button,
+input[type="submit"] {
+  background: linear-gradient(to right, $primary, $secondary);
+  color: $light;
+  @include shadow-default;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, $secondary, $primary);
+}
+
+button:active,
+input[type="submit"]:active {
+  transform: scale(0.97);
+}
+/* ===============================================
+   MODAL – VISUAL STYLING
+=============================================== */
+
+.modal-backdrop {
+  background: rgba($dark, 0.6);
+}
+
+.modal-dialog {
+  background: $cards-rgba;
+  border: 1px solid rgba($dark, 0.3);
+  @include shadow-default;
+}
+
+.modal-header {
+  background: rgba($dark, 0.1);
+  border-bottom: 1px solid rgba($dark, 0.2);
+}
+
+.modal-footer {
+  background: rgba($dark, 0.05);
+  border-top: 1px solid rgba($dark, 0.2);
+}
+
+.modal-header h5 {
+  color: $light;
+  @include text-shadow-soft;
+}
+
+.modal-body {
+  color: $light;
+}
+
+.modal-footer button {
+  background: linear-gradient(to right, $primary, $secondary);
+  color: $light;
+  @include shadow-default;
+  transition: transform 0.2s ease;
+}
+
+.modal-footer button:hover {
+  transform: scale(1.05);
+}
+
+.modal-footer button:active {
+  transform: scale(0.97);
+}
+
+/* MODAL ANIMATIONS */
+
+//Fade-in backdrop - jemne stmavenie pozadia
+/* BACKDROP ANIMATION */
+.modal-backdrop {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+}
+//Fade + Scale modal - modal sa jemne zväčší, zároveň sa fade‑ne, pôsobí veľmi elegantne
+/* MODAL FADE + SCALE ANIMATION */
+.modal {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal-dialog {
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
+//Alternatíva: Slide-down
+/* OPTIONAL: SLIDE-DOWN ANIMATION */
+.modal-dialog {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+//Blur-in
+/* OPTIONAL: BLUR-IN EFFECT */
+.modal-backdrop {
+  background: rgba($dark, 0.6);
+
+  /* Safari support */
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }

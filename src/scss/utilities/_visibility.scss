@@ -1,0 +1,52 @@
+@use "../design-system/index" as *;
+
+// DISPLAY: BLOCK
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+
+  @include mobile {
+    display: block !important;
+  }
+}
+
+.hidden-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// DISPLAY: FLEX
+.show-mobile-flex {
+  display: none !important;
+
+  @include mobile {
+    display: flex !important;
+  }
+}
+
+.hidden-desktop-flex {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// DISPLAY: GRID
+.show-mobile-grid {
+  display: none !important;
+
+  @include mobile {
+    display: grid !important;
+  }
+}
+
+.hidden-desktop-grid {
+  @include desktop {
+    display: none !important;
+  }
+}

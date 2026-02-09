@@ -1,0 +1,19 @@
+@use "../design-system/index" as *;
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-primary { color: $primary; }
+.text-secondary { color: $secondary; }
+.text-light { color: $light; }
+.text-dark { color: $dark; }
+
+.fw-bold { font-weight: 700; }
+.fw-medium { font-weight: 500; }
+.fw-light { font-weight: 300; }
+
+// Font-size utilities
+.text-sm { font-size: $font-size-sm; }
+.text-md { font-size: $font-size-md; }
+.text-lg { font-size: $font-size-lg; }

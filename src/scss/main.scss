@@ -1,16 +1,19 @@
 @charset "UTF-8";
 
+@use "./design-system/index" as *;
+
 @use "base/index" as base;
 @use "components/index" as components;
 @use "layout/index" as layout;
 @use "pages/index" as pages;
+@use "utilities/index";
 
 #turnstile-container.dev-placeholder {
-  background: base.$success;
-  color: base.$light;
+  background:$success;
+  color:$light;
   padding: 1rem;
   border-radius: 0.5rem;
   font-weight: bold;
   text-align: center;
-  font-size: 0.9rem;
+  font-size:$font-size-sm;
 }

@@ -73,7 +73,11 @@ function setLanguage(lang) {
       if (el.tagName.toLowerCase() === "img") {
         el.alt = value;
       } else if (el.hasAttribute("data-translate-html")) {
-        el.innerHTML = value;
+        el.innerHTML = DOMPurify.sanitize(value, {
+          ALLOWED_TAGS: ['b', 'strong', 'i', 'em', 'span', 'br'],
+          ALLOWED_ATTR: ['style']
+        });
+        el.querySelectorAll('.skeleton').forEach(s => s.remove());
       } else {
         let hasTextNode = false;
         el.childNodes.forEach(node => {
@@ -92,6 +96,12 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-translate-placeholder]").forEach(el => {
     const key = el.getAttribute("data-translate-placeholder");
     el.placeholder = t[key];
+  });
+
+  //Aria-label
+  document.querySelectorAll("[data-translate-aria]").forEach(el => {
+    const key = el.getAttribute("data-translate-aria");
+    el.setAttribute("aria-label", t[key]);
   });
 
   // Tooltipy

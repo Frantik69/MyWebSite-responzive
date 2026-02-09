@@ -1,0 +1,133 @@
+@use "../../design-system/index" as *;
+
+// ===============================================
+// NAVBAR – LAYOUT MIXINS
+// ===============================================
+
+// Base navbar container
+@mixin navbar-base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  z-index: $z-navbar;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: $space-md;
+  overflow-x: clip;
+}
+
+// Inner container
+@mixin navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+// Logo block
+@mixin navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+
+  img.logo {
+    height: $navbar-logo-height;
+    display: block;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+}
+
+// Weather block
+@mixin navbar-weather {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+
+  img.icon-24 {
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+// Right side container
+@mixin navbar-right {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+}
+
+// Toggler
+@mixin navbar-toggler-base {
+  display: none;
+  cursor: pointer;
+}
+
+// ===============================================
+// NAV LINKS
+// ===============================================
+
+@mixin nav-link-base {
+  position: relative;
+  padding: $space-xs $space-sm;
+  border-radius: $radius-base;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin nav-link-hover {
+  transform: scale(1.05);
+}
+
+@mixin nav-link-active {
+  transform: scale(1.05);
+}
+
+// ===============================================
+// RESPONSIVE LAYOUTS
+// ===============================================
+
+@mixin navbar-mobile-layout {
+  #navbarResponsive {
+    display: none;
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  #navbarResponsive.show {
+    display: flex;
+  }
+
+  #weatherNav {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+}
+
+@mixin navbar-tablet-layout {
+  @include navbar-mobile-layout;
+}
+
+@mixin navbar-desktop-layout {
+  .navbar-toggler {
+    display: none;
+  }
+
+  #navbarResponsive {
+    display: flex;
+  }
+}

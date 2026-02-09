@@ -1,0 +1,30 @@
+@use "../design-system/index" as *;
+
+// ===============================================
+// SKELETON, KTORY KOPIRUJE VÝŠKU TEXTU
+// ===============================================
+
+.skeleton-line {
+  height: 1em;
+  width: 100%;
+  margin-bottom: 0.6em;
+  border-radius: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #d1d1d1 25%,
+    #e8e8e8 50%,
+    #d1d1d1 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+.skeleton-line.short {
+  width: 60%;
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

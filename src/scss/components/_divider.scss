@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // DIVIDER – CUSTOM ODDĚLOVAČ SEKCIÍ
@@ -19,7 +18,7 @@
   flex: 1;
   max-width: 7rem;
   height: 0.15rem;
-  background-color: white;        //TODO - Divider má pevné farby (white)  → navrhnut prepojenie s $light.
+  background-color:$light;
   border-radius: 1rem;
   filter: drop-shadow(0.125rem 0.125rem 0 #070707)      //TODO - Drop-shadow hodnoty sú natvrdo → duplicita s mixinmi (soft-text-shadow, text-shadow-default).
           drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
@@ -27,9 +26,9 @@
 
 /* IKONA UPROSTRED DIVIDERA */
 .divider-custom-icon {
-  font-size: 1rem;
+  font-size:$font-size-base;
   margin: 0 1rem;
-  color: white;
+  color:$light;
   filter: drop-shadow(0.125rem 0.125rem 0 #070707)    //TODO - Drop-shadow hodnoty sú natvrdo → duplicita s mixinmi (soft-text-shadow, text-shadow-default).
           drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
 }
@@ -42,7 +41,7 @@
 
   /* MENŠIA IKONA NA MOBILOCH */
   .divider-custom-icon {
-    font-size: 0.875rem;
+    font-size:$font-size-sm;
     margin: 0 0.75rem;
   }
 

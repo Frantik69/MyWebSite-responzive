@@ -1,10 +1,7 @@
-@use "../base/variables" as *;
+@use "../design-system/index" as *;
 @use "../base/index" as base;
-@use "../base/mixins" as *;
 
-/*TODO - 1. Farby natvrdo (#000000, rgba(...), #ffffff)
-Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), color: black → duplicita s $dark, $light, $primary, $secondary.
-❗ 2. Prepisuješ Bootstrap .list-unstyled cez @extend → @extend je nebezpečný, môže spôsobiť: nafúknutie CSS, nečakané prepisy, konflikty v iných sekciách
+/*TODO -❗ 2. Prepisuješ Bootstrap .list-unstyled cez @extend → @extend je nebezpečný, môže spôsobiť: nafúknutie CSS, nečakané prepisy, konflikty v iných sekciách
 .skills {
   @extend .list-unstyled;
 }
@@ -26,8 +23,8 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
 #portfolio {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
   text-align: center;
-  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
-  border: 1px solid #000000;
+  background-image: linear-gradient(to right, $first-middle, $first-light);
+  border: 1px solid $dark;
   @include rounded(0.5rem);
 
   .portfolio-container {
@@ -37,13 +34,13 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   }
 
   h2 {
-    @include soft-text-shadow;
+    @include text-shadow();
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: $body-color;
-    @include soft-text-shadow;
+    @include text-shadow();
   }
 }
 
@@ -75,7 +72,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   justify-content: space-between;
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
-  border: 1px solid #000000;
+  border: 1px solid $dark;
   @include rounded($radius-base);
 
   .profile-photo {
@@ -87,13 +84,13 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   .profile-name {
     margin: 0;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: $font-size-lg;
   }
 
   .profile-position {
     font-style: italic;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: $font-size-md;
   }
 
   .profile-divider {
@@ -105,7 +102,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   .aboutPreview {
     display: block;
     width: 95%;
-    background: rgba(58, 90, 123, 0.4);
+    background: $preview-cards-rgba;
     border-radius: $radius-base;
     text-align: left;
     padding: 0.5rem;
@@ -113,7 +110,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
     margin: 0 auto;
     color: $body-color;
     text-decoration: none;
-    font-size: small;
+    font-size: $font-size-xs;
     transition: transform 0.25s ease;
 
     &:hover {
@@ -160,8 +157,8 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   padding-right: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  color: black;
-  border: 1px solid #000000;
+  color: $dark;
+  border: 1px solid $dark;
   @include rounded($radius-base);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
@@ -169,7 +166,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
   .section-title {
     text-transform: uppercase;
     margin-bottom: 1.5rem;
-    font-size: 1.3rem;
+    font-size: $font-size-lg;
   }
 
   .skills-columns {
@@ -184,7 +181,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
       min-width: 200px;
 
       h4 {
-        font-size: 1.1rem;
+        font-size: $font-size-md;
       }
 
     }
@@ -196,7 +193,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
     li {
       margin-bottom: 0.5rem;
       position: relative;
-      font-size: 1rem;
+      font-size: $font-size-base;
     }
   }
 
@@ -213,24 +210,24 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
       .timeline-date {
         font-weight: bold;
         margin-bottom: 0.3rem;
-        font-size: 1.2rem;
+        font-size: $font-size-md;
       }
 
       .timeline-content {
-        background: rgba(255, 255, 255, 0.6);
+        background: $cards-rgba;
         padding: 1rem;
         @include rounded(0.5rem);
         @include bubble-box-shadow;
 
         a.certifikat {
-          font-size: 1.1rem;
+          font-size: $font-size-md;
         }
 
         span{
-          font-size: 1.1rem;
+          font-size: $font-size-md;
         }
         li{
-          font-size: $body-font-size;
+          font-size: $font-size-base;
           line-height: 1.2;
         }
       }
@@ -269,7 +266,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
     width: 100%;
 
     li {
-      font-size: 1rem;
+      font-size: $font-size-base;
     }
   }
 
@@ -291,7 +288,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
     text-align: center;
 
     #aboutPreview {
-      font-size: 0.9rem;
+      font-size: $font-size-sm;
     }
   }
 
@@ -306,7 +303,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
         width: 100%;
         margin-bottom: 0.3rem;
         text-align: left;
-        font-size: 1.1rem;
+        font-size: $font-size-md;
       }
 
       .timeline-content {
@@ -315,7 +312,7 @@ Príklady: border: 1px solid #000000, background: rgba(255, 255, 255, 0.6), colo
         text-align: left;
 
         .show {
-          font-size: 1rem;
+          font-size: $font-size-sm;
         }
       }
     }

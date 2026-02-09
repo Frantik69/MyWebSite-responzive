@@ -1,12 +1,6 @@
-@use "navbar";
-@forward "navbar";
-@use "side-navbar";
-@forward "side-navbar";
-@use "footer";
-@forward "footer";
+@charset "UTF-8";
+@use "../design-system/index" as *;
+@use "container";
 @use "grid";
-@forward "grid";
-@use "grid-form";
-@forward "grid-form";
-
-//TODO -zbytocne @use aj @forward - staci jedno
+@use "section";
+@use "helpers";

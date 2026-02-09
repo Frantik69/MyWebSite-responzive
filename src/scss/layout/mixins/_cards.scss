@@ -1,0 +1,50 @@
+@use "../../design-system/index" as *;
+
+// ===============================================
+// CARDS – LAYOUT MIXINS
+// ===============================================
+
+@mixin card-base {
+  display: flex;
+  flex-direction: column;
+  padding: $space-md;
+  border-radius: $radius-base;
+  gap: $space-sm;
+}
+
+@mixin card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+}
+
+@mixin card-body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+}
+
+@mixin card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-sm;
+}
+
+@mixin card-image {
+  width: 100%;
+  border-radius: $radius-base;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@mixin card-responsive {
+  @include tablet {
+    padding: $space-sm;
+  }
+}

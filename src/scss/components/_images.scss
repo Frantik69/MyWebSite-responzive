@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // IMAGES – OBRÁZKY, FIGURE, THUMBNAILS
@@ -34,8 +33,8 @@ figure {                                        //TODO - figure a .figure-captio
 
 /* POPIS OBRÁZKU POD FIGURE */
 .figure-caption {
-  font-size: 0.875em;
-  color: #6c757d;       //TODO - natvrdo → duplicita s Bootstrap premennými.
+  font-size:$font-size-sm;
+  color:$gray;
 }
 
 // ===============================================
@@ -57,6 +56,6 @@ figure {                                        //TODO - figure a .figure-captio
 
   /* MENŠÍ TEXT POPISU NA MOBILOCH */
   .figure-caption {
-    font-size: 0.8em;
+    font-size:$font-size-xs;
   }
 }

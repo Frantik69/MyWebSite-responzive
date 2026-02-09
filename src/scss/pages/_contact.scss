@@ -1,19 +1,13 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 @use "../base/index" as base;
 
 // ===============================================
 // CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
 // ===============================================
 
-/*TODO - Farby natvrdo (#000, #d9534f, #a4a4a4)  
-→ duplicita s $dark, $danger, $light.
-
+/*TODO 
 Divider shadow natvrdo  
 → duplicita s mixinmi.
-
-border: 1px solid #000000  
-→ duplicita s $dark.
 
 Breakpoint mixiny  
 → duplicita s Bootstrap breakpoints.
@@ -29,16 +23,17 @@ Tablet a mobile bloky sú takmer identické
 
 #contact {
   min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  color: #000;
-  background-image: linear-gradient(to right, base.$first-middle, base.$first-light);
+  color: $dark;
+  background-image: linear-gradient(to right, $first-middle, $first-light);
   padding: 2rem 1rem;
-  border: 1px solid #000000;
+  border: 1px solid $dark;
   @include rounded($radius-base);
 
   h2 {
-    text-shadow:
-      0.125rem 0.125rem 0 #6e97c3,
-      0.1875rem 0.1875rem 0.4375rem #666;
+    color: $first-light;
+    text-align: center;
+    color: $light;
+    @include text-shadow();
   }
 
   .contact-container {
@@ -49,24 +44,25 @@ Tablet a mobile bloky sú takmer identické
 
 
   .divider-custom-line {
-    background-color: #000;
-    filter:
-      drop-shadow(0.125rem 0.125rem 0 #a4a4a4)
-      drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+    color: $light;
+    @include text-shadow();
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
-    color: #000000;
-    filter:
-      drop-shadow(0.125rem 0.125rem 0 #a4a4a4)
-      drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+    color: $light;
+    @include text-shadow();
   }
 }
+#contact .btn.menu-item {
+  margin: 0 auto;
+  display: block;
+}
+
 
 .error-msg {
-  font-size: 0.85rem;
-  color: #d9534f;
+  font-size: $font-size-sm;
+  color: $danger;
   margin-top: 0.25rem;
   min-height: 1rem;
   opacity: 0;

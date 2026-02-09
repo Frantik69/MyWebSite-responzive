@@ -1,5 +1,4 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
 
 // ===============================================
 // ICONS – VEĽKOSTI, MASKY, MENU IKONY
@@ -24,7 +23,7 @@
 
 /* IKONA V MENU (FONT-BASED ICON) */
 .menu-icon {
-  color: #ffffff;                                               // TODO - → farba natvrdo (#ffffff) → duplicita s $light.
+  color:$light;
   font-size: inherit;
   line-height: inherit;
   vertical-align: middle;
@@ -43,7 +42,7 @@
   }
 
   .menu-icon {
-    font-size: 1.3rem;
+    font-size:$font-size-lg;
     line-height: inherit;
     vertical-align: middle;
     margin-right: 0.2rem;

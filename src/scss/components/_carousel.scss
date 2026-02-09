@@ -1,0 +1,65 @@
+@use "../design-system/index" as *;
+
+
+/* ===============================================
+   CERTIFICATES CAROUSEL – LAYOUT ONLY
+=============================================== */
+
+.certificates-carousel {
+  width: 65%;
+  margin: $space-xl auto 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.cert-track-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $radius-base;
+}
+
+.cert-track {
+  display: flex;
+  gap: $space-md;
+  padding: $space-sm;
+  transition: transform 0.4s ease;
+}
+
+.cert-track img {
+  height: 90px;
+  width: auto;
+  border-radius: $radius-sm;
+  transition: transform 0.2s ease;
+}
+
+.cert-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: $z-content;
+  padding: $space-xs $space-sm;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cert-arrow.left {
+  left: $space-xs;
+}
+
+.cert-arrow.right {
+  right: $space-xs;
+}
+
+@include tablet-landscape {
+  .certificates-carousel {
+    display: none;
+  }
+}
+
+@include lg {
+  .certificates-carousel {
+    display: flex;
+  }
+}

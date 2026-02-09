@@ -1,0 +1,29 @@
+@use "../design-system/index" as *;
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $space-md;
+  padding-right: $space-md;
+
+  @include mobile {
+    max-width: 100%;
+  }
+
+  @include tablet {
+    max-width: 540px;
+  }
+
+  @include tablet-landscape {
+    max-width: 720px;
+  }
+
+  @include desktop-down {
+    max-width: 960px;
+  }
+
+  @include desktop {
+    max-width: $container-max-width;
+  }
+}

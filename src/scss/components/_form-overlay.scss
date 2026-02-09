@@ -1,5 +1,5 @@
-@use "../base/variables" as *;
-@use "../base/mixins" as *;
+@use "../design-system/index" as *;
+
 
 // ===============================================
 // FORM OVERLAY – SPRÁVY O ÚSPECHU / CHYBE
@@ -37,7 +37,7 @@
   color: #222;
   padding: 20px 30px;
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size:$font-size-md;
   text-align: center;
   max-width: 400px;       //TODO - → natvrdo → navrhnut použitie $container-max-width.
   box-shadow: 0 6px 16px rgba(0,0,0,0.3);
@@ -74,7 +74,7 @@
 @include mobile {
   #overlayMessage {
     padding: 15px 20px;
-    font-size: 1rem;
+    font-size:$font-size-base;
     max-width: 320px;
   }
 }
