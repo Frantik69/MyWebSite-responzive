@@ -1,11 +1,15 @@
 @use "../layout/mixins/forms" as forms;
 @use "../design-system/index" as *;
 
-/* ===============================================
-   FORMS – KOMPONENT (LAYOUT + ŠTÝLY)
-=============================================== */
+// ----------------------------------------
+// Component: Forms
+// Layout + Visual Styling
+// ----------------------------------------
 
-/* FORM WRAPPER */
+// ----------------------------------------
+// BASE FORM LAYOUT
+// ----------------------------------------
+
 form {
   display: grid;
   gap: $space-md;
@@ -21,17 +25,27 @@ form {
 /* LABEL */
 label {
   @include forms.form-label;
-  color: $dark;
+  color: $light; // moved from global.scss
+  text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
 }
 
-/* INPUTS */
+// ----------------------------------------
+// INPUTS & TEXTAREAS
+// ----------------------------------------
+
 input,
 textarea,
 select {
   @include forms.form-input;
-  border-color: $gray-300;
-  background-color: $body-bg;
+
+  background: rgba($light, 0.9); // moved from global.scss
+  border: 1px solid rgba($dark, 0.3); // moved from global.scss
   color: $dark;
+  @include shadow-default; // moved from global.scss
 }
 
 /* TEXTAREA */
@@ -39,11 +53,13 @@ textarea {
   @include forms.form-textarea;
 }
 
-/* FOCUS */
+/* FOCUS STATES */
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
   outline: none;
   border-color: $primary;
+  box-shadow: 0 0 6px rgba($primary, 0.4); // moved from global.scss
 }
 
 /* PLACEHOLDER */
@@ -52,34 +68,53 @@ textarea:focus {
   opacity: 1;
 }
 
-/* ROWS */
+// ----------------------------------------
+// FORM ROWS
+// ----------------------------------------
+
 .form-row {
   @include forms.form-row;
   @include forms.form-responsive;
 }
 
-/* CHECKBOX + RADIO */
+// ----------------------------------------
+// CHECKBOX & RADIO
+// ----------------------------------------
+
 input[type="checkbox"],
 input[type="radio"] {
   @include forms.form-check;
 }
 
-/* BUTTONS */
+// ----------------------------------------
+// BUTTONS
+// ----------------------------------------
+
 button,
 input[type="submit"] {
   @include forms.form-button;
-  background-color: $primary;
-  color: $body-bg;
-  border-radius: $radius-base;
-  transition: background-color 0.3s ease;
+
+  background: linear-gradient(to right, $primary, $secondary); // moved from global.scss
+  color: $light;
+  @include shadow-default; // moved from global.scss
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 button:hover,
 input[type="submit"]:hover {
-  background-color: $primary-dark;
+  transform: scale(1.05);
+  background: linear-gradient(to right, $secondary, $primary); // moved from global.scss
 }
 
-/* RESPONSIVE */
+button:active,
+input[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+// ----------------------------------------
+// RESPONSIVE
+// ----------------------------------------
+
 @include mobile {
   form {
     padding: 0 $space-sm;

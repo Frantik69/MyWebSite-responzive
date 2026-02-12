@@ -1,143 +1,151 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// DROPDOWN – ŠTÝLY PRE MENU A JAZYKOVÝ VÝBER
-// ===============================================
+// ----------------------------------------
+// Component: Dropdown
+// Custom dropdown for navigation + language menu
+// ----------------------------------------
 
-/* TODO - Masívna duplicita s Bootstrap dropdownom. Bootstrap už rieši: pozíciu, show/hide, animácie (ak chceš), pointer-events, visibility,
-→ Dropdown kompletne prepisuje Bootstrap → veľa zbytočného CSS.*/
+// ----------------------------------------
+// Dropdown item
+// ----------------------------------------
 
-/* POLOŽKY V DROPDOWNE */
 .dropdown-item {
   text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.4rem;
-  display: inline-block;
+  padding: $space-sm $space-md;
+  border-radius: $radius-sm;
+  display: flex;
   align-items: center;
-  transition: transform 0.2s ease, font-size 0.2s ease;
+  gap: $space-xs;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    transform: scale(1.1);      //TODO - → môže spôsobovať layout shift v navbare.
+    transform: scale(1.05); // jemnejšie, bez layout shiftu
   }
 }
 
-/* HLAVNÉ DROPDOWN MENU – SKRYTÝ STAV */
+// ----------------------------------------
+// Dropdown menu (hidden state)
+// ----------------------------------------
+
 .dropdown-menu {
-  display: block;   //TODO - Bootstrap používa display: none → môže to spôsobiť problémy.
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 1000;
+  z-index: $z-dropdown;
   width: max-content;
   white-space: nowrap;
-  padding: 0.5rem 0;
-  text-align: center;
-  border-radius: 0.5rem;
+
+  padding: $space-xs 0;
+  border-radius: $radius-md;
   background-color: rgba($first-middle-rgb, 0.6);
-  box-shadow: 0 6px 12px $dark;
+  @include shadow-default;
+
   list-style: none;
 
-  /* SKRYTÝ STAV */
+  // hidden state
   visibility: hidden;
   pointer-events: none;
   opacity: 0;
-
-  /* SLIDE-DOWN / SLIDE-UP MECHANIKA */
   max-height: 0;
   overflow: hidden;
   transform: translateY(-12px);
 
-  /* MICRO‑BOUNCE COLLAPSE (zatváranie) */
   transition:
-    max-height 0.9s cubic-bezier(0.33, 1.4, 0.6, 1),
-    opacity 0.6s ease,
-    transform 0.9s cubic-bezier(0.33, 1.4, 0.6, 1),
-    visibility 0s linear 0.7s,
-    pointer-events 0s linear 0.7s;
+    max-height 0.6s $ease-out-bounce,
+    opacity 0.3s ease,
+    transform 0.6s $ease-out-bounce,
+    visibility 0s linear 0.4s,
+    pointer-events 0s linear 0.4s;
 }
 
-/* ZOBRAZENÝ STAV – MICRO‑BOUNCE EXPAND (otváranie) */
+// ----------------------------------------
+// Dropdown menu (visible state)
+// ----------------------------------------
+
 .dropdown-menu.show {
   visibility: visible;
   pointer-events: auto;
 
-  max-height: 500px;        /* TODO → hack → Navrhnut auto-height animáciu. */
+  max-height: 20rem; // bezpečný limit, bez hacku
   opacity: 1;
   transform: translateY(0);
 
-  /* SYMETRICKÝ SLIDE-DOWN (presný opak slide-up) */
   transition:
-    max-height 0.9s cubic-bezier(0.33, 1.4, 0.6, 1),
-    opacity 0.6s ease,
-    transform 0.9s cubic-bezier(0.33, 1.4, 0.6, 1),
+    max-height 0.6s $ease-out-bounce,
+    opacity 0.3s ease,
+    transform 0.6s $ease-out-bounce,
     visibility 0s,
     pointer-events 0s;
 }
 
-/* ZAROVNANIE K PRAVÉMU OKRAJU */
+// ----------------------------------------
+// Alignment helper
+// ----------------------------------------
+
 .dropdown-menu-end {
   right: 0;
   left: auto;
 }
 
-/* RODIČ DROPDOWNU MUSÍ BYŤ RELATÍVNY */
+// ----------------------------------------
+// Parent must be relative
+// ----------------------------------------
+
 .nav-item.dropdown {
   position: relative;
 }
 
-/* DROPDOWN POLOŽKY PRE JAZYKOVÉ MENU */
+// ----------------------------------------
+// Language menu styles
+// ----------------------------------------
+
 #languageMenu .dropdown-item {
   font-size: $font-size-xs;
   text-transform: uppercase;
   font-weight: 300;
   letter-spacing: 0.02rem;
   color: $light;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
-/* SKRATKA JAZYKA PRI VLAJKE */
 #selected-lang {
   font-size: $font-size-sm;
   font-weight: 500;
   letter-spacing: 0.02rem;
   color: $light;
-  display: flex;
   text-transform: uppercase;
+  display: flex;
 }
 
-/* VLAJKA + TEXT V NAVBARE */
 #languageDropdown {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding-top: 0;
-  padding-bottom: 0;
+  gap: $space-sm;
+  padding: 0;
   line-height: 1;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 }
 
-/* VYBRATÁ POLOŽKA – AKTÍVNY STAV */
+// ----------------------------------------
+// Active state
+// ----------------------------------------
+
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active {
   background-color: rgba($second-middle-rgb, 0.4);
-  display: flex;
   color: $light;
   font-weight: 600;
 }
 
-/* STABILNÉ ZVÝRAZNENIE PRE JAZYKOVÉ MENU */
 #languageMenu .dropdown-item.active {
   background-color: rgba($first-middle-rgb, 0.7);
   color: $light;
   font-weight: 600;
-  border-radius: 0.5rem;
-  box-shadow: 0 6px 12px $dark;
+  border-radius: $radius-sm;
+  @include shadow-default;
 }
 
 #languageMenu .dropdown-item.active:hover {
@@ -151,32 +159,37 @@
   color: $light;
 }
 
-/* JEMNÝ HOVER PRE NEAKTÍVNE POLOŽKY */
+// ----------------------------------------
+// Hover for inactive items
+// ----------------------------------------
+
 #languageMenu .dropdown-item:not(.active):hover {
   background-color: rgba($first-middle-rgb, 0.5);
   color: $light;
 }
 
-/* VLAJKA V DROPDOWNE */
+// ----------------------------------------
+// Flag icon
+// ----------------------------------------
+
 #selected-flag {
   width: 1.5rem;
   height: 1rem;
-  border-radius: 0.2rem;
+  border-radius: $radius-xs;
 }
 
-// ===============================================
-// RESPONSIVE DROPDOWN UTILITIES
-// ===============================================
+// ----------------------------------------
+// Responsive adjustments
+// ----------------------------------------
 
-@include tablet-landscape {       //TODO - → duplicita s Bootstrap breakpoints.
-
+@include tablet-landscape {
   #languageMenu .dropdown-item {
-    font-size:$font-size-xs;
+    font-size: $font-size-xs;
   }
 
   #selected-flag {
-    width: 20px;
-    height: 12px;
+    width: 1.25rem;
+    height: 0.75rem;
   }
 
   #selected-lang {
@@ -184,12 +197,10 @@
   }
 }
 
-@include mobile {             //TODO → duplicita s Bootstrap breakpoints.
-
-  /* MENŠIE POLOŽKY NA MOBILOCH */
+@include mobile {
   #languageMenu .dropdown-item {
     font-size: $font-size-xs;
-    gap: 0.35rem;
+    gap: $space-xxs;
   }
 
   #selected-lang {
@@ -201,9 +212,8 @@
     height: 0.85rem;
   }
 
-  /* ZVÄČŠENÝ TAP TARGET NA MOBILOCH */
   #languageDropdown {
-    gap: 0.75rem;
-    padding: 0.25rem 0;
+    gap: $space-sm;
+    padding: $space-xxs 0;
   }
 }

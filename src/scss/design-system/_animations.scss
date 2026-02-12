@@ -1,0 +1,162 @@
+@use "colors";
+@use "spacing";
+@use "radius";
+@use "mixins";
+@use "breakpoints";
+
+// ----------------------------------------
+// Design System: Animations
+// Globálne animácie dostupné pre všetky komponenty
+// ----------------------------------------
+
+// ----------------------------------------
+// FADE + MOVE UP (main title)
+// ----------------------------------------
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 2s ease forwards;
+}
+
+// ----------------------------------------
+// SLIDE IN FROM RIGHT
+// ----------------------------------------
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(500%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-right {
+  animation: slideInRight 1.5s ease-out forwards;
+}
+
+// ----------------------------------------
+// BUBBLE POP (hover bubble, nav bubble)
+// ----------------------------------------
+
+@keyframes bubblePop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.bubble-pop {
+  animation: bubblePop 0.4s ease forwards;
+}
+
+// ----------------------------------------
+// SLIDE DOWN / SLIDE UP (dropdowns, menus)
+// ----------------------------------------
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-15px); }
+}
+
+.slide-down {
+  animation: slideDown 0.3s ease forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease forwards;
+}
+
+// ----------------------------------------
+// FADE IN (dropdowns, tooltips)
+// ----------------------------------------
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+// ----------------------------------------
+// FADE + SCALE (modals, overlays)
+// ----------------------------------------
+
+@keyframes fadeInScale {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.fade-in-scale {
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+// ----------------------------------------
+// SPIN (loading spinner)
+// ----------------------------------------
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+// ----------------------------------------
+// RESPONSIVE ANIMATION ADJUSTMENTS
+// ----------------------------------------
+
+@include breakpoints.mobile {
+  .fade-in-up {
+    animation-duration: 1.5s;
+  }
+
+  .slide-in-right {
+    animation-duration: 1s;
+  }
+}
+
+// ----------------------------------------
+// REDUCED MOTION SUPPORT
+// ----------------------------------------
+
+@media (max-width: 576px) and (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .fade-in-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// --------------------------------------
+// EASING
+// --------------------------------------
+
+$ease-out-bounce: cubic-bezier(0.33, 1.4, 0.6, 1);

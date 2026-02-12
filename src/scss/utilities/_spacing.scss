@@ -1,6 +1,11 @@
 @use "../design-system/index" as *;
 
-// Margin utilities
+// ----------------------------------------
+// Utilities: Spacing
+// Generované pomocou spacing scale z design systému
+// ----------------------------------------
+
+// Margin
 .mt-xs { margin-top: $space-xs; }
 .mt-sm { margin-top: $space-sm; }
 .mt-md { margin-top: $space-md; }
@@ -32,9 +37,10 @@
 .my-md { margin-top: $space-md; margin-bottom: $space-md; }
 .my-lg { margin-top: $space-lg; margin-bottom: $space-lg; }
 
+// Auto margin
 .mx-auto { margin-left: auto; margin-right: auto; }
 
-// Padding utilities
+// Padding
 .pt-xs { padding-top: $space-xs; }
 .pt-sm { padding-top: $space-sm; }
 .pt-md { padding-top: $space-md; }

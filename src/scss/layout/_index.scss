@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+// ----------------------------------------
+// Layout Index
+// Import všetkých layout modulov
+// ----------------------------------------
+
 @use "../design-system/index" as *;
 @use "container";
 @use "grid";

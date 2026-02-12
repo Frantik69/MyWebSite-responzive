@@ -1,41 +1,48 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// LOGO – IKONA + TEXTOVÁ ČASŤ
-// ===============================================
+// ----------------------------------------
+// Component: Logo
+// Icon + text part
+// ----------------------------------------
 
-/* HLAVNÝ WRAPPER LOGA */
+// ----------------------------------------
+// Logo wrapper
+// ----------------------------------------
+
 #logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  @include light-box-shadow;                        //TODO - → duplicita s inými komponentmi, ktoré používajú drop-shadow natvrdo.
+  @include light-box-shadow; // consider replacing with DS shadow mixin
 
-  /* TEXTOVÁ ČASŤ LOGA */
+  // ----------------------------------------
+  // Logo text
+  // ----------------------------------------
   .logo-text {
     margin-left: 0.1rem;
-    line-height: 0.7;
+    line-height: 0.9;
     color: $logo-color;
     text-align: left;
 
-    p {                                       
+    p {
       font-size: $font-size-md;
       font-style: italic;
       margin: 0;
-      line-height: 0.7;
+      line-height: 0.9;
     }
 
     small {
       font-size: $font-size-sm;
       font-weight: 700;
       margin: 0;
-      line-height: 0.7;
-
+      line-height: 0.9;
     }
   }
 
-  /* SVG / IMG LOGO */
-  .logo {                                           //TODO - width: 4rem; height: 4rem; → duplicita s inými ikonami (navrhujem jednotný systém veľkostí).
+  // ----------------------------------------
+  // Logo icon (SVG / IMG)
+  // ----------------------------------------
+  .logo {
     width: 4rem;
     height: 4rem;
   }
@@ -47,23 +54,24 @@
   }
 }
 
-// ===============================================
-// RESPONSIVE LOGO UTILITIES – VOLITEĽNÉ
-// ===============================================
+// ----------------------------------------
+// Responsive adjustments
+// ----------------------------------------
 
 @include mobile {
 
-  /* MENŠIE LOGO NA MOBILOCH */
+  // Smaller logo on mobile
   #logo .logo,
   #logo img.logo {
     width: 3.5rem;
     height: 3.5rem;
   }
-  .logo-text p {                                       
-      font-size: $font-size-md;
-    }
-    small {
-      font-size: $font-size-xs;
-    }
-}
 
+  .logo-text p {
+    font-size: $font-size-md;
+  }
+
+  small {
+    font-size: $font-size-xs;
+  }
+}

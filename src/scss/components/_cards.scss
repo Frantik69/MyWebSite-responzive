@@ -1,9 +1,14 @@
 @use "../layout/mixins/cards" as cards;
 @use "../design-system/index" as *;
 
-/* ===============================================
-   CARDS – LAYOUT ONLY (NO COLORS, NO SHADOWS)
-=============================================== */
+// ----------------------------------------
+// Component: Cards
+// Layout + Visual Styling
+// ----------------------------------------
+
+// ----------------------------------------
+// BASE LAYOUT (from layout mixins)
+// ----------------------------------------
 
 .card {
   @include cards.card-base;
@@ -25,4 +30,52 @@
 /* IMAGE CARDS */
 .card-image {
   @include cards.card-image;
+}
+
+// ----------------------------------------
+// VISUAL STYLING (moved from global.scss)
+// ----------------------------------------
+
+.card {
+  background: $cards-rgba;
+  border: 1px solid rgba($dark, 0.2);
+  @include shadow-default;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  @include shadow-default;
+  transform: translateY(-2px);
+}
+
+.card-header {
+  border-bottom: 1px solid rgba($dark, 0.15);
+}
+
+.card-footer {
+  border-top: 1px solid rgba($dark, 0.15);
+}
+
+.card-image img {
+  @include bubble-box-shadow;
+}
+
+// ----------------------------------------
+// STATUS VARIANTS
+// ----------------------------------------
+
+.card-success {
+  background: rgba($success, 0.15);
+}
+
+.card-warning {
+  background: rgba($warning, 0.15);
+}
+
+.card-danger {
+  background: rgba($danger, 0.15);
+}
+
+.card-info {
+  background: rgba($info, 0.15);
 }

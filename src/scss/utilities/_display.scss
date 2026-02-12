@@ -1,4 +1,11 @@
-.block { display: block; }
+// ----------------------------------------
+// Utilities: Display
+// Jednoduché display helper triedy
+// ----------------------------------------
+
+.block        { display: block; }
 .inline-block { display: inline-block; }
-.inline { display: inline; }
-.hidden { display: none !important; }
+.inline       { display: inline; }
+
+// Skrytie elementu (dôležité pre utility)
+.hidden       { display: none !important; }

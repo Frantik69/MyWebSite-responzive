@@ -5,13 +5,13 @@
 // ===============================================
 
 /* ZÁKLADNÝ ŠTÝL PRE POLOŽKY SKILLS */
-.skills li {
+.knowledge li {
   font-size:$font-size-sm;
   line-height: 1.2;
 }
 
 /* SKILLS S RATINGOM – HVIEZDY + TEXT V JEDNOM RIADKU */
-.skills li[data-rating] {         //TODO - → rating hviezdičky sa v HTML nikde negenerujú (zatiaľ).
+.knowledge li[data-rating] {         //TODO - → rating hviezdičky sa v HTML nikde negenerujú (zatiaľ).
   list-style: none;
   padding-left: 0;
   margin-left: 0;
@@ -28,16 +28,16 @@
 @include mobile {               //TODO - → duplicita s Bootstrap breakpoints.
 
   /* MENŠIE SKILLS NA MOBILOCH */
-  .skills li {
+  .knowledge li {
     font-size:$font-size-xs;            //TODO - → duplicita s typografiou.
   }
 
-  .skills li[data-rating] {
+  .knowledge li[data-rating] {
     gap: 0.25rem;
   }
 
   /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
-  .skills li[data-rating] {
+  .knowledge li[data-rating] {
     flex-wrap: wrap;
     white-space: normal;
   }

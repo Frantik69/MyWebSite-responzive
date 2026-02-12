@@ -1,73 +1,66 @@
 @use "../design-system/index" as *;
 
-
 // ===============================================
 // SKILLS – SKILL CARD (IKONA + TEXT)
 // ===============================================
 
-/* TODO → HTML má 12 skill-card blokov → SCSS je OK, ale HTML je extrémne dlhé. */
+$skill-icon-size-desktop: 2rem;
+$skill-icon-size-mobile: 1.5rem;
 
 /* HLAVNÝ WRAPPER PRE SKILL KARTU */
 .skill-card {
-  margin-top: 1rem;
-  display: flex;
+  margin-top: $space-md;
+  @include flex-row-center;
   align-items: flex-start;
-  gap: 1rem;
+  gap: $space-sm;
+  width: 100%;
 }
 
 /* ĽAVÁ ČASŤ – IKONA + NÁZOV */
 .skill-left {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   align-items: center;
-  width: 80px;
-}
-
-/* IKONA SKILLU */
-.skill-icon {               //TODO - Natvrdo definované veľkosti ikon (64px) → duplicita s _icons.scss.
-  width: 64px;
-  height: auto;
-}
-
-/* NÁZOV SKILLU POD IKONOU */
-.skill-title {
-  font-size:$font-size-xs;
+  justify-content: center;
+  width: 8rem;
+  min-height: 8rem;
   text-align: center;
 }
 
-/* POPIS SKILLU (PRAVÁ ČASŤ) */
+/* IKONA SKILLU – jednotná veľkosť, bez duplicity px */
+.skill-icon {
+  width: $skill-icon-size-desktop;
+  height: $skill-icon-size-desktop;
+  object-fit: contain;
+  margin-bottom: $space-xxs;
+}
+
+/* NÁZOV SKILLU – typografia rieši stránka (skills.scss) */
+.skill-title {
+  text-align: center;
+}
+
+/* POPIS SKILLU – základ, detail rieši stránka */
 .skill-desc {
   margin: 0;
   line-height: 1.2;
-  font-size:$font-size-sm;
   align-self: center;
 }
 
 // ===============================================
-// RESPONSIVE SKILL CARD UTILITIES – VOLITEĽNÉ
+// RESPONSIVE SKILL CARD UTILITIES
 // ===============================================
 
-@include mobile {             //TODO - → duplicita s Bootstrap breakpoints.
-
-  /* MENŠIE IKONY NA MOBILOCH */
-  .skill-icon {               //TODO - Natvrdo definované veľkosti ikon (48px) → duplicita s _icons.scss.
-    width: 48px;
-  }
-
+@include mobile {
   .skill-left {
     width: 60px;
+    min-height: 2rem;
   }
 
-  /* MENŠÍ TEXT NA MOBILOCH */
-  .skill-title {
-    font-size:$font-size-xs;
+  .skill-icon {
+    width: $skill-icon-size-mobile;
+    height: $skill-icon-size-mobile;
   }
 
-  .skill-desc {
-    font-size:$font-size-xs;
-  }
-
-  /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
   .skill-card {
     gap: 0.75rem;
   }

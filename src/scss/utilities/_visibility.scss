@@ -1,6 +1,11 @@
 @use "../design-system/index" as *;
 
-// DISPLAY: BLOCK
+// ----------------------------------------
+// Utilities: Visibility
+// Zobrazovanie/skrytie prvkov podľa breakpointov
+// ----------------------------------------
+
+// BLOCK visibility
 .hidden-mobile {
   @include mobile {
     display: none !important;
@@ -21,7 +26,7 @@
   }
 }
 
-// DISPLAY: FLEX
+// FLEX visibility
 .show-mobile-flex {
   display: none !important;
 
@@ -36,7 +41,7 @@
   }
 }
 
-// DISPLAY: GRID
+// GRID visibility
 .show-mobile-grid {
   display: none !important;
 

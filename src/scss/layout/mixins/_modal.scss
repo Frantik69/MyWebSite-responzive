@@ -1,8 +1,9 @@
 @use "../../design-system/index" as *;
 
-// ===============================================
-// MODAL – LAYOUT MIXINS
-// ===============================================
+// ----------------------------------------
+// Layout Mixins: Modal
+// Základné vrstvy a sekcie modálneho okna
+// ----------------------------------------
 
 @mixin modal-backdrop-base {
   position: fixed;

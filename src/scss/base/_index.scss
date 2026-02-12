@@ -1,8 +1,22 @@
 @charset "UTF-8";
 
+// ----------------------------------------
+// Base Layer Index
+// Import základných vrstiev projektu
+// ----------------------------------------
+
 @use "../design-system/index" as *;
 
-/* ostatné importy */
+// Reset – nulovanie štýlov
 @use "reset";
+
+// Global – základné HTML, body, typografia, odkazy
 @use "global";
+
+// Typography – doplnkové typografické utility
 @use "typography";
+
+// Mixins – drobné base mixiny (logo-text-reset)
+@use "mixins";
+
+@use "accessibility";

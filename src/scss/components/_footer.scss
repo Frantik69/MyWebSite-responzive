@@ -1,8 +1,9 @@
 @use "../design-system/index" as *;
 
-/* ===============================================
-   FOOTER – LAYOUT ONLY (NO COLORS, NO TYPOGRAPHY)
-=============================================== */
+// ----------------------------------------
+// Component: Footer
+// Layout-only structure (no colors, no typography)
+// ----------------------------------------
 
 footer {
   width: 100%;
@@ -10,6 +11,10 @@ footer {
   z-index: $z-base;
   padding: $space-md 0;
 }
+
+// ----------------------------------------
+// Footer content wrapper
+// ----------------------------------------
 
 .footer-content {
   display: flex;
@@ -19,6 +24,10 @@ footer {
   gap: $space-sm;
   width: 100%;
 }
+
+// ----------------------------------------
+// Footer links
+// ----------------------------------------
 
 .footer-links {
   display: flex;
@@ -41,12 +50,20 @@ footer {
   transform: translateY(-2px);
 }
 
+// ----------------------------------------
+// Footer bottom text
+// ----------------------------------------
+
 .footer-bottom {
   width: 100%;
   text-align: center;
   padding-top: $space-sm;
   padding-bottom: $space-sm;
 }
+
+// ----------------------------------------
+// Footer logo
+// ----------------------------------------
 
 .footer-logo {
   display: flex;

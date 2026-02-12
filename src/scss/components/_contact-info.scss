@@ -1,47 +1,45 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// CONTACT INFO – IKONA + TEXT
-// ===============================================
+// ----------------------------------------
+// Component: Contact Info
+// Ikona + text, centrovaný layout
+// ----------------------------------------
 
-/* HLAVNÝ WRAPPER PRE KONTAKTNÉ INFORMÁCIE */
-.contact-info {     //TODO - Flex + gap + center → duplicita s mixinmi (flex-center) aj s Bootstrap utilitami.
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 0.2rem;
-  max-width: 550px;
+.contact-info {
+  @include flex-center;               // centrálne zarovnanie
+  flex-direction: row;
+  gap: $space-xs;                     // namiesto 0.2rem
+  max-width: 34rem;                   // 550px → prepočítané
   margin: 0 auto;
-  padding-bottom: 2rem;
-  padding-top: 1rem;
+  padding-top: $space-sm;
+  padding-bottom: $space-lg;
+  text-align: center;
 }
 
-/* IKONA EMAILU V KONTAKTNOM BLOKU */
-.contact-info .email-icon { //TODO - .email-icon veľkosti natvrdo → navrhnut jednotný systém ikon.
-  width: 35px;
-  height: 35px;
-  margin: 0;
+// ----------------------------------------
+// Icon
+// ----------------------------------------
+
+.contact-info .email-icon {
+  width: 2.25rem;                     // 35px → DS jednotky
+  height: 2.25rem;
   flex-shrink: 0;
   display: block;
 }
 
+// ----------------------------------------
+// Responsive Adjustments
+// ----------------------------------------
 
-// ===============================================
-// RESPONSIVE CONTACT UTILITIES
-// ===============================================
+@include mobile {
 
-@include mobile {   //TODO - → duplicita s Bootstrap breakpoints.
-
-  /* MENŠIA IKONA NA MOBILOCH */
-  .contact-info .email-icon {
-    width: 28px;
-    height: 28px;
-  }
-
-  /* STACK LAYOUT NA ÚZKYCH MOBILOCH */
   .contact-info {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: $space-sm;
+  }
+
+  .contact-info .email-icon {
+    width: 1.75rem;                   // 28px → DS jednotky
+    height: 1.75rem;
   }
 }

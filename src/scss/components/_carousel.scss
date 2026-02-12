@@ -1,9 +1,13 @@
 @use "../design-system/index" as *;
 
+// ----------------------------------------
+// Component: Certificates Carousel
+// Layout + Visual Styling
+// ----------------------------------------
 
-/* ===============================================
-   CERTIFICATES CAROUSEL – LAYOUT ONLY
-=============================================== */
+// ----------------------------------------
+// BASE LAYOUT
+// ----------------------------------------
 
 .certificates-carousel {
   width: 65%;
@@ -33,11 +37,30 @@
   transition: transform 0.2s ease;
 }
 
+// ----------------------------------------
+// VISUAL STYLING (moved from global.scss)
+// ----------------------------------------
+
+.cert-track-wrapper {
+  border: 1px solid $gray;
+  background: $carousel-rgba;
+}
+
+.cert-track img {
+  box-shadow: 2px 2px 4px rgba($dark, 0.6);
+}
+
+.cert-track img:hover {
+  transform: scale(1.1);
+}
+
 .cert-arrow {
+  background: $arrow-bg-rgba;
+  color: $first-light;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: $z-content;
+  z-index: $z-overlay;
   padding: $space-xs $space-sm;
   border-radius: 50%;
   cursor: pointer;
@@ -51,6 +74,20 @@
 .cert-arrow.right {
   right: $space-xs;
 }
+
+.cert-arrow:hover {
+  background: $dark;
+}
+
+.cert-skeleton {
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+// ----------------------------------------
+// RESPONSIVE
+// ----------------------------------------
 
 @include tablet-landscape {
   .certificates-carousel {

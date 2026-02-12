@@ -135,3 +135,12 @@
     z-index: 2000;
     }
 }
+
+/* ===============================================
+   WEATHER NAV – FIX DUPLICATE SELECTOR CONFLICTS
+=============================================== */
+
+.weatherNav img,
+.weatherNav span {
+  display: inline-block;
+}

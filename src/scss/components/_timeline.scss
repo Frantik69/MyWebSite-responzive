@@ -4,33 +4,20 @@
 // TIMELINE – VERTIKÁLNA ČASOVÁ OS (PORTFOLIO)
 // ===============================================
 
-/*TODO - Farby natvrdo (#192876, #08193c, #000, rgba(...))  
-→ duplicita s premennými.
+// Lokálne premenné pre timeline (viazané na design systém)
+$timeline-line-from: $logo-color;
+$timeline-line-to:   $dark;
+$timeline-dot-size:  0.7rem;
 
-font-size: 0.8rem, 0.7rem, 0.75rem  
-→ duplicita s typografiou.
-
-Breakpoint mixiny (@include mobile)  
-→ duplicita s Bootstrap breakpoints.
-
-timeline-item::before má pevné hodnoty (11px)  
-→ duplicita s mobilnou verziou (tie isté hodnoty).
-
-white-space: nowrap na dátume  
-→ môže spôsobiť overflow na malých displejoch.
-
-grid-template-columns: 6rem 1fr  
-→ natvrdo → neskôr navrhnem fluidnejší systém.*/
-
-/* HLAVNÝ ZOZNAM TIMELINE */
+// HLAVNÝ ZOZNAM TIMELINE
 .timeline {
   position: relative;
   list-style: none;
-  margin-bottom: 2rem;
+  margin-bottom: $space-lg;
   padding-left: 0;
 }
 
-/* VERTIKÁLNA ČIARA NA ĽAVEJ STRANE */
+// VERTIKÁLNA ČIARA NA ĽAVEJ STRANE
 .timeline::before {
   content: "";
   position: absolute;
@@ -38,61 +25,63 @@ grid-template-columns: 6rem 1fr
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(#192876, #08193c);
+  background: linear-gradient($timeline-line-from, $timeline-line-to);
 }
 
-/* POLOŽKA TIMELINE – GRID LAYOUT (DÁTUM + OBSAH) */
+// POLOŽKA TIMELINE – GRID LAYOUT (DÁTUM + OBSAH)
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 6rem 1fr;
-  column-gap: 1.5rem;
-  padding: 0.5rem 0.8rem;
+  // fluidnejší grid: dátum má min/max šírku, obsah zvyšok
+  grid-template-columns: minmax(4.5rem, 6rem) 1fr;
+  column-gap: $space-md;
+  padding: $space-xs $space-sm;
   align-items: flex-start;
 }
 
-/* DÁTUM VĽAVO */
+// DÁTUM VĽAVO
 .timeline-date {
   justify-self: end;
-  white-space: nowrap;
+  white-space: nowrap; // nechávam podľa tvojho TODO
   text-transform: none;
   font-weight: 700;
-  color: rgba(100, 4, 4, 0.838);
+  color: $danger;
+  font-size: $font-size-sm;
 }
 
-/* BODKA NA ČIARE */
+// BODKA NA ČIARE
 .timeline-item::before {
   content: "";
   position: absolute;
   left: -4px;
   top: 1.15rem;
-  width: 11px;
-  height: 11px;
-  background: #000;
+  width: $timeline-dot-size;
+  height: $timeline-dot-size;
+  background: $dark;
   border-radius: 50%;
-  z-index: 1;
+  z-index: $z-content;
 }
 
-/* OBSAH POLOŽKY */
+// OBSAH POLOŽKY
 .timeline-content {
   text-align: start;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: $font-size-xs;
   padding-left: 0;
 }
 
-/* VNORENÝ ZOZNAM */
+// VNORENÝ ZOZNAM
 .sublist {
   list-style: none;
   font-weight: 350;
   text-align: start;
-  font-size: 0.7rem;
+  font-size: $font-size-xs;
   line-height: 1rem;
   margin-top: 0.3rem;
   padding-left: 0.3rem;
 }
 
-/* POLOŽKY SUBLISTU */
+// POLOŽKY SUBLISTU
 .sublist li {
   position: relative;
   padding-left: 0.7rem;
@@ -110,30 +99,20 @@ grid-template-columns: 6rem 1fr
 // ===============================================
 
 @include mobile {
-
-  /* MENŠÍ GRID NA MOBILOCH */
   .timeline-item {
-    grid-template-columns: 4.5rem 1fr;
-    column-gap: 1rem;
+    grid-template-columns: minmax(3.5rem, 4.5rem) 1fr;
+    column-gap: $space-sm;
   }
 
   .timeline-date {
-    font-size:$font-size-xs;
+    font-size: $font-size-xs;
   }
 
-  /* MENŠIE BODKY NA MOBILOCH */
-  .timeline-item::before {
-    width: 11px;
-    height: 11px;
-    left: -4px;
-  }
-
-  /* MENŠÍ TEXT NA MOBILOCH */
   .timeline-content {
-    font-size:$font-size-xs;
+    font-size: $font-size-xs;
   }
 
   .sublist {
-    font-size:$font-size-xs;
+    font-size: $font-size-xs;
   }
 }

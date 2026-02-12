@@ -1,19 +1,26 @@
 @use "../layout/mixins/modal" as modal;
 @use "../design-system/index" as *;
 
-/* ===============================================
-   MODAL – VISUAL + ANIMATIONS + SAFARI FIX
-=============================================== */
+// ----------------------------------------
+// Component: Modal
+// Layout + Visual Styling + Animations
+// ----------------------------------------
 
-/* BACKDROP */
+// ----------------------------------------
+// BACKDROP
+// ----------------------------------------
+
 .modal-backdrop {
   @include modal.modal-backdrop-base;
 
   background: rgba($dark, 0.6);
 
-  /* Safari fix */
+  /* Safari blur support */
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal-backdrop.show {
@@ -21,9 +28,14 @@
   opacity: 1;
 }
 
-/* MODAL WRAPPER */
+// ----------------------------------------
+// MODAL WRAPPER
+// ----------------------------------------
+
 .modal {
   @include modal.modal-base;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal.show {
@@ -31,22 +43,45 @@
   pointer-events: auto;
 }
 
-/* DIALOG */
+// ----------------------------------------
+// DIALOG
+// ----------------------------------------
+
 .modal-dialog {
   @include modal.modal-dialog-base;
 
   background: $cards-rgba;
   border: 1px solid rgba($dark, 0.3);
   @include shadow-default;
+
+  /* Default animation state */
+  transform: scale(0.95);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .modal.show .modal-dialog {
   transform: scale(1);
 }
 
-/* HEADER */
+// ----------------------------------------
+// OPTIONAL: SLIDE-DOWN ANIMATION
+// ----------------------------------------
+
+.modal-dialog {
+  transform: translateY(-20px);
+}
+
+.modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+// ----------------------------------------
+// HEADER
+// ----------------------------------------
+
 .modal-header {
   @include modal.modal-section;
+
   background: rgba($dark, 0.1);
   border-bottom: 1px solid rgba($dark, 0.2);
 
@@ -56,15 +91,22 @@
   }
 }
 
-/* BODY */
+// ----------------------------------------
+// BODY
+// ----------------------------------------
+
 .modal-body {
   @include modal.modal-section;
   color: $light;
 }
 
-/* FOOTER */
+// ----------------------------------------
+// FOOTER
+// ----------------------------------------
+
 .modal-footer {
   @include modal.modal-section;
+
   background: rgba($dark, 0.05);
   border-top: 1px solid rgba($dark, 0.2);
 

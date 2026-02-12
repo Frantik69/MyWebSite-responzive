@@ -1,40 +1,60 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// ICONS – VEĽKOSTI, MASKY, MENU IKONY
-// ===============================================
+// ----------------------------------------
+// Component: Icons
+// Sizes, masks, menu icons
+// ----------------------------------------
 
-/* TODO - Rôzne veľkosti ikon v rôznych komponentoch → navrhnut jednotný systém ikon (24px, 20px, 16px).*/
+// ----------------------------------------
+// Base icon (24×24)
+// ----------------------------------------
 
-/* ZÁKLADNÁ IKONA 24×24 */
 .icon-24,
-#icon {                                                           // TODO - → prečo ID #icon? → ID by nemalo byť v generickom komponente
+#icon { // ID in a generic component is not recommended
   width: 24px;
   height: 24px;
-  filter: drop-shadow(10px 1px 2px rgba(23, 23, 23, 0.5));      // TODO - natvrdo → duplicita s mixinmi (light-box-shadow, shadow-default)
+  filter: drop-shadow(10px 1px 2px rgba(23, 23, 23, 0.5)); // replace with DS shadow mixin
   overflow: hidden;
 }
 
-/* IKONA VLAJKY 24×16 */
+/* ===============================================
+   WEATHER ICON FIXES
+=============================================== */
+
+.nav-weather-icon,
+.side-weather-icon,
+.float-weather-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+// ----------------------------------------
+// Flag icon (24×16)
+// ----------------------------------------
+
 .flag-24x16 {
   width: 24px;
   height: 16px;
 }
 
-/* IKONA V MENU (FONT-BASED ICON) */
+// ----------------------------------------
+// Menu icon (font-based)
+// ----------------------------------------
+
 .menu-icon {
-  color:$light;
+  color: $light;
   font-size: inherit;
   line-height: inherit;
   vertical-align: middle;
   margin-right: 0.3rem;
 }
 
-// ===============================================
-// RESPONSIVE ICON UTILITIES
-// ===============================================
+// ----------------------------------------
+// Responsive adjustments
+// ----------------------------------------
 
-@include tablet-landscape {                                       // TODO - → duplicita s Bootstrap breakpoints.
+@include tablet-landscape {
 
   .flag-24x16 {
     width: 20px;
@@ -42,16 +62,16 @@
   }
 
   .menu-icon {
-    font-size:$font-size-lg;
+    font-size: $font-size-lg;
     line-height: inherit;
     vertical-align: middle;
     margin-right: 0.2rem;
   }
 }
 
-@include mobile {                                                 // TODO - → duplicita s Bootstrap breakpoints.
+@include mobile {
 
-  /* MENŠIE IKONY NA MOBILOCH */
+  // Smaller icons on mobile
   .icon-24,
   #icon {
     width: 20px;
@@ -63,7 +83,7 @@
     height: 14px;
   }
 
-  /* VÄČŠÍ TAP TARGET PRE IKONY V MENU NA MOBILOCH */
+  // Larger tap target for menu icons
   .menu-icon {
     margin-right: 0.4rem;
   }

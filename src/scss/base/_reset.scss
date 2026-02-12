@@ -1,46 +1,52 @@
-// ===============================================
-// RESET – ZÁKLADNÉ NULOVANIE ŠTÝLOV
-// ===============================================
+// ----------------------------------------
+// Base: Reset
+// Minimalistický reset + normalize doplnky
+// ----------------------------------------
 
-/* RESET BOX-MODELU PRE CELÝ DOKUMENT */
+// Box model
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* RESET AUTOMATICKEJ ZMENY VEĽKOSTI TEXTU NA MOBILOCH */
+// Prevent mobile text auto-resize
 html,
 body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  margin: 0; /*Reset margin/padding na html, body, ale v _global.scss ich znova nastavujem. → duplicita.*/
+  margin: 0;
   padding: 0;
 }
 
+// Normalize additions
 html {
   line-height: 1.15;
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation; //TODO - touch-action: manipulation na html → môže kolidovať s vlastným JS gestami (mám?).
 }
 
-/* Normalize additions */
+// Headings reset (visual styles sú v global.scss)
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+// Images
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+// Lists (visual styles sú v global.scss)
 ul, ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-button, input, textarea {
+// Form controls inherit font
+button,
+input,
+textarea {
   font: inherit;
 }

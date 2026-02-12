@@ -154,6 +154,24 @@
   @include sideNav.sidenav-list;
 }
 
+/* ===============================================
+   SIDENAV MENU INJECTION (DYNAMIC MENU)
+=============================================== */
+
+#sideMenu li {
+  list-style: none;
+  margin: 12px 0;
+}
+
+#sideMenu a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
 #sideNav li {
   @include sideNav.sidenav-item;
 }

@@ -1,15 +1,24 @@
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.flex-row { flex-direction: row; }
+// ----------------------------------------
+// Utilities: Flexbox
+// Rýchle pomocné triedy pre flex layout
+// ----------------------------------------
 
-.flex-center { display: flex; justify-content: center; align-items: center; }
-.flex-between { display: flex; justify-content: space-between; }
-.flex-around { display: flex; justify-content: space-around; }
+// Display
+.flex      { display: flex; }
+.flex-col  { flex-direction: column; }
+.flex-row  { flex-direction: row; }
 
+// Alignment shortcuts
 .items-center { align-items: center; }
-.items-start { align-items: flex-start; }
-.items-end { align-items: flex-end; }
+.items-start  { align-items: flex-start; }
+.items-end    { align-items: flex-end; }
 
+// Justify shortcuts
 .justify-center { justify-content: center; }
-.justify-start { justify-content: flex-start; }
-.justify-end { justify-content: flex-end; }
+.justify-start  { justify-content: flex-start; }
+.justify-end    { justify-content: flex-end; }
+
+// Combined helpers
+.flex-center  { display: flex; justify-content: center; align-items: center; }
+.flex-between { display: flex; justify-content: space-between; }
+.flex-around  { display: flex; justify-content: space-around; }

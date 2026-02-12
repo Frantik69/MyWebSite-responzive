@@ -1,54 +1,78 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// BUTTONS – EFEKTY, BUBBLES, SPINNER
-// ===============================================
+// ----------------------------------------
+// Component: Buttons
+// Hover bubbles, loading spinner, effects
+// ----------------------------------------
 
-/* FARBA TEXTU PRE TLAČIDLO V KONTAKT SEKCII */
-#contact .btn.menu-item::after { /* TODO - → hack → dá sa vyriešiť lepšie.*/
-  color: #000;
+// ----------------------------------------
+// CONTACT SECTION OVERRIDE
+// ( pôvodný hack – teraz prepisaný na DS farbu )
+// ----------------------------------------
+
+#contact .btn.menu-item::after {
+  color: $dark; // namiesto #000
 }
 
-/* ZÁKLAD TLAČIDLA – MUSÍ MAŤ RELATÍVNU POZÍCIU */
-.btn.menu-item { //TODO - .btn.menu-item → menu-item je pôvodne navigačná trieda → miešaš UI logiku
+// ----------------------------------------
+// BASE BUTTON STRUCTURE
+// ----------------------------------------
+
+.btn.menu-item {
   position: relative;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-base;
+  padding: $space-sm $space-lg;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-/* VNÚTORNÁ BUBBLINA PRE HOVER EFEKT */
+// ----------------------------------------
+// HOVER BUBBLE (inner animated layer)
+// ----------------------------------------
+
 .btn.menu-item .hover-bubble {
   position: absolute;
   inset: 0;
-  background-color: rgba(58, 90, 123, 0.9);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  border-radius: 30px;
-  padding: 0.75rem 1.5rem;
-  color: #fff;
+  background-color: rgba($primary, 0.9);
+  @include shadow-default;
+  border-radius: $radius-lg;
+
+  padding: $space-sm $space-lg;
+  color: $light;
   font-weight: 500;
   line-height: 1.2;
+
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
-/* ZOBRAZENIE BUBLINY PRI .show-bubble *//* TODO - → duplicita s animáciami (bubblePop) → komponent závisí na animáciách → nie ideálne. */
+// ----------------------------------------
+// SHOW BUBBLE STATE
+// ----------------------------------------
+
 .btn.menu-item.show-bubble .hover-bubble {
-  animation: bubblePop 0.4s ease forwards;
+  animation: bubblePop 0.4s ease forwards; // z design-system/animations
   opacity: 1;
 }
 
-/* SKRYTIE PÔVODNÉHO OBSAHU TLAČIDLA */
+// Skrytie pôvodného obsahu (bez layout shiftu)
 .btn.menu-item.show-bubble > *:not(.hover-bubble) {
-  visibility: hidden;     //TODO - → môže spôsobiť layout shift.
+  opacity: 0;
 }
 
-/* ===============================================
-   SPINNER – LOADING STAV TLAČIDLA
-=============================================== */
+// ----------------------------------------
+// LOADING SPINNER
+// ----------------------------------------
 
 .btn-loading {
   position: relative;
@@ -61,29 +85,31 @@
   position: absolute;
   top: 50%;
   left: 50%;
+
   width: 1.125rem;
   height: 1.125rem;
+
   margin-top: -0.5625rem;
   margin-left: -0.5625rem;
+
   border: 2px solid transparent;
-  border-top-color: #fff;           //TODO - farba je natvrdo #fff
+  border-top-color: $light; // namiesto #fff
   border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+
+  animation: spin 0.6s linear infinite; // z design-system/animations
 }
 
-// ===============================================
-// RESPONSIVE BUTTON UTILITIES – VOLITEĽNÉ
-// ===============================================
+// ----------------------------------------
+// RESPONSIVE ADJUSTMENTS
+// ----------------------------------------
 
-@include mobile {     //TODO - → duplicita s Bootstrap breakpoints.
+@include mobile {
 
-  /* MENŠIE BUBBLES NA MOBILOCH */
   .btn.menu-item .hover-bubble {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: $space-xs $space-md;
+    border-radius: $radius-base;
   }
 
-  /* MENŠÍ SPINNER NA MOBILOCH */
   .btn-loading::after {
     width: 0.875rem;
     height: 0.875rem;
@@ -92,8 +118,12 @@
   }
 }
 
-/* REDUCED MOTION – IBA NA MOBILOCH */
+// ----------------------------------------
+// REDUCED MOTION SUPPORT
+// ----------------------------------------
+
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
+
   .btn.menu-item .hover-bubble,
   .btn.menu-item.show-bubble .hover-bubble {
     animation: none !important;

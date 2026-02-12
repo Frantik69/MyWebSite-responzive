@@ -1,5 +1,11 @@
 @use "../design-system/index" as *;
 
+// ----------------------------------------
+// Layout: Helpers
+// Pomocné layoutové utility
+// ----------------------------------------
+
+// Wrapper pre širšie sekcie
 .wrapper {
   width: 100%;
   max-width: $container-max-width;
@@ -9,10 +15,12 @@
   padding-right: $space-md;
 }
 
+// Full width element
 .full-width {
   width: 100%;
 }
 
+// Flex center helper
 .center {
   display: flex;
   justify-content: center;

@@ -1,9 +1,11 @@
 @use "sass:list";
 
-// ===============================================
-// FLEX UTILITIES
-// ===============================================
+// ----------------------------------------
+// Design System: Mixins
+// Flex, typografia, efekty, scrollbary, fluid spacing
+// ----------------------------------------
 
+// Flex utilities
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -20,10 +22,7 @@
   align-items: center;
 }
 
-// ===============================================
-// TYPOGRAPHY
-// ===============================================
-
+// Typography
 @mixin fluid-font($min, $max) {
   font-size: clamp($min, 2vw, $max);
 }
@@ -65,11 +64,7 @@
     0.1875rem 0.1875rem 0.4375rem $color2;
 }
 
-
-// ===============================================
-// BACKGROUND & EFFECTS
-// ===============================================
-
+// Backgrounds & effects
 @mixin gradient-bg($from, $to, $direction: to bottom) {
   background: linear-gradient($direction, $from, $to);
 }
@@ -78,10 +73,7 @@
   border-radius: $radius;
 }
 
-// ===============================================
-// SCROLLBAR
-// ===============================================
-
+// Scrollbar
 @mixin custom-scrollbar($size: 0.5rem, $thumb: #888, $track: #f1f1f1) {
   &::-webkit-scrollbar {
     width: $size;
@@ -96,20 +88,14 @@
   }
 }
 
-// ===============================================
-// RESPONSIVE UTILITIES
-// ===============================================
-
+// Responsive utilities
 @mixin between($min, $max) {
   @media (min-width: $min) and (max-width: $max) {
     @content;
   }
 }
 
-// ===============================================
-// FLUID SPACING
-// ===============================================
-
+// Fluid spacing
 @mixin fluid-space($min, $max) {
   margin: clamp($min, 2vw, $max);
 }
@@ -118,10 +104,7 @@
   padding: clamp($min, 2vw, $max);
 }
 
-// ===============================================
-// SCALE BY HEIGHT
-// ===============================================
-
+// Scale by height
 @mixin scale-by-height($steps...) {
   --scale: 1;
   transform: scale(var(--scale));

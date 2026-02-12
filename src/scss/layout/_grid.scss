@@ -1,19 +1,27 @@
 @use "../design-system/index" as *;
 
+// ----------------------------------------
+// Layout: Grid
+// Jednoduchý grid systém s breakpoint modifiers
+// ----------------------------------------
+
 .grid {
   display: grid;
   gap: $space-md;
 }
 
+// Base grids
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
+// Tablet modifiers
 @include tablet {
   .grid-md-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-md-3 { grid-template-columns: repeat(3, 1fr); }
 }
 
+// Desktop modifiers
 @include desktop {
   .grid-lg-2 { grid-template-columns: repeat(2, 1fr); }
   .grid-lg-3 { grid-template-columns: repeat(3, 1fr); }

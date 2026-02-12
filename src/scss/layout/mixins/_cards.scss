@@ -1,8 +1,9 @@
 @use "../../design-system/index" as *;
 
-// ===============================================
-// CARDS – LAYOUT MIXINS
-// ===============================================
+// ----------------------------------------
+// Layout Mixins: Cards
+// Základné stavebné bloky pre card komponenty
+// ----------------------------------------
 
 @mixin card-base {
   display: flex;

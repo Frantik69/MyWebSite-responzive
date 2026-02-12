@@ -1,11 +1,14 @@
 @use "../design-system/index" as *;
 
+// ----------------------------------------
+// Component: Form Overlay
+// Success / error messages overlay
+// ----------------------------------------
 
-// ===============================================
-// FORM OVERLAY – SPRÁVY O ÚSPECHU / CHYBE
-// ===============================================
+// ----------------------------------------
+// Overlay background
+// ----------------------------------------
 
-/* HLAVNÉ OVERLAY POZADIE PRE FORM MESSAGE */
 .formMessage {
   position: fixed;
   inset: 0;
@@ -13,34 +16,41 @@
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.25);
-  -webkit-backdrop-filter: blur(8px); /* Safari */
-  backdrop-filter: blur(8px);         /* ostatné prehliadače */
+  -webkit-backdrop-filter: blur(8px); // Safari
+  backdrop-filter: blur(8px);         // Other browsers
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
   transition:
     opacity 0.4s ease,
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 9999;              //TODO - → nekonzistentné so zvyškom projektu (navbar má 1000, modaly 2000).
+  z-index: $z-overlay; // unified z-index variable
 }
 
-/* ZOBRAZENIE OVERLAYA */
+// ----------------------------------------
+// Overlay visible state
+// ----------------------------------------
+
 .formMessage.show {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-/* VNÚTORNÁ BUBBLINA S TEXTOM */
+// ----------------------------------------
+// Inner message bubble
+// ----------------------------------------
+
 #overlayMessage {
-  background: #fff;       //TODO - Farby natvrdo (#fff, #222, green, red) → duplicita s premennými.
-  color: #222;
-  padding: 20px 30px;
-  border-radius: 10px;
-  font-size:$font-size-md;
+  background: $light;
+  color: $dark;
+  padding: $space-md $space-lg;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
   text-align: center;
-  max-width: 400px;       //TODO - → natvrdo → navrhnut použitie $container-max-width.
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  max-width: 25rem;
+  @include shadow-default;
+
   opacity: 0;
   transform: translateY(20px) scale(0.9);
   transition:
@@ -48,44 +58,52 @@
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
 }
 
-/* ZOBRAZENIE VNÚTORNEJ BUBLINY */
+// ----------------------------------------
+// Inner bubble visible state
+// ----------------------------------------
+
 .formMessage.show #overlayMessage {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* STAV ÚSPECHU */
+// ----------------------------------------
+// Success / error states
+// ----------------------------------------
+
 #overlayMessage.success {
-  color: green;
-  font-weight: bold;
+  color: $success;
+  font-weight: fw-bold;
 }
 
-/* STAV CHYBY */
 #overlayMessage.error {
-  color: red;
-  font-weight: bold;
+  color: $danger;
+  font-weight: fw-bold;
 }
 
-// ===============================================
-// RESPONSIVE FORM OVERLAY UTILITIES
-// ===============================================
+// ----------------------------------------
+// Responsive adjustments
+// ----------------------------------------
 
-/* MENŠIA BUBBLINA NA MOBILOCH */
 @include mobile {
   #overlayMessage {
-    padding: 15px 20px;
-    font-size:$font-size-base;
-    max-width: 320px;
+    padding: $space-sm $space-md;
+    font-size: $font-size-base;
+    max-width: 20rem;
   }
 }
 
-/* REDUCED MOTION – IBA NA MOBILOCH (aby overlay nezmizol) */
+// ----------------------------------------
+// Reduced motion support (mobile only)
+// ----------------------------------------
+
 @media (max-width: 576px) and (prefers-reduced-motion: reduce) {
-  .formMessage:not(.show),                                        //TODO - .formMessage:not(.show) selektor v reduced motion → veľmi komplikovaný → dá sa zjednodušiť.
+
+  .formMessage:not(.show),
   #overlayMessage:not(.show #overlayMessage) {
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translateY(20px) !important;                       //TODO - → rovnaká hodnota ako v animáciách → duplicita.
+    transform: translateY(20px) !important;
   }
 
   .formMessage.show,

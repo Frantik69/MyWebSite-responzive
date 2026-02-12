@@ -12,5 +12,8 @@
     "sass-embedded": "^1.97.1",
     "vite": "^7.2.4",
     "vite-plugin-purgecss": "^0.2.13"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.1"
   }
 }

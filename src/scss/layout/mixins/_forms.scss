@@ -1,8 +1,9 @@
 @use "../../design-system/index" as *;
 
-// ===============================================
-// FORMS – LAYOUT MIXINS
-// ===============================================
+// ----------------------------------------
+// Layout Mixins: Forms
+// Flexibilné stavebné bloky pre formuláre
+// ----------------------------------------
 
 @mixin form-base {
   width: 100%;
@@ -55,8 +56,8 @@
   @include mobile {
     flex-direction: column;
   }
-
 }
+
 @mixin form-label {
   font-weight: 600;
 }

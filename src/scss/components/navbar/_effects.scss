@@ -1,0 +1,11 @@
+@use "../../design-system/index" as *;
+
+// ----------------------------------------
+// Navbar: Visual Effects & Animations
+// Špecifické animácie pre navigáciu
+// ----------------------------------------
+
+// Bubble pop efekt pre hover bublinu v navigácii
+.navbar-nav .nav-link.show-bubble .hover-bubble {
+  animation: bubblePop 0.4s ease forwards;
+}

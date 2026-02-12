@@ -1,22 +1,81 @@
 @use "../design-system/index" as *;
 
-// ===============================================
-// IMAGES – OBRÁZKY, FIGURE, THUMBNAILS
-// ===============================================
+// ----------------------------------------
+// Component: Images
+// Base images, figure, thumbnails
+// ----------------------------------------
 
-/* ZÁKLADNÉ ŠTÝLY PRE IMG A SVG */
+// ----------------------------------------
+// Base img and svg styles
+// ----------------------------------------
+
 img,
 svg {
   max-width: 100%;
   height: auto;
 }
 
-/* RESPONSÍVNY OBRÁZOK (BOOTSTRAP ŠTÝL) */
+// ----------------------------------------
+// Responsive image (Bootstrap-style)
+// ----------------------------------------
+
 .img-fluid {
-  max-width: 80%;             //TODO - → Bootstrap .img-fluid má max-width: 100%. → Override môže rozbiť layout v sekciách (napr. hero image).
+  max-width: 80%; // overriding Bootstrap default (100%)
   height: auto;
   margin-bottom: 2rem;
 }
+
+// ----------------------------------------
+// Image thumbnail
+// ----------------------------------------
+
+.img-thumbnail {
+  padding: 0.25rem;
+  border: 0.125rem solid var(--bs-border-color);
+  border-radius: $radius-base;
+}
+
+// ----------------------------------------
+// Figure wrapper
+// ----------------------------------------
+
+figure { // duplicates Bootstrap figure styles
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+// ----------------------------------------
+// Figure caption
+// ----------------------------------------
+
+.figure-caption {
+  font-size: $font-size-sm;
+  color: $gray;
+}
+
+// ----------------------------------------
+// Responsive adjustments
+// ----------------------------------------
+
+@include mobile {
+
+  // Larger bottom spacing on mobile
+  .img-fluid {
+    margin-bottom: 4rem;
+  }
+
+  // Smaller thumbnail on mobile
+  .img-thumbnail {
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+  }
+
+  // Smaller caption text on mobile
+  .figure-caption {
+    font-size: $font-size-xs;
+  }
+}
+
 
 /* MINIATÚRA OBRÁZKU */
 .img-thumbnail {

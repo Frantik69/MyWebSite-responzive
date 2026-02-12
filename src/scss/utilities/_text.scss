@@ -1,19 +1,28 @@
 @use "../design-system/index" as *;
 
+// ----------------------------------------
+// Utilities: Text
+// Rýchle textové utility pre zarovnanie,
+// farby, váhu a veľkosť písma
+// ----------------------------------------
+
+// Alignment
 .text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
+.text-left   { text-align: left; }
+.text-right  { text-align: right; }
 
-.text-primary { color: $primary; }
+// Colors (via design system)
+.text-primary   { color: $primary; }
 .text-secondary { color: $secondary; }
-.text-light { color: $light; }
-.text-dark { color: $dark; }
+.text-light     { color: $light; }
+.text-dark      { color: $dark; }
 
-.fw-bold { font-weight: 700; }
+// Font weight
+.fw-bold   { font-weight: 700; }
 .fw-medium { font-weight: 500; }
-.fw-light { font-weight: 300; }
+.fw-light  { font-weight: 300; }
 
-// Font-size utilities
+// Font size utilities
 .text-sm { font-size: $font-size-sm; }
 .text-md { font-size: $font-size-md; }
 .text-lg { font-size: $font-size-lg; }
