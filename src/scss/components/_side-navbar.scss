@@ -129,6 +129,7 @@
 
 .sideNav-content {
   @include sideNav.sidenav-content;
+  
 }
 
 #sideNavTime {
@@ -140,6 +141,12 @@
 
   .time {
     font-weight: 700;
+    font-size: $font-size-xl;
+    text-shadow:
+    -1px -1px 0 black,
+     1px -1px 0 black,
+    -1px  1px 0 black,
+     1px  1px 0 black;
   }
 }
 

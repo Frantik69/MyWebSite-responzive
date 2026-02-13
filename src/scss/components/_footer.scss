@@ -10,6 +10,8 @@ footer {
   position: relative;
   z-index: $z-base;
   padding: $space-md 0;
+  background-color: $gray-800;
+  border-radius: $radius-base;
 }
 
 // ----------------------------------------
@@ -76,4 +78,24 @@ footer {
   width: 2rem;
   height: auto;
   display: block;
+}
+
+// ----------------------------------------
+// Copyright
+// ----------------------------------------
+
+#copyright {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(22, 24, 26, 0.7);
+  border: 1px solid $dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-base;
+  padding: $space-sm $space-md;
+  z-index: $z-navbar;
+  height: $copyright-height;
 }

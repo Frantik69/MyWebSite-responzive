@@ -16,6 +16,8 @@
   width: 100%;
   height: $navbar-height;
   z-index: $z-navbar;
+  border-radius: $radius-base;
+  border: 1px solid $dark;
 
   display: flex;
   align-items: center;
