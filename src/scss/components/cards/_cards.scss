@@ -1,5 +1,5 @@
-@use "../layout/mixins/cards" as cards;
-@use "../design-system/index" as *;
+@use "./mixins" as cards;
+@use "../../design-system/index" as *;
 
 // ----------------------------------------
 // Component: Cards

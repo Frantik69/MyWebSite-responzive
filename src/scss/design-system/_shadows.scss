@@ -1,9 +1,99 @@
-// ----------------------------------------
-// Design System: Shadows
-// ----------------------------------------
+// ============================================================================
+// DESIGN SYSTEM — SHADOWS
+// Profesionálna hierarchia tieňov pre celý projekt
+// ============================================================================
+
+// ---------------------------------------------------------------------------
+// 1) SOFT SHADOWS (globálne, neutrálne, pre karty, boxy, UI prvky)
+// ---------------------------------------------------------------------------
+
+$shadow-xs: 0 1px 3px rgba(0,0,0,0.2);
+$shadow-sm: 0 4px 12px rgba(0,0,0,0.15);
+$shadow-md: 0 6px 16px rgba(0,0,0,0.3);
+$shadow-lg: 0 .5rem 1rem rgba(0,0,0,.175);
+
+// ---------------------------------------------------------------------------
+// 2) STRONG SHADOWS (kontrastné, dramatické)
+// ---------------------------------------------------------------------------
+
+$shadow-strong-sm: 0 0 6px rgba(0,0,0,0.4);
+
+// ---------------------------------------------------------------------------
+// 3) TEXT SHADOWS (globálne predvoľby pre text)
+// ---------------------------------------------------------------------------
+
+$text-shadow-xxs:
+  -0.25px -0.25px 0 black,
+   0.25px -0.25px 0 black,
+  -0.25px  0.25px 0 black,
+   0.25px  0.25px 0 black;
+
+$text-shadow-xs:
+  -0.5px -0.5px 0 black,
+   0.5px -0.5px 0 black,
+  -0.5px  0.5px 0 black,
+   0.5px  0.5px 0 black;
+
+$text-shadow-sm:
+  -0.8px -0.8px 0 black,
+   0.8px -0.8px 0 black,
+  -0.8px  0.8px 0 black,
+   0.8px  0.8px 0 black;
+
+$text-shadow-md:
+  -1px -1px 0 black,
+   1px -1px 0 black,
+  -1px  1px 0 black,
+   1px  1px 0 black;
+
+// ---------------------------------------------------------------------------
+// 4) DROP SHADOWS (pre ikony, SVG, obrázky)
+// ---------------------------------------------------------------------------
+
+$drop-shadow-sm:
+  drop-shadow(0.125rem 0.125rem 0 #070707)
+  drop-shadow(0.1875rem 0.1875rem 0.4375rem #464646);
+
+$drop-shadow-md:
+  drop-shadow(3px 2px 2px rgba(23, 23, 23, 0.7))
+  drop-shadow(-1px -1px 0 #000)
+  drop-shadow(1px -1px 0 #000)
+  drop-shadow(-1px 1px 0 #000)
+  drop-shadow(1px 1px 0 #000);
+
+// ---------------------------------------------------------------------------
+// 5) MIXINS — jednotný API pre tieňovanie
+// ---------------------------------------------------------------------------
+
+// Box-shadow mixin
+@mixin shadow($size) {
+  @if $size == xs   { box-shadow: $shadow-xs; }
+  @if $size == sm   { box-shadow: $shadow-sm; }
+  @if $size == md   { box-shadow: $shadow-md; }
+  @if $size == lg   { box-shadow: $shadow-lg; }
+  @if $size == strong-sm { box-shadow: $shadow-strong-sm; }
+}
+
+// Text-shadow mixin
+@mixin text-shadow($size) {
+  @if $size == xxs { text-shadow: $text-shadow-xxs; }
+  @if $size == xs  { text-shadow: $text-shadow-xs; }
+  @if $size == sm  { text-shadow: $text-shadow-sm; }
+  @if $size == md  { text-shadow: $text-shadow-md; }
+}
+
+// Drop-shadow mixin
+@mixin drop-shadow($size) {
+  @if $size == sm { filter: $drop-shadow-sm; }
+  @if $size == md { filter: $drop-shadow-md; }
+}
+
+// ---------------------------------------------------------------------------
+// 6) LEGACY MIXINS (zachované pre kompatibilitu)
+// ---------------------------------------------------------------------------
 
 @mixin shadow-default {
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: $shadow-sm;
 }
 
 @mixin bubble-box-shadow {
@@ -13,5 +103,3 @@
 @mixin light-box-shadow {
   filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.7));
 }
-
-$shadow-light: 0 1px 3px rgba(0, 0, 0, 0.15);

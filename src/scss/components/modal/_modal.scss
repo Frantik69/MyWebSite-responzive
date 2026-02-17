@@ -1,5 +1,5 @@
-@use "../layout/mixins/modal" as modal;
-@use "../design-system/index" as *;
+@use "./mixins" as *;
+@use "../../design-system/index" as *;
 
 // ----------------------------------------
 // Component: Modal
@@ -11,7 +11,7 @@
 // ----------------------------------------
 
 .modal-backdrop {
-  @include modal.modal-backdrop-base;
+  @include modal-backdrop-base;
 
   background: rgba($dark, 0.6);
 
@@ -33,7 +33,7 @@
 // ----------------------------------------
 
 .modal {
-  @include modal.modal-base;
+  @include modal-base;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -48,7 +48,7 @@
 // ----------------------------------------
 
 .modal-dialog {
-  @include modal.modal-dialog-base;
+  @include modal-dialog-base;
 
   background: $cards-rgba;
   border: 1px solid rgba($dark, 0.3);
@@ -80,7 +80,7 @@
 // ----------------------------------------
 
 .modal-header {
-  @include modal.modal-section;
+  @include modal-section;
 
   background: rgba($dark, 0.1);
   border-bottom: 1px solid rgba($dark, 0.2);
@@ -96,7 +96,7 @@
 // ----------------------------------------
 
 .modal-body {
-  @include modal.modal-section;
+  @include modal-section;
   color: $light;
 }
 
@@ -105,7 +105,7 @@
 // ----------------------------------------
 
 .modal-footer {
-  @include modal.modal-section;
+  @include modal-section;
 
   background: rgba($dark, 0.05);
   border-top: 1px solid rgba($dark, 0.2);

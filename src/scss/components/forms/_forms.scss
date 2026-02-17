@@ -1,5 +1,5 @@
-@use "../layout/mixins/forms" as forms;
-@use "../design-system/index" as *;
+@use "./mixins" as forms;
+@use "../../design-system/index" as *;
 
 // ----------------------------------------
 // Component: Forms

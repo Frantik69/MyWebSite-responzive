@@ -58,12 +58,6 @@
     drop-shadow(-0.5px -0.5px 1px rgba(0,0,0,0.6));
 }
 
-@mixin text-shadow($color1: #070707, $color2: #464646) {
-  text-shadow:
-    0.125rem 0.125rem 0 $color1,
-    0.1875rem 0.1875rem 0.4375rem $color2;
-}
-
 // Backgrounds & effects
 @mixin gradient-bg($from, $to, $direction: to bottom) {
   background: linear-gradient($direction, $from, $to);

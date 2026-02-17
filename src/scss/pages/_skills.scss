@@ -19,14 +19,14 @@
   }
 
   h2 {
-    @include text-shadow();
+    @include text-shadow(2px);
     text-align: center;
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: $light;
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 
   .skills-container {

@@ -1,6 +1,11 @@
-// ----------------------------------------
-// Design System: Typography
-// ----------------------------------------
+// ============================================================================
+// DESIGN SYSTEM — TYPOGRAPHY
+// Globálne fonty, veľkosti, váhy a typografická hierarchia
+// ============================================================================
+
+// ---------------------------------------------------------------------------
+// 1) FONT FAMILIES
+// ---------------------------------------------------------------------------
 
 $font-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI",
                   Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
@@ -9,12 +14,30 @@ $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
                  "Liberation Mono", "Courier New", monospace;
 
 $body-font-family: $font-sans-serif;
+$heading-font-family: "Montserrat", $font-sans-serif;
+
+// ---------------------------------------------------------------------------
+// 2) FONT WEIGHTS (globálne, jednotné)
+// ---------------------------------------------------------------------------
+
+$font-weight-light:    300;
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+$font-weight-black:    900;
+
+// ---------------------------------------------------------------------------
+// 3) BASE TYPOGRAPHY
+// ---------------------------------------------------------------------------
+
 $body-font-size: 1rem;
-$body-font-weight: 400;
+$body-font-weight: $font-weight-regular;
 $body-line-height: 1.4;
 
-$body-color: #ffffff;
-$body-bg: #ffffff;
+// ---------------------------------------------------------------------------
+// 4) FONT SIZE SCALE (globálna hierarchia)
+// ---------------------------------------------------------------------------
 
 $font-size-xs:   0.75rem;
 $font-size-sm:   0.875rem;
@@ -24,4 +47,164 @@ $font-size-lg:   1.25rem;
 $font-size-xl:   1.5rem;
 $font-size-xxl:  2rem;
 
-$rating-size: 1.2rem;
+// Extended scale (z tvojho projektu)
+$font-size-caption: 0.65rem;
+$font-size-small: 0.75rem;
+$font-size-body-sm: 0.875rem;
+$font-size-body: 1rem;
+$font-size-body-lg: 1.1rem;
+$font-size-title-sm: 1.2rem;
+$font-size-title: 1.3rem;
+$font-size-title-lg: 1.5rem;
+$font-size-display-sm: 2rem;
+$font-size-display: 2.5rem;
+$font-size-rating: $font-size-title-sm;
+
+// ---------------------------------------------------------------------------
+// 5) FLUID TYPOGRAPHY
+// ---------------------------------------------------------------------------
+
+$font-fluid-small: clamp(0.7rem, 1vw, 0.9rem);
+$font-fluid-body-sm: clamp(0.8rem, 1vw, 1rem);
+$font-fluid-body-lg: clamp(1rem, 1.2vw, 1.4rem);
+$font-fluid-title: clamp(1.2rem, 1.6vw, 2rem);
+
+// ---------------------------------------------------------------------------
+// 6) HEADINGS
+// ---------------------------------------------------------------------------
+
+$heading-font-weight: $font-weight-bold;
+$heading-line-height: 1.2;
+$heading-margin-bottom: 0.5rem;
+
+$main-title-font-size: $font-size-display;
+$main-title-font-size-mobile: $font-size-display-sm;
+$main-title-font-weight: $font-weight-bold;
+$main-title-color: #fff;
+$main-title-text-align: center;
+$main-title-margin-top: 2rem;
+
+$tagline-font-size: $font-size-title-sm;
+$tagline-font-weight: $font-weight-light;
+$tagline-color: #fff;
+$tagline-text-align: center;
+$tagline-margin-bottom: 2rem;
+
+// ---------------------------------------------------------------------------
+// 7) COMPONENT TYPOGRAPHY (globálne použiteľné)
+// ---------------------------------------------------------------------------
+
+// SKILLS
+$skill-title-font-size: $font-size-title-sm;
+$skill-title-font-size-mobile: $font-size-small;
+
+$skill-desc-font-size: $font-size-body;
+$skill-desc-font-size-mobile: $font-size-body-sm;
+$skill-desc-line-height: 1.2;
+
+$skills-li-font-size: $font-size-body-sm;
+$skills-li-font-size-mobile: $font-size-small;
+$skills-li-line-height: 1.2;
+
+$skills-h3-mobile-font-size: $font-size-small;
+$portfolio-skills-h4-font-size: $font-size-body-lg;
+$portfolio-skills-li-font-size: $font-size-body;
+
+// PORTFOLIO – PROFILE
+$portfolio-profile-name-font-size: $font-size-title;
+$portfolio-profile-position-font-size: $font-size-title-sm;
+
+// PORTFOLIO – ABOUT
+$portfolio-aboutPreview-font-size: $font-size-body-sm;
+$portfolio-aboutPreview-line-height: 1.3;
+
+$about-info-font-size: $font-size-body;
+$about-info-font-size-tablet-landscape: $font-size-title-sm;
+$about-info-line-height-mobile: $font-size-body;
+
+// PORTFOLIO – CONTACT
+$portfolio-contact-email-font-size: $font-fluid-body-sm;
+$portfolio-contact-phone-font-size: $font-fluid-body-sm;
+
+// PORTFOLIO – SECTION TITLES
+$portfolio-section-title-font-size: $font-size-title;
+
+// TIMELINE
+$portfolio-timeline-date-font-size: $font-size-title-sm;
+$portfolio-timeline-content-font-size: $font-size-body-lg;
+
+$timeline-date-font-weight: $font-weight-bold;
+$timeline-content-font-weight: $font-weight-semibold;
+$timeline-content-font-size: $font-size-body-sm;
+
+$timeline-sublist-font-weight: 350;
+$timeline-sublist-font-size: $font-size-small;
+$timeline-sublist-line-height: 1rem;
+
+$timeline-date-font-size-mobile: $font-size-small;
+$timeline-content-font-size-mobile: $font-size-small;
+$timeline-sublist-font-size-mobile: $font-size-caption;
+
+// NAVBAR & SIDENAV
+$sideNavTime-font-size: $font-fluid-body-sm;
+$sideNavTime-letter-spacing: 0.1px;
+
+$sideNavTime-time-font-size: $font-fluid-title;
+$sideNavTime-time-font-weight: $font-weight-bold;
+
+$sideNavTime-nameday-font-size: $font-fluid-body-sm;
+$sideNavTime-date-font-size: $font-size-body-sm;
+$sideNavTime-nameday-small-font-size: $font-size-small;
+
+$sideNav-link-font-size: $font-fluid-body-lg;
+$sideNav-link-letter-spacing: 1px;
+
+$sideNav-weather-city-font-size: $font-size-body-sm;
+$sideNav-weather-temp-font-size: $font-size-body;
+$sideNav-weather-temp-font-weight: $font-weight-semibold;
+
+$navbar-weather-font-size: $font-size-body;
+$navbar-weather-font-weight: $font-weight-medium;
+$navbar-weather-line-height: 1;
+
+$navbar-weather-font-size-tablet-landscape: $font-size-small;
+
+$navbar-logo-text-line-height: 1.2;
+$navbar-logo-text-line-height-tablet-landscape: 1rem;
+
+$navbar-logo-text-h1-font-size-tablet-landscape: $font-size-body-lg;
+$navbar-logo-text-small-font-size-tablet-landscape: $font-size-body-sm;
+
+$navbar-nav-link-font-size-tablet-landscape: $font-size-small;
+$navbar-nav-link-font-size-mobile: $font-fluid-body-sm;
+
+// FORMS
+$form-label-font-weight: $font-weight-medium;
+
+$form-input-font-size: $font-size-body;
+$form-input-font-size-mobile: $font-size-body-sm;
+
+$form-button-font-size: $font-size-body;
+$form-button-font-size-mobile: $font-size-body-sm;
+$form-button-font-weight: $font-weight-medium;
+
+// PDF VIEWER
+$pdf-close-font-size: 12px;
+$pdf-close-font-size-mobile: 10px;
+
+$pdf-arrow-font-size: $font-size-title-lg;
+
+// LOGO
+$logo-text-line-height: 1.2;
+
+$logo-title-font-size: $font-size-title-sm;
+$logo-title-font-size-mobile: $font-size-body;
+
+$logo-subtitle-font-size: $font-size-body-sm;
+$logo-subtitle-font-size-mobile: $font-size-small;
+$logo-subtitle-font-weight: $font-weight-semibold;
+
+// TOOLTIP
+$tooltip-follow-font-size: $font-size-caption;
+$tooltip-follow-line-height: 1.3;
+$tooltip-follow-city-opacity: 0.9;

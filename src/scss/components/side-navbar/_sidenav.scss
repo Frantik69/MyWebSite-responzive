@@ -1,40 +1,41 @@
-@use "../layout/mixins/sidenav" as sideNav;
-@use "../design-system/index" as *;
+@use "../../design-system/index" as *;
+@use "./mixins" as *;
 
-/* ===============================================
-   DESKTOP SIDE NAVBAR
-=============================================== */
+// ----------------------------------------
+// SIDENAV – DESKTOP
+// ----------------------------------------
 
 #sideNav {
-  @include sideNav.sidenav-base;
+  @include sidenav-base;
 }
 
-@media (min-width: $breakpoint-lg) {
+@include lg {
   #sideNav {
-    @include sideNav.sidenav-desktop-layout;
-  }
+    @include sidenav-desktop-layout;
 
-  #sideNav.visible {
-    opacity: 1;
-    pointer-events: auto;
-  }
+    &.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-  /* Scale by height */
-  @media (max-height: 900px) { #sideNav { --scale: 0.95; } }
-  @media (max-height: 800px) { #sideNav { --scale: 0.90; } }
-  @media (max-height: 700px) { #sideNav { --scale: 0.85; } }
-  @media (max-height: 600px) { #sideNav { --scale: 0.80; } }
-  @media (max-height: 520px) { #sideNav { --scale: 0.75; } }
-  @media (max-height: 460px) { #sideNav { --scale: 0.70; } }
+    @include scale-by-height(
+      (900px, 0.95),
+      (800px, 0.90),
+      (700px, 0.85),
+      (600px, 0.80),
+      (520px, 0.75),
+      (460px, 0.70)
+    );
+  }
 }
 
-/* ===============================================
-   MOBILE + TABLET SIDE NAVBAR
-=============================================== */
+// ----------------------------------------
+// SIDENAV – MOBILE & TABLET
+// ----------------------------------------
 
-@media (max-width: $breakpoint-sm) {
+@include tablet {
   #sideNav {
-    @include sideNav.sidenav-mobile-layout;
+    @include sidenav-mobile-layout;
 
     background-image:
       $logo,
@@ -42,7 +43,7 @@
 
     background-repeat: no-repeat, no-repeat;
     background-position: top center, center;
-    background-size: calc(100% - 1rem) auto, cover;
+    background-size: calc(100% - $space-md) auto, cover;
     background-origin: content-box, border-box;
 
     &::before {
@@ -52,7 +53,7 @@
       background-image: $logo;
       background-repeat: no-repeat;
       background-position: top center;
-      background-size: calc(100% - 1rem) auto;
+      background-size: calc(100% - $space-md) auto;
       background-origin: content-box;
       filter: blur(15px);
       opacity: 0.7;
@@ -71,10 +72,9 @@
   }
 }
 
-/* TABLET */
-@media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+@include between($breakpoint-sm, $breakpoint-md) {
   #sideNav {
-    @include sideNav.sidenav-tablet-layout;
+    @include sidenav-tablet-layout;
 
     background-image:
       $logo,
@@ -82,7 +82,7 @@
 
     background-repeat: no-repeat, no-repeat;
     background-position: top center, center;
-    background-size: calc(100% - 2rem) auto, cover;
+    background-size: calc(100% - $space-lg) auto, cover;
     background-origin: content-box, border-box;
 
     &::before {
@@ -92,7 +92,7 @@
       background-image: $logo;
       background-repeat: no-repeat;
       background-position: top center;
-      background-size: calc(100% - 1rem) auto;
+      background-size: calc(100% - $space-md) auto;
       background-origin: content-box;
       filter: blur(15px);
       opacity: 0.7;
@@ -107,9 +107,9 @@
   }
 }
 
-/* ===============================================
-   LANDSCAPE MOBILE FIX
-=============================================== */
+// ----------------------------------------
+// LANDSCAPE MOBILE FIX
+// ----------------------------------------
 
 @media (max-width: 767px) and (orientation: landscape) {
   #sideNav {
@@ -119,74 +119,60 @@
   }
 }
 
-/* ===============================================
-   INTERNAL STRUCTURE
-=============================================== */
+// ----------------------------------------
+// INTERNAL STRUCTURE
+// ----------------------------------------
 
 .sideNav-center {
-  @include sideNav.sidenav-center;
+  @include sidenav-center;
 }
 
 .sideNav-content {
-  @include sideNav.sidenav-content;
-  
+  @include sidenav-content;
 }
 
 #sideNavTime {
   width: 100%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: $space-xs;
 
   .time {
-    font-weight: 700;
+    font-weight: $font-weight-bold;
     font-size: $font-size-xl;
-    text-shadow:
-    -1px -1px 0 black,
-     1px -1px 0 black,
-    -1px  1px 0 black,
-     1px  1px 0 black;
+    @include text-shadow-strong;
   }
 }
 
 .side-nav-divider {
   width: 100%;
   border: none;
-  border-top: 2px solid rgba(255,255,255,0.5);
+  border-top: 2px solid rgba($light, 0.5);
   margin: $space-sm 0;
 }
 
 #sideNav ul {
-  @include sideNav.sidenav-list;
+  @include sidenav-list;
 }
-
-/* ===============================================
-   SIDENAV MENU INJECTION (DYNAMIC MENU)
-=============================================== */
 
 #sideMenu li {
   list-style: none;
-  margin: 12px 0;
+  margin: $space-sm 0;
 }
 
 #sideMenu a {
   text-decoration: none;
   color: inherit;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex-row-center;
+  gap: $space-sm;
 }
 
-
 #sideNav li {
-  @include sideNav.sidenav-item;
+  @include sidenav-item;
 }
 
 #sideNav li a {
-  @include sideNav.sidenav-link;
-
-  box-shadow: 0px 1px 0px rgba(202, 202, 202, 0.787);
+  @include sidenav-link;
+  box-shadow: 0 1px 0 rgba($gray-300, 0.8);
 }
 
 #sideNav li a:hover {
@@ -207,11 +193,9 @@
 #sideNav .hover-bubble {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   border-radius: inherit;
-  z-index: 5;
+  z-index: $z-navbar;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -239,8 +223,7 @@
   text-align: left;
 
   .weather-inline {
-    display: flex;
-    align-items: center;
+    @include flex-row-center;
     justify-content: flex-start;
     gap: $space-sm;
     width: 100%;
@@ -256,8 +239,6 @@
 
 #sideNavDateBlock {
   width: 100%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: $space-xs;
 }

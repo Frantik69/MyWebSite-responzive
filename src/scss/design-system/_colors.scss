@@ -1,38 +1,34 @@
+// ============================================================================
+// DESIGN SYSTEM — COLORS
+// Globálna paleta farieb, RGB hodnoty a gradienty
+// ============================================================================
+
 @use "sass:color";
 
-// ----------------------------------------
-// Design System: Colors
-// Paleta farieb + odtiene + utility farby
-// ----------------------------------------
+// ---------------------------------------------------------------------------
+// 1) PRIMARY PALETTE
+// ---------------------------------------------------------------------------
 
 $primary:   #6b839c;
 $secondary: #6ba7a8;
 
-$middle:          #3a7283;
-$first-middle:    #3a667f;
-$second-middle:   #3a7e87;
-$first-light:     #e7ecef;
+$middle:        #3a7283;
+$first-middle:  #3a667f;
+$second-middle: #3a7e87;
+$first-light:   #e7ecef;
 
-$middle-rgb:        rgb(58, 114, 131);
-$first-middle-rgb:  rgb(58, 102, 127);
-$second-middle-rgb: rgb(58, 126, 135);
-$first-light-rgb:   rgb(231, 236, 239);
+// RGB variants
+$primary-rgb:107, 131, 156;
+$secondary-rgb:107, 167, 168;
+$middle-rgb:58, 114, 131;
+$first-middle-rgb:58, 102, 127;
+$second-middle-rgb:58, 126, 135;
+$first-light-rgb:231, 236, 239;
 
-$cards-rgba:         rgba(255, 254, 254, 0.8);
-$preview-cards-rgba: rgba(58, 90, 123, 0.2);
-$carousel-rgba:      rgba(52, 52, 52, 0.3);
-$arrow-bg-rgba:      rgba(52, 52, 52, 0.6);
+// ---------------------------------------------------------------------------
+// 2) GRAYSCALE
+// ---------------------------------------------------------------------------
 
-$logo-color:     #194484;
-$logo-color-rgb: rgb(25, 68, 132);
-
-// Status colors
-$success: #28a745;
-$info:    #0dcaf0;
-$warning: #ffc107;
-$danger:  #dc3545;
-
-// Grayscale
 $light: #f8f9fa;
 $dark:  #212529;
 $gray:  #6c757d;
@@ -47,10 +43,62 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
-// Rating
+// ---------------------------------------------------------------------------
+// 3) STATUS COLORS
+// ---------------------------------------------------------------------------
+
+$success: #28a745;
+$info:    #0dcaf0;
+$warning: #ffc107;
+$danger:  #dc3545;
+
+// ---------------------------------------------------------------------------
+// 4) BRAND COLORS
+// ---------------------------------------------------------------------------
+
+$logo-color:     #194484;
+$logo-color-rgb:25, 68, 132;
+
+// ---------------------------------------------------------------------------
+// 5) RATING COLORS
+// ---------------------------------------------------------------------------
+
 $rating-color: #f1c40f;
 $rating-empty: #ccc;
 
-// Primary shades
-$primary-light: color.adjust($primary, $lightness: 10%);
-$primary-dark:  color.adjust($primary, $lightness: -10%);
+// ---------------------------------------------------------------------------
+// 6) SHADOW COLOR HELPERS
+// ---------------------------------------------------------------------------
+
+$shadow-light: #a4a4a4;
+$shadow-dark:  #464646;
+
+$shadow-light-rgb:164, 164, 164;
+$shadow-dark-rgb:70, 70, 70;
+
+// ---------------------------------------------------------------------------
+// 7) BACKGROUND & TEXT DEFAULTS
+// ---------------------------------------------------------------------------
+
+$body-bg:    #ffffff;
+$body-color: #ffffff;
+
+$heading-color:   inherit;
+$paragraph-color: inherit;
+
+// ---------------------------------------------------------------------------
+// 8) GRADIENTS
+// ---------------------------------------------------------------------------
+
+$gradient-primary:         linear-gradient(to right, $first-middle, $first-light);
+$gradient-primary-strong:  linear-gradient(to right, $primary, $first-light);
+$gradient-secondary:       linear-gradient(to right, $primary, $secondary);
+
+// ---------------------------------------------------------------------------
+// 9) UTILITY RGBA COLORS
+// ---------------------------------------------------------------------------
+
+$cards-rgba:         rgba(255, 254, 254, 0.8);
+$preview-cards-rgba: rgba(58, 90, 123, 0.2);
+$carousel-rgba:      rgba(52, 52, 52, 0.3);
+$arrow-bg-rgba:      rgba(52, 52, 52, 0.6);

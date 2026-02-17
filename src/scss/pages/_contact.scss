@@ -33,7 +33,7 @@ Tablet a mobile bloky sú takmer identické
     color: $first-light;
     text-align: center;
     color: $light;
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 
   .contact-container {
@@ -45,13 +45,13 @@ Tablet a mobile bloky sú takmer identické
 
   .divider-custom-line {
     color: $light;
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: $light;
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 }
 #contact .btn.menu-item {

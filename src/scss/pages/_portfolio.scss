@@ -34,13 +34,13 @@
   }
 
   h2 {
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 
   .divider-custom-icon {
     margin: 0 0.5rem;
     color: $body-color;
-    @include text-shadow();
+    @include text-shadow(2px);
   }
 }
 

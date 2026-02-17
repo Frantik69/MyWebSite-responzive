@@ -1,0 +1,11 @@
+// ============================================================================
+// LOGO — THEME VARIABLES
+// ============================================================================
+
+@use "../../design-system/shadows" as *;
+
+// Logo shadow (custom)
+$logo-light-box-shadow: $shadow-xs;
+
+// Optional: text shadow for logo text
+$logo-text-shadow: $text-shadow-sm;

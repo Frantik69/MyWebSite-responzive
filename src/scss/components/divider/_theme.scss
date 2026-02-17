@@ -1,0 +1,9 @@
+// ============================================================================
+// DIVIDER — THEME VARIABLES
+// ============================================================================
+
+@use "../../design-system/shadows" as *;
+
+// Divider shadows
+$divider-line-shadow: $drop-shadow-sm;
+$divider-icon-shadow: $drop-shadow-sm;

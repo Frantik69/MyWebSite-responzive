@@ -1,0 +1,12 @@
+// ============================================================================
+// MODAL — THEME VARIABLES
+// ============================================================================
+
+@use "../../design-system/shadows" as *;
+
+// Bubble shadow
+$modal-bubble-box-shadow: $shadow-lg;
+
+// Text shadows
+$modal-bubble-text-shadow: $drop-shadow-md;
+$modal-confirm-buttons-text-shadow: $drop-shadow-md;
