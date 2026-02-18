@@ -1,62 +1,63 @@
-@use "../design-system/index" as *;
+// ----------------------------------------
+// Page: Skills
+// Zoznam zručností (hlavná sekcia)
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
 // ===============================================
-// SKILLS – ZOZNAM ZRUČNOSTÍ (HLAVNÁ SEKCIA)
+// SKILLS – HLAVNÝ WRAPPER
 // ===============================================
 
 #skills {
-  min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid $dark;
-  @include gradient-bg($first-middle, $first-light, to right);
-  @include rounded(0.5rem);
+  min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
+  border: 1px solid ds.$dark;
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  @include ds.rounded(ds.$radius-base);
   width: 100%;
 
   .row {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 0.2rem;
+    flex-wrap: wrap;
+    gap: ds.$space-xs;
   }
 
   h2 {
-    @include text-shadow(2px);
+    @include ds.text-shadow(2px);
     text-align: center;
   }
 
   .divider-custom-icon {
-    margin: 0 0.5rem;
-    color: $light;
-    @include text-shadow(2px);
+    margin: 0 ds.$space-sm;
+    color: ds.$light;
+    @include ds.text-shadow(2px);
   }
 
   .skills-container {
     width: 100%;
-    max-width: $container-max-width;
+    max-width: ds.$container-max-width;
     margin: 0 auto;
-    padding: 2rem 0.5rem;
+    padding: ds.$space-xl ds.$space-sm;
 
     .skills-page {
-      @include gradient-bg($primary, $first-light, to right);
-      padding-left: 1.3rem;
-      padding-right: 1rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      color: $dark;
-      border-radius: $radius-base;
-      border: 1px solid $dark;
-      @include bubble-box-shadow;
+      @include ds.gradient-bg(ds.$primary, ds.$first-light);
+      padding: ds.$space-sm ds.$space-md;
+      color: ds.$dark;
+      border-radius: ds.$radius-base;
+      border: 1px solid ds.$dark;
+      @include ds.bubble-box-shadow;
 
+      // Skill-card layout rieši komponent
       .skill-card {
-        // layout rieši components/_skill-card.scss
 
         .skill-title {
-          font-size: $font-size-lg;
+          font-size: ds.$font-size-lg;
           margin: 0;
         }
 
         .skill-desc {
-          flex: 0 0 80%;
-          max-width: 80%;
+          flex: 1 1 auto;
           opacity: 0;
           max-height: 0;
           overflow: hidden;
@@ -67,15 +68,12 @@
         .skill-desc.show {
           opacity: 1;
           max-height: 300px;
-          margin-left: 0;
-          background: $cards-rgba;
-          padding: 1rem;
-          @include rounded(0.5rem);
+          background: ds.$cards-rgba;
+          padding: ds.$space-md;
+          @include ds.rounded(ds.$radius-base);
           text-align: left;
-          font-size: $font-size-base;
-          flex: 1 1 auto;
-          max-width: none;
-          @include bubble-box-shadow;
+          font-size: ds.$font-size-base;
+          @include ds.bubble-box-shadow;
         }
       }
     }
@@ -83,17 +81,16 @@
 }
 
 // ===============================================
-// RESPONSIVE SKILLS UTILITIES
+// RESPONSIVE – TABLET LANDSCAPE
 // ===============================================
 
-@include tablet-landscape {
+@include ds.tablet-landscape {
   #skills .skills-container {
     width: 90vw;
   }
 
   #skills .skills-page {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: ds.$space-md;
   }
 
   #skills .row {
@@ -101,9 +98,13 @@
   }
 }
 
-@include tablet {
+// ===============================================
+// RESPONSIVE – TABLET
+// ===============================================
+
+@include ds.tablet {
   #skills {
-    padding: 2rem 0.5rem;
+    padding: ds.$space-xl ds.$space-sm;
   }
 
   #skills .skills-container {
@@ -114,14 +115,17 @@
   }
 
   #skills .skills-page {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-inline: ds.$space-md;
   }
 }
 
-@include mobile {
+// ===============================================
+// RESPONSIVE – MOBILE
+// ===============================================
+
+@include ds.mobile {
   #skills {
-    padding: 2rem 0.5rem;
+    padding: ds.$space-xl ds.$space-sm;
   }
 
   #skills .skills-container {
@@ -132,8 +136,7 @@
   }
 
   #skills .skills-page {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-inline: ds.$space-md;
   }
 
   #skills h2 {
@@ -143,33 +146,31 @@
 
   #skills h3 {
     text-align: center;
-    font-size: $font-size-sm;
+    font-size: ds.$font-size-sm;
   }
 
   #skills .row {
     flex-direction: column;
-    gap: 0 !important;
+    gap: 0;
   }
 
   .skill-card {
-    gap: 1.2rem !important;
     width: 100%;
+    gap: ds.$space-lg;
   }
 
   .skill-card .skill-left {
     flex: 0 0 20%;
     max-width: 20%;
     min-height: 2rem;
-    @include flex-column;
+    @include ds.flex-column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0;
   }
 
   .skill-card .skill-desc {
-    flex: 0 0 80%;
-    max-width: 80%;
+    flex: 1 1 auto;
     opacity: 0;
     max-height: 0;
     overflow: hidden;
@@ -179,22 +180,15 @@
   }
 
   .skill-card .skill-desc.show {
-    max-width: 100vw;
     width: 100%;
-    box-sizing: border-box;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
-    margin-left: 0;
-    padding: 1rem;
+    max-width: 100%;
+    padding: ds.$space-md;
 
     opacity: 1;
     max-height: 500px;
 
-    background: $cards-rgba;
-    @include rounded(0.5rem);
-    font-size: $font-size-sm;
-    width: 100%;
-    overflow-wrap: break-word;
+    background: ds.$cards-rgba;
+    @include ds.rounded(ds.$radius-base);
+    font-size: ds.$font-size-sm;
   }
 }

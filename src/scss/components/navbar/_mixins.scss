@@ -1,12 +1,9 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
-// Base: Mixins
-// Globálne drobné utility, ktoré nepatria
-// do design‑systemu ani do layout mixinov
+// Base utilities
 // ----------------------------------------
 
-// Reset pre text v logu (používaš v navbar)
 @mixin logo-text-reset {
   margin: 0;
   line-height: 1;
@@ -14,11 +11,6 @@
 
 // ----------------------------------------
 // Layout Mixins: Navbar
-// Základné bloky a responzívne layouty
-// ----------------------------------------
-
-// ----------------------------------------
-// BASE STRUCTURE
 // ----------------------------------------
 
 @mixin navbar-base {
@@ -26,16 +18,16 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: $navbar-height;
-  z-index: $z-navbar;
-  border-radius: $radius-base;
-  border: 1px solid $dark;
+  height: ds.$navbar-height;
+  z-index: ds.$z-navbar;
+  border-radius: ds.$radius-base;
+  border: 1px solid ds.$dark;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding-inline: $space-md;
+  padding-inline: ds.$space-md;
   overflow-x: clip;
 }
 
@@ -49,10 +41,10 @@
 @mixin navbar-logo {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 
   img.logo {
-    height: $navbar-logo-height;
+    height: ds.$navbar-logo-height;
     display: block;
   }
 
@@ -66,7 +58,7 @@
 @mixin navbar-weather {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 
   img.icon-24 {
     height: 3rem;
@@ -77,7 +69,7 @@
 @mixin navbar-right {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 }
 
 @mixin navbar-toggler-base {
@@ -86,13 +78,13 @@
 }
 
 // ----------------------------------------
-// NAV LINKS
+// Nav links
 // ----------------------------------------
 
 @mixin nav-link-base {
   position: relative;
-  padding: $space-xs $space-sm;
-  border-radius: $radius-base;
+  padding: ds.$space-xs ds.$space-sm;
+  border-radius: ds.$radius-base;
   transition: transform 0.2s ease;
   display: flex;
   align-items: center;
@@ -108,27 +100,27 @@
 }
 
 // ----------------------------------------
-// MOBILE MENU BOX (moved from base mixins)
+// Mobile menu box
 // ----------------------------------------
 
 @mixin mobile-menu-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: $space-md;
-  @include gradient-bg($primary, $secondary, to right);
-  @include rounded($radius-base);
+  padding: ds.$space-md;
+  @include ds.gradient-bg(ds.$primary, ds.$secondary, to right);
+  @include ds.rounded(ds.$radius-base);
 }
 
 // ----------------------------------------
-// RESPONSIVE LAYOUTS
+// Responsive layouts
 // ----------------------------------------
 
 @mixin navbar-mobile-layout {
   #navbarResponsive {
     display: none;
     flex-direction: column;
-    gap: $space-sm;
+    gap: ds.$space-sm;
   }
 
   #navbarResponsive.show {

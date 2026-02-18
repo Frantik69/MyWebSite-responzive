@@ -1,9 +1,9 @@
-@use "../design-system/index" as *;
-
 // ----------------------------------------
 // Page: Home
-// Layout + Visual Styling
+// Layout + Visual Styling pre úvodnú sekciu
 // ----------------------------------------
+
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // BASE LAYOUT
@@ -14,24 +14,25 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  min-height: calc(100dvh - ($navbar-height + $copyright-height));
+
+  min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   width: 100%;
   max-width: 100%;
-  padding-inline: $space-md;
+  padding-inline: ds.$space-md;
 
-  // Visual styling
-  background-image: linear-gradient(to right, $first-middle, $first-light);
-  border: 1px solid rgba($dark, 0.4);
-  @include rounded($radius-base);
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  border: 1px solid rgba(ds.$dark, 0.4);
+  @include ds.rounded(ds.$radius-base);
 }
 
 #home .home-container {
   width: 100%;
   max-width: 70rem;
   margin: 0 auto;
+
   display: flex;
   flex-direction: row;
-  gap: $space-xl;
+  gap: ds.$space-xl;
 }
 
 #home .left-text {
@@ -39,7 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: $space-lg;
+  gap: ds.$space-lg;
 }
 
 #home .left-top,
@@ -49,31 +50,39 @@
   align-items: center;
 }
 
+// ----------------------------------------
+// DIVIDER
+// ----------------------------------------
+
 #home .divider-custom {
   display: flex;
   align-items: center;
-  gap: $space-sm;
+  gap: ds.$space-sm;
   width: 100%;
 }
 
 #home .divider-custom-line {
   flex: 1;
   height: 2px;
-  background-color: $first-light;
+  background-color: ds.$first-light;
 }
 
 #home .divider-custom-icon,
 #home h1,
 #home p {
-  color: $first-light;
-  @include text-shadow-soft;
+  color: ds.$first-light;
+  @include ds.text-shadow-soft;
 }
+
+// ----------------------------------------
+// IMAGE
+// ----------------------------------------
 
 #home .img-fluid {
   display: block;
   max-width: 100%;
   height: auto;
-  @include bubble-box-shadow;
+  @include ds.bubble-box-shadow;
 }
 
 // ----------------------------------------
@@ -81,30 +90,30 @@
 // ----------------------------------------
 
 h1.main-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: $light;
+  font-size: ds.$font-size-xxl;
+  font-weight: ds.$font-weight-bold;
+  color: ds.$light;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: ds.$space-lg;
 }
 
 p.tagline {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: $light;
+  font-size: ds.$font-size-lg;
+  font-weight: ds.$font-weight-light;
+  color: ds.$light;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: ds.$space-lg;
 }
 
 .page-section-heading {
-  margin-bottom: 0.25rem;
+  margin-bottom: ds.$space-xxs;
 }
 
 // ----------------------------------------
 // RESPONSIVE
 // ----------------------------------------
 
-@include tablet-landscape {
+@include ds.tablet-landscape {
   #home {
     flex-direction: column;
     justify-content: center;
@@ -114,7 +123,7 @@ p.tagline {
     flex-direction: column;
     max-width: 100%;
     padding: 0;
-    gap: $space-lg;
+    gap: ds.$space-lg;
   }
 
   #home .img-fluid {
@@ -123,17 +132,17 @@ p.tagline {
   }
 }
 
-@include tablet {
+@include ds.tablet {
   #home .left-text {
-    margin-top: $space-md;
+    margin-top: ds.$space-md;
   }
 
   h1.main-title {
-    font-size: 2rem;
+    font-size: ds.$font-size-xl;
   }
 }
 
-@include mobile {
+@include ds.mobile {
   #home .left-bottom {
     padding-top: 0;
   }

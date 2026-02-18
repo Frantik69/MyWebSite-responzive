@@ -3,14 +3,12 @@
 // Minimalistický reset + normalize doplnky
 // ----------------------------------------
 
-// Box model
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-// Prevent mobile text auto-resize
 html,
 body {
   -webkit-text-size-adjust: 100%;
@@ -19,32 +17,27 @@ body {
   padding: 0;
 }
 
-// Normalize additions
 html {
   line-height: 1.15;
   -webkit-tap-highlight-color: transparent;
 }
 
-// Headings reset (visual styles sú v global.scss)
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-// Images
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-// Lists (visual styles sú v global.scss)
 ul, ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-// Form controls inherit font
 button,
 input,
 textarea {

@@ -1,109 +1,89 @@
+@use "../../design-system/index" as ds;
 @use "./mixins" as forms;
-@use "../../design-system/index" as *;
 
 // ----------------------------------------
 // Component: Forms
-// Layout + Visual Styling
 // ----------------------------------------
 
-// ----------------------------------------
-// BASE FORM LAYOUT
-// ----------------------------------------
-
+// Base form layout
 form {
   display: grid;
-  gap: $space-md;
+  gap: ds.$space-md;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* FORM GROUP */
+// Form group
 .form-group {
   @include forms.form-group;
 }
 
-/* LABEL */
+// Label
 label {
   @include forms.form-label;
-  color: $light; // moved from global.scss
-  text-shadow:
-    -1px -1px 0 black,
-     1px -1px 0 black,
-    -1px  1px 0 black,
-     1px  1px 0 black;
+  color: ds.$light;
+  @include ds.text-shadow(sm);
 }
 
-// ----------------------------------------
-// INPUTS & TEXTAREAS
-// ----------------------------------------
-
+// Inputs & textareas
 input,
 textarea,
 select {
   @include forms.form-input;
 
-  background: rgba($light, 0.9); // moved from global.scss
-  border: 1px solid rgba($dark, 0.3); // moved from global.scss
-  color: $dark;
-  @include shadow-default; // moved from global.scss
+  background: rgba(ds.$light, 0.9);
+  border: 1px solid rgba(ds.$dark, 0.3);
+  color: ds.$dark;
+  @include ds.shadow(sm);
 }
 
-/* TEXTAREA */
+// Textarea
 textarea {
   @include forms.form-textarea;
 }
 
-/* FOCUS STATES */
+// Focus states
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: $primary;
-  box-shadow: 0 0 6px rgba($primary, 0.4); // moved from global.scss
+  border-color: ds.$primary;
+  box-shadow: 0 0 6px rgba(ds.$primary, 0.4);
 }
 
-/* PLACEHOLDER */
+// Placeholder
 ::placeholder {
-  color: $gray-500;
+  color: ds.$gray-500;
   opacity: 1;
 }
 
-// ----------------------------------------
-// FORM ROWS
-// ----------------------------------------
-
+// Form rows
 .form-row {
   @include forms.form-row;
   @include forms.form-responsive;
 }
 
-// ----------------------------------------
-// CHECKBOX & RADIO
-// ----------------------------------------
-
+// Checkbox & radio
 input[type="checkbox"],
 input[type="radio"] {
   @include forms.form-check;
 }
 
-// ----------------------------------------
-// BUTTONS
-// ----------------------------------------
-
+// Buttons
 button,
 input[type="submit"] {
   @include forms.form-button;
 
-  background: linear-gradient(to right, $primary, $secondary); // moved from global.scss
-  color: $light;
-  @include shadow-default; // moved from global.scss
+  background: ds.$gradient-secondary;
+  color: ds.$light;
+  @include ds.shadow(sm);
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 button:hover,
 input[type="submit"]:hover {
   transform: scale(1.05);
-  background: linear-gradient(to right, $secondary, $primary); // moved from global.scss
+  background: ds.$gradient-primary-strong;
 }
 
 button:active,
@@ -111,26 +91,23 @@ input[type="submit"]:active {
   transform: scale(0.97);
 }
 
-// ----------------------------------------
-// RESPONSIVE
-// ----------------------------------------
-
-@include mobile {
+// Responsive
+@include ds.mobile {
   form {
-    padding: 0 $space-sm;
+    padding: 0 ds.$space-sm;
   }
 
   input,
   textarea {
-    padding: $space-sm $space-md;
+    padding: ds.$space-sm ds.$space-md;
   }
 
   button,
   input[type="submit"] {
-    padding: $space-sm $space-lg;
+    padding: ds.$space-sm ds.$space-lg;
   }
 
   label {
-    font-size: $font-size-base;
+    font-size: ds.$font-size-base;
   }
 }

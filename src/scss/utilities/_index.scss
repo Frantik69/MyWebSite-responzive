@@ -3,9 +3,9 @@
 // Import všetkých utility modulov
 // ----------------------------------------
 
-@use "./spacing";
-@use "./flex";
 @use "./display";
+@use "./flex";
 @use "./text";
+@use "./spacing";
 @use "./visibility";
 @use "./helpers";

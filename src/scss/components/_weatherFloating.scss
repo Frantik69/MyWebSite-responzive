@@ -1,33 +1,9 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
 /* ===============================================
-   weatherFloating – samostatný prvok počasia
+   FLOATING WEATHER WIDGET
    =============================================== */
-
-/* TODO - Farby natvrdo (base.$dark je OK, ale ostatné rgba sú natvrdo)  
-→ duplicita s premennými.
-
-Veľkosti ikon natvrdo (48px, 80px)  
-→ duplicita s _icons.scss.
-
-Breakpoint mixiny (@include desktop-down)  
-→ duplicita s Bootstrap breakpoints.
-
-3 rôzne media queries pre orientáciu  
-→ veľmi komplikované, dá sa zjednodušiť.
-
-display: none !important  
-→ môže kolidovať s JS, ktorý pridáva .visible.
-
-Animácia weather-sway je natvrdo  
-→ duplicita s inými animáciami (bubblePop, slideInRight).
-
-pointer-events: none v default stave  
-→ ak JS zlyhá, prvok bude navždy neklikateľný.
-
-Z-index 1000  
-→ koliduje s navbarom (tiež 1000). */
 
 #weatherFloating {
   opacity: 0;
@@ -37,16 +13,16 @@ Z-index 1000
   position: fixed;
   right: 5rem;
   top: 7rem;
-  z-index: 1000;
+  z-index: ds.$z-overlay;
 
-  @include flex-column;
+  @include ds.flex-column;
   align-items: flex-end;
   text-align: right;
 
   gap: 0.3rem;
   text-decoration: none;
 
-  color:$dark;
+  color: ds.$dark;
 
   font-size: clamp(0.8rem, 1.2vh, 1.2rem);
 }
@@ -56,13 +32,13 @@ Z-index 1000
   pointer-events: auto;
 }
 
-
-
+/* ROW WITH ICON + TEMP */
 #weatherFloating .weather-row {
-  @include flex-row-center;
+  @include ds.flex-row-center;
   gap: clamp(0.3rem, 1vw, 0.8rem);
 }
 
+/* ICON */
 #weatherFloating .weather-icon {
   width: clamp(48px, 5vw, 80px);
   height: auto;
@@ -70,17 +46,22 @@ Z-index 1000
   transform-origin: 50% 60%;
 }
 
+/* TEMPERATURE */
 #weatherFloating .weather-temp {
   font-size: clamp(1.2rem, 2.5vw, 3rem);
-  font-weight: 400;
+  font-weight: ds.$font-weight-regular;
 }
 
+/* CITY NAME */
 #weatherFloating .weather-city {
   font-size: clamp(0.7rem, 1vw, 1.2rem);
   opacity: 0.9;
 }
 
-/* animácia ikonky */
+/* ===============================================
+   ANIMATION
+   =============================================== */
+
 @keyframes weather-sway {
   0%   { transform: rotate(5deg); }
   25%  { transform: rotate(5deg); }
@@ -89,36 +70,35 @@ Z-index 1000
   100% { transform: rotate(5deg); }
 }
 
+/* ===============================================
+   RESPONSIVE POSITIONING
+   =============================================== */
 
-@include desktop-down {
-  
+@include ds.desktop-down {
   #weatherFloating {
     right: 2rem;
     top: 6rem;
   }
 }
 
+/* LANDSCAPE TABLETS */
 @media (min-width: 768px) and (orientation: landscape) {
   #weatherFloating {
     display: flex;
   }
 }
 
-@media (max-width: 991px) and (orientation: portrait) {
-  #weatherFloating {
-    display: none !important;
-  }
-}
-
-@media (max-width: 767px) and (orientation: landscape) {
+/* PORTRAIT TABLETS + SMALL LANDSCAPE PHONES */
+@media (max-width: 991px) and (orientation: portrait),
+       (max-width: 767px) and (orientation: landscape) {
   #weatherFloating {
     display: none !important;
   }
 }
 
 /* ===============================================
-   FLOATING WEATHER – NEW SELECTOR SUPPORT
-=============================================== */
+   NEW SELECTOR SUPPORT
+   =============================================== */
 
 .float-weather-icon {
   width: clamp(48px, 5vw, 80px);
@@ -129,7 +109,7 @@ Z-index 1000
 
 .float-weather-temp {
   font-size: clamp(1.2rem, 2.5vw, 3rem);
-  font-weight: 400;
+  font-weight: ds.$font-weight-regular;
 }
 
 .float-weather-city {

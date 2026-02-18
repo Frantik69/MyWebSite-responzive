@@ -1,4 +1,4 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Certificates Carousel
@@ -11,7 +11,7 @@
 
 .certificates-carousel {
   width: 65%;
-  margin: $space-xl auto 0 auto;
+  margin: ds.$space-xl auto 0 auto;
   display: flex;
   justify-content: center;
 }
@@ -20,34 +20,34 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: $radius-base;
+  border-radius: ds.$radius-base;
 }
 
 .cert-track {
   display: flex;
-  gap: $space-md;
-  padding: $space-sm;
+  gap: ds.$space-md;
+  padding: ds.$space-sm;
   transition: transform 0.4s ease;
 }
 
 .cert-track img {
   height: 90px;
   width: auto;
-  border-radius: $radius-sm;
+  border-radius: ds.$radius-sm;
   transition: transform 0.2s ease;
 }
 
 // ----------------------------------------
-// VISUAL STYLING (moved from global.scss)
+// VISUAL STYLING
 // ----------------------------------------
 
 .cert-track-wrapper {
-  border: 1px solid $gray;
-  background: $carousel-rgba;
+  border: 1px solid ds.$gray;
+  background: ds.$carousel-rgba;
 }
 
 .cert-track img {
-  box-shadow: 2px 2px 4px rgba($dark, 0.6);
+  box-shadow: 2px 2px 4px rgba(ds.$dark, 0.6);
 }
 
 .cert-track img:hover {
@@ -55,28 +55,28 @@
 }
 
 .cert-arrow {
-  background: $arrow-bg-rgba;
-  color: $first-light;
+  background: ds.$arrow-bg-rgba;
+  color: ds.$first-light;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: $z-overlay;
-  padding: $space-xs $space-sm;
+  z-index: ds.$z-overlay;
+  padding: ds.$space-xs ds.$space-sm;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .cert-arrow.left {
-  left: $space-xs;
+  left: ds.$space-xs;
 }
 
 .cert-arrow.right {
-  right: $space-xs;
+  right: ds.$space-xs;
 }
 
 .cert-arrow:hover {
-  background: $dark;
+  background: ds.$dark;
 }
 
 .cert-skeleton {
@@ -84,18 +84,17 @@
   z-index: 1;
 }
 
-
 // ----------------------------------------
 // RESPONSIVE
 // ----------------------------------------
 
-@include tablet-landscape {
+@include ds.tablet-landscape {
   .certificates-carousel {
     display: none;
   }
 }
 
-@include lg {
+@include ds.lg {
   .certificates-carousel {
     display: flex;
   }

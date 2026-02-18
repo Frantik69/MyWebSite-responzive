@@ -1,17 +1,16 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout: Section
-// Vertikálne odsadenie sekcií
 // ----------------------------------------
 
 .section {
-  padding-top: $space-lg;
-  padding-bottom: $space-lg;
+  padding-top: ds.$space-lg;
+  padding-bottom: ds.$space-lg;
 
-  @include desktop {
-    padding-top: $space-xl;
-    padding-bottom: $space-xl;
+  @include ds.desktop {
+    padding-top: ds.$space-xl;
+    padding-bottom: ds.$space-xl;
   }
 }
 
@@ -20,5 +19,5 @@
 // ----------------------------------------
 
 .page-section-heading {
-  margin-bottom: 0.25rem;
+  margin-bottom: ds.$space-xs;
 }

@@ -1,22 +1,29 @@
+@use "../../design-system/index" as ds;
 @use "./mixins" as cards;
-@use "../../design-system/index" as *;
 
 // ----------------------------------------
 // Component: Cards
-// Layout + Visual Styling
 // ----------------------------------------
 
-// ----------------------------------------
-// BASE LAYOUT (from layout mixins)
-// ----------------------------------------
-
+// BASE LAYOUT
 .card {
   @include cards.card-base;
   @include cards.card-responsive;
+
+  background: ds.$cards-rgba;
+  border: 1px solid rgba(ds.$dark, 0.2);
+  @include ds.shadow(sm);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  @include ds.shadow(sm);
+  transform: translateY(-2px);
 }
 
 .card-header {
   @include cards.card-header;
+  border-bottom: 1px solid rgba(ds.$dark, 0.15);
 }
 
 .card-body {
@@ -25,39 +32,16 @@
 
 .card-footer {
   @include cards.card-footer;
+  border-top: 1px solid rgba(ds.$dark, 0.15);
 }
 
-/* IMAGE CARDS */
+// IMAGE CARDS
 .card-image {
   @include cards.card-image;
-}
 
-// ----------------------------------------
-// VISUAL STYLING (moved from global.scss)
-// ----------------------------------------
-
-.card {
-  background: $cards-rgba;
-  border: 1px solid rgba($dark, 0.2);
-  @include shadow-default;
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  @include shadow-default;
-  transform: translateY(-2px);
-}
-
-.card-header {
-  border-bottom: 1px solid rgba($dark, 0.15);
-}
-
-.card-footer {
-  border-top: 1px solid rgba($dark, 0.15);
-}
-
-.card-image img {
-  @include bubble-box-shadow;
+  img {
+    @include ds.drop-shadow(sm);
+  }
 }
 
 // ----------------------------------------
@@ -65,17 +49,17 @@
 // ----------------------------------------
 
 .card-success {
-  background: rgba($success, 0.15);
+  background: rgba(ds.$success, 0.15);
 }
 
 .card-warning {
-  background: rgba($warning, 0.15);
+  background: rgba(ds.$warning, 0.15);
 }
 
 .card-danger {
-  background: rgba($danger, 0.15);
+  background: rgba(ds.$danger, 0.15);
 }
 
 .card-info {
-  background: rgba($info, 0.15);
+  background: rgba(ds.$info, 0.15);
 }

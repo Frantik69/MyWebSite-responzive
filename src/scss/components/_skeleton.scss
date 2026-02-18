@@ -1,20 +1,20 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ===============================================
-// SKELETON, KTORY KOPIRUJE VÝŠKU TEXTU
+// SKELETON – TEXT-LINE PLACEHOLDER
 // ===============================================
 
 .skeleton-line {
   height: 1em;
   width: 100%;
   margin-bottom: 0.6em;
-  border-radius: 4px;
+  border-radius: ds.$radius-sm;
 
   background: linear-gradient(
     90deg,
-    #d1d1d1 25%,
-    #e8e8e8 50%,
-    #d1d1d1 75%
+    ds.$gray-300 25%,
+    ds.$gray-200 50%,
+    ds.$gray-300 75%
   );
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite;
@@ -24,21 +24,30 @@
   width: 60%;
 }
 
-@keyframes skeleton-loading {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
+// ===============================================
+// SKELETON – CERTIFICATE PLACEHOLDER
+// ===============================================
 
 .cert-skeleton {
   width: 180px;
   height: 120px;
-  background: linear-gradient(90deg, #ccc 25%, #ddd 50%, #ccc 75%);
+  border-radius: ds.$radius-md;
+
+  background: linear-gradient(
+    90deg,
+    ds.$gray-300 25%,
+    ds.$gray-200 50%,
+    ds.$gray-300 75%
+  );
   background-size: 200% 100%;
-  border-radius: 8px;
   animation: skeleton-loading 1.5s infinite;
 }
 
+// ===============================================
+// ANIMATION
+// ===============================================
+
 @keyframes skeleton-loading {
-  0% { background-position: 200% 0; }
+  0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }

@@ -1,28 +1,22 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout: Helpers
-// Pomocné layoutové utility
 // ----------------------------------------
 
-// Wrapper pre širšie sekcie
 .wrapper {
   width: 100%;
-  max-width: $container-max-width;
+  max-width: ds.$container-max-width;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $space-md;
-  padding-right: $space-md;
+  padding-left: ds.$space-md;
+  padding-right: ds.$space-md;
 }
 
-// Full width element
 .full-width {
   width: 100%;
 }
 
-// Flex center helper
 .center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include ds.flex-center;
 }

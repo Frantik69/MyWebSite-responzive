@@ -1,56 +1,55 @@
-@use "../../design-system/index" as *;
-@use "./mixins" as *;
+@use "../../design-system/index" as ds;
+@use "./mixins" as nav;
 
 // ----------------------------------------
-// Component: Navbar (Desktop)
+// Navbar (Desktop)
 // ----------------------------------------
 
 #mainNav {
-  @include navbar-base;
+  @include nav.navbar-base;
 
-  // Vizualita
-  @include gradient-bg($primary, $secondary, to right);
-  border-bottom: 1px solid rgba($dark, 0.4);
-  color: $light;
-  @include text-shadow-strong;
+  @include ds.gradient-bg(ds.$primary, ds.$secondary, to right);
+  border-bottom: 1px solid rgba(ds.$dark, 0.4);
+  color: ds.$light;
+  @include ds.text-shadow(sm);
 }
 
 #mainNav .container-fluid {
-  @include navbar-container;
+  @include nav.navbar-container;
 }
 
 /* LOGO */
 #logo {
-  @include navbar-logo;
-  color: $light;
+  @include nav.navbar-logo;
+  color: ds.$light;
 
   img.logo {
-    height: $navbar-logo-height;
+    height: ds.$navbar-logo-height;
   }
 
   .logo-text h1 {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-bold;
+    font-size: ds.$font-size-xl;
+    font-weight: ds.$font-weight-bold;
   }
 
   .logo-text small {
-    font-size: $font-size-sm;
+    font-size: ds.$font-size-sm;
     opacity: 0.9;
   }
 }
 
 /* WEATHER NAV */
 #weatherNav {
-  @include navbar-weather;
-  color: $light;
+  @include nav.navbar-weather;
+  color: ds.$light;
 
   img.icon-24 {
-    @include drop-shadow(weather);
+    @include ds.drop-shadow(sm);
   }
 
   span {
-    font-size: $font-size-base;
-    font-weight: $font-weight-medium;
+    font-size: ds.$font-size-base;
+    font-weight: ds.$font-weight-medium;
   }
 }
 
@@ -64,42 +63,34 @@
 #navbarResponsive .navbar-nav {
   display: flex;
   flex-direction: row;
-  gap: $space-sm;
-}
-
-.navbar-nav .nav-item {
-  display: flex;
+  gap: ds.$space-sm;
 }
 
 .navbar-nav .nav-link {
-  @include nav-link-base;
-  color: $light;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  @include text-shadow-strong;
+  @include nav.nav-link-base;
+  color: ds.$light;
+  font-size: ds.$font-size-base;
+  font-weight: ds.$font-weight-semibold;
+  @include ds.text-shadow(xs);
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: rgba($first-middle, 0.4);
-  @include shadow(lg);
+  background-color: rgba(ds.$first-middle, 0.4);
+  @include ds.shadow(lg);
   transform: scale(1.05);
 }
 
 .navbar-nav .nav-link.active {
-  background-color: rgba($first-middle, 0.7);
-  @include shadow(lg);
-}
-
-.navbar-nav .nav-link.active:hover {
-  background-color: rgba($first-middle, 0.8);
+  background-color: rgba(ds.$first-middle, 0.7);
+  @include ds.shadow(lg);
 }
 
 /* HOVER BUBBLE */
 .navbar-nav .nav-link .hover-bubble {
-  background-color: rgba($second-middle, 0.8);
-  color: $light;
-  border: 1px solid rgba($light, 0.3);
-  @include shadow(lg);
+  background-color: rgba(ds.$second-middle, 0.8);
+  color: ds.$light;
+  border: 1px solid rgba(ds.$light, 0.3);
+  @include ds.shadow(sm);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -109,23 +100,15 @@
   animation: bubblePop 0.4s ease forwards;
 }
 
-/* LANGUAGE DROPDOWN */
-#languageDropdown .hover-bubble {
-  background-color: $cards-rgba;
-  color: $dark;
-  border: 1px solid $dark;
-  text-shadow: none;
-}
-
 /* RIGHT NAV */
 #rightNav {
-  @include navbar-right;
-  color: $light;
+  @include nav.navbar-right;
+  color: ds.$light;
 }
 
-/* TOGGLER – desktop hidden */
+/* FIX: toggler musí byť skrytý na desktopoch */
 .navbar-toggler {
-  display: none;
+  display: none !important;
 }
 
 /* RESET LINK DECORATION */

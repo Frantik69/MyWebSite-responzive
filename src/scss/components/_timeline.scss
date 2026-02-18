@@ -1,23 +1,23 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ===============================================
-// TIMELINE – VERTIKÁLNA ČASOVÁ OS (PORTFOLIO)
+// TIMELINE – VERTICAL PORTFOLIO TIMELINE
 // ===============================================
 
-// Lokálne premenné pre timeline (viazané na design systém)
-$timeline-line-from: $logo-color;
-$timeline-line-to:   $dark;
+// Local timeline variables (DS-based)
+$timeline-line-from: ds.$logo-color;
+$timeline-line-to:   ds.$dark;
 $timeline-dot-size:  0.7rem;
 
-// HLAVNÝ ZOZNAM TIMELINE
+// MAIN TIMELINE LIST
 .timeline {
   position: relative;
   list-style: none;
-  margin-bottom: $space-lg;
+  margin-bottom: ds.$space-lg;
   padding-left: 0;
 }
 
-// VERTIKÁLNA ČIARA NA ĽAVEJ STRANE
+// LEFT VERTICAL LINE
 .timeline::before {
   content: "";
   position: absolute;
@@ -28,28 +28,27 @@ $timeline-dot-size:  0.7rem;
   background: linear-gradient($timeline-line-from, $timeline-line-to);
 }
 
-// POLOŽKA TIMELINE – GRID LAYOUT (DÁTUM + OBSAH)
+// TIMELINE ITEM – GRID (DATE + CONTENT)
 .timeline-item {
   position: relative;
   display: grid;
-  // fluidnejší grid: dátum má min/max šírku, obsah zvyšok
   grid-template-columns: minmax(4.5rem, 6rem) 1fr;
-  column-gap: $space-md;
-  padding: $space-xs $space-sm;
+  column-gap: ds.$space-md;
+  padding: ds.$space-xs ds.$space-sm;
   align-items: flex-start;
 }
 
-// DÁTUM VĽAVO
+// DATE (LEFT SIDE)
 .timeline-date {
   justify-self: end;
-  white-space: nowrap; // nechávam podľa tvojho TODO
+  white-space: nowrap;
   text-transform: none;
-  font-weight: 700;
-  color: $danger;
-  font-size: $font-size-sm;
+  font-weight: ds.$font-weight-bold;
+  color: ds.$danger;
+  font-size: ds.$font-size-sm;
 }
 
-// BODKA NA ČIARE
+// DOT ON THE LINE
 .timeline-item::before {
   content: "";
   position: absolute;
@@ -57,31 +56,31 @@ $timeline-dot-size:  0.7rem;
   top: 1.15rem;
   width: $timeline-dot-size;
   height: $timeline-dot-size;
-  background: $dark;
+  background: ds.$dark;
   border-radius: 50%;
-  z-index: $z-content;
+  z-index: ds.$z-content;
 }
 
-// OBSAH POLOŽKY
+// CONTENT (RIGHT SIDE)
 .timeline-content {
   text-align: start;
-  font-weight: 600;
-  font-size: $font-size-xs;
+  font-weight: ds.$font-weight-semibold;
+  font-size: ds.$font-size-xs;
   padding-left: 0;
 }
 
-// VNORENÝ ZOZNAM
+// SUBLIST
 .sublist {
   list-style: none;
   font-weight: 350;
   text-align: start;
-  font-size: $font-size-xs;
+  font-size: ds.$font-size-xs;
   line-height: 1rem;
   margin-top: 0.3rem;
   padding-left: 0.3rem;
 }
 
-// POLOŽKY SUBLISTU
+// SUBLIST ITEMS
 .sublist li {
   position: relative;
   padding-left: 0.7rem;
@@ -98,21 +97,22 @@ $timeline-dot-size:  0.7rem;
 // RESPONSIVE TIMELINE UTILITIES
 // ===============================================
 
-@include mobile {
+@include ds.mobile {
+
   .timeline-item {
     grid-template-columns: minmax(3.5rem, 4.5rem) 1fr;
-    column-gap: $space-sm;
+    column-gap: ds.$space-sm;
   }
 
   .timeline-date {
-    font-size: $font-size-xs;
+    font-size: ds.$font-size-xs;
   }
 
   .timeline-content {
-    font-size: $font-size-xs;
+    font-size: ds.$font-size-xs;
   }
 
   .sublist {
-    font-size: $font-size-xs;
+    font-size: ds.$font-size-xs;
   }
 }

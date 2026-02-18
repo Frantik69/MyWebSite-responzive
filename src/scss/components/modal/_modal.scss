@@ -1,26 +1,17 @@
-@use "./mixins" as *;
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
+@use "./mixins" as modal;
 
 // ----------------------------------------
 // Component: Modal
-// Layout + Visual Styling + Animations
 // ----------------------------------------
 
-// ----------------------------------------
 // BACKDROP
-// ----------------------------------------
-
 .modal-backdrop {
-  @include modal-backdrop-base;
+  @include modal.modal-backdrop-base;
 
-  background: rgba($dark, 0.6);
-
-  /* Safari blur support */
+  background: rgba(ds.$dark, 0.6);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 .modal-backdrop.show {
@@ -28,14 +19,9 @@
   opacity: 1;
 }
 
-// ----------------------------------------
 // MODAL WRAPPER
-// ----------------------------------------
-
 .modal {
-  @include modal-base;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  @include modal.modal-base;
 }
 
 .modal.show {
@@ -43,31 +29,15 @@
   pointer-events: auto;
 }
 
-// ----------------------------------------
 // DIALOG
-// ----------------------------------------
-
 .modal-dialog {
-  @include modal-dialog-base;
+  @include modal.modal-dialog-base;
 
-  background: $cards-rgba;
-  border: 1px solid rgba($dark, 0.3);
-  @include shadow-default;
+  background: ds.$cards-rgba;
+  border: 1px solid rgba(ds.$dark, 0.3);
+  @include ds.shadow(md);
 
-  /* Default animation state */
-  transform: scale(0.95);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.modal.show .modal-dialog {
-  transform: scale(1);
-}
-
-// ----------------------------------------
-// OPTIONAL: SLIDE-DOWN ANIMATION
-// ----------------------------------------
-
-.modal-dialog {
+  /* Slide-down animation */
   transform: translateY(-20px);
 }
 
@@ -75,45 +45,36 @@
   transform: translateY(0);
 }
 
-// ----------------------------------------
 // HEADER
-// ----------------------------------------
-
 .modal-header {
-  @include modal-section;
+  @include modal.modal-section;
 
-  background: rgba($dark, 0.1);
-  border-bottom: 1px solid rgba($dark, 0.2);
+  background: rgba(ds.$dark, 0.1);
+  border-bottom: 1px solid rgba(ds.$dark, 0.2);
 
   h5 {
-    color: $light;
-    @include text-shadow-soft;
+    color: ds.$light;
+    @include ds.text-shadow(xs);
   }
 }
 
-// ----------------------------------------
 // BODY
-// ----------------------------------------
-
 .modal-body {
-  @include modal-section;
-  color: $light;
+  @include modal.modal-section;
+  color: ds.$light;
 }
 
-// ----------------------------------------
 // FOOTER
-// ----------------------------------------
-
 .modal-footer {
-  @include modal-section;
+  @include modal.modal-section;
 
-  background: rgba($dark, 0.05);
-  border-top: 1px solid rgba($dark, 0.2);
+  background: rgba(ds.$dark, 0.05);
+  border-top: 1px solid rgba(ds.$dark, 0.2);
 
   button {
-    background: linear-gradient(to right, $primary, $secondary);
-    color: $light;
-    @include shadow-default;
+    background: ds.$gradient-secondary;
+    color: ds.$light;
+    @include ds.shadow(sm);
     transition: transform 0.2s ease;
   }
 
@@ -126,45 +87,41 @@
   }
 }
 
-// ==========================================
-// OVERLAY PRE CUSTOM MODALY (GitHub, Weather, PDF)
-// ==========================================
+// ----------------------------------------
+// OVERLAY (GitHub, Weather, PDF)
+// ----------------------------------------
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  display: none;              // JS prepína na "flex"
+  inset: 0;
+  display: none;
   justify-content: center;
   align-items: center;
 
-  background: rgba($dark, 0.6);
+  background: rgba(ds.$dark, 0.6);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 
-  z-index: 9999;
+  z-index: ds.$z-max;
 }
 
 .modal-bubble {
-  background: $cards-rgba;
-  border: 1px solid rgba($dark, 0.3);
-  border-radius: 14px;
-  padding: 1.25rem 1.75rem;
-  @include shadow-default;
+  background: ds.$cards-rgba;
+  border: 1px solid rgba(ds.$dark, 0.3);
+  border-radius: ds.$radius-lg;
+  padding: ds.$space-lg ds.$space-xl;
+  @include ds.shadow(lg);
 }
 
 .pdf-wrapper {
-  background: $cards-rgba;
-  border: 1px solid rgba($dark, 0.3);
-  border-radius: 10px;
-  padding: 1.5rem;
+  background: ds.$cards-rgba;
+  border: 1px solid rgba(ds.$dark, 0.3);
+  border-radius: ds.$radius-md;
+  padding: ds.$space-xl;
   max-width: 90vw;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  @include shadow-default;
+  @include ds.shadow(md);
 }

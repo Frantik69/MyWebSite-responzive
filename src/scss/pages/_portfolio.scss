@@ -1,46 +1,38 @@
-@use "../design-system/index" as *;
+// ----------------------------------------
+// Page: Portfolio
+// Hlavná sekcia portfólia (profilová stránka)
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
-/*TODO -❗ 2. Prepisuješ Bootstrap .list-unstyled cez @extend → @extend je nebezpečný, môže spôsobiť: nafúknutie CSS, nečakané prepisy, konflikty v iných sekciách
-.knowledge {
-  @extend .list-unstyled;
-}
-❗ 3. .portfolio-content a .portfolio-container majú pevné šírky (65vw) → na veľkých monitoroch to vyzerá úzke → na menších monitoroch to môže spôsobiť overflow
-❗ 4. .portfolio-left a .portfolio-right majú pevné min-width: 300px → môže spôsobiť horizontálny scroll na mobiloch → duplicita s mobile blokom, kde to rušíš
-❗ 5. .profile-photo { width: 300px; } → natvrdo → neadaptívne → duplicita s mobile override (220px)
-❗ 6. .knowledge-columns duplicuje Bootstrap grid → Bootstrap už rieši: flex, wrap, columns
-❗ 7. .timeline je definovaná tu aj v components/_timeline.scss → duplicita → 2 rôzne verzie timeline v projekte
-❗ 8. .skill-card definovaná tu aj v components/_skill-card.scss → duplicita → 2 rôzne verzie skill-card v projekte
-❗ 9. Breakpoint mixiny (@include mobile, @include tablet, @include tablet-landscape) → duplicita s Bootstrap breakpoints → CSS je 3× väčšie, ako musí byť
-❗ 10. Mobile blok je extrémne dlhý a prepisuje všetko → veľa duplicít → prepisuje desktop aj tablet verziu → ťažké na údržbu
-❗ 11. .timeline .timeline-item má úplne inú štruktúru ako timeline v components → 2 rôzne timeline systémy → JS môže zlyhať, ak sa spolieha na triedy
-❗ 12. .aboutPreview má hover scale(1.1) → spôsobuje layout shift → nevyzerá dobre pri rýchlom pohybe myši*/
-
 // ===============================================
-// PORTFOLIO – HLAVNÁ SEKCIA PROFILU
+// PORTFOLIO – HLAVNÝ WRAPPER
 // ===============================================
 
 #portfolio {
-  min-height: calc(100dvh - ($navbar-height + $copyright-height));
+  min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   text-align: center;
-  background-image: linear-gradient(to right, $first-middle, $first-light);
-  border: 1px solid $dark;
-  @include rounded(0.5rem);
+
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  border: 1px solid ds.$dark;
+  @include ds.rounded(ds.$radius-base);
 
   .portfolio-container {
-    width: 65vw;
+    width: 100%;
+    max-width: 70rem;
     margin: 0 auto;
-    padding: 2rem 0.5rem;
+    padding: ds.$space-xl ds.$space-sm;
   }
 
   h2 {
-    @include text-shadow(2px);
+    @include ds.text-shadow(2px);
   }
 
   .divider-custom-icon {
-    margin: 0 0.5rem;
-    color: $body-color;
-    @include text-shadow(2px);
+    margin: 0 ds.$space-sm;
+    color: ds.$body-color;
+    @include ds.text-shadow(2px);
   }
 }
 
@@ -49,13 +41,15 @@
 // ===============================================
 
 .portfolio-content {
-  width: 65vw;
+  width: 100%;
+  max-width: 70rem;
   margin: 0 auto;
+
   display: flex;
   flex-wrap: wrap;
+  gap: ds.$space-lg;
 
-  @include bubble-box-shadow;
-
+  @include ds.bubble-box-shadow;
 }
 
 // ===============================================
@@ -64,91 +58,80 @@
 
 .portfolio-left {
   flex: 1;
-  min-width: 300px;
-  background-color: $primary;
-  color: $body-color;
-  padding: 1rem;
-  @include flex-column;
+  min-width: 260px;
+
+  background-color: ds.$primary;
+  color: ds.$body-color;
+
+  padding: ds.$space-md;
+  @include ds.flex-column;
   justify-content: space-between;
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
-  border: 1px solid $dark;
-  @include rounded($radius-base);
+
+  border: 1px solid ds.$dark;
+  @include ds.rounded(ds.$radius-base);
 
   .profile-photo {
-    width: 300px;
-    margin-bottom: 1rem;
-    
+    width: clamp(180px, 30vw, 260px);
+    margin-bottom: ds.$space-md;
   }
 
   .profile-name {
     margin: 0;
     text-align: center;
-    font-size: $font-size-lg;
+    font-size: ds.$font-size-lg;
   }
 
   .profile-position {
     font-style: italic;
     text-align: center;
-    font-size: $font-size-md;
+    font-size: ds.$font-size-md;
   }
 
   .profile-divider {
     width: 80%;
-    border-color: $body-color;
-    margin: 1rem auto;
+    border-color: ds.$body-color;
+    margin: ds.$space-md auto;
   }
 
   .aboutPreview {
     display: block;
     width: 95%;
-    background: $preview-cards-rgba;
-    border-radius: $radius-base;
+    background: ds.$preview-cards-rgba;
+    border-radius: ds.$radius-base;
     text-align: left;
-    padding: 0.5rem;
+    padding: ds.$space-sm;
     line-height: 1.3;
     margin: 0 auto;
-    color: $body-color;
+    color: ds.$body-color;
     text-decoration: none;
-    font-size: $font-size-xs;
-    transition: transform 0.25s ease;
+    font-size: ds.$font-size-xs;
+    transition: transform 0.2s ease;
 
     &:hover {
-      text-decoration: none;
-      transform: scale(1.1);
+      transform: scale(1.03);
     }
   }
 
   .left-bottom {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: ds.$space-xl 0;
     text-align: center;
-    
+
     a {
       text-decoration: none;
-      color: $body-color;
-    }
-    
-    /* Desktop – odkazy neklikateľné */
-    a {
-      pointer-events: none;
-      cursor: default;
-      color: inherit;
+      color: ds.$body-color;
     }
 
-    /* Mobil – odkazy klikateľné */
-    @include mobile {
+    @include ds.mobile {
       a {
         pointer-events: auto;
         cursor: pointer;
-        color: $primary; // alebo inherit
+        color: ds.$primary;
       }
     }
 
     .contact-email {
-      font-size: clamp(0.8rem, 0.75vw, 1.1rem);
-      text-decoration: none;
-      color: $body-color;
+      font-size: clamp(0.8rem, 1vw, 1.1rem);
+      color: ds.$body-color;
 
       &:hover {
         text-decoration: underline;
@@ -156,9 +139,8 @@
     }
 
     .contact-phone {
-      font-size: clamp(0.8rem, 1.5rem, 1rem);
+      font-size: clamp(0.8rem, 1vw, 1rem);
     }
-
   }
 }
 
@@ -168,83 +150,81 @@
 
 .portfolio-right {
   flex: 2.5;
-  min-width: 300px;
-  background-color: $first-light;
-  padding-left: 2rem;
-  padding-right: 0;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  color: $dark;
-  border: 1px solid $dark;
-  @include rounded($radius-base);
-  border-top-right-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
+  min-width: 260px;
+
+  background-color: ds.$first-light;
+  padding: ds.$space-xl ds.$space-lg;
+  color: ds.$dark;
+
+  border: 1px solid ds.$dark;
+  @include ds.rounded(ds.$radius-base);
 
   .section-title {
     text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    font-size: $font-size-lg;
+    margin-bottom: ds.$space-lg;
+    font-size: ds.$font-size-lg;
   }
 
   .knowledge-columns {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+    gap: ds.$space-md;
+    margin-bottom: ds.$space-lg;
 
     .knowledge-col {
       flex: 1;
       min-width: 200px;
 
       h4 {
-        font-size: $font-size-md;
+        font-size: ds.$font-size-md;
       }
-
     }
   }
 
   .knowledge {
-    @extend .list-unstyled;
+    list-style: none;
+    padding: 0;
 
     li {
-      margin-bottom: 0.5rem;
-      position: relative;
-      font-size: $font-size-base;
+      margin-bottom: ds.$space-xs;
+      font-size: ds.$font-size-base;
     }
   }
 
   .section-divider {
-    margin: 1rem 0;
+    margin: ds.$space-md 0;
   }
 
+  // Timeline – používať komponentovú verziu
   .timeline {
-    @extend .list-unstyled;
+    list-style: none;
+    padding: 0;
 
     .timeline-item {
-      margin-bottom: 1.5rem;
+      margin-bottom: ds.$space-lg;
 
       .timeline-date {
-        font-weight: bold;
-        margin-bottom: 0.3rem;
-        font-size: $font-size-md;
+        font-weight: ds.$font-weight-bold;
+        margin-bottom: ds.$space-xxs;
+        font-size: ds.$font-size-md;
       }
 
       .timeline-content {
-        background: $cards-rgba;
-        padding: 1rem;
-        @include rounded(0.5rem);
-        @include bubble-box-shadow;
+        background: ds.$cards-rgba;
+        padding: ds.$space-md;
+        @include ds.rounded(ds.$radius-base);
+        @include ds.bubble-box-shadow;
 
         a.certifikat {
-          font-size: $font-size-md;
+          font-size: ds.$font-size-md;
         }
 
-        span{
-          font-size: $font-size-md;
+        span {
+          font-size: ds.$font-size-md;
         }
-        li{
-          font-size: $font-size-base;
+
+        li {
+          font-size: ds.$font-size-base;
           line-height: 1.2;
         }
       }
@@ -252,7 +232,7 @@
   }
 
   .portfolio-links {
-    margin-top: 2rem;
+    margin-top: ds.$space-xl;
   }
 }
 
@@ -260,94 +240,31 @@
 // RESPONSIVE
 // ===============================================
 
-@media (max-width: 320px) {
-  .portfolio-content {
-    width: 90vw;
-  }
-
-  .portfolio-container {
-    width: 90vw;
-  }
-}
-
-@include mobile {
+@include ds.mobile {
   #portfolio {
-    padding-left: 0;
-    padding-right: 0;
+    padding-inline: 0;
   }
 
-  #portfolio .portfolio-container,
-  #portfolio .portfolio-content,
-  #portfolio .portfolio-left,
-  #portfolio .portfolio-right {
-    width: 100%;
-
-    li {
-      font-size: $font-size-base;
-    }
+  .portfolio-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .portfolio-left .profile-photo {
-    width: 220px;
-  }
-
-  .portfolio-content {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    #aboutPreview {
-      font-size: $font-size-sm;
-    }
-  }
-
-  .timeline {
-    .timeline-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-left: 1rem;
-
-      .timeline-date {
-        width: 100%;
-        margin-bottom: 0.3rem;
-        text-align: left;
-        font-size: $font-size-md;
-      }
-
-      .timeline-content {
-        width: 100%;
-        margin-left: 0;
-        text-align: left;
-
-        .show {
-          font-size: $font-size-sm;
-        }
-      }
-    }
+    width: 180px;
   }
 }
 
-@include tablet {
+@include ds.tablet {
   .knowledge-columns {
     flex-direction: column;
-    gap: 1rem;
   }
 }
 
-@include tablet-landscape {
-  #portfolio .portfolio-container,
-  #portfolio .portfolio-content,
-  #portfolio .portfolio-left,
-  #portfolio .portfolio-right {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
+@include ds.tablet-landscape {
   .portfolio-content {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
 }

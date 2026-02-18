@@ -1,4 +1,4 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Buttons
@@ -7,11 +7,10 @@
 
 // ----------------------------------------
 // CONTACT SECTION OVERRIDE
-// ( pôvodný hack – teraz prepisaný na DS farbu )
 // ----------------------------------------
 
 #contact .btn.menu-item::after {
-  color: $dark; // namiesto #000
+  color: ds.$dark;
 }
 
 // ----------------------------------------
@@ -24,8 +23,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: $radius-base;
-  padding: $space-sm $space-lg;
+  border-radius: ds.$radius-base;
+  padding: ds.$space-sm ds.$space-lg;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -37,13 +36,13 @@
 .btn.menu-item .hover-bubble {
   position: absolute;
   inset: 0;
-  background-color: rgba($primary, 0.9);
-  @include shadow-default;
-  border-radius: $radius-lg;
+  background-color: rgba(ds.$primary, 0.9);
+  @include ds.shadow(sm);
+  border-radius: ds.$radius-lg;
 
-  padding: $space-sm $space-lg;
-  color: $light;
-  font-weight: 500;
+  padding: ds.$space-sm ds.$space-lg;
+  color: ds.$light;
+  font-weight: ds.$font-weight-medium;
   line-height: 1.2;
 
   display: flex;
@@ -61,11 +60,10 @@
 // ----------------------------------------
 
 .btn.menu-item.show-bubble .hover-bubble {
-  animation: bubblePop 0.4s ease forwards; // z design-system/animations
+  animation: bubblePop 0.4s ease forwards;
   opacity: 1;
 }
 
-// Skrytie pôvodného obsahu (bez layout shiftu)
 .btn.menu-item.show-bubble > *:not(.hover-bubble) {
   opacity: 0;
 }
@@ -93,21 +91,21 @@
   margin-left: -0.5625rem;
 
   border: 2px solid transparent;
-  border-top-color: $light; // namiesto #fff
+  border-top-color: ds.$light;
   border-radius: 50%;
 
-  animation: spin 0.6s linear infinite; // z design-system/animations
+  animation: spin 0.6s linear infinite;
 }
 
 // ----------------------------------------
 // RESPONSIVE ADJUSTMENTS
 // ----------------------------------------
 
-@include mobile {
+@include ds.mobile {
 
   .btn.menu-item .hover-bubble {
-    padding: $space-xs $space-md;
-    border-radius: $radius-base;
+    padding: ds.$space-xs ds.$space-md;
+    border-radius: ds.$radius-base;
   }
 
   .btn-loading::after {

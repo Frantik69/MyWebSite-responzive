@@ -1,31 +1,24 @@
-@use "../../design-system/index" as *;
-@use "./mixins" as *;
+@use "../../design-system/index" as ds;
+@use "./mixins" as nav;
 
 // ----------------------------------------
 // SIDENAV – DESKTOP
 // ----------------------------------------
 
 #sideNav {
-  @include sidenav-base;
+  @include nav.sidenav-base;
 }
 
-@include lg {
+@include ds.desktop {
   #sideNav {
-    @include sidenav-desktop-layout;
+    @include nav.sidenav-desktop-layout;
 
     &.visible {
       opacity: 1;
       pointer-events: auto;
     }
 
-    @include scale-by-height(
-      (900px, 0.95),
-      (800px, 0.90),
-      (700px, 0.85),
-      (600px, 0.80),
-      (520px, 0.75),
-      (460px, 0.70)
-    );
+    @include nav.sidenav-scale-by-height;
   }
 }
 
@@ -33,66 +26,66 @@
 // SIDENAV – MOBILE & TABLET
 // ----------------------------------------
 
-@include tablet {
+@include ds.tablet {
   #sideNav {
-    @include sidenav-mobile-layout;
+    @include nav.sidenav-mobile-layout;
 
     background-image:
-      $logo,
-      linear-gradient(to right, $primary, $secondary);
+      ds.$logo,
+      ds.$gradient-secondary;
 
     background-repeat: no-repeat, no-repeat;
     background-position: top center, center;
-    background-size: calc(100% - $space-md) auto, cover;
+    background-size: calc(100% - ds.$space-md) auto, cover;
     background-origin: content-box, border-box;
 
     &::before {
       content: "";
       position: absolute;
       inset: 0;
-      background-image: $logo;
+      background-image: ds.$logo;
       background-repeat: no-repeat;
       background-position: top center;
-      background-size: calc(100% - $space-md) auto;
+      background-size: calc(100% - ds.$space-md) auto;
       background-origin: content-box;
       filter: blur(15px);
       opacity: 0.7;
       z-index: -1;
     }
 
-    .show-mobile {
+    &.show-mobile {
       left: 0;
       opacity: 1;
       pointer-events: auto;
     }
 
-    .closing {
+    &.closing {
       opacity: 0;
     }
   }
 }
 
-@include between($breakpoint-sm, $breakpoint-md) {
+@include ds.between(ds.$breakpoint-sm, ds.$breakpoint-md) {
   #sideNav {
-    @include sidenav-tablet-layout;
+    @include nav.sidenav-tablet-layout;
 
     background-image:
-      $logo,
-      linear-gradient(to right, $primary, $secondary);
+      ds.$logo,
+      ds.$gradient-secondary;
 
     background-repeat: no-repeat, no-repeat;
     background-position: top center, center;
-    background-size: calc(100% - $space-lg) auto, cover;
+    background-size: calc(100% - ds.$space-lg) auto, cover;
     background-origin: content-box, border-box;
 
     &::before {
       content: "";
       position: absolute;
       inset: 0;
-      background-image: $logo;
+      background-image: ds.$logo;
       background-repeat: no-repeat;
       background-position: top center;
-      background-size: calc(100% - $space-md) auto;
+      background-size: calc(100% - ds.$space-md) auto;
       background-origin: content-box;
       filter: blur(15px);
       opacity: 0.7;
@@ -113,9 +106,9 @@
 
 @media (max-width: 767px) and (orientation: landscape) {
   #sideNav {
-    padding: $space-sm;
-    height: calc(100dvh - ($navbar-height + $copyright-height));
-    max-height: calc(100dvh - ($navbar-height + $copyright-height));
+    padding: ds.$space-sm;
+    height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
+    max-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   }
 }
 
@@ -124,55 +117,55 @@
 // ----------------------------------------
 
 .sideNav-center {
-  @include sidenav-center;
+  @include nav.sidenav-center;
 }
 
 .sideNav-content {
-  @include sidenav-content;
+  @include nav.sidenav-content;
 }
 
 #sideNavTime {
   width: 100%;
-  @include flex-column;
-  gap: $space-xs;
+  @include ds.flex-column;
+  gap: ds.$space-xs;
 
   .time {
-    font-weight: $font-weight-bold;
-    font-size: $font-size-xl;
-    @include text-shadow-strong;
+    font-weight: ds.$font-weight-bold;
+    font-size: ds.$font-size-xl;
+    @include ds.text-shadow(sm);
   }
 }
 
 .side-nav-divider {
   width: 100%;
   border: none;
-  border-top: 2px solid rgba($light, 0.5);
-  margin: $space-sm 0;
+  border-top: 2px solid rgba(ds.$light, 0.5);
+  margin: ds.$space-sm 0;
 }
 
 #sideNav ul {
-  @include sidenav-list;
+  @include nav.sidenav-list;
 }
 
 #sideMenu li {
   list-style: none;
-  margin: $space-sm 0;
+  margin: ds.$space-sm 0;
 }
 
 #sideMenu a {
   text-decoration: none;
   color: inherit;
-  @include flex-row-center;
-  gap: $space-sm;
+  @include ds.flex-row-center;
+  gap: ds.$space-sm;
 }
 
 #sideNav li {
-  @include sidenav-item;
+  @include nav.sidenav-item;
 }
 
 #sideNav li a {
-  @include sidenav-link;
-  box-shadow: 0 1px 0 rgba($gray-300, 0.8);
+  @include nav.sidenav-link;
+  box-shadow: 0 1px 0 rgba(ds.$gray-300, 0.8);
 }
 
 #sideNav li a:hover {
@@ -183,7 +176,7 @@
   width: 1em;
   height: 1em;
   display: block;
-  @include icon-shadow;
+  @include ds.drop-shadow(sm);
 }
 
 #sideNav li a:hover .menu-icon svg {
@@ -193,9 +186,9 @@
 #sideNav .hover-bubble {
   position: absolute;
   inset: 0;
-  @include flex-center;
+  @include ds.flex-center;
   border-radius: inherit;
-  z-index: $z-navbar;
+  z-index: ds.$z-navbar;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.35s ease;
@@ -223,9 +216,9 @@
   text-align: left;
 
   .weather-inline {
-    @include flex-row-center;
+    @include ds.flex-row-center;
     justify-content: flex-start;
-    gap: $space-sm;
+    gap: ds.$space-sm;
     width: 100%;
   }
 
@@ -239,6 +232,6 @@
 
 #sideNavDateBlock {
   width: 100%;
-  @include flex-column;
-  gap: $space-xs;
+  @include ds.flex-column;
+  gap: ds.$space-xs;
 }

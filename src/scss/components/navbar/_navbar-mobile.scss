@@ -1,97 +1,76 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
+@use "./mixins" as nav;
 
-// ----------------------------------------
-// Navbar: Mobile & Tablet Layout
-// ----------------------------------------
+@include ds.tablet-landscape {
 
-@include tablet-landscape {
-
-  /* WRAPPER */
   #mainNav {
-    height: $navbar-height;
-    min-height: $navbar-height;
+    height: ds.$navbar-height;
+    min-height: ds.$navbar-height;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: $z-navbar;
-    overflow-x: hidden;
+    z-index: ds.$z-navbar;
 
-    @include gradient-bg($primary, $secondary, to right);
-    border-bottom: 1px solid rgba($dark, 0.4);
-    color: $light;
+    @include ds.gradient-bg(ds.$primary, ds.$secondary, to right);
+    border-bottom: 1px solid rgba(ds.$dark, 0.4);
+    color: ds.$light;
   }
 
   #mainNav .container-fluid {
     position: relative;
     width: 100%;
-    @include flex-row-center;
+    @include ds.flex-row-center;
     justify-content: space-between;
   }
 
-  /* LEFT SIDE */
   #mobileLeft {
     order: 1;
-    @include flex-row-center;
-    flex-shrink: 1;
+    @include ds.flex-row-center;
   }
 
-  /* TOGGLER */
   .navbar-toggler {
     background: none !important;
     border: none !important;
     width: 4rem;
-    flex-shrink: 0;
-    z-index: $z-navbar;
+    z-index: ds.$z-navbar;
 
     i {
-      font-size: $font-size-lg;
-      color: rgba($light, 0.9);
-    }
-
-    &:hover {
-      color: $dark;
+      font-size: ds.$font-size-lg;
+      color: rgba(ds.$light, 0.9);
     }
   }
 
-  /* CENTERED LOGO */
   #logoWrapper {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    @include flex-center;
+    @include ds.flex-center;
     pointer-events: none;
   }
 
+  /* FIX: odstránené all: unset */
   #logo {
-    all: unset;
-    @include flex-center;
-    box-shadow: $shadow-sm;
+    @include ds.flex-center;
+    @include ds.shadow(sm);
+    background: none;
+    border: none;
   }
 
   #logo img.logo {
-    height: $navbar-logo-height-mobile;
-    width: auto;
+    height: ds.$navbar-logo-height-mobile;
   }
 
-  #logoWrapper .logo-text {
-    margin-left: 0;
-    @include flex-column;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  /* RESPONSIVE MENU */
   #navbarResponsive {
     order: 3;
     width: 100%;
     max-width: 300px;
     display: none;
-    @include flex-column;
-    padding: $space-md;
-    border-radius: $radius-md;
-    z-index: $z-overlay;
-    background-color: rgba($first-middle, 0.3);
+    @include ds.flex-column;
+    padding: ds.$space-md;
+    border-radius: ds.$radius-md;
+    z-index: ds.$z-overlay;
+    background-color: rgba(ds.$first-middle, 0.3);
   }
 
   #navbarResponsive.show {
@@ -100,106 +79,24 @@
 
   #navbarResponsive .navbar-nav {
     width: 100%;
-    @include flex-column;
-    gap: $space-xs;
-  }
-
-  .navbar-nav .nav-item {
-    width: 100%;
+    @include ds.flex-column;
+    gap: ds.$space-xs;
   }
 
   .navbar-nav .nav-link {
     width: 100%;
-    padding: $space-sm $space-md;
-    border-radius: $radius-sm;
-    background-color: rgba($first-middle, 0.3);
-    text-align: left;
-    color: $light;
-    font-size: clamp($font-size-xs, 2.5vw, $font-size-base);
-    font-weight: $font-weight-semibold;
+    padding: ds.$space-sm ds.$space-md;
+    border-radius: ds.$radius-sm;
+    background-color: rgba(ds.$first-middle, 0.3);
+    color: ds.$light;
+    font-size: clamp(ds.$font-size-xs, 2.5vw, ds.$font-size-base);
+    font-weight: ds.$font-weight-semibold;
   }
 
-  /* RIGHT SIDE */
   #rightNav {
     order: 2;
-    @include flex-row-center;
-    margin-right: $space-sm;
-    flex-shrink: 0;
-    color: $light;
-  }
-
-  #rightNav .dropdown-menu {
-    position: fixed;
-    top: $navbar-height;
-    z-index: $z-popover;
-  }
-}
-
-/* ----------------------------------------
-   MOBILE ONLY
----------------------------------------- */
-
-@include mobile {
-
-  #logo img.logo {
-    height: $navbar-logo-height-mobile;
-  }
-
-  #weatherNav {
-    display: none !important;
-  }
-
-  .navbar-nav .nav-link {
-    font-size: clamp($font-size-xs, 3vw, $font-size-base);
-    padding: $space-sm $space-md;
-  }
-
-  #navbarResponsive {
-    @include gradient-bg($primary, $secondary, to right);
-    border-top: 1px solid rgba($light, 0.3);
-  }
-
-  .navbar-toggler {
-    width: 4rem;
-    color: $light;
-    border: 1px solid rgba($light, 0.4);
-  }
-}
-
-/* ----------------------------------------
-   TABLET ONLY
----------------------------------------- */
-
-@include tablet {
-
-  #logo img.logo {
-    height: $navbar-logo-height-tablet;
-  }
-
-  #logo .logo-text h1 {
-    font-size: $font-size-md;
-    font-style: italic;
-  }
-
-  #weatherNav {
-    display: none !important;
-  }
-
-  .navbar-nav .nav-link {
-    font-size: clamp($font-size-xs, 2.5vw, $font-size-base);
-    padding: $space-xs $space-sm;
-  }
-
-  #navbarResponsive {
-    @include gradient-bg($primary, $secondary, to right);
-    border-top: 1px solid rgba($light, 0.3);
-  }
-
-  /* Language dropdown fix */
-  #languageDropdown,
-  #languageDropdown * {
-    overflow: visible;
-    -webkit-mask-image: none;
-    mask-image: none;
+    @include ds.flex-row-center;
+    margin-right: ds.$space-sm;
+    color: ds.$light;
   }
 }

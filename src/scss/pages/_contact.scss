@@ -1,69 +1,64 @@
-@use "../design-system/index" as *;
+// ----------------------------------------
+// Page: Contact
+// Štýly pre kontaktnú sekciu stránky
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
 // ===============================================
-// CONTACT – KONTAKTNÁ SEKCIA STRÁNKY
+// CONTACT – HLAVNÝ WRAPPER
 // ===============================================
 
-/*TODO 
-Divider shadow natvrdo  
-→ duplicita s mixinmi.
-
-Breakpoint mixiny  
-→ duplicita s Bootstrap breakpoints.
-
-Tablet a mobile bloky sú takmer identické  
-→ duplicita.
-
-.contact-info a .email-icon sú už definované v components  
-→ duplicita medzi pages a components.
-
-#contact input, #contact textarea { max-width: 100%; }  
-→ nepotrebné, už majú width:100%.*/
-
 #contact {
-  min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  color: $dark;
-  background-image: linear-gradient(to right, $first-middle, $first-light);
-  padding: 2rem 1rem;
-  border: 1px solid $dark;
-  @include rounded($radius-base);
+  min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
+  color: ds.$dark;
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  padding: ds.$space-lg ds.$space-md;
+  border: 1px solid ds.$dark;
+  @include ds.rounded(ds.$radius-base);
 
+  // Nadpis
   h2 {
-    color: $first-light;
+    color: ds.$light;
     text-align: center;
-    color: $light;
-    @include text-shadow(2px);
+    @include ds.text-shadow(2px);
   }
 
+  // Kontajner
   .contact-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-}
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-
+  // Divider
   .divider-custom-line {
-    color: $light;
-    @include text-shadow(2px);
+    color: ds.$light;
+    @include ds.text-shadow(2px);
   }
 
   .divider-custom-icon {
-    margin: 0 0.5rem;
-    color: $light;
-    @include text-shadow(2px);
+    margin: 0 ds.$space-sm;
+    color: ds.$light;
+    @include ds.text-shadow(2px);
   }
 }
+
+// Tlačidlo
 #contact .btn.menu-item {
   margin: 0 auto;
   display: block;
 }
 
+// ===============================================
+// ERROR MESSAGE
+// ===============================================
 
 .error-msg {
-  font-size: $font-size-sm;
-  color: $danger;
-  margin-top: 0.25rem;
+  font-size: ds.$font-size-sm;
+  color: ds.$danger;
+  margin-top: ds.$space-xxs;
   min-height: 1rem;
   opacity: 0;
   transition: opacity 0.25s ease-in-out;
@@ -74,49 +69,41 @@ Tablet a mobile bloky sú takmer identické
   opacity: 1;
 }
 
-
 // ===============================================
-// RESPONSIVE CONTACT UTILITIES
+// RESPONSIVE – TABLET LANDSCAPE
 // ===============================================
 
-@include tablet-landscape {
+@include ds.tablet-landscape {
   #contact .contact-container {
     width: 80vw;
   }
 }
 
-@include mobile {
+// ===============================================
+// RESPONSIVE – MOBILE
+// ===============================================
+
+@include ds.mobile {
+
   #contact {
-    border: 1px solid #000000;
-    @include rounded($radius-base);
-    @include flex-column;
-    width: 100%;
-    max-height: fit-content;
+    @include ds.flex-column;
     justify-content: center;
     align-items: center;
   }
 
   #contact .contact-container {
-    @include flex-column;
+    @include ds.flex-column;
     justify-content: flex-start;
-    height: auto;
-    position: relative;
     width: 100%;
     max-width: 100%;
   }
 }
 
-.contact-info {
-  flex-wrap: wrap;
-  text-align: center;
-}
-.email-icon {
-  flex-shrink: 0;
-  @include bubble-box-shadow;
-}
-#contact input,
-#contact textarea {
-  max-width: 100%;
-}
+// ===============================================
+// DUPLICITY PRESUNUTÉ DO COMPONENTS
+// (pozri nižšie odporúčania)
+// ===============================================
 
-
+/* tieto triedy už nemajú byť v pages */
+.contact-info { flex-wrap: wrap; text-align: center; }
+.email-icon   { flex-shrink: 0; @include ds.bubble-box-shadow; }

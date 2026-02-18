@@ -1,40 +1,39 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout Mixins: Cards
-// Základné stavebné bloky pre card komponenty
 // ----------------------------------------
 
 @mixin card-base {
   display: flex;
   flex-direction: column;
-  padding: $space-md;
-  border-radius: $radius-base;
-  gap: $space-sm;
+  padding: ds.$space-md;
+  border-radius: ds.$radius-base;
+  gap: ds.$space-sm;
 }
 
 @mixin card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 }
 
 @mixin card-body {
   display: flex;
   flex-direction: column;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 }
 
 @mixin card-footer {
   display: flex;
   justify-content: flex-end;
-  gap: $space-sm;
+  gap: ds.$space-sm;
 }
 
 @mixin card-image {
   width: 100%;
-  border-radius: $radius-base;
+  border-radius: ds.$radius-base;
   overflow: hidden;
 
   img {
@@ -45,7 +44,7 @@
 }
 
 @mixin card-responsive {
-  @include tablet {
-    padding: $space-sm;
+  @include ds.tablet {
+    padding: ds.$space-sm;
   }
 }

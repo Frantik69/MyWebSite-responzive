@@ -1,28 +1,28 @@
-@use "../design-system/index" as *;
-
 // ----------------------------------------
 // Utilities: Text
 // Rýchle textové utility pre zarovnanie,
 // farby, váhu a veľkosť písma
 // ----------------------------------------
 
-// Alignment
-.text-center { text-align: center; }
-.text-left   { text-align: left; }
-.text-right  { text-align: right; }
+@use "../design-system/index" as ds;
 
-// Colors (via design system)
-.text-primary   { color: $primary; }
-.text-secondary { color: $secondary; }
-.text-light     { color: $light; }
-.text-dark      { color: $dark; }
+// Alignment
+.text-center { text-align: center !important; }
+.text-left   { text-align: left !important; }
+.text-right  { text-align: right !important; }
+
+// Colors
+.text-primary   { color: ds.$primary !important; }
+.text-secondary { color: ds.$secondary !important; }
+.text-light     { color: ds.$light !important; }
+.text-dark      { color: ds.$dark !important; }
 
 // Font weight
-.fw-bold   { font-weight: 700; }
-.fw-medium { font-weight: 500; }
-.fw-light  { font-weight: 300; }
+.fw-bold   { font-weight: ds.$font-weight-bold !important; }
+.fw-medium { font-weight: ds.$font-weight-medium !important; }
+.fw-light  { font-weight: ds.$font-weight-light !important; }
 
-// Font size utilities
-.text-sm { font-size: $font-size-sm; }
-.text-md { font-size: $font-size-md; }
-.text-lg { font-size: $font-size-lg; }
+// Font size
+.text-sm { font-size: ds.$font-size-sm !important; }
+.text-md { font-size: ds.$font-size-md !important; }
+.text-lg { font-size: ds.$font-size-lg !important; }

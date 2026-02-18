@@ -1,24 +1,22 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
 // ===============================================
-// RATING – HVIEZDIČKOVÉ HODNOTENIE (UNICODE ★)
+// RATING – STAR-BASED RATING (UNICODE ★)
 // ===============================================
 
-/* TODO - .rating a .star sa v HTML zatiaľ nepoužívajú → možno mŕtvy kód.
-transform: translateY(-1px) → natvrdo → neskôr navrhnem lepšie vertikálne zarovnanie.*/
-
+// Base rating wrapper
 .rating {
-  font-size:$font-size-rating;
+  font-size: ds.$font-size-rating;
   display: inline-block;
-
   margin-right: 0.2rem;
   line-height: 0.5;
 }
 
+// Individual star
 .star {
   line-height: 0.5;
   display: inline-block;
-  transform: translateY(-1px); // optické vyrovnanie
-  color:$rating-empty;   // fallback
+  transform: translateY(-1px); // optical alignment
+  color: ds.$rating-empty;
 }

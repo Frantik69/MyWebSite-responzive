@@ -1,37 +1,33 @@
-@charset "UTF-8";
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Base: Global Settings
-// Základné nastavenia HTML, body a typografie
 // ----------------------------------------
 
-// Root font sizing
 html {
   font-size: 100%;
 }
 
-// Scroll offset for anchored sections
 header[id],
 section[id] {
-  scroll-margin-top: $navbar-height;
+  scroll-margin-top: ds.$navbar-height;
 }
 
 // ----------------------------------------
-// Body Base
+// Body
 // ----------------------------------------
 
 body {
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  font-weight: $body-font-weight;
-  line-height: $body-line-height;
+  font-family: ds.$body-font-family;
+  font-size: ds.$body-font-size;
+  font-weight: ds.$body-font-weight;
+  line-height: ds.$body-line-height;
 
-  color: $body-color;
-  background-color: $body-bg;
+  color: ds.$body-color;
+  background-color: ds.$body-bg;
 
-  padding-top: $navbar-height;
-  padding-bottom: $copyright-height;
+  padding-top: ds.$navbar-height;
+  padding-bottom: ds.$copyright-height;
 
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -44,105 +40,122 @@ body.nav-open {
 }
 
 // ----------------------------------------
-// Typography Scale
+// Headings
 // ----------------------------------------
 
-// Headings
 h1 {
-  font-size: $font-size-xxl;
-  font-weight: 700;
-  color: $dark;
-  line-height: 1.2;
+  font-size: ds.$font-size-xxl;
+  font-weight: ds.$font-weight-bold;
+  color: ds.$heading-color;
+  line-height: ds.$heading-line-height;
 }
 
 h2 {
-  font-size: $font-size-xl;
-  font-weight: 700;
-  color: $dark;
-  line-height: 1.25;
+  font-size: ds.$font-size-xl;
+  font-weight: ds.$font-weight-bold;
+  color: ds.$heading-color;
+  line-height: ds.$heading-line-height;
 }
 
 h3 {
-  font-size: $font-size-lg;
-  font-weight: 600;
-  color: $dark;
+  font-size: ds.$font-size-lg;
+  font-weight: ds.$font-weight-semibold;
+  color: ds.$heading-color;
   line-height: 1.3;
 }
 
 h4 {
-  font-size: $font-size-md;
-  font-weight: 600;
-  color: $dark;
+  font-size: ds.$font-size-md;
+  font-weight: ds.$font-weight-semibold;
+  color: ds.$heading-color;
   line-height: 1.35;
 }
 
 h5 {
-  font-size: $font-size-base;
-  font-weight: 600;
-  color: $dark;
+  font-size: ds.$font-size-base;
+  font-weight: ds.$font-weight-semibold;
+  color: ds.$heading-color;
   line-height: 1.4;
 }
 
 h6 {
-  font-size: $font-size-sm;
-  font-weight: 600;
-  color: $dark;
+  font-size: ds.$font-size-sm;
+  font-weight: ds.$font-weight-semibold;
+  color: ds.$heading-color;
   line-height: 1.4;
 }
 
+// ----------------------------------------
 // Paragraphs
+// ----------------------------------------
+
 p {
-  font-size: $font-size-base;
-  color: $dark;
+  font-size: ds.$font-size-base;
+  color: ds.$paragraph-color;
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: ds.$space-md;
 }
 
+// ----------------------------------------
 // Links
+// ----------------------------------------
+
 a {
-  color: $primary;
+  color: ds.$primary;
   text-decoration: none;
   transition: color 0.2s ease;
 
   &:hover {
-    color: $secondary;
+    color: ds.$secondary;
     text-decoration: underline;
   }
 }
 
+// ----------------------------------------
 // Lists
+// ----------------------------------------
+
 ul,
 ol {
-  margin-bottom: 1rem;
-  padding-left: 1.25rem;
-  color: $dark;
+  margin-bottom: ds.$space-md;
+  padding-left: ds.$space-lg;
+  color: ds.$paragraph-color;
 }
 
 li {
   line-height: 1.4;
 }
 
+// ----------------------------------------
 // Blockquotes
+// ----------------------------------------
+
 blockquote {
-  margin: 1rem 0;
-  padding-left: 1rem;
-  border-left: 4px solid $primary;
-  color: $dark;
+  margin: ds.$space-md 0;
+  padding-left: ds.$space-md;
+  border-left: 4px solid ds.$primary;
+  color: ds.$paragraph-color;
   font-style: italic;
 }
 
+// ----------------------------------------
 // Code
+// ----------------------------------------
+
 code {
-  font-family: $font-monospace;
-  background-color: $first-light;
-  padding: 0.15rem 0.35rem;
-  border-radius: $radius-base;
-  color: $dark;
+  font-family: ds.$font-monospace;
+  background-color: ds.$first-light;
+  padding: ds.$space-xs ds.$space-sm;
+  border-radius: ds.$radius-base;
+  color: ds.$dark;
 }
 
+// ----------------------------------------
 // Horizontal rule
+// ----------------------------------------
+
 hr {
   border: none;
-  border-top: 1px solid $gray;
-  margin: 1.5rem 0;
+  border-top: 1px solid ds.$gray-600;
+  margin: ds.$space-lg 0;
 }

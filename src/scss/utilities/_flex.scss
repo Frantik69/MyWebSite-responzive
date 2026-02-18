@@ -3,22 +3,28 @@
 // Rýchle pomocné triedy pre flex layout
 // ----------------------------------------
 
-// Display
-.flex      { display: flex; }
-.flex-col  { flex-direction: column; }
-.flex-row  { flex-direction: row; }
+@use "../design-system/index" as ds;
 
-// Alignment shortcuts
-.items-center { align-items: center; }
-.items-start  { align-items: flex-start; }
-.items-end    { align-items: flex-end; }
+// Flex display
+.d-flex      { display: flex !important; }
+.flex-row    { flex-direction: row !important; }
+.flex-column { flex-direction: column !important; }
 
-// Justify shortcuts
-.justify-center { justify-content: center; }
-.justify-start  { justify-content: flex-start; }
-.justify-end    { justify-content: flex-end; }
+// Alignment
+.items-center { align-items: center !important; }
+.items-start  { align-items: flex-start !important; }
+.items-end    { align-items: flex-end !important; }
+
+// Justify
+.justify-center  { justify-content: center !important; }
+.justify-start   { justify-content: flex-start !important; }
+.justify-end     { justify-content: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-around  { justify-content: space-around !important; }
 
 // Combined helpers
-.flex-center  { display: flex; justify-content: center; align-items: center; }
-.flex-between { display: flex; justify-content: space-between; }
-.flex-around  { display: flex; justify-content: space-around; }
+.flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

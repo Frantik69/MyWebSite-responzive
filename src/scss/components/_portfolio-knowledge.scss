@@ -1,17 +1,17 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ===============================================
-// PORTFOLIO – SKILLS LIST (ZAROVNANIE + RATING)
+// PORTFOLIO – SKILLS LIST (ALIGNMENT + RATING)
 // ===============================================
 
-/* ZÁKLADNÝ ŠTÝL PRE POLOŽKY SKILLS */
+// Base skill item
 .knowledge li {
-  font-size:$font-size-sm;
+  font-size: ds.$font-size-sm;
   line-height: 1.2;
 }
 
-/* SKILLS S RATINGOM – HVIEZDY + TEXT V JEDNOM RIADKU */
-.knowledge li[data-rating] {         //TODO - → rating hviezdičky sa v HTML nikde negenerujú (zatiaľ).
+// Skills with rating (stars + text)
+.knowledge li[data-rating] {
   list-style: none;
   padding-left: 0;
   margin-left: 0;
@@ -25,19 +25,14 @@
 // RESPONSIVE SKILLS UTILITIES
 // ===============================================
 
-@include mobile {               //TODO - → duplicita s Bootstrap breakpoints.
+@include ds.mobile {
 
-  /* MENŠIE SKILLS NA MOBILOCH */
   .knowledge li {
-    font-size:$font-size-xs;            //TODO - → duplicita s typografiou.
+    font-size: ds.$font-size-xs;
   }
 
   .knowledge li[data-rating] {
     gap: 0.25rem;
-  }
-
-  /* STACK PRI VEĽMI ÚZKYCH DISPLEJOCH */
-  .knowledge li[data-rating] {
     flex-wrap: wrap;
     white-space: normal;
   }

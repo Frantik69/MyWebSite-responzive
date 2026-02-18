@@ -1,55 +1,42 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Logo
-// Icon + text part
-// ----------------------------------------
-
-// ----------------------------------------
-// Logo wrapper
 // ----------------------------------------
 
 #logo {
   display: flex;
   align-items: center;
   text-decoration: none;
-  @include light-box-shadow; // consider replacing with DS shadow mixin
+  @include ds.drop-shadow(sm);
 
-  // ----------------------------------------
   // Logo text
-  // ----------------------------------------
   .logo-text {
     margin-left: 0.1rem;
-    line-height: 0.9;
-    color: $logo-color;
+    line-height: ds.$logo-text-line-height;
+    color: ds.$logo-color;
     text-align: left;
 
     p {
-      font-size: $font-size-md;
+      font-size: ds.$logo-title-font-size;
       font-style: italic;
       margin: 0;
-      line-height: 0.9;
+      line-height: ds.$logo-text-line-height;
     }
 
     small {
-      font-size: $font-size-sm;
-      font-weight: 700;
+      font-size: ds.$logo-subtitle-font-size;
+      font-weight: ds.$logo-subtitle-font-weight;
       margin: 0;
-      line-height: 0.9;
+      line-height: ds.$logo-text-line-height;
     }
   }
 
-  // ----------------------------------------
   // Logo icon (SVG / IMG)
-  // ----------------------------------------
-  .logo {
-    width: 4rem;
-    height: 4rem;
-  }
-
+  .logo,
   img.logo {
-    width: 4rem;
-    height: 4rem;
+    width: ds.$navbar-logo-height;
+    height: ds.$navbar-logo-height;
     display: block;
   }
 }
@@ -58,20 +45,19 @@
 // Responsive adjustments
 // ----------------------------------------
 
-@include mobile {
+@include ds.mobile {
 
-  // Smaller logo on mobile
   #logo .logo,
   #logo img.logo {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: ds.$navbar-logo-height-mobile;
+    height: ds.$navbar-logo-height-mobile;
   }
 
   .logo-text p {
-    font-size: $font-size-md;
+    font-size: ds.$logo-title-font-size-mobile;
   }
 
   small {
-    font-size: $font-size-xs;
+    font-size: ds.$logo-subtitle-font-size-mobile;
   }
 }

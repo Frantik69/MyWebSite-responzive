@@ -1,79 +1,62 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Divider
-// Custom section separator with icon
 // ----------------------------------------
 
-// ----------------------------------------
 // Base wrapper
-// ----------------------------------------
-
 .divider-custom {
-  margin: $space-xs 0 $space-xl;
+  margin: ds.$space-xs 0 ds.$space-xl;
   width: 100%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
 }
 
-// ----------------------------------------
-// Divider line (left + right)
-// ----------------------------------------
-
+// Divider line
 .divider-custom-line {
   flex: 1;
   max-width: 7rem;
   height: 0.15rem;
-  border-radius: $radius-lg;
-  background-color: $light;
-  @include text-shadow-soft; // namiesto natvrdo drop-shadow
+  border-radius: ds.$radius-lg;
+  background-color: ds.$light;
+  @include ds.text-shadow(xs);
 }
 
-// ----------------------------------------
 // Divider icon
-// ----------------------------------------
-
 .divider-custom-icon {
-  font-size: $font-size-base;
-  margin: 0 $space-md;
-  color: $light;
-  @include text-shadow-soft;
+  font-size: ds.$font-size-base;
+  margin: 0 ds.$space-md;
+  color: ds.$light;
+  @include ds.text-shadow(xs);
 }
 
-// ----------------------------------------
-// Light / Dark theme variants
-// ----------------------------------------
-
+// Light / Dark variants
 .divider--light {
   .divider-custom-line {
-    background-color: $dark;
+    background-color: ds.$dark;
   }
 
   .divider-custom-icon {
-    color: $dark;
+    color: ds.$dark;
   }
 }
 
 .divider--dark {
   .divider-custom-line {
-    background-color: $light;
+    background-color: ds.$light;
   }
 
   .divider-custom-icon {
-    color: $light;
+    color: ds.$light;
   }
 }
 
-// ----------------------------------------
 // Responsive adjustments
-// ----------------------------------------
-
-@include mobile {
-
+@include ds.mobile {
   .divider-custom-icon {
-    font-size: $font-size-sm;
-    margin: 0 $space-sm;
+    font-size: ds.$font-size-sm;
+    margin: 0 ds.$space-sm;
   }
 
   .divider-custom-line {

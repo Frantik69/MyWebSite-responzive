@@ -1,13 +1,13 @@
-@use "../design-system/index" as *;
-
 // ----------------------------------------
 // Utilities: Visibility
 // Zobrazovanie/skrytie prvkov podľa breakpointov
 // ----------------------------------------
 
-// BLOCK visibility
+@use "../design-system/index" as ds;
+
+// Mobile visibility
 .hidden-mobile {
-  @include mobile {
+  @include ds.mobile {
     display: none !important;
   }
 }
@@ -15,43 +15,44 @@
 .show-mobile {
   display: none !important;
 
-  @include mobile {
+  @include ds.mobile {
     display: block !important;
   }
 }
 
+// Desktop visibility
 .hidden-desktop {
-  @include desktop {
+  @include ds.desktop {
     display: none !important;
   }
 }
 
-// FLEX visibility
+// Flex visibility
 .show-mobile-flex {
   display: none !important;
 
-  @include mobile {
+  @include ds.mobile {
     display: flex !important;
   }
 }
 
 .hidden-desktop-flex {
-  @include desktop {
+  @include ds.desktop {
     display: none !important;
   }
 }
 
-// GRID visibility
+// Grid visibility
 .show-mobile-grid {
   display: none !important;
 
-  @include mobile {
+  @include ds.mobile {
     display: grid !important;
   }
 }
 
 .hidden-desktop-grid {
-  @include desktop {
+  @include ds.desktop {
     display: none !important;
   }
 }

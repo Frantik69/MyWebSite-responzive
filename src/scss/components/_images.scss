@@ -1,4 +1,4 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Images
@@ -16,11 +16,11 @@ svg {
 }
 
 // ----------------------------------------
-// Responsive image (Bootstrap-style)
+// Responsive image (Bootstrap-style override)
 // ----------------------------------------
 
 .img-fluid {
-  max-width: 80%; // overriding Bootstrap default (100%)
+  max-width: 80%;
   height: auto;
   margin-bottom: 2rem;
 }
@@ -32,14 +32,14 @@ svg {
 .img-thumbnail {
   padding: 0.25rem;
   border: 0.125rem solid var(--bs-border-color);
-  border-radius: $radius-base;
+  border-radius: ds.$radius-base;
 }
 
 // ----------------------------------------
 // Figure wrapper
 // ----------------------------------------
 
-figure { // duplicates Bootstrap figure styles
+figure {
   text-align: center;
   margin: 0 0 1rem;
 }
@@ -49,72 +49,26 @@ figure { // duplicates Bootstrap figure styles
 // ----------------------------------------
 
 .figure-caption {
-  font-size: $font-size-sm;
-  color: $gray;
-}
-
-// ----------------------------------------
-// Responsive adjustments
-// ----------------------------------------
-
-@include mobile {
-
-  // Larger bottom spacing on mobile
-  .img-fluid {
-    margin-bottom: 4rem;
-  }
-
-  // Smaller thumbnail on mobile
-  .img-thumbnail {
-    padding: 0.2rem;
-    border-radius: 0.4rem;
-  }
-
-  // Smaller caption text on mobile
-  .figure-caption {
-    font-size: $font-size-xs;
-  }
-}
-
-
-/* MINIATÚRA OBRÁZKU */
-.img-thumbnail {
-  padding: 0.25rem;
-  border: 0.125rem solid var(--bs-border-color);
-  border-radius: 0.5rem;
-}
-
-/* WRAPPER PRE OBRÁZKY S POPISOM */
-figure {                                        //TODO - figure a .figure-caption duplicujú Bootstrap → Bootstrap už má tieto štýly.
-  text-align: center;
-  margin: 0 0 1rem;
-}
-
-/* POPIS OBRÁZKU POD FIGURE */
-.figure-caption {
-  font-size:$font-size-sm;
-  color:$gray;
+  font-size: ds.$font-size-sm;
+  color: ds.$gray;
 }
 
 // ===============================================
 // RESPONSIVE IMAGE UTILITIES
 // ===============================================
 
-@include mobile {         //TODO - → duplicita s Bootstrap breakpoints.
+@include ds.mobile {
 
-  /* MENŠIE SPODNÉ ODSTUPY NA MOBILOCH */
   .img-fluid {
     margin-bottom: 4rem;
   }
 
-  /* MENŠIA MINIATÚRA NA MOBILOCH */
   .img-thumbnail {
     padding: 0.2rem;
     border-radius: 0.4rem;
   }
 
-  /* MENŠÍ TEXT POPISU NA MOBILOCH */
   .figure-caption {
-    font-size:$font-size-xs;
+    font-size: ds.$font-size-xs;
   }
 }

@@ -1,4 +1,4 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Form Overlay
@@ -15,16 +15,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.25);
-  -webkit-backdrop-filter: blur(8px); // Safari
-  backdrop-filter: blur(8px);         // Other browsers
+
+  background: rgba(ds.$dark, 0.25);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+
   opacity: 0;
   pointer-events: none;
   transform: translateY(20px);
+
   transition:
     opacity 0.4s ease,
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: $z-overlay; // unified z-index variable
+
+  z-index: ds.$z-overlay;
 }
 
 // ----------------------------------------
@@ -42,17 +46,20 @@
 // ----------------------------------------
 
 #overlayMessage {
-  background: $light;
-  color: $dark;
-  padding: $space-md $space-lg;
-  border-radius: $radius-lg;
-  font-size: $font-size-md;
+  background: ds.$light;
+  color: ds.$dark;
+
+  padding: ds.$space-md ds.$space-lg;
+  border-radius: ds.$radius-lg;
+  font-size: ds.$font-size-md;
   text-align: center;
   max-width: 25rem;
-  @include shadow-default;
+
+  @include ds.shadow(md);
 
   opacity: 0;
   transform: translateY(20px) scale(0.9);
+
   transition:
     opacity 0.4s ease 0.1s,
     transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
@@ -72,23 +79,23 @@
 // ----------------------------------------
 
 #overlayMessage.success {
-  color: $success;
-  font-weight: fw-bold;
+  color: ds.$success;
+  font-weight: ds.$font-weight-bold;
 }
 
 #overlayMessage.error {
-  color: $danger;
-  font-weight: fw-bold;
+  color: ds.$danger;
+  font-weight: ds.$font-weight-bold;
 }
 
 // ----------------------------------------
 // Responsive adjustments
 // ----------------------------------------
 
-@include mobile {
+@include ds.mobile {
   #overlayMessage {
-    padding: $space-sm $space-md;
-    font-size: $font-size-base;
+    padding: ds.$space-sm ds.$space-md;
+    font-size: ds.$font-size-base;
     max-width: 20rem;
   }
 }

@@ -1,111 +1,104 @@
-@use "../design-system/index" as *;
+// ----------------------------------------
+// Page: About
+// Štýly pre sekciu "O mne" (profilová stránka)
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
 @use "../base/index" as base;
 
 // ===============================================
-// ABOUT – INFORMÁCIE O MNE (SEKCIA PROFILU)
+// ABOUT – HLAVNÝ WRAPPER
 // ===============================================
 
-/*TODO 
-Gradienty natvrdo  
-→ duplicita s mixinom gradient-bg.
-
-min-width: 500px v .about-page  
-→ rozbíja layout na mobiloch, nepotrebuješ to.
-
-.row { flex-wrap: nowrap; }  
-→ prepisuje Bootstrap .row, môže rozbiť grid.
-
-Breakpoint mixiny (@include tablet-landscape, @include mobile)  
-→ duplicita s Bootstrap breakpoints.
-
-Tablet a mobile bloky sú takmer identické  
-→ duplicita.
-
-Natvrdo definované paddingy (2rem 4rem)  
-→ duplicita s layout mixinmi.
-
-max-height: fit-content  
-→ zbytočné, default je auto. */
-
 #about {
-  min-height: calc(100dvh - ($navbar-height + $copyright-height));
-  border: 1px solid $dark;
-  background-image: linear-gradient(to right, $first-middle, $first-light);
-  padding: 2rem 0.5rem;
-  @include rounded($radius-base);
+  min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
+  border: 1px solid ds.$dark;
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  padding: ds.$space-lg ds.$space-sm;
+  @include ds.rounded(ds.$radius-base);
   width: 100%;
 
+  // --------------------------------------------
+  // ABOUT PAGE BOX
+  // --------------------------------------------
   .about-page {
     flex: 2.5;
-    min-width: 500px;
-    background-image: linear-gradient(to right, $primary, $first-light);
-    padding: 2rem 4rem;
-    color: $dark;
-    border: 1px solid $dark;
-    @include rounded($radius-base);
-    @include bubble-box-shadow;
+    width: 100%;
+    @include ds.gradient-bg(ds.$primary, ds.$first-light);
+    padding: ds.$space-lg ds.$space-xl;
+    color: ds.$dark;
+    border: 1px solid ds.$dark;
+    @include ds.rounded(ds.$radius-base);
+    @include ds.bubble-box-shadow;
   }
 
+  // --------------------------------------------
+  // LAYOUT ROW
+  // --------------------------------------------
   .row {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 2rem;
+    flex-wrap: wrap; // už neprepisujeme Bootstrap
+    gap: ds.$space-lg;
   }
 
+  // --------------------------------------------
+  // ABOUT CONTAINER
+  // --------------------------------------------
   .about-container {
     width: 65vw;
     margin: 0 auto;
+
     span {
-    text-shadow:
-    -0.8px -0.8px 0 black,
-     0.8px -0.8px 0 black,
-    -0.8px  0.8px 0 black,
-     0.8px  0.8px 0 black;
+      @include ds.text-shadow(strong);
     }
   }
 
+  // --------------------------------------------
+  // HEADINGS
+  // --------------------------------------------
   h2 {
-    @include text-shadow(2px);
+    @include ds.text-shadow(2px);
     text-align: center;
   }
 
+  // --------------------------------------------
+  // INFO TEXT
+  // --------------------------------------------
   .about-info {
-    color: $dark;
-    font-size: $font-size-base;
+    color: ds.$dark;
+    font-size: ds.$font-size-base;
   }
 
+  // --------------------------------------------
+  // DIVIDER
+  // --------------------------------------------
   .divider-custom {
-    padding: 0 0 3rem;
+    padding-bottom: ds.$space-xl;
   }
 
   .divider-custom-icon {
-    margin: 0 0.5rem;
-    color: $body-color;
-    @include text-shadow(2px);
+    margin: 0 ds.$space-sm;
+    color: ds.$body-color;
+    @include ds.text-shadow(2px);
   }
 }
 
 // ===============================================
-// RESPONSIVE – ZALOMENIE STĹPCOV
+// RESPONSIVE – TABLET LANDSCAPE
 // ===============================================
 
-@include tablet-landscape {
+@include ds.tablet-landscape {
 
   #about {
-    border: 1px solid $dark;
-    @include rounded($radius-base);
-    @include flex-column;
-    max-height: fit-content;
+    @include ds.flex-column;
   }
 
   #about .about-container {
-    @include flex-column;
+    @include ds.flex-column;
     align-items: center;
     justify-content: flex-start;
-    height: auto;
     width: 100%;
     max-width: 100%;
-    position: relative;
   }
 
   #about .row {
@@ -115,48 +108,45 @@ max-height: fit-content
 
   #about .about-info {
     line-height: 1.6rem;
-    font-size: $font-size-md;
+    font-size: ds.$font-size-md;
   }
 }
 
-@include mobile {
+// ===============================================
+// RESPONSIVE – MOBILE
+// ===============================================
+
+@include ds.mobile {
 
   #about {
-    border: 1px solid $dark;
-    @include rounded($radius-base);
-    @include flex-column;
-    max-height: fit-content;
+    @include ds.flex-column;
     justify-content: center;
     align-items: center;
   }
 
   #about .about-page {
-    min-width: 100%;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    width: 100%;
+    padding-left: ds.$space-lg;
+    padding-right: ds.$space-lg;
   }
 
   #about .about-container {
-    @include flex-column;
+    @include ds.flex-column;
     align-items: center;
     justify-content: flex-start;
-    height: auto;
     width: 100%;
     max-width: 100%;
-    position: relative;
   }
 
   #about .row {
     flex-direction: column;
     width: 100%;
-    flex-wrap: wrap;
     gap: 0;
   }
 
   #about .about-info {
-    width: 100% !important;
+    width: 100%;
     max-width: 100%;
-    flex: 0 0 100%;
-    font-size: $font-size-base;
+    font-size: ds.$font-size-base;
   }
 }

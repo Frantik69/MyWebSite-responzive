@@ -1,24 +1,29 @@
 @use "../base/index" as base;
+
+// -----------
+// Components
+// -----------
+
 @use "buttons";
 @use "cards";
 @use "carousel";
+@use "contact-info";
+@use "divider";
 @use "dropdown";
 @use "form-overlay";
 @use "forms";
 @use "footer";
 @use "icons";
-@use "navbar";
-@use "side-navbar";
 @use "images";
 @use "logo";
 @use "modal";
+@use "navbar";
 @use "portfolio-knowledge";
 @use "rating";
 @use "skeleton";
+@use "side-navbar";
 @use "skill-card";
 @use "tables";
 @use "timeline";
 @use "tooltip-overlay";
-@use "contact-info";
-@use "divider";
 @use "weatherFloating";

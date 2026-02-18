@@ -1,44 +1,49 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ===============================================
-// TABLES – ZÁKLADNÉ TABUĽKY + BOOTSTRAP FARBY
+// TABLES – BASE TABLES + BOOTSTRAP COLOR OVERRIDES
 // ===============================================
 
-/* ZÁKLADNÁ TABUĽKA */
+// Base table
 table {
   border-collapse: collapse;
   width: 100%;
 }
 
-/* POPIS TABUĽKY (CAPTION) */
+// Caption
 caption {
   padding: 0.5rem 0;
-  color: #6c757d;                                       //TODO - Natvrdo definované farby (#6c757d) → duplicita s premennými.
+  color: ds.$gray-600; // replaces #6c757d
   text-align: left;
 }
 
-/* BOOTSTRAP ŠTÝLY PRE FAREBNÉ TABUĽKY */                 //TODO - Duplicita s Bootstrap .table-* triedami → Bootstrap už má .table-primary, .table-secondary, atď.
-.table-primary   { --bs-table-bg: #3a5a7b; }
-.table-secondary { --bs-table-bg: #3a8a8b; }
-.table-success   { --bs-table-bg: #d1e7dd; }
-.table-info      { --bs-table-bg: #cff4fc; }
-.table-warning   { --bs-table-bg: #fff3cd; }
-.table-danger    { --bs-table-bg: #f8d7da; }
-.table-light     { --bs-table-bg: #f8f9fa; }
-.table-dark      { --bs-table-bg: #212529; color: #fff; }
+// -----------------------------------------------
+// Bootstrap table color overrides
+// (kept intentionally to preserve your design)
+// -----------------------------------------------
+
+.table-primary   { --bs-table-bg: ds.$table-primary; }
+.table-secondary { --bs-table-bg: ds.$table-secondary; }
+.table-success   { --bs-table-bg: ds.$table-success; }
+.table-info      { --bs-table-bg: ds.$table-info; }
+.table-warning   { --bs-table-bg: ds.$table-warning; }
+.table-danger    { --bs-table-bg: ds.$table-danger; }
+.table-light     { --bs-table-bg: ds.$table-light; }
+.table-dark      { 
+  --bs-table-bg: ds.$table-dark;
+  color: ds.$light;
+}
 
 // ===============================================
 // RESPONSIVE TABLE UTILITIES
 // ===============================================
 
-@include mobile {         //TODO - → duplicita s Bootstrap breakpoints.
+@include ds.mobile {
 
-  /* MENŠÍ CAPTION NA MOBILOCH */
   caption {
-    font-size:$font-size-sm;
+    font-size: ds.$font-size-sm;
   }
 
-  /* HORIZONTÁLNY SCROLL PRI ÚZKYCH TABUĽKACH */
   .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;

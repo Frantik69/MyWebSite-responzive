@@ -1,17 +1,17 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Footer
-// Layout-only structure (no colors, no typography)
+// Layout + Visual Styling
 // ----------------------------------------
 
 footer {
   width: 100%;
   position: relative;
-  z-index: $z-base;
-  padding: $space-md 0;
-  background-color: $gray-800;
-  border-radius: $radius-base;
+  z-index: ds.$z-base;
+  padding: ds.$space-md 0;
+  background-color: ds.$gray-800;
+  border-radius: ds.$radius-base;
 }
 
 // ----------------------------------------
@@ -23,7 +23,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: $space-sm;
+  gap: ds.$space-sm;
   width: 100%;
 }
 
@@ -34,7 +34,7 @@ footer {
 .footer-links {
   display: flex;
   flex-direction: row;
-  gap: $space-md;
+  gap: ds.$space-md;
   justify-content: center;
   align-items: center;
 }
@@ -43,8 +43,8 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $space-xs $space-sm;
-  border-radius: $radius-base;
+  padding: ds.$space-xs ds.$space-sm;
+  border-radius: ds.$radius-base;
   transition: transform 0.2s ease;
 }
 
@@ -59,8 +59,8 @@ footer {
 .footer-bottom {
   width: 100%;
   text-align: center;
-  padding-top: $space-sm;
-  padding-bottom: $space-sm;
+  padding-top: ds.$space-sm;
+  padding-bottom: ds.$space-sm;
 }
 
 // ----------------------------------------
@@ -71,7 +71,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $space-xs;
+  gap: ds.$space-xs;
 }
 
 .footer-logo img {
@@ -89,13 +89,17 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(22, 24, 26, 0.7);
-  border: 1px solid $dark;
+
+  background-color: rgba(ds.$dark, 0.7);
+  border: 1px solid ds.$dark;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: $radius-base;
-  padding: $space-sm $space-md;
-  z-index: $z-navbar;
-  height: $copyright-height;
+
+  border-radius: ds.$radius-base;
+  padding: ds.$space-sm ds.$space-md;
+
+  z-index: ds.$z-navbar;
+  height: ds.$copyright-height;
 }

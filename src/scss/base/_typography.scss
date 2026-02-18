@@ -1,31 +1,25 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
-// Base: Typography
-// Doplnkové typografické utility
-// (hlavná typografia je v global.scss)
+// Base: Typography Utilities
 // ----------------------------------------
 
-// Small text
 small,
 .small {
-  font-size: 0.875em;
+  font-size: ds.$font-size-sm;
 }
 
-// Highlight
 mark,
 .mark {
-  padding: 0.1875em;
-  background-color: $first-light;
+  padding: ds.$space-xxs;
+  background-color: ds.$first-light;
 }
 
-// Strong text
 b,
 strong {
-  font-weight: bolder;
+  font-weight: ds.$font-weight-bold;
 }
 
-// Inline list items
 .list-inline,
 .list-unstyled {
   padding-left: 0;
@@ -34,16 +28,14 @@ strong {
 
 .list-inline-item {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: ds.$space-sm;
 }
 
-// Abbreviations
 abbr[title] {
   text-decoration: underline dotted;
   cursor: help;
 }
 
-// Superscript / subscript
 sub {
   bottom: -0.25em;
 }
@@ -52,15 +44,13 @@ sup {
   top: -0.5em;
 }
 
-// Keyboard shortcuts
 kbd {
-  background-color: $dark;
-  color: $light;
-  padding: 0.15rem 0.3rem;
-  border-radius: $radius-sm;
+  background-color: ds.$dark;
+  color: ds.$light;
+  padding: ds.$space-xs ds.$space-sm;
+  border-radius: ds.$radius-sm;
 }
 
-// Fluid heading utility
 .fluid-heading {
-  @include fluid-font(1.5rem, 3rem);
+  @include ds.fluid-font(1.5rem, 3rem);
 }

@@ -1,14 +1,14 @@
+@use "../../design-system/index" as ds;
+
 // ============================================================================
 // NAVBAR — THEME VARIABLES
 // Komponentovo-špecifické tieňovanie a efekty
 // ============================================================================
 
-@use "../../design-system/shadows" as *;
-
 // Text shadows
-$navbar-container-text-shadow: $text-shadow-md;
-$navbar-nav-link-text-shadow: $text-shadow-xs;
-$navbar-nav-link-hover-text-shadow: $text-shadow-xxs;
+$navbar-container-text-shadow: ds.$text-shadow-md;
+$navbar-nav-link-text-shadow: ds.$text-shadow-xs;
+$navbar-nav-link-hover-text-shadow: ds.$text-shadow-xxs;
 
 // Icon shadows
 $navbar-menu-icon-shadow:
@@ -16,7 +16,7 @@ $navbar-menu-icon-shadow:
  -0.5px -0.5px 1px rgba(0,0,0,0.6);
 
 // Hover bubble shadow
-$navbar-hover-bubble-shadow: $shadow-sm;
+$navbar-hover-bubble-shadow: ds.$shadow-sm;
 
-// Logo shadow (if needed)
-$navbar-logo-shadow: $shadow-xs;
+// Logo shadow (optional)
+$navbar-logo-shadow: ds.$shadow-xs;

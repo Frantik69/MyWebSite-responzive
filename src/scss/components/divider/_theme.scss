@@ -2,8 +2,8 @@
 // DIVIDER — THEME VARIABLES
 // ============================================================================
 
-@use "../../design-system/shadows" as *;
+@use "../../design-system/index" as ds;
 
-// Divider shadows
-$divider-line-shadow: $drop-shadow-sm;
-$divider-icon-shadow: $drop-shadow-sm;
+// Divider theme tokens (optional)
+$divider-line-shadow: ds.$drop-shadow-sm;
+$divider-icon-shadow: ds.$drop-shadow-sm;

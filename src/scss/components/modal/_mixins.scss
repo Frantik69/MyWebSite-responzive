@@ -1,14 +1,13 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout Mixins: Modal
-// Základné vrstvy a sekcie modálneho okna
 // ----------------------------------------
 
 @mixin modal-backdrop-base {
   position: fixed;
   inset: 0;
-  z-index: $z-backdrop;
+  z-index: ds.$z-backdrop;
   display: none;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -17,11 +16,11 @@
 @mixin modal-base {
   position: fixed;
   inset: 0;
-  z-index: $z-modal;
+  z-index: ds.$z-modal;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $space-lg;
+  padding: ds.$space-lg;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -30,14 +29,14 @@
 @mixin modal-dialog-base {
   width: 100%;
   max-width: 32rem;
-  border-radius: $radius-base;
+  border-radius: ds.$radius-base;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transform: scale(0.95);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 @mixin modal-section {
-  padding: $space-md;
+  padding: ds.$space-md;
 }

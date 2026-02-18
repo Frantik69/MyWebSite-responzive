@@ -1,27 +1,26 @@
-@use "../../design-system/index" as *;
+@use "../../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout Mixins: Forms
-// Flexibilné stavebné bloky pre formuláre
 // ----------------------------------------
 
 @mixin form-base {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: $space-md;
+  gap: ds.$space-md;
 }
 
 @mixin form-group {
   display: flex;
   flex-direction: column;
-  gap: $space-xs;
+  gap: ds.$space-xs;
   width: 100%;
 }
 
 @mixin form-row {
   display: flex;
-  gap: $space-md;
+  gap: ds.$space-md;
   width: 100%;
 
   > * {
@@ -31,8 +30,8 @@
 
 @mixin form-input {
   width: 100%;
-  padding: $space-sm $space-md;
-  border-radius: $radius-base;
+  padding: ds.$space-sm ds.$space-md;
+  border-radius: ds.$radius-base;
   border-width: 1px;
   border-style: solid;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -45,24 +44,24 @@
 }
 
 @mixin form-button {
-  padding: $space-sm $space-lg;
-  border-radius: $radius-base;
+  padding: ds.$space-sm ds.$space-lg;
+  border-radius: ds.$radius-base;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 @mixin form-responsive {
-  @include mobile {
+  @include ds.mobile {
     flex-direction: column;
   }
 }
 
 @mixin form-label {
-  font-weight: 600;
+  font-weight: ds.$font-weight-medium;
 }
 
 @mixin form-check {
   width: auto;
-  margin-right: $space-xs;
+  margin-right: ds.$space-xs;
 }

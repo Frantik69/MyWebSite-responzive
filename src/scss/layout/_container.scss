@@ -1,34 +1,33 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Layout: Container
-// Centrálne zarovnaný obsah s max-width
 // ----------------------------------------
 
 .container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $space-md;
-  padding-right: $space-md;
+  padding-left: ds.$space-md;
+  padding-right: ds.$space-md;
 
-  @include mobile {
+  @include ds.mobile {
     max-width: 100%;
   }
 
-  @include tablet {
+  @include ds.tablet {
     max-width: 540px;
   }
 
-  @include tablet-landscape {
+  @include ds.tablet-landscape {
     max-width: 720px;
   }
 
-  @include desktop-down {
+  @include ds.desktop-down {
     max-width: 960px;
   }
 
-  @include desktop {
-    max-width: $container-max-width;
+  @include ds.desktop {
+    max-width: ds.$container-max-width;
   }
 }

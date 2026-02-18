@@ -1,4 +1,4 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ----------------------------------------
 // Component: Contact Info
@@ -6,13 +6,13 @@
 // ----------------------------------------
 
 .contact-info {
-  @include flex-center;               // centrálne zarovnanie
+  @include ds.flex-center;
   flex-direction: row;
-  gap: $space-xs;                     // namiesto 0.2rem
-  max-width: 34rem;                   // 550px → prepočítané
+  gap: ds.$space-xs;
+  max-width: 34rem;
   margin: 0 auto;
-  padding-top: $space-sm;
-  padding-bottom: $space-lg;
+  padding-top: ds.$space-sm;
+  padding-bottom: ds.$space-lg;
   text-align: center;
 }
 
@@ -21,7 +21,7 @@
 // ----------------------------------------
 
 .contact-info .email-icon {
-  width: 2.25rem;                     // 35px → DS jednotky
+  width: 2.25rem;
   height: 2.25rem;
   flex-shrink: 0;
   display: block;
@@ -31,15 +31,15 @@
 // Responsive Adjustments
 // ----------------------------------------
 
-@include mobile {
+@include ds.mobile {
 
   .contact-info {
     flex-direction: column;
-    gap: $space-sm;
+    gap: ds.$space-sm;
   }
 
   .contact-info .email-icon {
-    width: 1.75rem;                   // 28px → DS jednotky
+    width: 1.75rem;
     height: 1.75rem;
   }
 }

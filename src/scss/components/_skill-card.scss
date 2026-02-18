@@ -1,24 +1,24 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
 // ===============================================
-// SKILLS – SKILL CARD (IKONA + TEXT)
+// SKILLS – SKILL CARD (ICON + TEXT)
 // ===============================================
 
 $skill-icon-size-desktop: 2rem;
 $skill-icon-size-mobile: 1.5rem;
 
-/* HLAVNÝ WRAPPER PRE SKILL KARTU */
+/* MAIN WRAPPER */
 .skill-card {
-  margin-top: $space-md;
-  @include flex-row-center;
+  margin-top: ds.$space-md;
+  @include ds.flex-row-center;
   align-items: flex-start;
-  gap: $space-sm;
+  gap: ds.$space-sm;
   width: 100%;
 }
 
-/* ĽAVÁ ČASŤ – IKONA + NÁZOV */
+/* LEFT SIDE – ICON + TITLE */
 .skill-left {
-  @include flex-column;
+  @include ds.flex-column;
   align-items: center;
   justify-content: center;
   width: 8rem;
@@ -26,20 +26,20 @@ $skill-icon-size-mobile: 1.5rem;
   text-align: center;
 }
 
-/* IKONA SKILLU – jednotná veľkosť, bez duplicity px */
+/* SKILL ICON */
 .skill-icon {
   width: $skill-icon-size-desktop;
   height: $skill-icon-size-desktop;
   object-fit: contain;
-  margin-bottom: $space-xxs;
+  margin-bottom: ds.$space-xxs;
 }
 
-/* NÁZOV SKILLU – typografia rieši stránka (skills.scss) */
+/* SKILL TITLE */
 .skill-title {
   text-align: center;
 }
 
-/* POPIS SKILLU – základ, detail rieši stránka */
+/* SKILL DESCRIPTION */
 .skill-desc {
   margin: 0;
   line-height: 1.2;
@@ -47,10 +47,11 @@ $skill-icon-size-mobile: 1.5rem;
 }
 
 // ===============================================
-// RESPONSIVE SKILL CARD UTILITIES
+// RESPONSIVE UTILITIES
 // ===============================================
 
-@include mobile {
+@include ds.mobile {
+
   .skill-left {
     width: 60px;
     min-height: 2rem;

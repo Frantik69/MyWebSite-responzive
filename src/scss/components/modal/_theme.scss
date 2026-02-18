@@ -2,11 +2,9 @@
 // MODAL — THEME VARIABLES
 // ============================================================================
 
-@use "../../design-system/shadows" as *;
+@use "../../design-system/index" as ds;
 
-// Bubble shadow
-$modal-bubble-box-shadow: $shadow-lg;
-
-// Text shadows
-$modal-bubble-text-shadow: $drop-shadow-md;
-$modal-confirm-buttons-text-shadow: $drop-shadow-md;
+// Modal theme tokens (optional)
+$modal-bubble-box-shadow: ds.$shadow-lg;
+$modal-bubble-text-shadow: ds.$drop-shadow-md;
+$modal-confirm-buttons-text-shadow: ds.$drop-shadow-md;
