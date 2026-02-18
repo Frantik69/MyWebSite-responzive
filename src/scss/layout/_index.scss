@@ -1,6 +1,19 @@
-@use "../design-system/index" as *;
+@use "../design-system/index" as ds;
 
+// ----------------------------------------
+// Layout Index
+// Import všetkých layout modulov
+// ----------------------------------------
+
+// Core layout utilities
 @use "container";
 @use "grid";
 @use "section";
 @use "helpers";
+
+// Page-specific layouts
+@use "home-layout";
+@use "about-layout";
+@use "portfolio-columns";
+@use "skills-layout";
+@use "contact-layout";

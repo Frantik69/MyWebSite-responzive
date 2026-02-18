@@ -1,104 +1,103 @@
 @use "../design-system/index" as ds;
 
-// ===============================================
-// TIMELINE – VERTICAL PORTFOLIO TIMELINE
-// ===============================================
+// ----------------------------------------
+// Component: Timeline
+// ----------------------------------------
 
-// Local timeline variables (DS-based)
 $timeline-line-from: ds.$logo-color;
 $timeline-line-to:   ds.$dark;
 $timeline-dot-size:  0.7rem;
 
-// MAIN TIMELINE LIST
 .timeline {
   position: relative;
   list-style: none;
-  margin-bottom: ds.$space-lg;
   padding-left: 0;
+  margin-bottom: ds.$space-xl;
+
+  // Vertical line
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient($timeline-line-from, $timeline-line-to);
+  }
+
+  .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(4.5rem, 6rem) 1fr;
+    column-gap: ds.$space-md;
+    padding: ds.$space-xs ds.$space-sm;
+
+    // Dot
+    &::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 1.15rem;
+      width: $timeline-dot-size;
+      height: $timeline-dot-size;
+      background: ds.$dark;
+      border-radius: 50%;
+      z-index: ds.$z-content;
+    }
+
+    .timeline-date {
+      justify-self: end;
+      white-space: nowrap;
+      font-weight: ds.$font-weight-bold;
+      font-size: ds.$font-size-sm;
+      color: ds.$danger;
+    }
+
+    .timeline-content {
+      background: ds.$cards-rgba;
+      padding: ds.$space-md;
+      @include ds.rounded(ds.$radius-base);
+      @include ds.bubble-box-shadow;
+      font-size: ds.$font-size-xs;
+      text-align: start;
+
+      a.certifikat {
+        font-size: ds.$font-size-md;
+      }
+
+      span,
+      li {
+        font-size: ds.$font-size-base;
+      }
+    }
+  }
+
+  // Sublist
+  .sublist {
+    list-style: none;
+    padding-left: 0.3rem;
+    margin-top: 0.3rem;
+    font-size: ds.$font-size-xs;
+    line-height: 1rem;
+
+    li {
+      position: relative;
+      padding-left: 0.7rem;
+
+      &::before {
+        content: "–";
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
 }
 
-// LEFT VERTICAL LINE
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient($timeline-line-from, $timeline-line-to);
-}
-
-// TIMELINE ITEM – GRID (DATE + CONTENT)
-.timeline-item {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(4.5rem, 6rem) 1fr;
-  column-gap: ds.$space-md;
-  padding: ds.$space-xs ds.$space-sm;
-  align-items: flex-start;
-}
-
-// DATE (LEFT SIDE)
-.timeline-date {
-  justify-self: end;
-  white-space: nowrap;
-  text-transform: none;
-  font-weight: ds.$font-weight-bold;
-  color: ds.$danger;
-  font-size: ds.$font-size-sm;
-}
-
-// DOT ON THE LINE
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -4px;
-  top: 1.15rem;
-  width: $timeline-dot-size;
-  height: $timeline-dot-size;
-  background: ds.$dark;
-  border-radius: 50%;
-  z-index: ds.$z-content;
-}
-
-// CONTENT (RIGHT SIDE)
-.timeline-content {
-  text-align: start;
-  font-weight: ds.$font-weight-semibold;
-  font-size: ds.$font-size-xs;
-  padding-left: 0;
-}
-
-// SUBLIST
-.sublist {
-  list-style: none;
-  font-weight: 350;
-  text-align: start;
-  font-size: ds.$font-size-xs;
-  line-height: 1rem;
-  margin-top: 0.3rem;
-  padding-left: 0.3rem;
-}
-
-// SUBLIST ITEMS
-.sublist li {
-  position: relative;
-  padding-left: 0.7rem;
-}
-
-.sublist li::before {
-  content: "–";
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-// ===============================================
-// RESPONSIVE TIMELINE UTILITIES
-// ===============================================
+// ----------------------------------------
+// Responsive
+// ----------------------------------------
 
 @include ds.mobile {
-
   .timeline-item {
     grid-template-columns: minmax(3.5rem, 4.5rem) 1fr;
     column-gap: ds.$space-sm;

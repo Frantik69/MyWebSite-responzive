@@ -1,0 +1,19 @@
+// ----------------------------------------
+// Layout: Skills Page Layout
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.skills-layout {
+  width: 100%;
+  max-width: ds.$container-max-width;
+  margin: 0 auto;
+  padding: ds.$space-xl ds.$space-sm;
+
+  .skills-page {
+    padding: ds.$space-md;
+    border-radius: ds.$radius-base;
+    border: 1px solid ds.$dark;
+    @include ds.bubble-box-shadow;
+  }
+}

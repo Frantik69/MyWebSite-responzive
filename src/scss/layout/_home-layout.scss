@@ -1,0 +1,13 @@
+// ----------------------------------------
+// Layout: Home Page
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.home-layout {
+  display: flex;
+  flex-direction: row;
+  gap: ds.$space-xl;
+  max-width: 70rem;
+  margin: 0 auto;
+}

@@ -4,55 +4,49 @@
 // Component: Divider
 // ----------------------------------------
 
-// Base wrapper
 .divider-custom {
-  margin: ds.$space-xs 0 ds.$space-xl;
-  width: 100%;
-  display: inline-flex;
-  justify-content: center;
+  display: flex;
   align-items: center;
-}
+  justify-content: center;
+  gap: ds.$space-sm;
+  width: 100%;
+  margin: ds.$space-xs 0 ds.$space-xl;
 
-// Divider line
-.divider-custom-line {
-  flex: 1;
-  max-width: 7rem;
-  height: 0.15rem;
-  border-radius: ds.$radius-lg;
-  background-color: ds.$light;
-  @include ds.text-shadow(xs);
-}
-
-// Divider icon
-.divider-custom-icon {
-  font-size: ds.$font-size-base;
-  margin: 0 ds.$space-md;
-  color: ds.$light;
-  @include ds.text-shadow(xs);
-}
-
-// Light / Dark variants
-.divider--light {
   .divider-custom-line {
-    background-color: ds.$dark;
+    flex: 1;
+    max-width: 7rem;
+    height: 2px;
+    border-radius: ds.$radius-lg;
+    background-color: ds.$first-light;
+    @include ds.text-shadow(xs);
   }
 
   .divider-custom-icon {
-    color: ds.$dark;
+    font-size: ds.$font-size-base;
+    margin: 0 ds.$space-md;
+    color: ds.$body-color;
+    @include ds.text-shadow(2px);
   }
+}
+
+// ----------------------------------------
+// Variants
+// ----------------------------------------
+
+.divider--light {
+  .divider-custom-line { background-color: ds.$dark; }
+  .divider-custom-icon { color: ds.$dark; }
 }
 
 .divider--dark {
-  .divider-custom-line {
-    background-color: ds.$light;
-  }
-
-  .divider-custom-icon {
-    color: ds.$light;
-  }
+  .divider-custom-line { background-color: ds.$light; }
+  .divider-custom-icon { color: ds.$light; }
 }
 
-// Responsive adjustments
+// ----------------------------------------
+// Responsive
+// ----------------------------------------
+
 @include ds.mobile {
   .divider-custom-icon {
     font-size: ds.$font-size-sm;

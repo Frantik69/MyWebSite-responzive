@@ -1,27 +1,34 @@
 @use "../base/index" as base;
 
-// -----------
-// Components
-// -----------
+// ----------------------------------------
+// Components Index
+// Import všetkých komponentových modulov
+// ----------------------------------------
 
-@use "buttons";
+// Grouped component folders
 @use "cards";
-@use "carousel";
-@use "contact-info";
 @use "divider";
-@use "dropdown";
-@use "form-overlay";
 @use "forms";
-@use "footer";
-@use "icons";
-@use "images";
 @use "logo";
 @use "modal";
 @use "navbar";
+@use "side-navbar";
+
+// Standalone components
+@use "about-preview";
+@use "buttons";
+@use "carousel";
+@use "contact-info";
+@use "dropdown";
+@use "footer";
+@use "form-overlay";
+@use "icons";
+@use "images";
+@use "knowledge-list";
 @use "portfolio-knowledge";
+@use "profile-card";
 @use "rating";
 @use "skeleton";
-@use "side-navbar";
 @use "skill-card";
 @use "tables";
 @use "timeline";

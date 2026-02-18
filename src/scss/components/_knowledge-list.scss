@@ -1,0 +1,16 @@
+// ----------------------------------------
+// Component: Knowledge List
+// Zoznam zručností / technológií
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.knowledge-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    margin-bottom: ds.$space-xs;
+    font-size: ds.$font-size-base;
+  }
+}

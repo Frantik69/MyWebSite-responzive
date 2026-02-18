@@ -1,0 +1,22 @@
+// ----------------------------------------
+// Layout: Portfolio Columns
+// Dvojstĺpcový layout pre portfolio
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.portfolio-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: ds.$space-lg;
+
+  .portfolio-left {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .portfolio-right {
+    flex: 2.5;
+    min-width: 260px;
+  }
+}

@@ -1,0 +1,32 @@
+// ----------------------------------------
+// Component: Profile Card
+// Fotka, meno, pozícia, kontaktné údaje
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.profile-card {
+  text-align: center;
+
+  .profile-photo {
+    width: clamp(180px, 30vw, 260px);
+    margin-bottom: ds.$space-md;
+    border-radius: ds.$radius-base;
+  }
+
+  .profile-name {
+    font-size: ds.$font-size-lg;
+    margin: 0;
+  }
+
+  .profile-position {
+    font-size: ds.$font-size-md;
+    font-style: italic;
+  }
+
+  .profile-divider {
+    width: 80%;
+    margin: ds.$space-md auto;
+    border-color: ds.$body-color;
+  }
+}

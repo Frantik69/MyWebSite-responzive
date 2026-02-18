@@ -1,0 +1,22 @@
+// ----------------------------------------
+// Component: About Preview Card
+// Krátky textový náhľad pre portfolio
+// ----------------------------------------
+
+@use "../design-system/index" as ds;
+
+.about-preview {
+  display: block;
+  width: 95%;
+  background: ds.$preview-cards-rgba;
+  border-radius: ds.$radius-base;
+  padding: ds.$space-sm;
+  line-height: 1.3;
+  color: ds.$body-color;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
