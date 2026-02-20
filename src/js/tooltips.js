@@ -30,7 +30,6 @@ export function initTooltipFollow() {
 
   const bubble = overlay.querySelector(".tooltip-follow__bubble");
   let active = false;
-  let hideTimer = null;
 
   /* Pozicionovanie tooltipu podľa kurzora */
   function positionOverlay(e) {
@@ -59,7 +58,8 @@ export function initTooltipFollow() {
       "aboutNav",
       "skillsNav",
       "contactNav",
-      "submitBtn"
+      "submitBtn",
+      "footer"
     ];
     if (skipIds.includes(item.id)) return;
 
@@ -72,17 +72,13 @@ export function initTooltipFollow() {
 
     bubble.textContent = text;
 
-    bubble.classList.toggle(
-      "lang-bubble",
-      item.id === "languageDropdown" || item.closest("#languageMenu")
-    );
+    bubble.classList.add("lang-bubble");
 
     overlay.style.display = "flex";
     overlay.classList.add("showing");
     active = true;
 
     clearTimeout(hideTimer);
-    hideTimer = setTimeout(onLeave, 1000);
   }
 
   /* Skrytie tooltipu */
@@ -96,7 +92,7 @@ export function initTooltipFollow() {
   const items = document.querySelectorAll(
     ".dropdown-item, #languageDropdown, #confirmWeather, #cancelWeather, " +
       "#confirmGitHub, #cancelGitHub, .aboutPreview, .contact-email, " +
-      ".portfolio-links a, #weatherFloating, .show-pdf"
+      ".portfolio-links a, #weatherFloating, .show-pdf, #footer-contact"
   );
 
   items.forEach(item => {

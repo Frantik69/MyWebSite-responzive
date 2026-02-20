@@ -70,6 +70,7 @@
   display: flex;
   align-items: center;
   gap: ds.$space-sm;
+  margin-bottom: 0 !important;
 }
 
 @mixin navbar-toggler-base {

@@ -37,7 +37,7 @@ export const CERT_MAP = {
   "Certifikat_Zakladne_konstrukcie_jazyka_Java.png": c5,
   "skillmea-certifikat-java-pre-junior-programatorov.png": c6,
   "skillmea-certifikat-java-pre-pokrocilych.png": c7,
-  "skillmea-certifikat-java-a-oop-pre_zaciatocnikov.png": c8,
+  "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png": c8,
   "Certifikat_Objektovo_orientovane_programovanie_v_Jave.png": c9,
   "Certifikat_Kolekcie_a_prudy_v_Jave.png": c10,
   "Certifikat_Praca_so_subormi_v_Jave.png": c11,

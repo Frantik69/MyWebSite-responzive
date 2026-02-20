@@ -53,7 +53,7 @@
   border-bottom: 1px solid rgba(ds.$dark, 0.2);
 
   h5 {
-    color: ds.$light;
+    color: ds.$dark;
     @include ds.text-shadow(xs);
   }
 }
@@ -61,7 +61,7 @@
 // BODY
 .modal-body {
   @include modal.modal-section;
-  color: ds.$light;
+  color: ds.$dark;
 }
 
 // FOOTER
@@ -73,7 +73,7 @@
 
   button {
     background: ds.$gradient-secondary;
-    color: ds.$light;
+    color: ds.$dark;
     @include ds.shadow(sm);
     transition: transform 0.2s ease;
   }
