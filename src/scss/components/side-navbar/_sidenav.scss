@@ -185,6 +185,7 @@
 
 #sideNav .hover-bubble {
   position: absolute;
+  background-color: rgba(ds.$light, 0.7);
   inset: 0;
   @include ds.flex-center;
   border-radius: inherit;
@@ -198,6 +199,7 @@
 
 #sideNav .hover-bubble span {
   display: inline-block;
+  color: ds.$dark;
   padding-left: 100%;
   animation: sideNavMarquee 6s linear infinite;
 }

@@ -13,7 +13,7 @@
 #skills {
   min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   border: 1px solid ds.$dark;
-  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light, to right);
   @include ds.rounded(ds.$radius-base);
   width: 100%;
 
@@ -36,12 +36,10 @@
 
   .skills-container {
     width: 100%;
-    max-width: ds.$container-max-width;
     margin: 0 auto;
-    padding: ds.$space-xl ds.$space-sm;
 
     .skills-page {
-      @include ds.gradient-bg(ds.$primary, ds.$first-light);
+      @include ds.gradient-bg(ds.$primary, ds.$first-light, to right);
       padding: ds.$space-sm ds.$space-md;
       color: ds.$dark;
       border-radius: ds.$radius-base;

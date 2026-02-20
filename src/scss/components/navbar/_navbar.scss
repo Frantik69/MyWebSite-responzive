@@ -7,9 +7,8 @@
 
 #mainNav {
   @include nav.navbar-base;
-
   @include ds.gradient-bg(ds.$primary, ds.$secondary, to right);
-  border-bottom: 1px solid rgba(ds.$dark, 0.4);
+  border-bottom: 1px solid ds.$dark;
   color: ds.$light;
   @include ds.text-shadow(sm);
 }
@@ -40,17 +39,7 @@
 
 /* WEATHER NAV */
 #weatherNav {
-  @include nav.navbar-weather;
-  color: ds.$light;
-
-  img.icon-24 {
-    @include ds.drop-shadow(sm);
-  }
-
-  span {
-    font-size: ds.$font-size-base;
-    font-weight: ds.$font-weight-medium;
-  }
+  display: none;
 }
 
 /* NAV LINKS */
@@ -72,6 +61,10 @@
   font-size: ds.$font-size-base;
   font-weight: ds.$font-weight-semibold;
   @include ds.text-shadow(xs);
+
+  position: relative; // rodič pre overlay
+  z-index: ds.$z-content;
+  overflow: hidden; // aby overlay nepretiekol
 }
 
 .navbar-nav .nav-link:hover {
@@ -85,19 +78,42 @@
   @include ds.shadow(lg);
 }
 
-/* HOVER BUBBLE */
+/* ----------------------------------------
+   HOVER BUBBLE – overlay cez celú pilulku
+---------------------------------------- */
+
 .navbar-nav .nav-link .hover-bubble {
-  background-color: rgba(ds.$second-middle, 0.8);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: ds.$font-size-caption;
+
+  line-height: 0.9;
+  border-radius: ds.$radius-base;
+
+  background-color: rgba(ds.$first-middle, 0.9);
   color: ds.$light;
   border: 1px solid rgba(ds.$light, 0.3);
-  @include ds.shadow(sm);
+  @include ds.shadow(lg);
+
   opacity: 0;
-  transition: opacity 0.3s ease;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+
+  z-index: ds.$z-tooltip;
+
+  white-space: normal;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  width: 100%;
 }
 
 .navbar-nav .nav-link.show-bubble .hover-bubble {
   opacity: 1;
-  animation: bubblePop 0.4s ease forwards;
 }
 
 /* RIGHT NAV */
@@ -117,4 +133,25 @@
 .navbar-nav .nav-link:focus,
 .navbar-nav .nav-link:active {
   text-decoration: none !important;
+}
+
+/* ----------------------------------------
+   WEATHER NAV – visible only 992–1200px
+---------------------------------------- */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #weatherNav {
+    display: flex !important;
+    @include nav.navbar-weather;
+    color: ds.$light;
+
+    img.icon-24 {
+      @include ds.drop-shadow(sm);
+    }
+
+    span {
+      font-size: ds.$font-size-base;
+      font-weight: ds.$font-weight-medium;
+    }
+  }
 }

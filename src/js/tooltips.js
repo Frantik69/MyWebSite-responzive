@@ -113,7 +113,7 @@ export function initTooltipFollow() {
       if (!(e.target instanceof Element)) return;
 
       const target = e.target.closest("[data-translate-info]");
-      if (!target || target.closest("#sideNav")) return;
+      if (!target || target.closest("#sideNav") || target.closest("#navbarResponsive")) return;
 
       showBubble(target);
     },

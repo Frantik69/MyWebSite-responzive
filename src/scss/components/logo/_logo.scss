@@ -12,7 +12,7 @@
 
   // Logo text
   .logo-text {
-    margin-left: 0.1rem;
+
     line-height: ds.$logo-text-line-height;
     color: ds.$logo-color;
     text-align: left;
@@ -20,6 +20,7 @@
     p {
       font-size: ds.$logo-title-font-size;
       font-style: italic;
+      color: ds.$dark;
       margin: 0;
       line-height: ds.$logo-text-line-height;
     }

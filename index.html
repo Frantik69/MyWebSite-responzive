@@ -59,7 +59,7 @@
       </div>
       <!-- WEATHER (NAV) -->
       <a id="weatherNav"
-        class="weatherNav menu-item d-flex align-items-center text-decoration-none ms-4 gap-2"
+        class="weatherNav menu-item align-items-center ms-4 gap-2"
         data-translate-info="weatherInfo"
         href="https://openweathermap.org/"
         target="_blank"
@@ -146,59 +146,69 @@
       <span class="float-weather-city"></span>
     </a>
     <!-- HOME -->
-    <header id="home">
-      <div class="home-container">
-        <div class="row">
-          <!-- ĽAVÁ STRANA: VYCENTROVANÝ TEXT -->
-          <div class="col-lg-6 left-text d-flex flex-column justify-content-between">
-            <div class="left-top">
-              <!-- NADPIS -->
-              <h1 data-translate="name"
-                  class="fade-in-title page-section-heading mb-1">
-              </h1>
-              <!-- DIVIDER -->
-              <div class="divider-custom my-1 d-flex justify-content-center align-items-center">
-                <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                <div class="divider-custom-line"></div>
-              </div>
-              <!-- MOTTO -->
-              <p data-translate="mottoText"
-                class="font-weight-light mb-0 slide-in-right">
-              </p>
+<header id="home">
+  <div class="home-container section">
+
+    <!-- ĽAVÁ STRANA -->
+    <div class="left-text">
+
+      <!-- Horný blok -->
+      <div class="left-top">
+        <h1 data-translate="name"
+            class="fade-in-title page-section-heading mb-1">
+        </h1>
+
+        <div class="divider-custom my-1 d-flex justify-content-center align-items-center">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+
+        <p data-translate="mottoText"
+           class="font-weight-light mb-0 slide-in-right">
+        </p>
+      </div>
+
+      <!-- Spodný blok -->
+      <div class="left-bottom">
+        <div class="certificates-carousel">
+          <div class="cert-track-wrapper d-flex align-items-center">
+            <button class="cert-arrow left" type="button" aria-label="Posun doľava">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="cert-track" id="certTrack">
+              <div class="cert-skeleton"></div>
+              <div class="cert-skeleton"></div>
+              <div class="cert-skeleton"></div>
             </div>
-            <div class="left-bottom">
-              <div class="certificates-carousel">
-                <div class="cert-track-wrapper d-flex align-items-center">
-                  <button class="cert-arrow left" type="button" aria-label="Posun doľava">
-                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                    <span class="sr-only">Doľava</span>
-                  </button>
-                  <div class="cert-track" id="certTrack">
-                    <div class="cert-skeleton" aria-hidden="true"></div>
-                    <div class="cert-skeleton" aria-hidden="true"></div>
-                    <div class="cert-skeleton" aria-hidden="true"></div>
-                  </div>
-                  <button class="cert-arrow right" type="button" aria-label="Posun doprava">
-                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                    <span class="sr-only">Doprava</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- PRAVÁ STRANA: VYCENTROVANÝ OBRÁZOK -->
-          <div class="col-lg-6 d-flex justify-content-center">
-            <img src="src/assets/img/my-photo.png" width="" height="" alt="Profilová fotografia" class="img-fluid zoom-img" loading="lazy">
+
+            <button class="cert-arrow right" type="button" aria-label="Posun doprava">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </div>
-    </header>
+
+    </div>
+
+    <!-- PRAVÁ STRANA -->
+    <div class="right-image d-flex justify-content-center align-items-center">
+      <img src="src/assets/img/my-photo.png"
+           alt="Profilová fotografia"
+           class="img-fluid zoom-img"
+           loading="lazy">
+    </div>
+
+  </div>
+</header>
+
     <!-- PORTFOLIO SECTION -->
-    <section id="portfolio" class="page-section bg-primary text-white mb-0">
+    <section class="page-section bg-primary text-white mb-0" id="portfolio">
       <div class="portfolio-container">
+        <div class="section">
         <!-- NADPIS -->
-        <h2 class="page-section-heading text-center text-uppercase" data-translate="portfolio"></h2>
+        <h2 data-translate="portfolio" class="page-section-heading text-center text-uppercase"></h2>
         <!-- DIVIDER -->
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
@@ -281,11 +291,13 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
     </section>
     <!-- SKILLS SECTION -->
     <section class="page-section bg-primary text-white mb-0" id="skills">
       <div class="skills-container">
+        <div class="section">
         <h2 data-translate="subtitleSkills" class="page-section-heading text-center text-uppercase">Skills</h2>
         <div class="divider-custom d-flex justify-content-center align-items-center">
           <div class="divider-custom-line"></div>
@@ -300,11 +312,13 @@
             <div class="col-lg-6 skills-info" id="skills-right"></div>
           </div>
         </div>
+        </div>
       </div>
     </section>
     <!-- ABOUTME SECTION -->
     <section class="page-section bg-primary text-white mb-0" id="about">
       <div class="about-container">
+        <div class="section">
         <h2 data-translate="aboutMe" class="page-section-heading text-center text-uppercase"></h2>
         <div class="divider-custom d-flex justify-content-center align-items-center">
           <div class="divider-custom-line"></div>
@@ -327,13 +341,14 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
     </section>
     <!-- CONTACT SECTION -->
     <section class="page-section" id="contact">
       <div class="contact-container">
         <h2 data-translate="formTitle"
-            class="page-section-heading text-center text-uppercase text-secondary mb-0">
+            class="page-section-heading text-center text-uppercase mb-0">
         </h2>
         <!-- DIVIDER -->
         <div class="divider-custom d-flex justify-content-center align-items-center">
@@ -342,7 +357,7 @@
           <div class="divider-custom-line"></div>
         </div>
         <!-- CONTACT INFO -->
-        <p class="contact-info d-flex justify-content-center align-items-center text-center">
+        <div class="contact-info d-flex justify-content-center align-items-center text-center">
           <img src="src/assets/img/email.png"
               alt="Ikona emailu"
               class="email-icon"
@@ -352,7 +367,7 @@
             <div class="skeleton-line" aria-hidden="true"></div>
             <div class="skeleton-line short"></div>
           </div>
-        </p>
+        </div>
         <!-- CONTACT FORM -->
         <div class="row justify-content-center">
           <div class="col-12">
@@ -437,16 +452,37 @@
     </section>
     </main>
     <!-- FOOTER -->
-    <footer id="footer" class="footer text-center" role="contentinfo">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h4 data-translate="location" data-translate-html class="text-uppercase mb-2"></h4>
-            <p data-translate="locationInfo" data-translate-html class="lead mb-0"></p>
-          </div>
+    <footer id="footer" class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-row">
+
+      <!-- LEFT: LOGO -->
+      <div class="footer-logo">
+        <div id="logo">
+          <img src="src/assets/img/logo.png" alt="Logo" class="logo">
         </div>
       </div>
-    </footer>
+
+      <!-- CENTER: LOCATION -->
+      <div class="footer-center">
+        <h2 data-translate="location" data-translate-html class="text-uppercase"></h2>
+        <p data-translate="locationInfo" data-translate-html></p>
+      </div>
+
+      <!-- RIGHT: CONTACT -->
+      <div class="footer-contact">
+        <p><a href="tel:+421905259485">📞 +421 905 259 485</a></p>
+        <p><a data-translate-info="portfolioContactInfo" href="#contact">
+          📧 frantisek.dupal.webdeveloper@gmail.com
+        </a></p>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+
     <!-- COPYRIGHT -->
     <div id="copyright"
         class="fixed-bottom py-1 text-center"

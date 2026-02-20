@@ -8,9 +8,16 @@
   padding-top: ds.$space-lg;
   padding-bottom: ds.$space-lg;
 
+  // OCHRANNÉ ODSADENIE OD SIDEBARU A WEATHER WIDGETU
+  padding-left: calc(clamp(180px, 13vw, 260px) + 2.5vw + ds.$space-lg);
+  padding-right: calc(5rem + ds.$space-lg);
+
   @include ds.desktop {
     padding-top: ds.$space-xl;
     padding-bottom: ds.$space-xl;
+
+    padding-left: calc(clamp(180px, 13vw, 260px) + 2.5vw + ds.$space-xl);
+    padding-right: calc(13rem + ds.$space-xl);
   }
 }
 

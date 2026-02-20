@@ -13,8 +13,7 @@
 #about {
   min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   border: 1px solid ds.$dark;
-  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
-  padding: ds.$space-lg ds.$space-sm;
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light, to right);
   @include ds.rounded(ds.$radius-base);
   width: 100%;
 
@@ -45,7 +44,7 @@
   // ABOUT CONTAINER
   // --------------------------------------------
   .about-container {
-    width: 65vw;
+    width: 100%;
     margin: 0 auto;
 
     span {

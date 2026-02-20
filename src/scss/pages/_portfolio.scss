@@ -14,24 +14,24 @@
   min-height: calc(100dvh - (ds.$navbar-height + ds.$copyright-height));
   text-align: center;
 
-  @include ds.gradient-bg(ds.$first-middle, ds.$first-light);
+  @include ds.gradient-bg(ds.$first-middle, ds.$first-light, to right);
   border: 1px solid ds.$dark;
   @include ds.rounded(ds.$radius-base);
 
   .portfolio-container {
     width: 100%;
-    max-width: 70rem;
     margin: 0 auto;
-    padding: ds.$space-xl ds.$space-sm;
+
   }
 
   h2 {
     @include ds.text-shadow(2px);
+        text-align: center;
   }
 
   .divider-custom-icon {
     margin: 0 ds.$space-sm;
-    color: ds.$body-color;
+    color: ds.$light;
     @include ds.text-shadow(2px);
   }
 }
@@ -42,12 +42,11 @@
 
 .portfolio-content {
   width: 100%;
-  max-width: 70rem;
+
   margin: 0 auto;
 
   display: flex;
   flex-wrap: wrap;
-  gap: ds.$space-lg;
 
   @include ds.bubble-box-shadow;
 }

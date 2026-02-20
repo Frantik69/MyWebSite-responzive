@@ -1,87 +1,111 @@
 @use "../design-system/index" as ds;
 
 // ----------------------------------------
-// Component: Footer
-// Layout + Visual Styling
+// Footer Wrapper
 // ----------------------------------------
 
 footer {
   width: 100%;
-  position: relative;
-  z-index: ds.$z-base;
-  padding: ds.$space-md 0;
+  padding: ds.$space-xl 0;
   background-color: ds.$gray-800;
   border-radius: ds.$radius-base;
+  border: 1px solid ds.$dark;
+  color: ds.$light;
+  position: relative;
+  z-index: ds.$z-base;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 // ----------------------------------------
-// Footer content wrapper
+// 3-column layout
 // ----------------------------------------
 
-.footer-content {
+.footer-row {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: ds.$space-sm;
-  width: 100%;
+  justify-content: space-between;
+  gap: ds.$space-xl;
 }
 
 // ----------------------------------------
-// Footer links
-// ----------------------------------------
-
-.footer-links {
-  display: flex;
-  flex-direction: row;
-  gap: ds.$space-md;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: ds.$space-xs ds.$space-sm;
-  border-radius: ds.$radius-base;
-  transition: transform 0.2s ease;
-}
-
-.footer-links a:hover {
-  transform: translateY(-2px);
-}
-
-// ----------------------------------------
-// Footer bottom text
-// ----------------------------------------
-
-.footer-bottom {
-  width: 100%;
-  text-align: center;
-  padding-top: ds.$space-sm;
-  padding-bottom: ds.$space-sm;
-}
-
-// ----------------------------------------
-// Footer logo
+// LEFT – Logo (reuses #logo component)
 // ----------------------------------------
 
 .footer-logo {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: ds.$space-xs;
-}
+  flex: 1;
 
-.footer-logo img {
-  width: 2rem;
-  height: auto;
-  display: block;
+  // použijeme rovnaký komponent ako v navbare
+  #logo {
+    @include ds.drop-shadow(sm);
+
+    .logo,
+    img.logo {
+      width: auto;
+      height: ds.$footer-logo-height;
+      display: block;
+    }
+  }
 }
 
 // ----------------------------------------
-// Copyright
+// CENTER – Location
+// ----------------------------------------
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+
+  h2 {
+    margin-bottom: ds.$space-xs;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+// ----------------------------------------
+// RIGHT – Contact
+// ----------------------------------------
+
+.footer-contact {
+  flex: 1;
+  text-align: center;
+
+  p {
+    margin: 0 0 ds.$space-xxs 0;
+    font-size: smaller;
+  }
+}
+
+// ----------------------------------------
+// Mobile
+// ----------------------------------------
+
+@include ds.mobile {
+  .footer-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-logo,
+  .footer-contact {
+    justify-content: center;
+  }
+}
+
+// ----------------------------------------
+// Copyright bar
 // ----------------------------------------
 
 #copyright {

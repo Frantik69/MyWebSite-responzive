@@ -13,6 +13,7 @@
 // Modul je inicializovaný cez main.js
 // ======================================================
 
+import { translations } from "./translations.js";
 
 // ------------------------------------------------------
 // NAVBAR SHRINK + SCROLLSPY + SMOOTH WHEEL SCROLL
@@ -74,11 +75,10 @@ export function initScrollspyResize() {
 // HOVER BUBBLE PRE HLAVNÚ NAVIGÁCIU
 // ------------------------------------------------------
 export function initNavHoverBubble() {
-  const links = document.querySelectorAll(".nav-item.menu-item .nav-link");
+  const links = document.querySelectorAll("#navbarResponsive .nav-item.menu-item > .nav-link");
 
   links.forEach(link => {
     link.addEventListener("mouseenter", () => {
-      // ignorujeme pravé menu a jazykový dropdown
       if (link.closest("#rightNav") || link.id === "languageDropdown") return;
 
       const parent = link.closest(".menu-item");
@@ -91,7 +91,6 @@ export function initNavHoverBubble() {
       const t = translations[lang] || translations.sk;
       const text = t[infoKey] || infoKey;
 
-      // vytvorenie bubliny ak neexistuje
       let bubble = link.querySelector(".hover-bubble");
       if (!bubble) {
         bubble = document.createElement("div");
@@ -101,7 +100,6 @@ export function initNavHoverBubble() {
 
       bubble.textContent = text;
 
-      // automatické zmenšovanie textu podľa priestoru
       let fontSize = 0.7;
       bubble.style.fontSize = fontSize + "rem";
 
@@ -115,7 +113,7 @@ export function initNavHoverBubble() {
 
       setTimeout(() => {
         link.classList.remove("show-bubble");
-      }, 1000);
+      }, 2000);
     });
 
     link.addEventListener("mouseleave", () => {
@@ -123,6 +121,7 @@ export function initNavHoverBubble() {
     });
   });
 }
+
 
 
 // ------------------------------------------------------
