@@ -1,14 +1,12 @@
 @use "../../design-system/index" as ds;
 @use "./mixins" as modal;
 
-// ----------------------------------------
-// Component: Modal
-// ----------------------------------------
+// ======================================================
+// BACKDROP (GitHub, Weather, PDF)
+// ======================================================
 
-// BACKDROP
 .modal-backdrop {
   @include modal.modal-backdrop-base;
-
   background: rgba(ds.$dark, 0.6);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
@@ -19,77 +17,9 @@
   opacity: 1;
 }
 
-// MODAL WRAPPER
-.modal {
-  @include modal.modal-base;
-}
-
-.modal.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-// DIALOG
-.modal-dialog {
-  @include modal.modal-dialog-base;
-
-  background: ds.$cards-rgba;
-  border: 1px solid rgba(ds.$dark, 0.3);
-  @include ds.shadow(md);
-
-  /* Slide-down animation */
-  transform: translateY(-20px);
-}
-
-.modal.show .modal-dialog {
-  transform: translateY(0);
-}
-
-// HEADER
-.modal-header {
-  @include modal.modal-section;
-
-  background: rgba(ds.$dark, 0.1);
-  border-bottom: 1px solid rgba(ds.$dark, 0.2);
-
-  h5 {
-    color: ds.$dark;
-    @include ds.text-shadow(xs);
-  }
-}
-
-// BODY
-.modal-body {
-  @include modal.modal-section;
-  color: ds.$dark;
-}
-
-// FOOTER
-.modal-footer {
-  @include modal.modal-section;
-
-  background: rgba(ds.$dark, 0.05);
-  border-top: 1px solid rgba(ds.$dark, 0.2);
-
-  button {
-    background: ds.$gradient-secondary;
-    color: ds.$dark;
-    @include ds.shadow(sm);
-    transition: transform 0.2s ease;
-  }
-
-  button:hover {
-    transform: scale(1.05);
-  }
-
-  button:active {
-    transform: scale(0.97);
-  }
-}
-
-// ----------------------------------------
-// OVERLAY (GitHub, Weather, PDF)
-// ----------------------------------------
+// ======================================================
+// VŠETKY TVOJE MODALY (GitHub, Weather, PDF)
+// ======================================================
 
 .modal-overlay {
   position: fixed;
@@ -97,31 +27,130 @@
   display: none;
   justify-content: center;
   align-items: center;
-
   background: rgba(ds.$dark, 0.6);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-
   z-index: ds.$z-max;
 }
 
-.modal-bubble {
-  background: ds.$cards-rgba;
+// ======================================================
+// PDF MODAL
+// ======================================================
+
+#pdfModal {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Vypnutie Bootstrap modalu pre PDF */
+#pdfModal.modal {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Overlay pre PDF modal */
+#pdfModal.modal-overlay {
+  align-items: flex-start;
+  /* začíname pod navbarom */
+}
+
+/* Wrapper pre certifikát */
+.pdf-wrapper {
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+  border-radius: ds.$radius-base;
+  overflow: hidden;
+  background: ds.$dark;
   border: 1px solid rgba(ds.$dark, 0.3);
+  @include ds.shadow(lg);
+
+  /* výška sa nastavuje z JS */
+  padding: 0 !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* certifikát sedí na spodku */
+}
+
+/* Obrázok certifikátu */
+.pdf-wrapper img {
+  height: 100%;
+  /* prispôsobenie výške wrappera */
+  width: auto;
+  /* šírka sa dopočíta */
+  max-width: 100%;
+  /* nikdy nepresiahne viewport */
+  object-fit: contain;
+  /* zachová pomer strán */
+  display: block;
+  margin: 0 auto;
+
+  /* zákaz označovania */
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Šípky */
+.pdf-arrow {
+  position: absolute;
+  top: 50%;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  color: ds.$dark;
+  cursor: pointer;
+  z-index: ds.$z-overlay;
+  padding: 0.5rem 1rem;
+  border-radius: ds.$radius-base;
+  backdrop-filter: blur(4px);
+}
+
+.pdf-arrow.left {
+  left: 1rem;
+}
+
+.pdf-arrow.right {
+  right: 1rem;
+}
+
+/* Close button */
+.pdf-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  color: ds.$dark;
+  cursor: pointer;
+  z-index: ds.$z-overlay;
+  padding: 0.25rem 0.75rem;
+  border-radius: ds.$radius-base;
+  backdrop-filter: blur(4px);
+}
+
+// ======================================================
+// GitHub & Weather modaly (bez zmien)
+// ======================================================
+
+.modal-bubble {
+  background: rgba(ds.$first-light, 0.6);
+  border: 1px solid rgba(ds.$dark, 0.3);
+  color: ds.$dark;
   border-radius: ds.$radius-lg;
   padding: ds.$space-lg ds.$space-xl;
   @include ds.shadow(lg);
 }
 
-.pdf-wrapper {
-  background: ds.$cards-rgba;
-  border: 1px solid rgba(ds.$dark, 0.3);
-  border-radius: ds.$radius-md;
-  padding: ds.$space-xl;
-  max-width: 90vw;
-  max-height: 90vh;
+.modal-bubble .modal-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  @include ds.shadow(md);
+  justify-content: center;
+  gap: ds.$space-md;
+  /* medzera medzi tlačidlami */
+  margin-top: ds.$space-md;
 }

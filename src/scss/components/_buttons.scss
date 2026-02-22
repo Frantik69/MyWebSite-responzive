@@ -40,7 +40,7 @@
   @include ds.shadow(sm);
   border-radius: ds.$radius-base;
 
-  padding: ds.$space-sm ds.$space-lg;
+  padding: ds.$space-sm ds.$space-sm;
   color: ds.$light;
   font-weight: ds.$font-weight-medium;
   line-height: 1.2;
@@ -53,6 +53,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  white-space: wrap;
 }
 
 // ----------------------------------------

@@ -1,26 +1,16 @@
 // ======================================================
 // =============== CERTIFICATE CAROUSEL =================
 // ======================================================
-//
-// Tento modul zabezpečuje:
-// - dynamické renderovanie certifikátov do carouselu
-// - automatické posúvanie
-// - manuálne posúvanie šípkami
-// - pozastavenie pri hoveri
-// - zastavenie pri otvorenom PDF modale
-//
-// ======================================================
 
 import { CERT_MAP } from "./certificates.js";
 
 // ------------------------------------------------------
-// Globálne premenne pre carousel
+// Globálne premenne
 // ------------------------------------------------------
 let autoSlide = null;
 let restartTimeout = null;
 let certTrack = null;
 
-// Poradie súborov v karuseli
 const certificateFiles = Object.keys(CERT_MAP);
 
 // ------------------------------------------------------
@@ -106,6 +96,29 @@ export function restartAutoSlide() {
 }
 
 // ------------------------------------------------------
+// Dynamická výška PDF modalu
+// ------------------------------------------------------
+
+export function adjustModalPosition() {
+  const nav = document.getElementById("mainNav");
+  const copyright = document.getElementById("copyright");
+  const wrapper = document.querySelector(".pdf-wrapper");
+
+  if (!wrapper) return;
+
+  const navHeight = nav?.offsetHeight || 0;
+  const copyrightHeight = copyright?.offsetHeight || 0;
+
+  const availableHeight = window.innerHeight - navHeight - copyrightHeight;
+
+  wrapper.style.height = `${availableHeight}px`;
+  wrapper.style.marginTop = `${navHeight}px`;
+}
+
+
+window.addEventListener("resize", adjustModalPosition);
+
+// ------------------------------------------------------
 // INIT FUNKCIA
 // ------------------------------------------------------
 
@@ -122,6 +135,13 @@ export function initCarousel() {
   wrapper?.addEventListener("mouseenter", stopAutoSlide);
   wrapper?.addEventListener("mouseleave", restartAutoSlide);
 
+  wrapper?.addEventListener("mouseleave", () => {
+    document.querySelectorAll(".tooltip-follow").forEach(b => {
+      b.classList.remove("showing");
+      b.style.display = "none";
+    });
+  });
+
   btnLeft?.addEventListener("click", () => {
     stopAutoSlide();
     manualSlide("left");
@@ -132,6 +152,35 @@ export function initCarousel() {
     stopAutoSlide();
     manualSlide("right");
     restartAutoSlide();
+  });
+
+  // Otvorenie PDF modalu
+  document.addEventListener("click", e => {
+    const target = e.target.closest(".show-pdf");
+    if (!target) return;
+
+    const modal = document.getElementById("pdfModal");
+    const img = document.getElementById("pdfImage");
+
+    img.src = target.src;
+    modal.style.display = "flex";
+
+    stopAutoSlide();
+    adjustModalPosition();
+  });
+
+  // Zavretie modalu
+  document.querySelector(".pdf-close")?.addEventListener("click", () => {
+    document.getElementById("pdfModal").style.display = "none";
+    restartAutoSlide();
+  });
+
+  // Klik mimo obrázka = zatvoriť
+  document.getElementById("pdfModal")?.addEventListener("click", e => {
+    if (e.target.id === "pdfModal") {
+      e.target.style.display = "none";
+      restartAutoSlide();
+    }
   });
 
   autoSlide = setInterval(slide, 3000);

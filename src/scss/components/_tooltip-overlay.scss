@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
   display: none;
-  z-index: ds.$z-tooltip; // unified DS z-index
+  z-index: ds.$z-max; // unified DS z-index
   pointer-events: none;
 }
 
@@ -21,13 +21,12 @@
   display: inline-flex;
   align-items: center;
   max-width: 200px;
-  padding: ds.$space-xs;
+  padding: ds.$space-sm;
   font-size: ds.$font-size-xs;
   line-height: 1.3;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-
   background-color: rgba(ds.$gray-400, 0.15);
   color: ds.$light;
   border-radius: ds.$radius-base;

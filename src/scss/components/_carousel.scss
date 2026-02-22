@@ -21,6 +21,9 @@
   width: 100%;
   overflow: hidden;
   border-radius: ds.$radius-base;
+  display: flex;
+  align-items: center;
+  background: rgba(ds.$dark, 0.3);
 }
 
 .cert-track {
@@ -28,6 +31,7 @@
   gap: ds.$space-md;
   padding: ds.$space-sm;
   transition: transform 0.4s ease;
+
 }
 
 .cert-track img {
@@ -35,19 +39,7 @@
   width: auto;
   border-radius: ds.$radius-sm;
   transition: transform 0.2s ease;
-}
-
-// ----------------------------------------
-// VISUAL STYLING
-// ----------------------------------------
-
-.cert-track-wrapper {
-  border: 1px solid ds.$gray;
-  background: ds.$carousel-rgba;
-}
-
-.cert-track img {
-  box-shadow: 2px 2px 4px rgba(ds.$dark, 0.6);
+  cursor: pointer;
 }
 
 .cert-track img:hover {
@@ -55,11 +47,10 @@
 }
 
 .cert-arrow {
-  background: ds.$arrow-bg-rgba;
+  background: rgba(ds.$dark, 0.8);
   color: ds.$first-light;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 35%;
   z-index: ds.$z-overlay;
   padding: ds.$space-xs ds.$space-sm;
   border-radius: 50%;

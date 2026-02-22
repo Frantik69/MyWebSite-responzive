@@ -124,16 +124,17 @@ export function initPdfModal() {
 // ------------------------------------------------------
 export function adjustModalPosition() {
   const nav = document.getElementById("mainNav");
-  const footer = document.querySelector("footer");
+  const copyright = document.getElementById("copyright");
   const wrapper = document.querySelector(".pdf-wrapper");
 
   if (!wrapper) return;
 
   const navHeight = nav?.offsetHeight || 0;
-  const footerHeight = footer?.offsetHeight || 0;
+  const copyrightHeight = copyright?.offsetHeight || 0;
 
-  const availableHeight = window.innerHeight - navHeight - footerHeight;
+  const availableHeight = window.innerHeight - navHeight - copyrightHeight;
 
   wrapper.style.height = `${availableHeight}px`;
   wrapper.style.marginTop = `${navHeight}px`;
 }
+
