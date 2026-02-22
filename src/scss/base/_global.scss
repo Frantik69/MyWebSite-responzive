@@ -48,6 +48,8 @@ h1 {
   font-weight: ds.$font-weight-bold;
   color: ds.$heading-color;
   line-height: ds.$heading-line-height;
+  @include ds.text-shadow(sm);
+  @include ds.drop-shadow(sm);
 }
 
 h2 {
@@ -55,6 +57,8 @@ h2 {
   font-weight: ds.$font-weight-bold;
   color: ds.$heading-color;
   line-height: ds.$heading-line-height;
+  @include ds.text-shadow(sm);
+  @include ds.drop-shadow(sm);
 }
 
 h3 {

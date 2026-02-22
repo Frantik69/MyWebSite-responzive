@@ -85,7 +85,7 @@
 #home h1,
 #home p {
   color: ds.$first-light;
-  @include ds.text-shadow-soft;
+  @include ds.text-shadow(sm);
 }
 
 // ----------------------------------------

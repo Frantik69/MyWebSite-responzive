@@ -118,6 +118,7 @@
 
 .sideNav-center {
   @include nav.sidenav-center;
+    @include ds.text-shadow(sm);
 }
 
 .sideNav-content {
@@ -132,7 +133,7 @@
   .time {
     font-weight: ds.$font-weight-bold;
     font-size: ds.$font-size-xl;
-    @include ds.text-shadow(sm);
+    @include ds.text-shadow(md);
   }
 }
 
@@ -149,7 +150,7 @@
 
 #sideMenu li {
   list-style: none;
-  margin: ds.$space-sm 0;
+  margin: ds.$space-xs 0;
 }
 
 #sideMenu a {
@@ -185,7 +186,7 @@
 
 #sideNav .hover-bubble {
   position: absolute;
-  background-color: rgba(ds.$light, 0.7);
+  background-color: rgba(ds.$dark, 0.6);
   inset: 0;
   @include ds.flex-center;
   border-radius: inherit;
@@ -199,7 +200,8 @@
 
 #sideNav .hover-bubble span {
   display: inline-block;
-  color: ds.$dark;
+  font-size: ds.$font-size-sm;
+  color: ds.$light;
   padding-left: 100%;
   animation: sideNavMarquee 6s linear infinite;
 }
@@ -222,6 +224,7 @@
     justify-content: flex-start;
     gap: ds.$space-sm;
     width: 100%;
+    @include ds.text-shadow(sm);
   }
 
   .weather-icon {
@@ -229,6 +232,7 @@
     height: auto;
     transform-origin: 50% 60%;
     animation: weather-sway 5s ease-in-out infinite;
+    
   }
 }
 
@@ -236,4 +240,5 @@
   width: 100%;
   @include ds.flex-column;
   gap: ds.$space-xs;
+  @include ds.text-shadow(sm);
 }

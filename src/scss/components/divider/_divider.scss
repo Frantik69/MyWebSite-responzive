@@ -18,14 +18,14 @@
     height: 2px;
     border-radius: ds.$radius-lg;
     background-color: ds.$first-light;
-    @include ds.text-shadow(xs);
+    @include ds.drop-shadow(sm);
   }
 
   .divider-custom-icon {
     font-size: ds.$font-size-base;
     margin: 0 ds.$space-md;
     color: ds.$body-color;
-    @include ds.text-shadow(2px);
+    @include ds.drop-shadow(sm);
   }
 }
 

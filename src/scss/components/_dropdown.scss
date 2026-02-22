@@ -36,10 +36,9 @@
   width: max-content;
   white-space: nowrap;
 
-  padding: ds.$space-xs 0;
+  padding: ds.$space-sm ds.$space-sm;
   border-radius: ds.$radius-md;
-  background-color: rgba(ds.$first-middle, 0.6);
-  @include ds.shadow(sm);
+  background-color: rgba(ds.$first-middle, 0.5);
 
   list-style: none;
 
@@ -102,18 +101,20 @@
 #languageMenu .dropdown-item {
   font-size: ds.$font-size-xs;
   text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 0.02rem;
+  font-weight: ds.$font-weight-light;
+  letter-spacing: 0.05rem;
   color: ds.$light;
+
 }
 
 #selected-lang {
   font-size: ds.$font-size-sm;
-  font-weight: 500;
+  font-weight: ds.$font-weight-medium;
   letter-spacing: 0.02rem;
   color: ds.$light;
   text-transform: uppercase;
   display: flex;
+
 }
 
 #languageDropdown {
@@ -136,13 +137,13 @@
 .dropdown-menu .dropdown-item:active {
   background-color: rgba(ds.$second-middle, 0.4);
   color: ds.$light;
-  font-weight: 600;
+  font-weight: ds.$font-weight-medium;
 }
 
 #languageMenu .dropdown-item.active {
   background-color: rgba(ds.$first-middle, 0.7);
   color: ds.$light;
-  font-weight: 600;
+  font-weight: ds.$font-weight-semibold;
   border-radius: ds.$radius-sm;
   @include ds.shadow(sm);
 }
@@ -156,6 +157,7 @@
 #languageMenu .dropdown-item.active:focus {
   background-color: rgba(ds.$second-middle, 0.85);
   color: ds.$light;
+  text-decoration: none;
 }
 
 // ----------------------------------------
@@ -165,6 +167,8 @@
 #languageMenu .dropdown-item:not(.active):hover {
   background-color: rgba(ds.$first-middle, 0.5);
   color: ds.$light;
+  font-weight: ds.$font-weight-regular;
+  text-decoration: none;
 }
 
 // ----------------------------------------

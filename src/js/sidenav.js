@@ -250,3 +250,12 @@ export function initSideNav() {
     });
   });
 }
+
+
+// ------------------------------------------------------ 
+// REBUILD SIDENAV PO ZMENE JAZYKA
+// ------------------------------------------------------
+document.addEventListener("languageChanged", () => {
+  initSideMenu();
+  initSideNavBubble();
+});

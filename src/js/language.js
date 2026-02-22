@@ -121,6 +121,9 @@ export function setLanguage(lang) {
 
   // --- RE-RENDER CAPTCHA ---
   renderTurnstile(lang);
+  setTimeout(() => {
+    document.dispatchEvent(new Event("languageChanged"));
+  }, 310);
 }
 
 
