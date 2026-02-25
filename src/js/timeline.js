@@ -69,6 +69,28 @@ export const TIMELINE_DATA = {
       ]
     },
     {
+      title: { translate: "portfolioSkillmea1" },
+      certificate: "skillmea-certifikat-java-pre-pokrocilych.png",
+      items: [
+        { translate: "boxing" },
+        {translate: "cisla" },
+        {translate: "metody" },
+        { translate: "vnoreneTriedy" },
+        { translate: "orm" },
+      ]
+    },
+    {
+      title: { translate: "portfolioSkillmea" },
+      certificate: "skillmea-certifikat-java-a-oop-pre-zaciatocnikov.png",
+      items: [
+        { translate: "premenne" },
+        {translate: "cykly" },
+        {translate: "triedy" },
+        { translate: "garbageCollector" },
+        { translate: "interface" },
+      ]
+    },
+    {
       date: "2009-2022",
       title: { text: "Chemko a.s. Slovakia, Mlinské nivy 10, Bratislava 811 09" },
       items: [{ translate: "chemko" }]
@@ -139,7 +161,7 @@ export function renderTimeline(data, containerId) {
     // --- HLAVNÝ CERTIFIKÁT ---
     if (entry.certificate) {
       const cert = createPdfLink(entry.certificate);
-      cert.classList.add("certifikat");
+      cert.classList.add ("certifikat");
       cert.dataset.translate = "certifikat";
       cert.dataset.translateInfo = "certifikatInfo";
       content.appendChild(cert);

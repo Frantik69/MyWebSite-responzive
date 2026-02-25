@@ -62,12 +62,17 @@ $timeline-dot-size:  0.7rem;
       text-align: start;
 
       a.certifikat {
-        font-size: ds.$font-size-md;
+        font-size: ds.$font-size-base;
+        font-weight: ds.$font-weight-regular;
       }
 
-      span,
-      li {
+      span{
         font-size: ds.$font-size-base;
+        font-weight: ds.$font-weight-semibold;
+      }
+
+      li {
+        font-size: ds.$font-size-sm;
       }
     }
   }
