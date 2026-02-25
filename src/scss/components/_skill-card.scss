@@ -7,19 +7,27 @@
 $skill-icon-size-desktop: 2rem;
 $skill-icon-size-mobile: 1.5rem;
 
+// ===============================================
+// SKILL CARD – HLAVNÝ LAYOUT
+// ===============================================
+
 .skill-card {
   display: flex;
-  gap: ds.$space-md;
+  align-items: center;
+  gap: ds.$space-sm;
   width: 100%;
-  margin-top: ds.$space-md;
-  align-items: flex-start;
 
-  // LEFT SIDE
+
+  // ----------------------------------------
+  // LEFT SIDE (IKONA + NADPIS)
+  // ----------------------------------------
   .skill-left {
     @include ds.flex-column;
     align-items: center;
     justify-content: center;
+
     width: 8rem;
+    min-width: 8rem; // pevná šírka pre perfektné zarovnanie
     min-height: 8rem;
     text-align: center;
 
@@ -29,41 +37,45 @@ $skill-icon-size-mobile: 1.5rem;
       object-fit: contain;
       margin-bottom: ds.$space-xxs;
     }
+
+    .skill-title {
+      font-size: ds.$font-size-lg;
+      margin: 0;
+      text-align: center;
+    }
   }
 
-  // TITLE
-  .skill-title {
-    font-size: ds.$font-size-lg;
-    margin: 0;
-    text-align: center;
-  }
-
-  // DESCRIPTION (collapsed)
+  // ----------------------------------------
+  // RIGHT SIDE (POPIS)
+  // ----------------------------------------
   .skill-desc {
-    flex: 1 1 auto;
+    width: calc(100% - 8rem - ds.$space-md);
+    min-width: calc(100% - 8rem - ds.$space-md);
+    flex: none; // zabráni roztiahnutiu podľa obsahu
+
     opacity: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
-    overflow-wrap: break-word;
     line-height: 1.2;
+    overflow-wrap: break-word;
+    transition: all 0.3s ease;
   }
 
-  // DESCRIPTION (expanded)
+  // EXPANDED STATE
   .skill-desc.show {
     opacity: 1;
     max-height: 500px;
-    background: ds.$cards-rgba;
     padding: ds.$space-md;
-    @include ds.rounded(ds.$radius-base);
+    background: ds.$cards-rgba;
     font-size: ds.$font-size-base;
+    @include ds.rounded(ds.$radius-base);
     @include ds.bubble-box-shadow;
   }
 }
 
-// ----------------------------------------
-// Responsive
-// ----------------------------------------
+// ===============================================
+// RESPONSIVE – MOBILE
+// ===============================================
 
 @include ds.mobile {
   .skill-card {
@@ -72,11 +84,17 @@ $skill-icon-size-mobile: 1.5rem;
 
   .skill-left {
     width: 60px;
+    min-width: 60px;
     min-height: 2rem;
 
     .skill-icon {
       width: $skill-icon-size-mobile;
       height: $skill-icon-size-mobile;
     }
+  }
+
+  .skill-desc {
+    width: calc(100% - 60px - 0.75rem);
+    min-width: calc(100% - 60px - 0.75rem);
   }
 }

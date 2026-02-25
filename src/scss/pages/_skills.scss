@@ -16,11 +16,18 @@
   @include ds.gradient-bg(ds.$first-middle, ds.$first-light, to right);
   @include ds.rounded(ds.$radius-base);
   width: 100%;
-
+  
   .row {
     display: flex;
     flex-wrap: wrap;
-    gap: ds.$space-xs;
+    flex-direction: row;
+    gap: ds.$space-sm;
+    justify-content: center;
+  }
+
+  .skills-info {
+    flex: 0 0 45%;
+    max-width: 45%;
   }
 
   h2 {
@@ -40,7 +47,8 @@
 
     .skills-page {
       @include ds.gradient-bg(ds.$primary, ds.$first-light, to right);
-      padding: ds.$space-sm ds.$space-md;
+      padding-top: ds.$space-xl;
+      padding-bottom: ds.$space-xl;
       color: ds.$dark;
       border-radius: ds.$radius-base;
       border: 1px solid ds.$dark;

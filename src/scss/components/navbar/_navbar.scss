@@ -11,6 +11,7 @@
   border-bottom: 1px solid ds.$dark;
   color: ds.$light;
   @include ds.text-shadow(sm);
+  z-index: ds.$z-max;
 }
 
 #mainNav .container-fluid {

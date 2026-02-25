@@ -4,7 +4,7 @@
 //
 // Tento modul zabezpečuje:
 // - dynamické renderovanie skill kariet
-// - rozdelenie skillov do ľavého a pravého stĺpca
+// - dvojstĺpcový layout (flex 50%)
 // - podporu pre viacjazyčné preklady (data-translate)
 //
 // Modul je inicializovaný cez main.js
@@ -31,19 +31,19 @@ import iconRestAPI from "../icons/RestAPI-icon.png";
 
 // Exportované dáta
 export const SKILLS_DATA = [
-  { side: "left",  icon: iconIntelliJ, alt: "IntelliJ IDEA icon", titleKey: "skillTitleIntelliJ",  descKey: "intelliJIDEAskills" },
-  { side: "left",  icon: iconDevTools, alt: "DevTools icon",        titleKey: "skillTitleDevTools", descKey: "devtoolsskills" },
-  { side: "left",  icon: iconHTML5,    alt: "HTML5 icon",           titleKey: "skillTitleHTML5",    descKey: "html5skills" },
-  { side: "left",  icon: iconSCSS,     alt: "SCSS icon",            titleKey: "skillTitleSCSS",     descKey: "scssskills" },
-  { side: "left",  icon: iconJS,       alt: "JavaScript icon",      titleKey: "skillTitleJavaScript", descKey: "javaScriptskills" },
-  { side: "left",  icon: iconBootstrap, alt: "Bootstrap icon",      titleKey: "skillTitleBootstrap", descKey: "bootstrapskills" },
+  { icon: iconIntelliJ, alt: "IntelliJ IDEA icon", titleKey: "skillTitleIntelliJ",  descKey: "intelliJIDEAskills" },
+  { icon: iconDevTools, alt: "DevTools icon",      titleKey: "skillTitleDevTools", descKey: "devtoolsskills" },
+  { icon: iconHTML5,    alt: "HTML5 icon",         titleKey: "skillTitleHTML5",    descKey: "html5skills" },
+  { icon: iconSCSS,     alt: "SCSS icon",          titleKey: "skillTitleSCSS",     descKey: "scssskills" },
+  { icon: iconJS,       alt: "JavaScript icon",    titleKey: "skillTitleJavaScript", descKey: "javaScriptskills" },
+  { icon: iconBootstrap, alt: "Bootstrap icon",    titleKey: "skillTitleBootstrap", descKey: "bootstrapskills" },
 
-  { side: "right", icon: iconSQL,      alt: "SQL icon",             titleKey: "skillTitleSQL",      descKey: "sqlskills" },
-  { side: "right", icon: iconGit,      alt: "Git icon",             titleKey: "skillTitleGit",      descKey: "gitskills" },
-  { side: "right", icon: iconGitHub,   alt: "GitHub icon",          titleKey: "skillTitleGitHub",   descKey: "githubskills" },
-  { side: "right", icon: iconJava,     alt: "Java icon",            titleKey: "skillTitleJava",     descKey: "javaskills" },
-  { side: "right", icon: iconSpring,   alt: "Spring Boot icon",     titleKey: "skillTitleSpringBoot", descKey: "springbootskills" },
-  { side: "right", icon: iconRestAPI,  alt: "REST API icon",        titleKey: "skillTitleRestAPI",  descKey: "restAPIskills" }
+  { icon: iconSQL,      alt: "SQL icon",           titleKey: "skillTitleSQL",      descKey: "sqlskills" },
+  { icon: iconGit,      alt: "Git icon",           titleKey: "skillTitleGit",      descKey: "gitskills" },
+  { icon: iconGitHub,   alt: "GitHub icon",        titleKey: "skillTitleGitHub",   descKey: "githubskills" },
+  { icon: iconJava,     alt: "Java icon",          titleKey: "skillTitleJava",     descKey: "javaskills" },
+  { icon: iconSpring,   alt: "Spring Boot icon",   titleKey: "skillTitleSpringBoot", descKey: "springbootskills" },
+  { icon: iconRestAPI,  alt: "REST API icon",      titleKey: "skillTitleRestAPI",  descKey: "restAPIskills" }
 ];
 
 
@@ -90,16 +90,18 @@ export function createSkillCard(skill) {
 // Hlavná funkcia – renderovanie skillov
 // ------------------------------------------------------
 export function renderSkills() {
-  const leftCol = document.getElementById("skills-left");
-  const rightCol = document.getElementById("skills-right");
+  const grid = document.getElementById("skills-grid");
+  if (!grid) return;
 
-  if (!leftCol || !rightCol) return;
-
-  leftCol.innerHTML = "";
-  rightCol.innerHTML = "";
+  grid.innerHTML = "";
 
   SKILLS_DATA.forEach(skill => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "skills-info";
+
     const card = createSkillCard(skill);
-    (skill.side === "left" ? leftCol : rightCol).appendChild(card);
+    wrapper.appendChild(card);
+
+    grid.appendChild(wrapper);
   });
 }
