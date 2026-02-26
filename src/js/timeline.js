@@ -150,7 +150,7 @@ export function renderTimeline(data, containerId) {
     content.className = "timeline-content";
 
     // --- NADPIS ---
-    const title = document.createElement("span");
+    const title = document.createElement("strong");
     if (entry.title.translate) {
       title.dataset.translate = entry.title.translate;
     } else {
@@ -176,15 +176,38 @@ export function renderTimeline(data, containerId) {
         const li2 = document.createElement("li");
 
         // Text alebo preklad
+        const textSpan = document.createElement("span");
+
         if (typeof item === "string") {
-          li2.textContent = item;
+          textSpan.textContent = item;
         } else if (item.translate) {
-          li2.dataset.translateSublist = item.translate;
+          textSpan.dataset.translateSublist = item.translate;
+        } else if (item.text) {
+          textSpan.textContent = item.text;
         }
 
+        li2.appendChild(textSpan);
+
+
         // PDF odkazy
-        if (item.pdf) li2.appendChild(createPdfLink(item.pdf));
-        if (item.pdf2) li2.appendChild(createPdfLink(item.pdf2));
+        if (item.pdf) {
+          const link = createPdfLink(item.pdf);
+          const icon = document.createElement("i");
+          icon.className = "fas fa-file-pdf pdf-icon";
+          link.appendChild(icon);
+          link.dataset.translateInfo = "certifikatInfo";
+          li2.appendChild(link);
+        }
+
+        if (item.pdf2) {
+          const link2 = createPdfLink(item.pdf2);
+          const icon2 = document.createElement("i");
+          icon2.className = "fas fa-file-pdf pdf-icon";
+          link2.appendChild(icon2);
+          link2.dataset.translateInfo = "certifikatInfo";
+          li2.appendChild(link2);
+        }
+
 
         ul.appendChild(li2);
       });

@@ -170,6 +170,7 @@
     text-transform: uppercase;
     margin-bottom: ds.$space-lg;
     font-size: ds.$font-size-lg;
+    font-weight: ds.$font-weight-bold;
   }
 
   .knowledge-columns {
@@ -200,42 +201,6 @@
 
   .section-divider {
     margin: ds.$space-md 0;
-  }
-
-  // Timeline – používať komponentovú verziu
-  .timeline {
-    list-style: none;
-    padding: 0;
-
-    .timeline-item {
-      margin-bottom: ds.$space-md;
-
-      .timeline-date {
-        font-weight: ds.$font-weight-bold;
-        margin-top: ds.$space-sm;
-        font-size: ds.$font-size-base;
-      }
-
-      .timeline-content {
-        background: ds.$cards-rgba;
-        padding: ds.$space-md;
-        @include ds.rounded(ds.$radius-base);
-        @include ds.bubble-box-shadow;
-
-        a.certifikat {
-          font-size: ds.$font-size-md;
-        }
-
-        span {
-          font-size: ds.$font-size-base;
-        }
-
-        li {
-          font-size: ds.$font-size-sm;
-          line-height: 1.3;
-        }
-      }
-    }
   }
 
   .portfolio-links {

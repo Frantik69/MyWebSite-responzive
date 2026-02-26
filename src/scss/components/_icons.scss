@@ -50,6 +50,23 @@
   margin-right: 0.3rem;
 }
 
+// --------------------------------------
+// PDF icon
+// --------------------------------------
+
+.pdf-icon {
+  margin-left: ds.$space-sm;
+  color: #c00;
+  cursor: pointer;
+  font-size: ds.$font-size-base;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+
 // ----------------------------------------
 // Responsive adjustments
 // ----------------------------------------

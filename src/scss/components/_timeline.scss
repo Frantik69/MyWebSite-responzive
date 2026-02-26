@@ -5,8 +5,8 @@
 // ----------------------------------------
 
 $timeline-line-from: ds.$logo-color;
-$timeline-line-to:   ds.$dark;
-$timeline-dot-size:  0.7rem;
+$timeline-line-to: ds.$dark;
+$timeline-dot-size: 0.7rem;
 
 .timeline {
   position: relative;
@@ -31,6 +31,7 @@ $timeline-dot-size:  0.7rem;
     grid-template-columns: minmax(4.5rem, 6rem) 1fr;
     column-gap: ds.$space-md;
     padding: ds.$space-xs ds.$space-sm;
+    margin-bottom: ds.$space-sm;
 
     // Dot
     &::before {
@@ -49,13 +50,14 @@ $timeline-dot-size:  0.7rem;
       justify-self: end;
       white-space: nowrap;
       font-weight: ds.$font-weight-bold;
-      font-size: ds.$font-size-sm;
+      font-size: ds.$font-size-base;
+      margin-top: ds.$space-sm;
       color: ds.$danger;
     }
 
     .timeline-content {
       background: ds.$cards-rgba;
-      padding: ds.$space-md;
+      padding: ds.$space-sm ds.$space-md;
       @include ds.rounded(ds.$radius-base);
       @include ds.bubble-box-shadow;
       font-size: ds.$font-size-xs;
@@ -64,15 +66,20 @@ $timeline-dot-size:  0.7rem;
       a.certifikat {
         font-size: ds.$font-size-base;
         font-weight: ds.$font-weight-regular;
+        margin-left: ds.$space-sm;
       }
 
-      span{
+      span {
+        font-size: ds.$font-size-sm;
+      }
+
+      strong {
         font-size: ds.$font-size-base;
-        font-weight: ds.$font-weight-semibold;
       }
 
       li {
         font-size: ds.$font-size-sm;
+        padding-left: 1rem;
       }
     }
   }
