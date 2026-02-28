@@ -121,7 +121,6 @@
   }
 
   #skills .skills-page {
-    padding-inline: ds.$space-md;
   }
 }
 
@@ -130,19 +129,12 @@
 // ===============================================
 
 @include ds.mobile {
-  #skills {
-    padding: ds.$space-xl ds.$space-sm;
-  }
 
   #skills .skills-container {
     width: 100%;
     max-width: 100%;
     margin: 0;
     padding: 0;
-  }
-
-  #skills .skills-page {
-    padding-inline: ds.$space-md;
   }
 
   #skills h2 {
@@ -162,7 +154,7 @@
 
   .skill-card {
     width: 100%;
-    gap: ds.$space-lg;
+    gap: ds.$space-sm;
   }
 
   .skill-card .skill-left {

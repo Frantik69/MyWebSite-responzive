@@ -63,9 +63,9 @@
   font-weight: ds.$font-weight-semibold;
   @include ds.text-shadow(xs);
 
-  position: relative; // rodič pre overlay
+  position: relative;
   z-index: ds.$z-content;
-  overflow: hidden; // aby overlay nepretiekol
+  overflow: hidden;
 }
 
 .navbar-nav .nav-link:hover {
@@ -79,10 +79,7 @@
   @include ds.shadow(lg);
 }
 
-/* ----------------------------------------
-   HOVER BUBBLE – overlay cez celú pilulku
----------------------------------------- */
-
+/* HOVER BUBBLE */
 .navbar-nav .nav-link .hover-bubble {
   position: absolute;
   inset: 0;
@@ -123,9 +120,25 @@
   color: ds.$light;
 }
 
-/* FIX: toggler musí byť skrytý na desktopoch */
+/* ----------------------------------------
+   TOGGLER – upravená viditeľnosť
+---------------------------------------- */
+
+/* default: toggler skrytý všade */
 .navbar-toggler {
   display: none !important;
+}
+
+/* toggler viditeľný IBA na tablet-landscape */
+@include ds.tablet-landscape {
+  .navbar-toggler {
+    display: block !important;
+  }
+
+  /* a zároveň skryť desktop menu */
+  #navbarResponsive {
+    display: none !important;
+  }
 }
 
 /* RESET LINK DECORATION */
@@ -136,10 +149,7 @@
   text-decoration: none !important;
 }
 
-/* ----------------------------------------
-   WEATHER NAV – visible only 992–1200px
----------------------------------------- */
-
+/* WEATHER NAV – visible only 992–1200px */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   #weatherNav {
     display: flex !important;

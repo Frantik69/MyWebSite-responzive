@@ -214,7 +214,7 @@
 
 @include ds.mobile {
   #portfolio {
-    padding-inline: 0;
+    padding: ds.$space-xl ds.$space-sm;
   }
 
   .portfolio-content {
@@ -223,16 +223,27 @@
     text-align: center;
   }
 
-  .portfolio-left .profile-photo {
-    width: 180px;
+  .portfolio-left, .portfolio-right { 
+    min-width: 100%; 
   }
 }
 
 @include ds.tablet {
+  .portfolio-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
   .knowledge-columns {
     flex-direction: column;
   }
+
+  .portfolio-left, .portfolio-right { 
+    min-width: 100%; 
+  }
 }
+
 
 @include ds.tablet-landscape {
   .portfolio-content {

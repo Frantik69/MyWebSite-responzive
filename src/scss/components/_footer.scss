@@ -93,6 +93,10 @@ footer {
 // ----------------------------------------
 
 @include ds.mobile {
+  #footer {
+    padding: ds.$space-xl ds.$space-sm;
+  }
+
   .footer-row {
     flex-direction: column;
     text-align: center;
@@ -101,6 +105,17 @@ footer {
   .footer-logo,
   .footer-contact {
     justify-content: center;
+  }
+  .footer-logo {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+    #logo {
+      .logo, img.logo {
+        height: ds.$footer-logo-mobile-height;
+      }
+    }
   }
 }
 

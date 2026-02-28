@@ -187,12 +187,12 @@
 
 @include ds.tablet-landscape {
   #languageMenu .dropdown-item {
-    font-size: ds.$font-size-xs;
+    font-size: ds.$font-size-sm;
   }
 
   #selected-flag {
-    width: 1.25rem;
-    height: 0.75rem;
+    width: 2rem;
+    height: 1.5rem;
   }
 
   #selected-lang {
@@ -202,17 +202,17 @@
 
 @include ds.mobile {
   #languageMenu .dropdown-item {
-    font-size: ds.$font-size-xs;
-    gap: ds.$space-xxs;
+    font-size: ds.$font-size-base;
+    gap: ds.$space-sm;
   }
 
   #selected-lang {
-    font-size: ds.$font-size-xs;
+    font-size: ds.$font-size-base;
   }
 
   #selected-flag {
-    width: 1.25rem;
-    height: 0.85rem;
+    width: 1.5rem;
+    height: 1rem;
   }
 
   #languageDropdown {

@@ -157,6 +157,11 @@ p.tagline {
 }
 
 @include ds.mobile {
+
+  #home {
+    padding: ds.$space-xl ds.$space-sm;
+  }
+
   #home .left-bottom {
     padding-top: 0;
   }

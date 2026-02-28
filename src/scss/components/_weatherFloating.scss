@@ -2,7 +2,7 @@
 @use "../base/index" as base;
 
 /* ===============================================
-   FLOATING WEATHER WIDGET
+   FLOATING WEATHER WIDGET – DESKTOP ONLY
    =============================================== */
 
 #weatherFloating {
@@ -11,8 +11,8 @@
   transition: opacity 0.3s ease;
 
   position: fixed;
-  right: 5rem;
-  top: 7rem;
+  right: 4vw;
+  top: 6vw;
   z-index: ds.$z-overlay;
 
   @include ds.flex-column;
@@ -27,18 +27,26 @@
   font-size: clamp(0.8rem, 1.2vh, 1.2rem);
 }
 
-#weatherFloating.visible {
-  opacity: 1;
-  pointer-events: auto;
+@include ds.desktop {
+  #weatherFloating.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
-/* ROW WITH ICON + TEMP */
+/* ===============================================
+   ROW WITH ICON + TEMP
+   =============================================== */
+
 #weatherFloating .weather-row {
   @include ds.flex-row-center;
   gap: clamp(0.3rem, 1vw, 0.8rem);
 }
 
-/* ICON */
+/* ===============================================
+   ICON
+   =============================================== */
+
 #weatherFloating .weather-icon {
   width: clamp(48px, 5vw, 80px);
   height: auto;
@@ -46,13 +54,19 @@
   transform-origin: 50% 60%;
 }
 
-/* TEMPERATURE */
+/* ===============================================
+   TEMPERATURE
+   =============================================== */
+
 #weatherFloating .weather-temp {
   font-size: clamp(1.2rem, 2.5vw, 3rem);
   font-weight: ds.$font-weight-regular;
 }
 
-/* CITY NAME */
+/* ===============================================
+   CITY NAME
+   =============================================== */
+
 #weatherFloating .weather-city {
   font-size: clamp(0.7rem, 1vw, 1.2rem);
   opacity: 0.9;
@@ -68,32 +82,6 @@
   50%  { transform: rotate(5deg); }
   75%  { transform: rotate(-5deg); }
   100% { transform: rotate(5deg); }
-}
-
-/* ===============================================
-   RESPONSIVE POSITIONING
-   =============================================== */
-
-@include ds.desktop-down {
-  #weatherFloating {
-    right: 2rem;
-    top: 6rem;
-  }
-}
-
-/* LANDSCAPE TABLETS */
-@media (min-width: 768px) and (orientation: landscape) {
-  #weatherFloating {
-    display: flex;
-  }
-}
-
-/* PORTRAIT TABLETS + SMALL LANDSCAPE PHONES */
-@media (max-width: 991px) and (orientation: portrait),
-       (max-width: 767px) and (orientation: landscape) {
-  #weatherFloating {
-    display: none !important;
-  }
 }
 
 /* ===============================================

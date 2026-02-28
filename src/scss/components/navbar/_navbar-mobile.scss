@@ -25,7 +25,6 @@
   }
 
   #mobileLeft {
-    order: 1;
     @include ds.flex-row-center;
   }
 
@@ -52,7 +51,6 @@
   /* FIX: odstránené all: unset */
   #logo {
     @include ds.flex-center;
-    @include ds.shadow(sm);
     background: none;
     border: none;
   }
@@ -62,7 +60,6 @@
   }
 
   #navbarResponsive {
-    order: 3;
     width: 100%;
     max-width: 300px;
     display: none;
@@ -94,7 +91,6 @@
   }
 
   #rightNav {
-    order: 2;
     @include ds.flex-row-center;
     margin-right: ds.$space-sm;
     color: ds.$light;

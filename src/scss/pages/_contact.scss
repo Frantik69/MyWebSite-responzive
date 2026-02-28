@@ -88,6 +88,7 @@
     @include ds.flex-column;
     justify-content: center;
     align-items: center;
+    padding: ds.$space-xl ds.$space-sm;
   }
 
   #contact .contact-container {
