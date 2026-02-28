@@ -55,7 +55,7 @@
 
 .portfolio-left {
   flex: 1;
-  min-width: 260px;
+  min-width: 200px;
 
   background-color: ds.$primary;
   color: ds.$body-color;
@@ -68,7 +68,7 @@
   @include ds.rounded(ds.$radius-base);
 
   .profile-photo {
-    width: clamp(180px, 30vw, 260px);
+    width: clamp(160px, 30vw, 200px);
     margin-bottom: ds.$space-lg;
 
   }
@@ -157,7 +157,7 @@
 
 .portfolio-right {
   flex: 2.5;
-  min-width: 260px;
+  min-width: 200px;
 
   background-color: ds.$first-light;
   padding: ds.$space-xl ds.$space-lg;
@@ -212,23 +212,30 @@
 // RESPONSIVE
 // ===============================================
 
-@include ds.mobile {
+@include ds.desktop-down {
   #portfolio {
-    padding: ds.$space-xl ds.$space-sm;
+    padding: ds.$space-xl ds.$space-xl;
+  }
+}
+
+@include ds.tablet-landscape {
+
+   #portfolio {
+    padding: ds.$space-lg ds.$space-lg;
   }
 
   .portfolio-content {
     flex-direction: column;
     align-items: center;
-    text-align: center;
-  }
-
-  .portfolio-left, .portfolio-right { 
-    min-width: 100%; 
   }
 }
 
 @include ds.tablet {
+
+   #portfolio {
+    padding: ds.$space-md ds.$space-md;
+  }
+
   .portfolio-content {
     flex-direction: column;
     align-items: center;
@@ -244,10 +251,24 @@
   }
 }
 
+@include ds.mobile {
+  #portfolio {
+    padding: ds.$space-sm ds.$space-sm;
+  }
 
-@include ds.tablet-landscape {
   .portfolio-content {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
+
+  .portfolio-left, .portfolio-right { 
+    min-width: 100%; 
+  }
+}
+@include ds.mobile-down {
+   #portfolio {
+    padding: 0;
+  }
+  .portfolio-right { padding: ds.$space-sm ds.$space-sm; }
 }

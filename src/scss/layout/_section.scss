@@ -14,6 +14,19 @@
     padding-bottom: ds.$space-xl;
 
     padding-left: calc(clamp(180px, 13vw, 260px) + 2.5vw + ds.$space-xl);
+    padding-right: calc(8.5rem + ds.$space-lg);
+  }
+  
+  @include ds.desktop-xl {
+    padding-left: calc(clamp(180px, 13vw, 260px) + 2.5vw + ds.$space-xl);
+    padding-right: calc(10rem + ds.$space-xl);
+  }
+
+  @include ds.desktop-xxl {
+    padding-top: ds.$space-xxl;
+    padding-bottom: ds.$space-xxl;
+
+    padding-left: calc(clamp(180px, 13vw, 260px) + 2.5vw + ds.$space-xl);
     padding-right: calc(13rem + ds.$space-xl);
   }
 }

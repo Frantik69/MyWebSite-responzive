@@ -88,7 +88,7 @@
     @include ds.flex-column;
     justify-content: center;
     align-items: center;
-    padding: ds.$space-xl ds.$space-sm;
+    padding: ds.$space-sm ds.$space-sm;
   }
 
   #contact .contact-container {
@@ -97,6 +97,14 @@
     width: 100%;
     max-width: 100%;
   }
+
+  .contact-info {
+    max-width: 100% !important;
+    width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
 }
 
 // ===============================================

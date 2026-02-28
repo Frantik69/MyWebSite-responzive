@@ -111,19 +111,35 @@ $timeline-dot-size: 0.7rem;
 
 @include ds.mobile {
   .timeline-item {
-    grid-template-columns: minmax(3.5rem, 4.5rem) 1fr;
-    column-gap: ds.$space-sm;
+    grid-template-columns: 1fr !important;
+    padding-left: ds.$space-md !important;
   }
 
-  .timeline-date {
-    font-size: ds.$font-size-xs;
+  .timeline-item .timeline-date {
+    justify-self: start !important;
+    margin-bottom: ds.$space-xs;
+    font-size: ds.$font-size-md !important;
   }
 
   .timeline-content {
-    font-size: ds.$font-size-xs;
+    margin-top: 0;
+  }
+}
+
+@include ds.tablet {
+  .timeline-item {
+    grid-template-columns: 1fr !important;
+    padding-left: ds.$space-md !important;
   }
 
-  .sublist {
-    font-size: ds.$font-size-xs;
+  .timeline-item .timeline-date {
+    justify-self: start !important;
+    padding-left: ds.$space-md;
+    margin-bottom: ds.$space-xs;
+    font-size: ds.$font-size-md !important;
+  }
+
+  .timeline-content {
+    margin-top: 0;
   }
 }

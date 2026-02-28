@@ -84,6 +84,12 @@
   }
 }
 
+@include ds.desktop-down {
+  #about {
+    padding: ds.$space-xl ds.$space-xl;
+  }
+}
+
 // ===============================================
 // RESPONSIVE – TABLET LANDSCAPE
 // ===============================================
@@ -92,6 +98,7 @@
 
   #about {
     @include ds.flex-column;
+    padding: ds.$space-lg ds.$space-lg;
   }
 
   #about .about-container {
@@ -104,7 +111,7 @@
 
   #about .row {
     flex-wrap: wrap;
-    gap: 0;
+    gap: ds.$space-md;
   }
 
   #about .about-info {
@@ -113,6 +120,17 @@
   }
 }
 
+@include ds.tablet {
+
+  #about {
+    padding: ds.$space-md ds.$space-md;
+  }
+
+  #about .row {
+    flex-wrap: wrap;
+    gap: ds.$space-md;
+  }
+}
 // ===============================================
 // RESPONSIVE – MOBILE
 // ===============================================
@@ -123,7 +141,7 @@
     @include ds.flex-column;
     justify-content: center;
     align-items: center;
-    padding: ds.$space-xl ds.$space-sm;
+    padding: ds.$space-sm ds.$space-sm;
   }
 
   #about .about-page {
@@ -150,5 +168,10 @@
     width: 100%;
     max-width: 100%;
     font-size: ds.$font-size-base;
+  }
+}
+@include ds.mobile-down {
+   #about {
+    padding: 0;
   }
 }

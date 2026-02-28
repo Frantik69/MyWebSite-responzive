@@ -4,10 +4,13 @@
 // ----------------------------------------
 
 // Breakpoint variables
-$breakpoint-lg: 1200px;
+$breakpoint-xxl: 1600px;
+$breakpoint-xl: 1300px;
+$breakpoint-lg: 1201px;
 $breakpoint-md: 992px;
 $breakpoint-sm: 768px;
 $breakpoint-xs: 576px;
+$breakpoint-xxs: 370px;
 
 // Fluid typography (optional)
 $font-fluid-min: 1rem;
@@ -16,7 +19,9 @@ $font-fluid-max: 2.5rem;
 // ----------------------------------------
 // Breakpoint mixins
 // ----------------------------------------
-
+@mixin mobile-down {
+  @media (max-width: #{$breakpoint-xxs}) { @content; }
+}
 @mixin mobile {
   @media (max-width: #{$breakpoint-xs}) { @content; }
 }
@@ -39,4 +44,12 @@ $font-fluid-max: 2.5rem;
 
 @mixin desktop {
   @media (min-width: #{$breakpoint-lg}) { @content; }
+}
+
+@mixin desktop-xl {
+  @media (min-width: #{$breakpoint-xl}) { @content; }
+}
+
+@mixin desktop-xxl {
+  @media (min-width: #{$breakpoint-xxl}) { @content; }
 }

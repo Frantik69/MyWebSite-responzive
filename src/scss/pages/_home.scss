@@ -54,6 +54,11 @@
   align-items: center;
 }
 
+#home p[data-translate="mottoText"] {
+  text-align: center;
+}
+
+
 // ----------------------------------------
 // RIGHT SIDE
 // ----------------------------------------
@@ -127,10 +132,17 @@ p.tagline {
 // RESPONSIVE
 // ----------------------------------------
 
+@include ds.desktop-down {
+  #home {
+    padding: ds.$space-xl ds.$space-xl;
+  }
+}
+
 @include ds.tablet-landscape {
   #home {
     flex-direction: column;
     justify-content: center;
+    padding: ds.$space-lg ds.$space-lg;
   }
 
   #home .home-container {
@@ -159,7 +171,7 @@ p.tagline {
 @include ds.mobile {
 
   #home {
-    padding: ds.$space-xl ds.$space-sm;
+    padding: ds.$space-sm ds.$space-sm;
   }
 
   #home .left-bottom {

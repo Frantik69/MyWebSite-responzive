@@ -86,17 +86,19 @@
   }
 }
 
+@include ds.desktop-down {
+  #skills {
+    padding: ds.$space-xl ds.$space-xl;
+  }
+}
+
 // ===============================================
 // RESPONSIVE – TABLET LANDSCAPE
 // ===============================================
 
 @include ds.tablet-landscape {
-  #skills .skills-container {
-    width: 90vw;
-  }
-
-  #skills .skills-page {
-    padding-inline: ds.$space-md;
+  #skills {
+    padding: ds.$space-lg ds.$space-lg;
   }
 
   #skills .row {
@@ -110,7 +112,7 @@
 
 @include ds.tablet {
   #skills {
-    padding: ds.$space-xl ds.$space-sm;
+    padding: ds.$space-md ds.$space-md;
   }
 
   #skills .skills-container {
@@ -120,41 +122,19 @@
     padding: 0;
   }
 
-  #skills .skills-page {
-  }
-}
-
-// ===============================================
-// RESPONSIVE – MOBILE
-// ===============================================
-
-@include ds.mobile {
-
-  #skills .skills-container {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  #skills h2 {
-    width: 100%;
-    text-align: center;
-  }
-
-  #skills h3 {
-    text-align: center;
-    font-size: ds.$font-size-sm;
-  }
-
-  #skills .row {
+   #skills .row {
     flex-direction: column;
     gap: 0;
   }
 
+  #skills .skills-info {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
   .skill-card {
     width: 100%;
-    gap: ds.$space-sm;
+    gap: ds.$space-xs;
   }
 
   .skill-card .skill-left {
@@ -188,5 +168,95 @@
     background: ds.$cards-rgba;
     @include ds.rounded(ds.$radius-base);
     font-size: ds.$font-size-sm;
+  }
+
+  #skills .skills-page {
+    padding: ds.$space-sm;
+  }
+
+}
+
+// ===============================================
+// RESPONSIVE – MOBILE
+// ===============================================
+
+@include ds.mobile {
+
+  #skills {
+    padding: ds.$space-sm ds.$space-sm;
+  }
+
+  #skills .skills-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  #skills h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  #skills h3 {
+    text-align: center;
+    font-size: ds.$font-size-sm;
+  }
+
+  #skills .row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #skills .skills-info {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .skill-card {
+    width: 100%;
+    gap: ds.$space-xs;
+  }
+
+  .skill-card .skill-left {
+    flex: 0 0 20%;
+    max-width: 20%;
+    min-height: 2rem;
+    @include ds.flex-column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .skill-card .skill-desc {
+    flex: 1 1 auto;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: left;
+    overflow-wrap: break-word;
+  }
+
+  .skill-card .skill-desc.show {
+    width: 100%;
+    max-width: 100%;
+    padding: ds.$space-md;
+
+    opacity: 1;
+    max-height: 500px;
+
+    background: ds.$cards-rgba;
+    @include ds.rounded(ds.$radius-base);
+    font-size: ds.$font-size-sm;
+  }
+
+  #skills .skills-page {
+    padding: ds.$space-sm;
+  }
+}
+@include ds.mobile-down {
+   #skills {
+    padding: 0;
   }
 }
