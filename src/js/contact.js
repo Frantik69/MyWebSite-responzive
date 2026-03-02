@@ -7,6 +7,8 @@
 // V PROD režime sa vykreslí skutočný Turnstile widget.
 //
 
+import { translations } from "./translations.js";
+
 export function renderTurnstile(lang) {
   const container = document.getElementById("turnstile-container");
   if (!container) return;
