@@ -30,14 +30,14 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + (ds.$navbar-height - 1rem) / 2);
   right: 0;
   z-index: ds.$z-dropdown;
   width: max-content;
   white-space: nowrap;
 
   padding: ds.$space-sm ds.$space-sm;
-  border-radius: ds.$radius-md;
+  border-radius: ds.$radius-base;
   background-color: rgba(ds.$first-middle, 0.5);
 
   list-style: none;
@@ -218,5 +218,9 @@
   #languageDropdown {
     gap: ds.$space-sm;
     padding: ds.$space-xxs 0;
+  }
+  .dropdown-menu {
+    top: calc(100% + (ds.$navbar-height - 1.2rem) / 2);
+    right: -1.5rem;
   }
 }
