@@ -40,6 +40,16 @@
     }
   }
 
+  #mainNav .navbar-toggler {
+    box-shadow: none;
+    filter: none;
+
+    i {
+      box-shadow: none;
+      filter: none;
+    }
+  }
+
   #logoWrapper {
     position: absolute;
     left: 50%;

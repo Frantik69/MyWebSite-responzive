@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- DESCRIPTION – dynamicky menené cez JS -->
+    <meta name="description" id="meta-description" content="">
+    <meta name="author" content="Frantik69">
+    <meta property="og:title" content="František Dupaľ - webdeveloper">
+    <meta property="og:description" content="Zhotovovanie webstránok, úprava designu, vývoj webových aplikácií.">
+    <!-- URL po deployi -->
+    <meta property="og:image" content="https://frantisek.dupal.sk/kod-java.jpg">
+    <meta property="og:url" content="https://frantisek.dupal.sk">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0d1b2a" media="(prefers-color-scheme: dark)">
+    <!-- Robots podľa potreby -->
+    <meta name="robots" content="index, follow">
+    <title>František Dupaľ - webdeveloper | Košice - SK</title>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/MyWebSite-responzive/assets/favicon-DWVEhtnQ.png" sizes="64x64">
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://frantisek.dupal.sk/">
+    <link rel="preload" href="/MyWebSite-responzive/assets/logo-5x6sQLXA.png" as="image">
+    <!-- DOMPurify -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      media="all"><!--TODO - prejsť na FA6 alebo ikonový set-->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"><!--TODO - spraviť reálny CSP -->
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+    <script type="module" crossorigin src="/MyWebSite-responzive/assets/index-Zy0JSVW2.js"></script>
+    <link rel="stylesheet" crossorigin href="/MyWebSite-responzive/assets/index-BPkakJ2O.css">
+  </head>
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg fixed-top d-flex align-items-center" id="mainNav">
+      <div class="container-fluid d-flex align-items-center justify-content-between p-0 w-100">
+        <!-- LEFT: TOGGLER + LOGO -->
+        <div id="mobileLeft" class="d-flex align-items-center">
+          <button class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#sideNav"
+                  aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div id="logoWrapper" class="d-flex align-items-center justify-content-center">
+            <div id="logo" class="d-flex align-items-center text-decoration-none">
+              <img src="/MyWebSite-responzive/assets/logo-5x6sQLXA.png" alt="Logo" class="logo me-2">
+              <div class="logo-text d-flex flex-column">
+                <p class="h6 mb-0">František<span class="fw-bold text-uppercase">Dupaľ</span></p>
+                <small class="text-uppercase">webdeveloper</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- WEATHER (NAV) -->
+        <a id="weatherNav"
+          class="weatherNav menu-item align-items-center ms-4 gap-2"
+          data-translate-info="weatherInfo"
+          href="https://openweathermap.org/"
+          target="_blank"
+          rel="noopener noreferrer">
+          <img class="nav-weather-icon icon-24 me-2" alt="Ikona počasia">
+          <span class="nav-weather-city me-2"></span>
+          <span class="nav-weather-temp"></span>
+        </a>
+        <!-- MENU -->
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul id="mainMenu" class="navbar-nav mx-auto d-flex align-items-center m-0 p-0">
+            <li class="nav-item menu-item" data-translate-info="homeInfo">
+              <a class="nav-link" href="#home"><i class="fas fa-home menu-icon"></i><span data-translate="home">Home</span></a>
+            </li>
+            <li class="nav-item menu-item" data-translate-info="portfolioInfo">
+              <a class="nav-link" href="#portfolio"><i class="fas fa-briefcase menu-icon"></i><span data-translate="portfolio">Portfolio</span></a>
+            </li>
+            <li class="nav-item menu-item" data-translate-info="skillsInfo">
+              <a class="nav-link" href="#skills"><i class="fas fa-code menu-icon"></i><span data-translate="subtitleSkills">Skills</span></a>
+            </li>
+            <li class="nav-item menu-item" data-translate-info="aboutInfo">
+              <a class="nav-link" href="#about"><i class="fas fa-user menu-icon"></i><span data-translate="aboutMe">AboutMe</span></a>
+            </li>
+            <li class="nav-item menu-item" data-translate-info="contactInfo_Info">
+              <a class="nav-link" href="#contact"><i class="fas fa-envelope menu-icon"></i><span data-translate="contact">Contact</span></a>
+            </li>
+          </ul>
+        </div>
+        <!-- LANGUAGE SWITCHER -->
+        <ul class="navbar-nav ms-auto d-flex align-items-center" id="rightNav">
+          <li class="nav-item dropdown menu-item">
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2"
+              href="#" id="languageDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img id="selected-flag" src="/MyWebSite-responzive/assets/sk-D6BGfjco.png" alt="Slovak" class="flag-24x16 me-1">
+              <span id="selected-lang">SK</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown" id="languageMenu">
+              <li><a class="dropdown-item d-flex align-items-center gap-2" href="#" data-lang="sk"><img src="/MyWebSite-responzive/assets/sk-D6BGfjco.png" class="flag-24x16 me-2" alt="Slovenská vlajka"><span data-translate="btnSk" data-translate-info="langSkInfo"></span></a></li>
+              <li><a class="dropdown-item d-flex align-items-center gap-2" href="#" data-lang="en"><img src="/MyWebSite-responzive/assets/uk-BlH8XZtW.png" class="flag-24x16 me-2" alt="Anglická vlajka"><span data-translate="btnEn" data-translate-info="langEnInfo"></span></a></li>
+              <li><a class="dropdown-item d-flex align-items-center gap-2" href="#" data-lang="de"><img src="/MyWebSite-responzive/assets/de-DWiWmqSu.png" class="flag-24x16 me-2" alt="Nemecká vlajka"><span data-translate="btnDe" data-translate-info="langDeInfo"></span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- SIDE NAV (NO DUPLICATE MENU) -->
+    <nav id="sideNav" class="side-nav">
+      <div class="sideNav-center">
+        <div class="sideNav-content">
+          <!-- TIME -->
+          <div id="sideNavTime" class="side-nav-time">
+            <span class="time"></span>
+          </div>
+          <hr class="side-nav-divider">
+          <!-- WEATHER -->
+          <div id="sideNavWeather">
+            <div class="weather-inline">
+              <img class="side-weather-icon" alt="Ikona počasia">
+              <span class="side-weather-city"></span>
+              <span class="side-weather-temp"></span>
+            </div>
+          </div>
+          <hr class="side-nav-divider">
+          <!-- DATE + NAMEDAY -->
+          <div id="sideNavDateBlock" class="side-nav-date">
+            <span class="date"></span>
+            <span class="nameday" data-translate="nameday"></span>
+          </div>
+          <hr class="side-nav-divider">
+          <!-- MENU WILL BE INJECTED HERE -->
+          <ul id="sideMenu"></ul><!--TODO - ?odstrániť id z <ul> v main menu (id by malo byť unikátne)?-->
+        </div>
+      </div>
+    </nav>
+    <!-- FLOATING WEATHER -->
+    <main>
+      <a id="weatherFloating" class="weatherNav" data-translate-info="weatherInfo"
+        href="https://openweathermap.org/" target="_blank" rel="noopener noreferrer">
+        <div class="weather-row">
+          <img class="float-weather-icon" alt="Ikona počasia">
+          <span class="float-weather-temp"></span>
+        </div>
+        <span class="float-weather-city"></span>
+      </a>
+      <!-- HOME -->
+      <header id="home">
+        <div class="home-container section">
+          <!-- ĽAVÁ STRANA -->
+          <div class="left-text">
+            <!-- Horný blok -->
+            <div class="left-top">
+              <h1 data-translate="name"
+                  class="fade-in-title page-section-heading mb-1">
+              </h1>
+              <div class="divider-custom my-1 d-flex justify-content-center align-items-center">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+              </div>
+              <p data-translate="mottoText"
+                class="font-weight-light mb-0 slide-in-right">
+              </p>
+            </div>
+            <!-- Spodný blok -->
+            <div class="left-bottom">
+              <div class="certificates-carousel">
+                <div class="cert-track-wrapper d-flex align-items-center">
+                  <button class="cert-arrow left" type="button" aria-label="Posun doľava">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <div class="cert-track" id="certTrack">
+                    <div class="cert-skeleton"></div>
+                    <div class="cert-skeleton"></div>
+                    <div class="cert-skeleton"></div>
+                  </div>
+                  <button class="cert-arrow right" type="button" aria-label="Posun doprava">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- PRAVÁ STRANA -->
+          <div class="right-image d-flex justify-content-center align-items-center">
+            <img src="/MyWebSite-responzive/assets/my-photo-CCowqNeb.png"
+                alt="Profilová fotografia"
+                class="img-fluid zoom-img"
+                loading="lazy">
+          </div>
+        </div>
+      </header>
+      <!-- PORTFOLIO SECTION -->
+      <section class="page-section bg-primary text-white mb-0" id="portfolio">
+        <div class="portfolio-container">
+          <div class="section">
+          <!-- NADPIS -->
+          <h2 data-translate="portfolio" class="page-section-heading text-center text-uppercase"></h2>
+          <!-- DIVIDER -->
+          <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+          </div>
+          <!-- OBSAH -->
+          <div class="portfolio-content">
+            <!-- ĽAVÝ STĹPEC -->
+            <div class="portfolio-left">
+              <div class="left-top">
+                <img src="/MyWebSite-responzive/assets/my-photo-reverse-BuCiJeD1.png" alt="Profilova fotografia" class="profile-photo">
+                <h4 class="profile-name">František Dupaľ</h4>
+                <p class="profile-position" data-translate="title"></p>
+                <hr class="profile-divider">
+                <h4 data-translate="aboutMe"></h4>
+                <a id="aboutPreview" data-translate-info="portfolioAboutMeInfo" class="aboutPreview" href="#about" aria-label="About section"></a>
+              </div>
+              <div class="left-bottom">
+                <!-- Portfolio Kontakt -->
+                <p class="contact-phone">
+                  <a href="tel:+421905259485" aria-label="Phone number">📞 +421 905 259 485</a>
+                </p>
+                <p class="contact-email">
+                  <a data-translate-info="portfolioContactInfo" href="#contact">📧 frantisek.dupal.webdeveloper@gmail.com</a>
+                </p>
+              </div>
+            </div>
+            <!-- PRAVÝ STĹPEC -->
+            <div class="portfolio-right">
+              <!-- ZNALOSTI -->
+              <h3 class="section-title" data-translate="knowledge"></h3>
+              <div class="knowledge-columns">
+                <div class="knowledge-col">
+                  <h4 data-translate="working"></h4>
+                  <ul class="knowledge">
+                    <li data-rating="4">IntelliJ IDEA</li>
+                    <li data-rating="4">Git</li>
+                    <li data-rating="3">DevTools</li>
+                    <li data-rating="3">SQL</li>
+                  </ul>
+                </div>
+                <div class="knowledge-col">
+                  <h4 data-translate="using"></h4>
+                  <ul class="knowledge">
+                    <li data-rating="4">Java, Spring</li>
+                    <li data-rating="4">HTML5, CSS3, Bootstrap</li>
+                    <li data-rating="3">JavaScript, React</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="knowledge-columns">
+                <div class="knowledge-col">
+                  <h4 data-translate="know"></h4>
+                  <ul class="knowledge">
+                    <li data-rating="4">Visual Studio Code</li>
+                    <li data-rating="2"><span data-translate-sublist="testingalso"></span></li>
+                    <li data-rating="4">Best practices</li>
+                    <li data-rating="3"><span data-translate-sublist="response"></span></li>
+                  </ul>
+                </div>
+                <div class="knowledge-col">
+                <h4 data-translate="tools"></h4>
+                  <ul class="knowledge">
+                    <li data-rating="2"><span data-translate-sublist="zakladadobe"></span></li>
+                    <li data-rating="4">MS Office</li>
+                  </ul>
+                </div>
+              </div>
+              <hr class="section-divider">
+              <!-- SKÚSENOSTI -->
+              <h3 class="section-title" data-translate="experiences"></h3>
+              <ul id="timeline-experience" class="timeline"></ul>
+              <!-- VZDELANIE -->
+              <h3 class="section-title" data-translate="education"></h3>
+              <ul id="timeline-education" class="timeline"></ul>
+              <!-- ODKAZY -->
+              <div class="portfolio-links">
+                <a href="https://github.com/Frantik69" class="btn btn-outline-dark me-2" data-translate-info="portfolioLinkInfo" target="_blank" rel="noopener"><i class="fab fa-github me-2"></i> GitHub</a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+      <!-- SKILLS SECTION -->
+      <section class="page-section bg-primary text-white mb-0" id="skills">
+        <div class="skills-container">
+          <div class="section">
+            <h2 data-translate="subtitleSkills" class="page-section-heading text-center text-uppercase">Skills</h2>
+            <div class="divider-custom d-flex justify-content-center align-items-center">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+            </div>
+            <div class="skills-page">
+              <div class="row" id="skills-grid"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ABOUTME SECTION -->
+      <section class="page-section bg-primary text-white mb-0" id="about">
+        <div class="about-container">
+          <div class="section">
+          <h2 data-translate="aboutMe" class="page-section-heading text-center text-uppercase"></h2>
+          <div class="divider-custom d-flex justify-content-center align-items-center">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+          </div>
+          <div class="about-page">
+            <div class="row">
+              <!-- ĽAVÝ STĹPEC -->
+              <div data-translate="aboutInfo1" data-translate-html class="col-lg-6 about-info">
+                <div class="skeleton-line" aria-hidden="true"></div>
+                <div class="skeleton-line" aria-hidden="true"></div>
+                <div class="skeleton-line short"></div>
+              </div>
+              <!-- PRAVÝ STĹPEC -->
+              <div data-translate="aboutInfo2" data-translate-html class="col-lg-6 about-info">
+                <div class="skeleton-line" aria-hidden="true"></div>
+                <div class="skeleton-line" aria-hidden="true"></div>
+                <div class="skeleton-line short"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </section>
+      <!-- CONTACT SECTION -->
+      <section class="page-section" id="contact">
+        <div class="contact-container">
+          <h2 data-translate="formTitle"
+              class="page-section-heading text-center text-uppercase mb-0">
+          </h2>
+          <!-- DIVIDER -->
+          <div class="divider-custom d-flex justify-content-center align-items-center">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+          </div>
+          <!-- CONTACT INFO -->
+          <div class="contact-info d-flex justify-content-center align-items-center text-center">
+            <img src="data:image/png;base64,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"
+                alt="Ikona emailu"
+                class="email-icon"
+                loading="lazy">
+            <div data-translate="contactInfo" data-translate-html>
+              <!-- Skeleton loading -->
+              <div class="skeleton-line" aria-hidden="true"></div>
+              <div class="skeleton-line short"></div>
+            </div>
+          </div>
+          <!-- CONTACT FORM -->
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <form action="https://formspree.io/f/xwvepdrk"
+                    method="POST"
+                    id="contactForm"
+                    autocomplete="on">
+                <input type="hidden" name="_subject"
+                      value="📩 Nová správa z portfólia - František Dupal">
+                <!-- ROW 1 -->
+                <div class="row g-0 mb-3">
+                  <!-- NAME -->
+                  <div class="col-12">
+                    <label for="name" data-translate="formNameLabel"></label>
+                    <input type="text"
+                          id="name"
+                          name="name"
+                          aria-describedby="nameError"
+                          aria-label="Your Name"
+                          data-translate-aria="placeholderName"
+                          data-translate-placeholder="placeholderName"
+                          required
+                          class="form-control"
+                          autocomplete="name">
+                    <div id="nameError" class="error-msg"></div>
+                  </div>
+                  <!-- EMAIL -->
+                  <div class="col-12 mt-3">
+                    <label for="email" data-translate="formEmailLabel"></label>
+                    <input type="email"
+                          id="email"
+                          name="email"
+                          aria-describedby="emailError"
+                          aria-label="Your e-mail"
+                          data-translate-aria="placeholderEmail"
+                          data-translate-placeholder="placeholderEmail"
+                          required
+                          class="form-control"
+                          autocomplete="email">
+                    <div id="emailError" class="error-msg"></div>
+                  </div>
+                </div>
+                <!-- MESSAGE -->
+                <div class="row g-0 mb-3">
+                  <div class="col-12">
+                    <label for="message" data-translate="formMessageLabel"></label>
+                    <textarea id="message"
+                              name="message"
+                              rows="5"
+                              aria-describedby="messageError"
+                              aria-label="Your message..."
+                              data-translate-aria="placeholderMessage"
+                              data-translate-placeholder="placeholderMessage"
+                              required
+                              class="form-control"
+                              autocomplete="off"></textarea>
+                    <div id="messageError" class="error-msg"></div>
+                  </div>
+                </div>
+                <!-- TURNSTILE -->
+                <div class="row g-0 mb-3">
+                  <div class="col text-center">
+                    <div id="turnstile-container" class="cf-turnstile"></div>
+                  </div>
+                </div>
+                <!-- SUBMIT BUTTON -->
+                <div class="row g-0">
+                  <div class="col text-center">
+                    <button id="submitBtn"
+                            type="submit"
+                            data-translate="formSubmit"
+                            class="btn btn-primary menu-item"
+                            data-translate-info="sendInfo">
+                      Odoslať
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- FOOTER -->
+    <footer id="footer" class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-row">
+          <!-- LEFT: LOGO -->
+          <div class="footer-logo">
+            <div id="logo">
+              <img src="/MyWebSite-responzive/assets/logo-5x6sQLXA.png" alt="Logo" class="logo">
+            </div>
+          </div>
+          <!-- CENTER: LOCATION -->
+          <div class="footer-center">
+            <h2 data-translate="location" data-translate-html class="text-uppercase"></h2>
+            <p data-translate="locationInfo" data-translate-html></p>
+          </div>
+          <!-- RIGHT: CONTACT -->
+          <div class="footer-contact">
+            <p><a href="tel:+421905259485">📞 +421 905 259 485</a></p>
+            <p><a data-translate-info="portfolioContactInfo" href="#contact" id="footer-contact">
+              📧 frantisek.dupal.webdeveloper@gmail.com
+            </a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- COPYRIGHT -->
+    <div id="copyright"
+        class="fixed-bottom py-1 text-center"
+        data-translate="copyright"
+        data-translate-html>
+      <!-- TODO v SCSS pridať bottom padding pre sideNav, ak by prekrývalo obsah. -->
+    </div>
+    <!-- CONFIRMATION OVERLAY -->
+    <div id="overlay" class="formMessage" role="alertdialog" aria-live="assertive" aria-labelledby="overlayMessage">
+      <div id="overlayMessage"></div>
+    </div>
+    <!-- MODAL PRE PDF -->
+    <div id="pdfModal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="pdf-wrapper">
+        <!-- Šípka vľavo --><!-- TODO Odporúčané SVG pre šípky -->
+        <button class="pdf-arrow left" aria-label="Predchádzajúci certifikát">&#10094;</button><!--TODO - Šípky sú textové znaky - Odporúčam SVG-->
+        <!-- Zavrieť modal -->
+        <button class="pdf-close" aria-label="Zavrieť modálne okno">✕</button>
+        <!-- Obrázok certifikátu -->
+        <img id="pdfImage" src="" alt="Certifikát" loading="lazy">
+        <!-- Šípka vpravo -->
+        <button class="pdf-arrow right" aria-label="Nasledujúci certifikát">&#10095;</button>
+      </div>
+    </div>
+    <!-- MODAL PRE GITHUB -->
+    <div id="GitHubModal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-bubble">
+        <p data-translate="changePage"></p>
+        <div class="modal-actions">
+          <button id="confirmGitHub" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfoGitHub" aria-label="Confirm navigation to GitHub"></button>
+          <button id="cancelGitHub" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo" aria-label="Cancel navigation"></button>
+        </div>
+      </div>
+    </div>
+    <!-- MODAL PRE POČASIE -->
+    <div id="weatherModal" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-bubble">
+        <p data-translate="changePage"></p>
+        <div class="modal-actions">
+          <button id="confirmWeather" data-translate="yes" class="btn btn-primary btn-sm tooltip-item" data-translate-info="yesInfo" aria-label="Confirm navigation to Weather"></button>
+          <button id="cancelWeather" data-translate="no" class="btn btn-secondary btn-sm tooltip-item" data-translate-info="noInfo" aria-label="Cancel navigation"></button>
+        </div>
+      </div>
+    </div>
+    <!-- BOOTSTRAP BUNDLE JS + VLASTNY JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

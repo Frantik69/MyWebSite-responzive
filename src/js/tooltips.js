@@ -12,7 +12,7 @@
 // ======================================================
 
 import { translations } from "./translations.js";
-
+let hideTimer = null;
 
 // ------------------------------------------------------
 // TOOLTIP FOLLOW – bublina sledujúca kurzor

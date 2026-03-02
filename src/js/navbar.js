@@ -122,8 +122,6 @@ export function initNavHoverBubble() {
   });
 }
 
-
-
 // ------------------------------------------------------
 // ANIMÁCIA MENU PRI KLIKNUTÍ NA TOGGLER
 // ------------------------------------------------------
