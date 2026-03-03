@@ -11,9 +11,8 @@
     left: 0;
     width: 100%;
     z-index: ds.$z-navbar;
-
     @include ds.gradient-bg(ds.$primary, ds.$secondary, to right);
-    border-bottom: 1px solid rgba(ds.$dark, 0.4);
+    border-bottom: 1px solid ds.$dark;
     color: ds.$light;
   }
 
@@ -58,7 +57,6 @@
     pointer-events: none;
   }
 
-  /* FIX: odstránené all: unset */
   #logo {
     @include ds.flex-center;
     background: none;

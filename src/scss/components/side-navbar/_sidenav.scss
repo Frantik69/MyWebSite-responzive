@@ -65,7 +65,7 @@
   }
 }
 
-@include ds.between(ds.$breakpoint-sm, ds.$breakpoint-md) {
+@include ds.between(ds.$breakpoint-xxs, ds.$breakpoint-md) {
   #sideNav {
     @include nav.sidenav-tablet-layout;
 
